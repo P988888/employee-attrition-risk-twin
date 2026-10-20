@@ -1,0 +1,30 @@
+﻿id,x,y,links
+h1_0,4.4,16.0,"['h1_1', 'door_chairman']"
+h1_1,8.0,16.0,"['h1_0', 'h1_2', 'door_rnd']"
+h1_2,12.0,16.0,"['h1_1', 'h1_3', 'door_gm']"
+h1_3,17.2,16.0,"['h1_2', 'h1_4', 'v_mid']"
+h1_4,20.1,16.0,"['h1_3', 'h1_5', 'door_meeting_l']"
+h1_5,22.6,16.0,"['h1_4', 'h1_6', 'door_marketing']"
+h1_6,29.4,16.0,"['h1_5', 'h1_7', 'door_pantry']"
+h1_7,30.4,16.0,"['h1_6', 'door_ops']"
+h2_0,5.0,7.0,"['h2_1', 'door_finance']"
+h2_1,13.8,7.0,"['h2_0', 'h2_2', 'door_meeting_s']"
+h2_2,17.2,7.0,"['h2_1', 'h2_3', 'v_mid']"
+h2_3,21.8,7.0,"['h2_2', 'h2_4', 'door_reception']"
+h2_4,27.8,7.0,"['h2_3', 'h2_5', 'door_lounge', 'door_restroom']"
+h2_5,31.8,7.0,"['h2_4', 'door_storage']"
+v_mid,17.2,11.5,"['h2_2', 'h1_3']"
+door_chairman,4.4,17.1,['h1_0']
+door_gm,12.0,17.1,['h1_2']
+door_meeting_l,20.1,17.1,['h1_4']
+door_pantry,29.4,17.1,['h1_6']
+door_rnd,8.0,14.9,['h1_1']
+door_marketing,22.6,14.9,['h1_5']
+door_ops,30.4,14.9,['h1_7']
+door_finance,5.0,5.9,['h2_0']
+door_meeting_s,13.8,5.9,['h2_1']
+door_reception,21.8,5.9,"['h2_3', 'entrance']"
+door_lounge,27.8,6.3,['h2_4']
+door_restroom,27.8,3.1,['h2_4']
+door_storage,31.8,5.9,['h2_5']
+entrance,21.8,0.8,['door_reception']

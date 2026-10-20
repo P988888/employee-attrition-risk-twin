@@ -1,0 +1,8626 @@
+[
+ {
+  "employee_id": "E00001",
+  "name": "孙嘉言",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "rnd",
+  "department_cn": "研发部",
+  "desk_id": "F1-RND-01",
+  "desk_room": "rnd",
+  "desk": {
+   "x": 3.275,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 50,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 264,
+   "Department": "研发部",
+   "DistanceFromHome": 9,
+   "Education": 3,
+   "EducationField": "Marketing",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 1,
+   "EnvironmentSatisfaction": 3,
+   "Gender": "Male",
+   "HourlyRate": 59,
+   "JobInvolvement": 3,
+   "JobLevel": 5,
+   "JobRole": "软件工程师",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 19331,
+   "MonthlyRate": 19519,
+   "NumCompaniesWorked": 4,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 16,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 27,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 1,
+   "YearsInCurrentRole": 0,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 0,
+   "background": {
+    "highest_degree": "本科",
+    "school": "中山大学",
+    "major": "统计学",
+    "certificates": [],
+    "prev_employers": 4,
+    "hire_date": "2025-09-13",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 141****1847",
+    "bank_account": "**** **** 5737"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.87,
+   "avg_focus_hours": 3.78,
+   "late_days": 13,
+   "leave_days": 12,
+   "avg_meetings": 2.34,
+   "avg_messages": 26,
+   "avg_tasks_done": 2.97,
+   "focus_trend": -0.0088,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 10.01,
+     "focus": 3.65,
+     "late": true,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.68,
+     "focus": 4.18,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.51,
+     "focus": 3.28,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.83,
+     "focus": 3.27,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 10.29,
+     "focus": 3.94,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 10.17,
+     "focus": 3.43,
+     "late": true,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.62,
+     "focus": 2.37,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.651,
+    "rework_count": 3.68,
+    "defect_rate": 0.0628,
+    "efficiency_score": 68.9,
+    "quality_score": 59.3
+   }
+  },
+  "assessment": {
+   "competency_score": 88.4,
+   "engagement_score": 65.8,
+   "satisfaction_score": 70.5,
+   "stress_score": 67.1,
+   "overall_score": 58.7,
+   "survey_date": "2026-08-18",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-07-29",
+    "type": "绩效面谈",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.768,
+    "follow_up": false,
+    "duration_min": 52
+   },
+   {
+    "date": "2026-08-14",
+    "type": "绩效面谈",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.886,
+    "follow_up": false,
+    "duration_min": 56
+   }
+  ],
+  "risk": {
+   "score": 0.3853,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 13 次"
+    },
+    {
+     "factor": "职级较高",
+     "direction": "-",
+     "detail": "职级越高越倾向留任"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00002",
+  "name": "罗奕辰",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "rnd",
+  "department_cn": "研发部",
+  "desk_id": "F1-RND-02",
+  "desk_room": "rnd",
+  "desk": {
+   "x": 4.825,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 29,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 1378,
+   "Department": "研发部",
+   "DistanceFromHome": 13,
+   "Education": 2,
+   "EducationField": "Other",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 2,
+   "EnvironmentSatisfaction": 4,
+   "Gender": "Male",
+   "HourlyRate": 46,
+   "JobInvolvement": 2,
+   "JobLevel": 2,
+   "JobRole": "产品经理",
+   "JobSatisfaction": 2,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 4025,
+   "MonthlyRate": 23679,
+   "NumCompaniesWorked": 4,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 13,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 1,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 10,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 4,
+   "YearsInCurrentRole": 3,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 3,
+   "background": {
+    "highest_degree": "大专",
+    "school": "四川大学",
+    "major": "电子信息工程",
+    "certificates": [
+     "注册会计师"
+    ],
+    "prev_employers": 4,
+    "hire_date": "2021-10-30",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 140****9339",
+    "bank_account": "**** **** 8033"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.46,
+   "avg_focus_hours": 4.25,
+   "late_days": 11,
+   "leave_days": 12,
+   "avg_meetings": 2.5,
+   "avg_messages": 32,
+   "avg_tasks_done": 3.11,
+   "focus_trend": -0.0015,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.23,
+     "focus": 4.18,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.41,
+     "focus": 3.75,
+     "late": false,
+     "tasks": 1
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.09,
+     "focus": 4.13,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 10.64,
+     "focus": 4.28,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.58,
+     "focus": 3.99,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.57,
+     "focus": 3.16,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.33,
+     "focus": 4.49,
+     "late": false,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.695,
+    "rework_count": 3.53,
+    "defect_rate": 0.0577,
+    "efficiency_score": 70.6,
+    "quality_score": 62.6
+   }
+  },
+  "assessment": {
+   "competency_score": 79.7,
+   "engagement_score": 71.7,
+   "satisfaction_score": 68.6,
+   "stress_score": 63.3,
+   "overall_score": 65.8,
+   "survey_date": "2026-07-24",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-07-03",
+    "type": "绩效面谈",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": -0.255,
+    "follow_up": true,
+    "duration_min": 29
+   },
+   {
+    "date": "2026-10-09",
+    "type": "一对一沟通",
+    "topic": "对直接上级的管理方式有较强不满",
+    "sentiment": -0.721,
+    "follow_up": true,
+    "duration_min": 21
+   }
+  ],
+  "risk": {
+   "score": 0.6832,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=2/4"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 11 次"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00003",
+  "name": "冯嘉豪",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "rnd",
+  "department_cn": "研发部",
+  "desk_id": "F1-RND-03",
+  "desk_room": "rnd",
+  "desk": {
+   "x": 6.375,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 22,
+   "Attrition": "Yes",
+   "BusinessTravel": "Travel_Frequently",
+   "DailyRate": 1256,
+   "Department": "研发部",
+   "DistanceFromHome": 3,
+   "Education": 4,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 3,
+   "EnvironmentSatisfaction": 3,
+   "Gender": "Male",
+   "HourlyRate": 48,
+   "JobInvolvement": 2,
+   "JobLevel": 1,
+   "JobRole": "测试工程师",
+   "JobSatisfaction": 4,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 2853,
+   "MonthlyRate": 4223,
+   "NumCompaniesWorked": 0,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 11,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 1,
+   "TrainingTimesLastYear": 5,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 0,
+   "YearsInCurrentRole": 0,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 0,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "浙江大学",
+    "major": "工商管理",
+    "certificates": [
+     "PMP"
+    ],
+    "prev_employers": 0,
+    "hire_date": "2026-02-26",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 180****8447",
+    "bank_account": "**** **** 3490"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.92,
+   "avg_focus_hours": 3.64,
+   "late_days": 10,
+   "leave_days": 13,
+   "avg_meetings": 2.16,
+   "avg_messages": 27,
+   "avg_tasks_done": 2.97,
+   "focus_trend": -0.0078,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 10.15,
+     "focus": 3.45,
+     "late": true,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.65,
+     "focus": 3.32,
+     "late": false,
+     "tasks": 1
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.9,
+     "focus": 3.42,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 10.57,
+     "focus": 3.03,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.67,
+     "focus": 2.99,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 10.41,
+     "focus": 3.27,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 10.69,
+     "focus": 3.34,
+     "late": true,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.651,
+    "rework_count": 3.74,
+    "defect_rate": 0.0637,
+    "efficiency_score": 67.3,
+    "quality_score": 58.0
+   }
+  },
+  "assessment": {
+   "competency_score": 72.1,
+   "engagement_score": 61.7,
+   "satisfaction_score": 46.1,
+   "stress_score": 66.4,
+   "overall_score": 41.1,
+   "survey_date": "2026-07-08",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-08-10",
+    "type": "一对一沟通",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.651,
+    "follow_up": true,
+    "duration_min": 20
+   },
+   {
+    "date": "2026-09-17",
+    "type": "一对一沟通",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.551,
+    "follow_up": false,
+    "duration_min": 29
+   },
+   {
+    "date": "2026-10-12",
+    "type": "一对一沟通",
+    "topic": "对直接上级的管理方式有较强不满",
+    "sentiment": -0.944,
+    "follow_up": true,
+    "duration_min": 53
+   }
+  ],
+  "risk": {
+   "score": 0.8162,
+   "level": "极高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "高频出差",
+     "direction": "+",
+     "detail": "出差频繁与离职率正相关"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 10 次"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00004",
+  "name": "林文昊",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "rnd",
+  "department_cn": "研发部",
+  "desk_id": "F1-RND-04",
+  "desk_room": "rnd",
+  "desk": {
+   "x": 7.925,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 41,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 447,
+   "Department": "研发部",
+   "DistanceFromHome": 5,
+   "Education": 3,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 4,
+   "EnvironmentSatisfaction": 2,
+   "Gender": "Male",
+   "HourlyRate": 85,
+   "JobInvolvement": 4,
+   "JobLevel": 2,
+   "JobRole": "系统架构师",
+   "JobSatisfaction": 2,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 6870,
+   "MonthlyRate": 15530,
+   "NumCompaniesWorked": 3,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 12,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 1,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 11,
+   "TrainingTimesLastYear": 3,
+   "WorkLifeBalance": 1,
+   "YearsAtCompany": 3,
+   "YearsInCurrentRole": 2,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 2,
+   "background": {
+    "highest_degree": "本科",
+    "school": "四川大学",
+    "major": "市场营销",
+    "certificates": [],
+    "prev_employers": 3,
+    "hire_date": "2023-03-03",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 182****7838",
+    "bank_account": "**** **** 2751"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.54,
+   "avg_focus_hours": 4.84,
+   "late_days": 1,
+   "leave_days": 9,
+   "avg_meetings": 2.85,
+   "avg_messages": 37,
+   "avg_tasks_done": 3.76,
+   "focus_trend": -0.0012,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.87,
+     "focus": 4.68,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.28,
+     "focus": 4.54,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.12,
+     "focus": 4.27,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 8.77,
+     "focus": 6.07,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.14,
+     "focus": 4.52,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.81,
+     "focus": 5.05,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 8.75,
+     "focus": 4.47,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.738,
+    "rework_count": 3.05,
+    "defect_rate": 0.0545,
+    "efficiency_score": 74.0,
+    "quality_score": 67.4
+   }
+  },
+  "assessment": {
+   "competency_score": 61.6,
+   "engagement_score": 83.5,
+   "satisfaction_score": 68.1,
+   "stress_score": 67.2,
+   "overall_score": 63.3,
+   "survey_date": "2026-06-23",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-19",
+    "type": "团队例会发言",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": 0.048,
+    "follow_up": true,
+    "duration_min": 60
+   },
+   {
+    "date": "2026-06-24",
+    "type": "一对一沟通",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.575,
+    "follow_up": true,
+    "duration_min": 51
+   },
+   {
+    "date": "2026-07-08",
+    "type": "HR访谈",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.74,
+    "follow_up": false,
+    "duration_min": 27
+   },
+   {
+    "date": "2026-07-21",
+    "type": "一对一沟通",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": 0.094,
+    "follow_up": true,
+    "duration_min": 19
+   },
+   {
+    "date": "2026-08-18",
+    "type": "一对一沟通",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": -0.032,
+    "follow_up": true,
+    "duration_min": 58
+   }
+  ],
+  "risk": {
+   "score": 0.2873,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=2/4"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=2/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00005",
+  "name": "吴昊霖",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "rnd",
+  "department_cn": "研发部",
+  "desk_id": "F1-RND-05",
+  "desk_room": "rnd",
+  "desk": {
+   "x": 9.475,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 35,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 750,
+   "Department": "研发部",
+   "DistanceFromHome": 28,
+   "Education": 3,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 5,
+   "EnvironmentSatisfaction": 2,
+   "Gender": "Male",
+   "HourlyRate": 46,
+   "JobInvolvement": 4,
+   "JobLevel": 2,
+   "JobRole": "系统架构师",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 3407,
+   "MonthlyRate": 25348,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 17,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 4,
+   "StandardHours": 80,
+   "StockOptionLevel": 2,
+   "TotalWorkingYears": 10,
+   "TrainingTimesLastYear": 3,
+   "WorkLifeBalance": 2,
+   "YearsAtCompany": 10,
+   "YearsInCurrentRole": 9,
+   "YearsSinceLastPromotion": 6,
+   "YearsWithCurrManager": 8,
+   "background": {
+    "highest_degree": "本科",
+    "school": "华东理工大学",
+    "major": "会计学",
+    "certificates": [
+     "CPA"
+    ],
+    "prev_employers": 1,
+    "hire_date": "2016-04-21",
+    "contract_type": "劳务派遣",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 173****4697",
+    "bank_account": "**** **** 3932"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.8,
+   "avg_focus_hours": 4.57,
+   "late_days": 7,
+   "leave_days": 7,
+   "avg_meetings": 2.69,
+   "avg_messages": 34,
+   "avg_tasks_done": 3.58,
+   "focus_trend": -0.0014,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.49,
+     "focus": 4.93,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.31,
+     "focus": 4.59,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.37,
+     "focus": 3.98,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 8.81,
+     "focus": 3.15,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.26,
+     "focus": 4.95,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 7.72,
+     "focus": 4.13,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 8.32,
+     "focus": 4.16,
+     "late": false,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.719,
+    "rework_count": 3.11,
+    "defect_rate": 0.0525,
+    "efficiency_score": 71.9,
+    "quality_score": 66.1
+   }
+  },
+  "assessment": {
+   "competency_score": 79.0,
+   "engagement_score": 67.0,
+   "satisfaction_score": 71.2,
+   "stress_score": 66.3,
+   "overall_score": 61.1,
+   "survey_date": "2026-07-22",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-15",
+    "type": "一对一沟通",
+    "topic": "职业发展路径清晰，主动性提升",
+    "sentiment": 0.912,
+    "follow_up": true,
+    "duration_min": 16
+   },
+   {
+    "date": "2026-08-17",
+    "type": "团队例会发言",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.705,
+    "follow_up": false,
+    "duration_min": 37
+   },
+   {
+    "date": "2026-10-05",
+    "type": "一对一沟通",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": -0.336,
+    "follow_up": true,
+    "duration_min": 30
+   }
+  ],
+  "risk": {
+   "score": 0.4633,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=2/4"
+    },
+    {
+     "factor": "晋升停滞",
+     "direction": "+",
+     "detail": "距上次晋升 6 年"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 7 次"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00006",
+  "name": "郭俊杰",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "rnd",
+  "department_cn": "研发部",
+  "desk_id": "F1-RND-06",
+  "desk_room": "rnd",
+  "desk": {
+   "x": 11.025,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 33,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 589,
+   "Department": "研发部",
+   "DistanceFromHome": 28,
+   "Education": 4,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 6,
+   "EnvironmentSatisfaction": 2,
+   "Gender": "Male",
+   "HourlyRate": 79,
+   "JobInvolvement": 3,
+   "JobLevel": 2,
+   "JobRole": "算法工程师",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 5207,
+   "MonthlyRate": 22949,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 12,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 15,
+   "TrainingTimesLastYear": 3,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 15,
+   "YearsInCurrentRole": 14,
+   "YearsSinceLastPromotion": 5,
+   "YearsWithCurrManager": 7,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "南京大学",
+    "major": "电子信息工程",
+    "certificates": [
+     "CPA"
+    ],
+    "prev_employers": 1,
+    "hire_date": "2011-09-22",
+    "contract_type": "试用期",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 158****6079",
+    "bank_account": "**** **** 7027"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.59,
+   "avg_focus_hours": 4.19,
+   "late_days": 10,
+   "leave_days": 13,
+   "avg_meetings": 2.41,
+   "avg_messages": 31,
+   "avg_tasks_done": 3.18,
+   "focus_trend": -0.0032,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.38,
+     "focus": 4.01,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.95,
+     "focus": 3.76,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.34,
+     "focus": 4.05,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.18,
+     "focus": 3.57,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 10.29,
+     "focus": 3.4,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 10.2,
+     "focus": 3.66,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 10.59,
+     "focus": 3.53,
+     "late": true,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.684,
+    "rework_count": 3.11,
+    "defect_rate": 0.0579,
+    "efficiency_score": 72.3,
+    "quality_score": 63.3
+   }
+  },
+  "assessment": {
+   "competency_score": 67.9,
+   "engagement_score": 66.3,
+   "satisfaction_score": 71.9,
+   "stress_score": 61.0,
+   "overall_score": 54.5,
+   "survey_date": "2026-10-02",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-22",
+    "type": "绩效面谈",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": 0.247,
+    "follow_up": false,
+    "duration_min": 57
+   },
+   {
+    "date": "2026-06-25",
+    "type": "HR访谈",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.776,
+    "follow_up": false,
+    "duration_min": 46
+   },
+   {
+    "date": "2026-07-16",
+    "type": "HR访谈",
+    "topic": "工作投入度明显下降，已连续缺席团队活动",
+    "sentiment": -0.553,
+    "follow_up": true,
+    "duration_min": 46
+   },
+   {
+    "date": "2026-10-06",
+    "type": "绩效面谈",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.874,
+    "follow_up": false,
+    "duration_min": 33
+   }
+  ],
+  "risk": {
+   "score": 0.6271,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=2/4"
+    },
+    {
+     "factor": "晋升停滞",
+     "direction": "+",
+     "detail": "距上次晋升 5 年"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 10 次"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00007",
+  "name": "韩睿哲",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "rnd",
+  "department_cn": "研发部",
+  "desk_id": "F1-RND-07",
+  "desk_room": "rnd",
+  "desk": {
+   "x": 12.575,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 49,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 1495,
+   "Department": "研发部",
+   "DistanceFromHome": 5,
+   "Education": 4,
+   "EducationField": "Technical Degree",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 7,
+   "EnvironmentSatisfaction": 1,
+   "Gender": "Male",
+   "HourlyRate": 96,
+   "JobInvolvement": 3,
+   "JobLevel": 2,
+   "JobRole": "软件工程师",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 6651,
+   "MonthlyRate": 21534,
+   "NumCompaniesWorked": 2,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 14,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 20,
+   "TrainingTimesLastYear": 0,
+   "WorkLifeBalance": 2,
+   "YearsAtCompany": 3,
+   "YearsInCurrentRole": 2,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 2,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "哈尔滨工业大学",
+    "major": "统计学",
+    "certificates": [
+     "人力资源管理师"
+    ],
+    "prev_employers": 2,
+    "hire_date": "2023-08-20",
+    "contract_type": "试用期",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 179****8574",
+    "bank_account": "**** **** 4486"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.57,
+   "avg_focus_hours": 4.73,
+   "late_days": 5,
+   "leave_days": 4,
+   "avg_meetings": 2.68,
+   "avg_messages": 35,
+   "avg_tasks_done": 3.67,
+   "focus_trend": -0.0023,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.6,
+     "focus": 4.21,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.14,
+     "focus": 4.24,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.97,
+     "focus": 4.8,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 7.89,
+     "focus": 5.66,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 8.94,
+     "focus": 4.56,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.51,
+     "focus": 5.05,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.39,
+     "focus": 4.59,
+     "late": false,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.727,
+    "rework_count": 3.32,
+    "defect_rate": 0.0582,
+    "efficiency_score": 74.0,
+    "quality_score": 66.6
+   }
+  },
+  "assessment": {
+   "competency_score": 74.0,
+   "engagement_score": 67.8,
+   "satisfaction_score": 46.2,
+   "stress_score": 68.1,
+   "overall_score": 50.7,
+   "survey_date": "2026-09-01",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-19",
+    "type": "HR访谈",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": -0.105,
+    "follow_up": false,
+    "duration_min": 44
+   },
+   {
+    "date": "2026-07-09",
+    "type": "一对一沟通",
+    "topic": "职业发展路径清晰，主动性提升",
+    "sentiment": 0.712,
+    "follow_up": false,
+    "duration_min": 42
+   },
+   {
+    "date": "2026-10-15",
+    "type": "绩效面谈",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.836,
+    "follow_up": false,
+    "duration_min": 56
+   },
+   {
+    "date": "2026-10-15",
+    "type": "一对一沟通",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": -0.172,
+    "follow_up": true,
+    "duration_min": 35
+   }
+  ],
+  "risk": {
+   "score": 0.2902,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=1/4"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00008",
+  "name": "沈天佑",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "rnd",
+  "department_cn": "研发部",
+  "desk_id": "F1-RND-08",
+  "desk_room": "rnd",
+  "desk": {
+   "x": 14.125,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 33,
+   "Attrition": "No",
+   "BusinessTravel": "Non-Travel",
+   "DailyRate": 750,
+   "Department": "研发部",
+   "DistanceFromHome": 22,
+   "Education": 2,
+   "EducationField": "Marketing",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 8,
+   "EnvironmentSatisfaction": 3,
+   "Gender": "Male",
+   "HourlyRate": 95,
+   "JobInvolvement": 3,
+   "JobLevel": 2,
+   "JobRole": "测试工程师",
+   "JobSatisfaction": 2,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 6146,
+   "MonthlyRate": 15480,
+   "NumCompaniesWorked": 0,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 13,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 1,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 8,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 4,
+   "YearsAtCompany": 7,
+   "YearsInCurrentRole": 7,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 7,
+   "background": {
+    "highest_degree": "大专",
+    "school": "四川大学",
+    "major": "统计学",
+    "certificates": [
+     "CPA"
+    ],
+    "prev_employers": 0,
+    "hire_date": "2019-07-23",
+    "contract_type": "劳务派遣",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 130****8022",
+    "bank_account": "**** **** 6982"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.61,
+   "avg_focus_hours": 4.81,
+   "late_days": 6,
+   "leave_days": 8,
+   "avg_meetings": 2.88,
+   "avg_messages": 37,
+   "avg_tasks_done": 3.63,
+   "focus_trend": -0.0056,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 7.68,
+     "focus": 4.98,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.33,
+     "focus": 4.7,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.94,
+     "focus": 4.46,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 8.48,
+     "focus": 4.99,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.17,
+     "focus": 4.6,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.95,
+     "focus": 5.51,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 8.9,
+     "focus": 4.1,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.749,
+    "rework_count": 2.74,
+    "defect_rate": 0.0522,
+    "efficiency_score": 74.8,
+    "quality_score": 68.9
+   }
+  },
+  "assessment": {
+   "competency_score": 72.6,
+   "engagement_score": 62.8,
+   "satisfaction_score": 72.5,
+   "stress_score": 88.1,
+   "overall_score": 54.0,
+   "survey_date": "2026-07-21",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-12",
+    "type": "一对一沟通",
+    "topic": "提到外部机会，处于观望状态",
+    "sentiment": -0.501,
+    "follow_up": true,
+    "duration_min": 20
+   },
+   {
+    "date": "2026-07-24",
+    "type": "一对一沟通",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.741,
+    "follow_up": true,
+    "duration_min": 53
+   },
+   {
+    "date": "2026-08-10",
+    "type": "绩效面谈",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": 0.147,
+    "follow_up": false,
+    "duration_min": 47
+   },
+   {
+    "date": "2026-08-25",
+    "type": "绩效面谈",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.678,
+    "follow_up": false,
+    "duration_min": 58
+   },
+   {
+    "date": "2026-09-21",
+    "type": "HR访谈",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": -0.311,
+    "follow_up": true,
+    "duration_min": 24
+   }
+  ],
+  "risk": {
+   "score": 0.4786,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=2/4"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 6 次"
+    },
+    {
+     "factor": "压力偏高",
+     "direction": "+",
+     "detail": "压力得分 88.1"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00009",
+  "name": "黄梓涵",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "rnd",
+  "department_cn": "研发部",
+  "desk_id": "F1-RND-09",
+  "desk_room": "rnd",
+  "desk": {
+   "x": 15.675,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 41,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 1276,
+   "Department": "研发部",
+   "DistanceFromHome": 2,
+   "Education": 5,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 9,
+   "EnvironmentSatisfaction": 2,
+   "Gender": "Female",
+   "HourlyRate": 91,
+   "JobInvolvement": 3,
+   "JobLevel": 4,
+   "JobRole": "高级工程师",
+   "JobSatisfaction": 1,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 16595,
+   "MonthlyRate": 5626,
+   "NumCompaniesWorked": 7,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 16,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 22,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 18,
+   "YearsInCurrentRole": 16,
+   "YearsSinceLastPromotion": 11,
+   "YearsWithCurrManager": 8,
+   "background": {
+    "highest_degree": "博士",
+    "school": "中山大学",
+    "major": "会计学",
+    "certificates": [
+     "CET-6"
+    ],
+    "prev_employers": 7,
+    "hire_date": "2008-07-12",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 138****4956",
+    "bank_account": "**** **** 7014"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.58,
+   "avg_focus_hours": 4.59,
+   "late_days": 7,
+   "leave_days": 10,
+   "avg_meetings": 2.68,
+   "avg_messages": 36,
+   "avg_tasks_done": 3.54,
+   "focus_trend": -0.0028,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.5,
+     "focus": 4.24,
+     "late": true,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.34,
+     "focus": 5.34,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.34,
+     "focus": 4.47,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.13,
+     "focus": 5.0,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 7.92,
+     "focus": 5.14,
+     "late": false,
+     "tasks": 6
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.26,
+     "focus": 5.09,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.45,
+     "focus": 3.64,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.706,
+    "rework_count": 2.68,
+    "defect_rate": 0.0533,
+    "efficiency_score": 71.1,
+    "quality_score": 66.4
+   }
+  },
+  "assessment": {
+   "competency_score": 87.7,
+   "engagement_score": 70.9,
+   "satisfaction_score": 58.2,
+   "stress_score": 78.7,
+   "overall_score": 57.7,
+   "survey_date": "2026-08-12",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-08-07",
+    "type": "离职面谈",
+    "topic": "提到外部机会，处于观望状态",
+    "sentiment": -0.463,
+    "follow_up": true,
+    "duration_min": 27
+   },
+   {
+    "date": "2026-10-05",
+    "type": "绩效面谈",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": -0.3,
+    "follow_up": false,
+    "duration_min": 30
+   },
+   {
+    "date": "2026-10-13",
+    "type": "绩效面谈",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": 0.091,
+    "follow_up": false,
+    "duration_min": 29
+   }
+  ],
+  "risk": {
+   "score": 0.0789,
+   "level": "低风险",
+   "top_factors": [
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=1/4"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=2/4"
+    },
+    {
+     "factor": "晋升停滞",
+     "direction": "+",
+     "detail": "距上次晋升 11 年"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 7 次"
+    },
+    {
+     "factor": "压力偏高",
+     "direction": "+",
+     "detail": "压力得分 78.7"
+    },
+    {
+     "factor": "职级较高",
+     "direction": "-",
+     "detail": "职级越高越倾向留任"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00010",
+  "name": "高雅雯",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "rnd",
+  "department_cn": "研发部",
+  "desk_id": "F1-RND-10",
+  "desk_room": "rnd",
+  "desk": {
+   "x": 17.225,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 23,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 160,
+   "Department": "研发部",
+   "DistanceFromHome": 4,
+   "Education": 1,
+   "EducationField": "Medical",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 10,
+   "EnvironmentSatisfaction": 3,
+   "Gender": "Female",
+   "HourlyRate": 51,
+   "JobInvolvement": 3,
+   "JobLevel": 1,
+   "JobRole": "软件工程师",
+   "JobSatisfaction": 2,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 3295,
+   "MonthlyRate": 12862,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 13,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 3,
+   "TrainingTimesLastYear": 3,
+   "WorkLifeBalance": 1,
+   "YearsAtCompany": 3,
+   "YearsInCurrentRole": 2,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 2,
+   "background": {
+    "highest_degree": "高中及以下",
+    "school": "浙江大学",
+    "major": "计算机科学与技术",
+    "certificates": [
+     "人力资源管理师"
+    ],
+    "prev_employers": 1,
+    "hire_date": "2022-12-13",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 162****8153",
+    "bank_account": "**** **** 3735"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.82,
+   "avg_focus_hours": 4.36,
+   "late_days": 6,
+   "leave_days": 10,
+   "avg_meetings": 2.68,
+   "avg_messages": 32,
+   "avg_tasks_done": 3.4,
+   "focus_trend": -0.008,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.06,
+     "focus": 4.24,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 7.96,
+     "focus": 3.81,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.37,
+     "focus": 4.15,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 8.99,
+     "focus": 3.21,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 8.77,
+     "focus": 3.92,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.35,
+     "focus": 4.13,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.47,
+     "focus": 5.18,
+     "late": false,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.707,
+    "rework_count": 3.21,
+    "defect_rate": 0.0553,
+    "efficiency_score": 69.5,
+    "quality_score": 62.8
+   }
+  },
+  "assessment": {
+   "competency_score": 54.3,
+   "engagement_score": 57.0,
+   "satisfaction_score": 69.2,
+   "stress_score": 74.8,
+   "overall_score": 50.1,
+   "survey_date": "2026-10-05",
+   "potential": "高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-07-02",
+    "type": "一对一沟通",
+    "topic": "抱怨长期加班且回报不匹配",
+    "sentiment": -0.89,
+    "follow_up": true,
+    "duration_min": 54
+   },
+   {
+    "date": "2026-08-26",
+    "type": "离职面谈",
+    "topic": "提到外部机会，处于观望状态",
+    "sentiment": -0.699,
+    "follow_up": true,
+    "duration_min": 48
+   },
+   {
+    "date": "2026-10-08",
+    "type": "绩效面谈",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.698,
+    "follow_up": true,
+    "duration_min": 27
+   }
+  ],
+  "risk": {
+   "score": 0.5075,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=2/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 6 次"
+    },
+    {
+     "factor": "敬业度偏低",
+     "direction": "+",
+     "detail": "敬业度得分 57.0"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00011",
+  "name": "郑思妍",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "marketing",
+  "department_cn": "市场部",
+  "desk_id": "F1-MAR-01",
+  "desk_room": "marketing",
+  "desk": {
+   "x": 25.35,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 43,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Frequently",
+   "DailyRate": 559,
+   "Department": "市场部",
+   "DistanceFromHome": 10,
+   "Education": 4,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 11,
+   "EnvironmentSatisfaction": 3,
+   "Gender": "Female",
+   "HourlyRate": 82,
+   "JobInvolvement": 2,
+   "JobLevel": 2,
+   "JobRole": "品牌经理",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Divorced",
+   "MonthlyIncome": 5257,
+   "MonthlyRate": 6227,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 11,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 9,
+   "TrainingTimesLastYear": 3,
+   "WorkLifeBalance": 4,
+   "YearsAtCompany": 9,
+   "YearsInCurrentRole": 7,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 0,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "西安电子科技大学",
+    "major": "人力资源管理学",
+    "certificates": [
+     "CFA"
+    ],
+    "prev_employers": 1,
+    "hire_date": "2017-06-14",
+    "contract_type": "劳务派遣",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 180****8394",
+    "bank_account": "**** **** 1524"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.86,
+   "avg_focus_hours": 4.34,
+   "late_days": 5,
+   "leave_days": 4,
+   "avg_meetings": 2.52,
+   "avg_messages": 34,
+   "avg_tasks_done": 3.32,
+   "focus_trend": -0.0066,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.89,
+     "focus": 3.47,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.7,
+     "focus": 3.87,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.08,
+     "focus": 3.87,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.49,
+     "focus": 3.96,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.5,
+     "focus": 3.69,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 7.75,
+     "focus": 4.06,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.72,
+     "focus": 3.7,
+     "late": false,
+     "tasks": 2
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.695,
+    "rework_count": 3.53,
+    "defect_rate": 0.0544,
+    "efficiency_score": 72.2,
+    "quality_score": 64.2
+   }
+  },
+  "assessment": {
+   "competency_score": 80.1,
+   "engagement_score": 50.2,
+   "satisfaction_score": 60.7,
+   "stress_score": 80.1,
+   "overall_score": 48.5,
+   "survey_date": "2026-07-07",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-07-07",
+    "type": "离职面谈",
+    "topic": "对直接上级的管理方式有较强不满",
+    "sentiment": -0.702,
+    "follow_up": true,
+    "duration_min": 19
+   },
+   {
+    "date": "2026-08-10",
+    "type": "一对一沟通",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.949,
+    "follow_up": false,
+    "duration_min": 46
+   },
+   {
+    "date": "2026-09-17",
+    "type": "一对一沟通",
+    "topic": "抱怨长期加班且回报不匹配",
+    "sentiment": -0.484,
+    "follow_up": true,
+    "duration_min": 33
+   },
+   {
+    "date": "2026-10-01",
+    "type": "HR访谈",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.495,
+    "follow_up": false,
+    "duration_min": 15
+   }
+  ],
+  "risk": {
+   "score": 0.3146,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "高频出差",
+     "direction": "+",
+     "detail": "出差频繁与离职率正相关"
+    },
+    {
+     "factor": "敬业度偏低",
+     "direction": "+",
+     "detail": "敬业度得分 50.2"
+    },
+    {
+     "factor": "压力偏高",
+     "direction": "+",
+     "detail": "压力得分 80.1"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00012",
+  "name": "萧浩然",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "marketing",
+  "department_cn": "市场部",
+  "desk_id": "F1-MAR-02",
+  "desk_room": "marketing",
+  "desk": {
+   "x": 26.9,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 51,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 432,
+   "Department": "市场部",
+   "DistanceFromHome": 9,
+   "Education": 4,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 12,
+   "EnvironmentSatisfaction": 4,
+   "Gender": "Male",
+   "HourlyRate": 96,
+   "JobInvolvement": 3,
+   "JobLevel": 1,
+   "JobRole": "市场分析师",
+   "JobSatisfaction": 4,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 2075,
+   "MonthlyRate": 18725,
+   "NumCompaniesWorked": 3,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 23,
+   "PerformanceRating": 4,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 2,
+   "TotalWorkingYears": 10,
+   "TrainingTimesLastYear": 4,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 4,
+   "YearsInCurrentRole": 2,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 3,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "华中科技大学",
+    "major": "工商管理",
+    "certificates": [
+     "系统架构设计师"
+    ],
+    "prev_employers": 3,
+    "hire_date": "2021-11-20",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 176****4682",
+    "bank_account": "**** **** 4657"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.78,
+   "avg_focus_hours": 4.36,
+   "late_days": 8,
+   "leave_days": 8,
+   "avg_meetings": 2.64,
+   "avg_messages": 33,
+   "avg_tasks_done": 3.42,
+   "focus_trend": -0.0017,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.99,
+     "focus": 4.23,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.69,
+     "focus": 4.76,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.95,
+     "focus": 4.52,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 8.36,
+     "focus": 3.79,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.07,
+     "focus": 4.6,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.15,
+     "focus": 3.89,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.34,
+     "focus": 4.13,
+     "late": false,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.7,
+    "rework_count": 3.74,
+    "defect_rate": 0.0524,
+    "efficiency_score": 70.6,
+    "quality_score": 62.9
+   }
+  },
+  "assessment": {
+   "competency_score": 63.4,
+   "engagement_score": 71.5,
+   "satisfaction_score": 85.0,
+   "stress_score": 77.8,
+   "overall_score": 58.7,
+   "survey_date": "2026-07-14",
+   "potential": "中",
+   "performance_rating": 4
+  },
+  "talks": [
+   {
+    "date": "2026-07-16",
+    "type": "团队例会发言",
+    "topic": "职业发展路径清晰，主动性提升",
+    "sentiment": 0.758,
+    "follow_up": false,
+    "duration_min": 15
+   },
+   {
+    "date": "2026-09-22",
+    "type": "团队例会发言",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.936,
+    "follow_up": false,
+    "duration_min": 27
+   },
+   {
+    "date": "2026-09-24",
+    "type": "绩效面谈",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.338,
+    "follow_up": false,
+    "duration_min": 33
+   },
+   {
+    "date": "2026-10-01",
+    "type": "一对一沟通",
+    "topic": "对当前薪酬涨幅有讨论",
+    "sentiment": 0.186,
+    "follow_up": true,
+    "duration_min": 51
+   },
+   {
+    "date": "2026-10-05",
+    "type": "HR访谈",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": -0.129,
+    "follow_up": false,
+    "duration_min": 46
+   }
+  ],
+  "risk": {
+   "score": 0.3122,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 8 次"
+    },
+    {
+     "factor": "压力偏高",
+     "direction": "+",
+     "detail": "压力得分 77.8"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00013",
+  "name": "王思远",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "marketing",
+  "department_cn": "市场部",
+  "desk_id": "F1-MAR-03",
+  "desk_room": "marketing",
+  "desk": {
+   "x": 28.45,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 53,
+   "Attrition": "Yes",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 1168,
+   "Department": "市场部",
+   "DistanceFromHome": 24,
+   "Education": 4,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 13,
+   "EnvironmentSatisfaction": 1,
+   "Gender": "Male",
+   "HourlyRate": 66,
+   "JobInvolvement": 3,
+   "JobLevel": 3,
+   "JobRole": "内容运营",
+   "JobSatisfaction": 1,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 10448,
+   "MonthlyRate": 5843,
+   "NumCompaniesWorked": 6,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 13,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 15,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 2,
+   "YearsAtCompany": 2,
+   "YearsInCurrentRole": 2,
+   "YearsSinceLastPromotion": 2,
+   "YearsWithCurrManager": 2,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "同济大学",
+    "major": "市场营销",
+    "certificates": [
+     "PMP"
+    ],
+    "prev_employers": 6,
+    "hire_date": "2024-06-22",
+    "contract_type": "试用期",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 172****7452",
+    "bank_account": "**** **** 2451"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 10.08,
+   "avg_focus_hours": 3.5,
+   "late_days": 14,
+   "leave_days": 13,
+   "avg_meetings": 2.02,
+   "avg_messages": 23,
+   "avg_tasks_done": 2.72,
+   "focus_trend": -0.0049,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 10.13,
+     "focus": 3.79,
+     "late": true,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 10.38,
+     "focus": 3.51,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 10.13,
+     "focus": 3.75,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.91,
+     "focus": 3.13,
+     "late": true,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 10.37,
+     "focus": 3.07,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 10.25,
+     "focus": 3.96,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 11.03,
+     "focus": 4.27,
+     "late": false,
+     "tasks": 2
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.626,
+    "rework_count": 3.74,
+    "defect_rate": 0.065,
+    "efficiency_score": 67.6,
+    "quality_score": 57.3
+   }
+  },
+  "assessment": {
+   "competency_score": 93.0,
+   "engagement_score": 59.3,
+   "satisfaction_score": 62.3,
+   "stress_score": 68.9,
+   "overall_score": 53.5,
+   "survey_date": "2026-08-25",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-30",
+    "type": "HR访谈",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.453,
+    "follow_up": false,
+    "duration_min": 60
+   },
+   {
+    "date": "2026-09-18",
+    "type": "团队例会发言",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.349,
+    "follow_up": false,
+    "duration_min": 29
+   }
+  ],
+  "risk": {
+   "score": 0.5424,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=1/4"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=1/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 14 次"
+    },
+    {
+     "factor": "敬业度偏低",
+     "direction": "+",
+     "detail": "敬业度得分 59.3"
+    },
+    {
+     "factor": "职级较高",
+     "direction": "-",
+     "detail": "职级越高越倾向留任"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00014",
+  "name": "胡芷晴",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "marketing",
+  "department_cn": "市场部",
+  "desk_id": "F1-MAR-04",
+  "desk_room": "marketing",
+  "desk": {
+   "x": 30.0,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 35,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 670,
+   "Department": "市场部",
+   "DistanceFromHome": 10,
+   "Education": 4,
+   "EducationField": "Medical",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 14,
+   "EnvironmentSatisfaction": 1,
+   "Gender": "Female",
+   "HourlyRate": 51,
+   "JobInvolvement": 3,
+   "JobLevel": 2,
+   "JobRole": "内容运营",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 6142,
+   "MonthlyRate": 4223,
+   "NumCompaniesWorked": 3,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 16,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 10,
+   "TrainingTimesLastYear": 4,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 5,
+   "YearsInCurrentRole": 2,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 4,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "同济大学",
+    "major": "工商管理",
+    "certificates": [
+     "系统架构设计师"
+    ],
+    "prev_employers": 3,
+    "hire_date": "2020-11-13",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 152****7152",
+    "bank_account": "**** **** 6671"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.53,
+   "avg_focus_hours": 4.17,
+   "late_days": 6,
+   "leave_days": 5,
+   "avg_meetings": 2.44,
+   "avg_messages": 30,
+   "avg_tasks_done": 3.26,
+   "focus_trend": -0.0051,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.25,
+     "focus": 4.64,
+     "late": true,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 10.04,
+     "focus": 3.46,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.54,
+     "focus": 4.12,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 8.97,
+     "focus": 3.87,
+     "late": false,
+     "tasks": 1
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.6,
+     "focus": 3.38,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.09,
+     "focus": 3.7,
+     "late": true,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 10.36,
+     "focus": 4.29,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.688,
+    "rework_count": 3.26,
+    "defect_rate": 0.0529,
+    "efficiency_score": 71.2,
+    "quality_score": 62.9
+   }
+  },
+  "assessment": {
+   "competency_score": 79.3,
+   "engagement_score": 67.1,
+   "satisfaction_score": 60.7,
+   "stress_score": 75.6,
+   "overall_score": 45.9,
+   "survey_date": "2026-08-13",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-16",
+    "type": "一对一沟通",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.255,
+    "follow_up": true,
+    "duration_min": 20
+   },
+   {
+    "date": "2026-06-25",
+    "type": "绩效面谈",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": -0.3,
+    "follow_up": false,
+    "duration_min": 20
+   },
+   {
+    "date": "2026-07-30",
+    "type": "一对一沟通",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.753,
+    "follow_up": true,
+    "duration_min": 60
+   },
+   {
+    "date": "2026-09-14",
+    "type": "HR访谈",
+    "topic": "抱怨长期加班且回报不匹配",
+    "sentiment": -0.377,
+    "follow_up": true,
+    "duration_min": 34
+   }
+  ],
+  "risk": {
+   "score": 0.6769,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=1/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 6 次"
+    },
+    {
+     "factor": "压力偏高",
+     "direction": "+",
+     "detail": "压力得分 75.6"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00015",
+  "name": "梁语嫣",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "marketing",
+  "department_cn": "市场部",
+  "desk_id": "F1-MAR-05",
+  "desk_room": "marketing",
+  "desk": {
+   "x": 31.55,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 24,
+   "Attrition": "Yes",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 984,
+   "Department": "市场部",
+   "DistanceFromHome": 17,
+   "Education": 2,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 15,
+   "EnvironmentSatisfaction": 4,
+   "Gender": "Female",
+   "HourlyRate": 97,
+   "JobInvolvement": 3,
+   "JobLevel": 1,
+   "JobRole": "内容运营",
+   "JobSatisfaction": 2,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 2210,
+   "MonthlyRate": 3372,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 13,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 1,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 1,
+   "TrainingTimesLastYear": 3,
+   "WorkLifeBalance": 1,
+   "YearsAtCompany": 1,
+   "YearsInCurrentRole": 0,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 0,
+   "background": {
+    "highest_degree": "大专",
+    "school": "上海交通大学",
+    "major": "市场营销",
+    "certificates": [],
+    "prev_employers": 1,
+    "hire_date": "2024-11-04",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 159****7296",
+    "bank_account": "**** **** 5116"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.89,
+   "avg_focus_hours": 4.31,
+   "late_days": 4,
+   "leave_days": 5,
+   "avg_meetings": 2.45,
+   "avg_messages": 30,
+   "avg_tasks_done": 3.21,
+   "focus_trend": -0.0052,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.59,
+     "focus": 4.29,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.6,
+     "focus": 4.23,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.69,
+     "focus": 4.49,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.58,
+     "focus": 3.59,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.08,
+     "focus": 4.0,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.85,
+     "focus": 5.29,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.25,
+     "focus": 5.18,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.692,
+    "rework_count": 3.58,
+    "defect_rate": 0.0576,
+    "efficiency_score": 70.7,
+    "quality_score": 62.5
+   }
+  },
+  "assessment": {
+   "competency_score": 64.3,
+   "engagement_score": 68.7,
+   "satisfaction_score": 54.4,
+   "stress_score": 75.7,
+   "overall_score": 39.0,
+   "survey_date": "2026-06-12",
+   "potential": "待观察",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-07-06",
+    "type": "团队例会发言",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": 0.199,
+    "follow_up": true,
+    "duration_min": 51
+   },
+   {
+    "date": "2026-07-30",
+    "type": "团队例会发言",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.285,
+    "follow_up": false,
+    "duration_min": 24
+   },
+   {
+    "date": "2026-10-14",
+    "type": "绩效面谈",
+    "topic": "对当前薪酬涨幅有讨论",
+    "sentiment": -0.066,
+    "follow_up": true,
+    "duration_min": 40
+   }
+  ],
+  "risk": {
+   "score": 0.5697,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=2/4"
+    },
+    {
+     "factor": "压力偏高",
+     "direction": "+",
+     "detail": "压力得分 75.7"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00016",
+  "name": "于梦瑶",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "marketing",
+  "department_cn": "市场部",
+  "desk_id": "F1-MAR-06",
+  "desk_room": "marketing",
+  "desk": {
+   "x": 33.1,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 43,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Frequently",
+   "DailyRate": 957,
+   "Department": "市场部",
+   "DistanceFromHome": 28,
+   "Education": 3,
+   "EducationField": "Medical",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 16,
+   "EnvironmentSatisfaction": 2,
+   "Gender": "Female",
+   "HourlyRate": 72,
+   "JobInvolvement": 4,
+   "JobLevel": 1,
+   "JobRole": "内容运营",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 4739,
+   "MonthlyRate": 16090,
+   "NumCompaniesWorked": 4,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 12,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 4,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 18,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 3,
+   "YearsInCurrentRole": 2,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 2,
+   "background": {
+    "highest_degree": "本科",
+    "school": "东南大学",
+    "major": "电子信息工程",
+    "certificates": [],
+    "prev_employers": 4,
+    "hire_date": "2023-07-13",
+    "contract_type": "试用期",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 156****1713",
+    "bank_account": "**** **** 1867"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.46,
+   "avg_focus_hours": 4.83,
+   "late_days": 6,
+   "leave_days": 6,
+   "avg_meetings": 2.83,
+   "avg_messages": 36,
+   "avg_tasks_done": 3.62,
+   "focus_trend": -0.0027,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.92,
+     "focus": 3.57,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.17,
+     "focus": 4.17,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.9,
+     "focus": 4.04,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 7.99,
+     "focus": 4.91,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.63,
+     "focus": 5.39,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.48,
+     "focus": 4.09,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 8.27,
+     "focus": 3.39,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.733,
+    "rework_count": 3.16,
+    "defect_rate": 0.0561,
+    "efficiency_score": 74.2,
+    "quality_score": 67.8
+   }
+  },
+  "assessment": {
+   "competency_score": 65.2,
+   "engagement_score": 56.2,
+   "satisfaction_score": 66.5,
+   "stress_score": 55.1,
+   "overall_score": 45.2,
+   "survey_date": "2026-06-18",
+   "potential": "待观察",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-12",
+    "type": "团队例会发言",
+    "topic": "职业发展路径清晰，主动性提升",
+    "sentiment": 0.518,
+    "follow_up": true,
+    "duration_min": 36
+   },
+   {
+    "date": "2026-09-28",
+    "type": "团队例会发言",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": 0.225,
+    "follow_up": false,
+    "duration_min": 56
+   },
+   {
+    "date": "2026-10-12",
+    "type": "一对一沟通",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.573,
+    "follow_up": false,
+    "duration_min": 36
+   }
+  ],
+  "risk": {
+   "score": 0.3135,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "高频出差",
+     "direction": "+",
+     "detail": "出差频繁与离职率正相关"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=2/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 6 次"
+    },
+    {
+     "factor": "敬业度偏低",
+     "direction": "+",
+     "detail": "敬业度得分 56.2"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00017",
+  "name": "张博文",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "marketing",
+  "department_cn": "市场部",
+  "desk_id": "F1-MAR-07",
+  "desk_room": "marketing",
+  "desk": {
+   "x": 34.65,
+   "y": 23.25,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 29,
+   "Attrition": "Yes",
+   "BusinessTravel": "Travel_Frequently",
+   "DailyRate": 459,
+   "Department": "市场部",
+   "DistanceFromHome": 24,
+   "Education": 2,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 17,
+   "EnvironmentSatisfaction": 4,
+   "Gender": "Male",
+   "HourlyRate": 73,
+   "JobInvolvement": 2,
+   "JobLevel": 1,
+   "JobRole": "品牌经理",
+   "JobSatisfaction": 4,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 2439,
+   "MonthlyRate": 14753,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 24,
+   "PerformanceRating": 4,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 1,
+   "TrainingTimesLastYear": 3,
+   "WorkLifeBalance": 2,
+   "YearsAtCompany": 1,
+   "YearsInCurrentRole": 0,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 0,
+   "background": {
+    "highest_degree": "大专",
+    "school": "西安电子科技大学",
+    "major": "电子信息工程",
+    "certificates": [
+     "CFA"
+    ],
+    "prev_employers": 1,
+    "hire_date": "2025-08-31",
+    "contract_type": "劳务派遣",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 164****5168",
+    "bank_account": "**** **** 8708"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 10.23,
+   "avg_focus_hours": 3.36,
+   "late_days": 12,
+   "leave_days": 12,
+   "avg_meetings": 2.05,
+   "avg_messages": 24,
+   "avg_tasks_done": 2.4,
+   "focus_trend": -0.0071,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.84,
+     "focus": 3.18,
+     "late": true,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 11.43,
+     "focus": 3.5,
+     "late": false,
+     "tasks": 1
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 11.06,
+     "focus": 1.52,
+     "late": true,
+     "tasks": 1
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 10.96,
+     "focus": 3.29,
+     "late": false,
+     "tasks": 1
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 10.13,
+     "focus": 2.49,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.91,
+     "focus": 3.85,
+     "late": true,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 10.49,
+     "focus": 3.52,
+     "late": false,
+     "tasks": 2
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.629,
+    "rework_count": 3.84,
+    "defect_rate": 0.064,
+    "efficiency_score": 67.2,
+    "quality_score": 56.4
+   }
+  },
+  "assessment": {
+   "competency_score": 64.7,
+   "engagement_score": 60.3,
+   "satisfaction_score": 77.9,
+   "stress_score": 60.4,
+   "overall_score": 57.3,
+   "survey_date": "2026-07-03",
+   "potential": "中",
+   "performance_rating": 4
+  },
+  "talks": [
+   {
+    "date": "2026-06-17",
+    "type": "一对一沟通",
+    "topic": "职业发展路径清晰，主动性提升",
+    "sentiment": 0.264,
+    "follow_up": false,
+    "duration_min": 17
+   },
+   {
+    "date": "2026-06-29",
+    "type": "一对一沟通",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.746,
+    "follow_up": true,
+    "duration_min": 54
+   }
+  ],
+  "risk": {
+   "score": 0.8659,
+   "level": "极高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "高频出差",
+     "direction": "+",
+     "detail": "出差频繁与离职率正相关"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 12 次"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00018",
+  "name": "徐知夏",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "service",
+  "department_cn": "客服中心",
+  "desk_id": "F1-SER-01",
+  "desk_room": "service",
+  "desk": {
+   "x": 11.4,
+   "y": 7.175,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 26,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Frequently",
+   "DailyRate": 921,
+   "Department": "客服中心",
+   "DistanceFromHome": 1,
+   "Education": 1,
+   "EducationField": "Medical",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 18,
+   "EnvironmentSatisfaction": 1,
+   "Gender": "Female",
+   "HourlyRate": 66,
+   "JobInvolvement": 2,
+   "JobLevel": 1,
+   "JobRole": "客服专员",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Divorced",
+   "MonthlyIncome": 2007,
+   "MonthlyRate": 25265,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 13,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 2,
+   "TotalWorkingYears": 5,
+   "TrainingTimesLastYear": 5,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 5,
+   "YearsInCurrentRole": 3,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 3,
+   "background": {
+    "highest_degree": "高中及以下",
+    "school": "四川大学",
+    "major": "统计学",
+    "certificates": [
+     "CET-6"
+    ],
+    "prev_employers": 1,
+    "hire_date": "2021-04-22",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 164****6658",
+    "bank_account": "**** **** 1759"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.07,
+   "avg_focus_hours": 3.99,
+   "late_days": 12,
+   "leave_days": 13,
+   "avg_meetings": 2.34,
+   "avg_messages": 29,
+   "avg_tasks_done": 2.83,
+   "focus_trend": -0.0041,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.49,
+     "focus": 4.9,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.38,
+     "focus": 3.8,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.32,
+     "focus": 4.12,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.71,
+     "focus": 3.83,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 10.19,
+     "focus": 5.07,
+     "late": false,
+     "tasks": 1
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.69,
+     "focus": 3.71,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.62,
+     "focus": 3.05,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.677,
+    "rework_count": 3.68,
+    "defect_rate": 0.0547,
+    "efficiency_score": 69.7,
+    "quality_score": 61.1
+   }
+  },
+  "assessment": {
+   "competency_score": 71.8,
+   "engagement_score": 58.8,
+   "satisfaction_score": 60.1,
+   "stress_score": 79.3,
+   "overall_score": 44.8,
+   "survey_date": "2026-10-05",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-23",
+    "type": "离职面谈",
+    "topic": "抱怨长期加班且回报不匹配",
+    "sentiment": -0.975,
+    "follow_up": true,
+    "duration_min": 36
+   },
+   {
+    "date": "2026-09-03",
+    "type": "绩效面谈",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": -0.255,
+    "follow_up": true,
+    "duration_min": 60
+   },
+   {
+    "date": "2026-09-24",
+    "type": "团队例会发言",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.323,
+    "follow_up": true,
+    "duration_min": 40
+   },
+   {
+    "date": "2026-10-01",
+    "type": "团队例会发言",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": 0.249,
+    "follow_up": false,
+    "duration_min": 35
+   }
+  ],
+  "risk": {
+   "score": 0.5031,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "高频出差",
+     "direction": "+",
+     "detail": "出差频繁与离职率正相关"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=1/4"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 12 次"
+    },
+    {
+     "factor": "敬业度偏低",
+     "direction": "+",
+     "detail": "敬业度得分 58.8"
+    },
+    {
+     "factor": "压力偏高",
+     "direction": "+",
+     "detail": "压力得分 79.3"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00019",
+  "name": "马静怡",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "service",
+  "department_cn": "客服中心",
+  "desk_id": "F1-SER-02",
+  "desk_room": "service",
+  "desk": {
+   "x": 12.95,
+   "y": 7.175,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 29,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 144,
+   "Department": "客服中心",
+   "DistanceFromHome": 10,
+   "Education": 1,
+   "EducationField": "Marketing",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 19,
+   "EnvironmentSatisfaction": 4,
+   "Gender": "Female",
+   "HourlyRate": 39,
+   "JobInvolvement": 2,
+   "JobLevel": 2,
+   "JobRole": "售后支持",
+   "JobSatisfaction": 2,
+   "MaritalStatus": "Divorced",
+   "MonthlyIncome": 8268,
+   "MonthlyRate": 11866,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 14,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 1,
+   "StandardHours": 80,
+   "StockOptionLevel": 2,
+   "TotalWorkingYears": 7,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 7,
+   "YearsInCurrentRole": 7,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 7,
+   "background": {
+    "highest_degree": "高中及以下",
+    "school": "华东理工大学",
+    "major": "软件工程",
+    "certificates": [
+     "CET-6"
+    ],
+    "prev_employers": 1,
+    "hire_date": "2019-01-07",
+    "contract_type": "试用期",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 138****2576",
+    "bank_account": "**** **** 6288"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.73,
+   "avg_focus_hours": 4.05,
+   "late_days": 8,
+   "leave_days": 13,
+   "avg_meetings": 2.36,
+   "avg_messages": 29,
+   "avg_tasks_done": 3.09,
+   "focus_trend": -0.0071,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.48,
+     "focus": 3.61,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.18,
+     "focus": 3.17,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.47,
+     "focus": 4.78,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 10.19,
+     "focus": 3.49,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 10.06,
+     "focus": 3.6,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.8,
+     "focus": 4.07,
+     "late": true,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 10.77,
+     "focus": 3.27,
+     "late": true,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.682,
+    "rework_count": 3.53,
+    "defect_rate": 0.0603,
+    "efficiency_score": 68.7,
+    "quality_score": 60.2
+   }
+  },
+  "assessment": {
+   "competency_score": 67.9,
+   "engagement_score": 74.6,
+   "satisfaction_score": 61.5,
+   "stress_score": 53.1,
+   "overall_score": 54.0,
+   "survey_date": "2026-06-24",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-29",
+    "type": "绩效面谈",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": -0.089,
+    "follow_up": true,
+    "duration_min": 27
+   },
+   {
+    "date": "2026-08-07",
+    "type": "绩效面谈",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.755,
+    "follow_up": true,
+    "duration_min": 48
+   },
+   {
+    "date": "2026-10-01",
+    "type": "绩效面谈",
+    "topic": "对当前薪酬涨幅有讨论",
+    "sentiment": -0.283,
+    "follow_up": true,
+    "duration_min": 18
+   }
+  ],
+  "risk": {
+   "score": 0.6952,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=2/4"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 8 次"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00020",
+  "name": "唐嘉豪",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "service",
+  "department_cn": "客服中心",
+  "desk_id": "F1-SER-03",
+  "desk_room": "service",
+  "desk": {
+   "x": 14.5,
+   "y": 7.175,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 39,
+   "Attrition": "No",
+   "BusinessTravel": "Non-Travel",
+   "DailyRate": 105,
+   "Department": "客服中心",
+   "DistanceFromHome": 9,
+   "Education": 3,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 20,
+   "EnvironmentSatisfaction": 4,
+   "Gender": "Male",
+   "HourlyRate": 87,
+   "JobInvolvement": 3,
+   "JobLevel": 5,
+   "JobRole": "呼叫中心坐席",
+   "JobSatisfaction": 4,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 19431,
+   "MonthlyRate": 15302,
+   "NumCompaniesWorked": 2,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 13,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 21,
+   "TrainingTimesLastYear": 3,
+   "WorkLifeBalance": 2,
+   "YearsAtCompany": 6,
+   "YearsInCurrentRole": 0,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 3,
+   "background": {
+    "highest_degree": "本科",
+    "school": "天津大学",
+    "major": "人力资源管理学",
+    "certificates": [
+     "中级经济师"
+    ],
+    "prev_employers": 2,
+    "hire_date": "2020-07-01",
+    "contract_type": "试用期",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 164****2363",
+    "bank_account": "**** **** 9626"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.41,
+   "avg_focus_hours": 4.95,
+   "late_days": 4,
+   "leave_days": 7,
+   "avg_meetings": 2.94,
+   "avg_messages": 39,
+   "avg_tasks_done": 4.16,
+   "focus_trend": 0.0009,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.73,
+     "focus": 4.07,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.22,
+     "focus": 4.76,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.37,
+     "focus": 4.81,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 8.31,
+     "focus": 5.65,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 8.79,
+     "focus": 4.47,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.55,
+     "focus": 4.36,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 8.48,
+     "focus": 4.15,
+     "late": false,
+     "tasks": 5
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.742,
+    "rework_count": 3.11,
+    "defect_rate": 0.0548,
+    "efficiency_score": 75.3,
+    "quality_score": 68.2
+   }
+  },
+  "assessment": {
+   "competency_score": 85.9,
+   "engagement_score": 53.0,
+   "satisfaction_score": 71.9,
+   "stress_score": 73.4,
+   "overall_score": 54.7,
+   "survey_date": "2026-09-14",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-23",
+    "type": "一对一沟通",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": 0.098,
+    "follow_up": true,
+    "duration_min": 51
+   },
+   {
+    "date": "2026-07-29",
+    "type": "HR访谈",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": 0.104,
+    "follow_up": true,
+    "duration_min": 26
+   },
+   {
+    "date": "2026-08-03",
+    "type": "HR访谈",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": -0.112,
+    "follow_up": true,
+    "duration_min": 18
+   },
+   {
+    "date": "2026-09-28",
+    "type": "一对一沟通",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": -0.089,
+    "follow_up": false,
+    "duration_min": 41
+   }
+  ],
+  "risk": {
+   "score": 0.1307,
+   "level": "低风险",
+   "top_factors": [
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "敬业度偏低",
+     "direction": "+",
+     "detail": "敬业度得分 53.0"
+    },
+    {
+     "factor": "职级较高",
+     "direction": "-",
+     "detail": "职级越高越倾向留任"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00021",
+  "name": "陈沐晴",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "service",
+  "department_cn": "客服中心",
+  "desk_id": "F1-SER-04",
+  "desk_room": "service",
+  "desk": {
+   "x": 16.05,
+   "y": 7.175,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 45,
+   "Attrition": "No",
+   "BusinessTravel": "Non-Travel",
+   "DailyRate": 1050,
+   "Department": "客服中心",
+   "DistanceFromHome": 9,
+   "Education": 4,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 21,
+   "EnvironmentSatisfaction": 2,
+   "Gender": "Female",
+   "HourlyRate": 65,
+   "JobInvolvement": 2,
+   "JobLevel": 2,
+   "JobRole": "呼叫中心坐席",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 5593,
+   "MonthlyRate": 17970,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 13,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 4,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 15,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 15,
+   "YearsInCurrentRole": 10,
+   "YearsSinceLastPromotion": 4,
+   "YearsWithCurrManager": 12,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "中山大学",
+    "major": "计算机科学与技术",
+    "certificates": [
+     "PMP"
+    ],
+    "prev_employers": 1,
+    "hire_date": "2011-05-04",
+    "contract_type": "试用期",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 158****2449",
+    "bank_account": "**** **** 6144"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.79,
+   "avg_focus_hours": 4.51,
+   "late_days": 7,
+   "leave_days": 8,
+   "avg_meetings": 2.7,
+   "avg_messages": 35,
+   "avg_tasks_done": 3.43,
+   "focus_trend": -0.0011,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.95,
+     "focus": 4.55,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.49,
+     "focus": 4.01,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.8,
+     "focus": 4.46,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 8.57,
+     "focus": 5.19,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.35,
+     "focus": 3.73,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 7.99,
+     "focus": 4.43,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 8.9,
+     "focus": 4.71,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.714,
+    "rework_count": 3.42,
+    "defect_rate": 0.0542,
+    "efficiency_score": 71.5,
+    "quality_score": 64.1
+   }
+  },
+  "assessment": {
+   "competency_score": 73.8,
+   "engagement_score": 46.6,
+   "satisfaction_score": 75.7,
+   "stress_score": 73.5,
+   "overall_score": 50.8,
+   "survey_date": "2026-09-21",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-07-06",
+    "type": "绩效面谈",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.625,
+    "follow_up": true,
+    "duration_min": 27
+   },
+   {
+    "date": "2026-07-09",
+    "type": "HR访谈",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": 0.14,
+    "follow_up": true,
+    "duration_min": 48
+   },
+   {
+    "date": "2026-07-27",
+    "type": "一对一沟通",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": -0.249,
+    "follow_up": true,
+    "duration_min": 26
+   },
+   {
+    "date": "2026-08-04",
+    "type": "团队例会发言",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.565,
+    "follow_up": false,
+    "duration_min": 50
+   },
+   {
+    "date": "2026-09-09",
+    "type": "一对一沟通",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.42,
+    "follow_up": false,
+    "duration_min": 23
+   }
+  ],
+  "risk": {
+   "score": 0.2731,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=2/4"
+    },
+    {
+     "factor": "晋升停滞",
+     "direction": "+",
+     "detail": "距上次晋升 4 年"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 7 次"
+    },
+    {
+     "factor": "敬业度偏低",
+     "direction": "+",
+     "detail": "敬业度得分 46.6"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00022",
+  "name": "周昊霖",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "service",
+  "department_cn": "客服中心",
+  "desk_id": "F1-SER-05",
+  "desk_room": "service",
+  "desk": {
+   "x": 17.6,
+   "y": 7.175,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 30,
+   "Attrition": "Yes",
+   "BusinessTravel": "Travel_Frequently",
+   "DailyRate": 464,
+   "Department": "客服中心",
+   "DistanceFromHome": 4,
+   "Education": 3,
+   "EducationField": "Technical Degree",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 22,
+   "EnvironmentSatisfaction": 3,
+   "Gender": "Male",
+   "HourlyRate": 40,
+   "JobInvolvement": 3,
+   "JobLevel": 1,
+   "JobRole": "客服主管",
+   "JobSatisfaction": 4,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 2285,
+   "MonthlyRate": 3427,
+   "NumCompaniesWorked": 9,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 23,
+   "PerformanceRating": 4,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 3,
+   "TrainingTimesLastYear": 4,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 1,
+   "YearsInCurrentRole": 0,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 0,
+   "background": {
+    "highest_degree": "本科",
+    "school": "华中科技大学",
+    "major": "人力资源管理学",
+    "certificates": [
+     "AWS Certified"
+    ],
+    "prev_employers": 9,
+    "hire_date": "2024-12-29",
+    "contract_type": "劳务派遣",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 155****4272",
+    "bank_account": "**** **** 8435"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.74,
+   "avg_focus_hours": 3.92,
+   "late_days": 8,
+   "leave_days": 12,
+   "avg_meetings": 2.3,
+   "avg_messages": 28,
+   "avg_tasks_done": 3.11,
+   "focus_trend": -0.0037,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 10.17,
+     "focus": 3.84,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 10.16,
+     "focus": 4.47,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.73,
+     "focus": 2.63,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 10.49,
+     "focus": 3.97,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.62,
+     "focus": 3.62,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 10.45,
+     "focus": 4.18,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 10.24,
+     "focus": 3.26,
+     "late": false,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.677,
+    "rework_count": 3.53,
+    "defect_rate": 0.0594,
+    "efficiency_score": 70.3,
+    "quality_score": 61.4
+   }
+  },
+  "assessment": {
+   "competency_score": 67.2,
+   "engagement_score": 58.5,
+   "satisfaction_score": 60.0,
+   "stress_score": 78.5,
+   "overall_score": 48.6,
+   "survey_date": "2026-06-15",
+   "potential": "待观察",
+   "performance_rating": 4
+  },
+  "talks": [
+   {
+    "date": "2026-07-09",
+    "type": "一对一沟通",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.863,
+    "follow_up": true,
+    "duration_min": 28
+   },
+   {
+    "date": "2026-08-24",
+    "type": "一对一沟通",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": -0.223,
+    "follow_up": false,
+    "duration_min": 45
+   },
+   {
+    "date": "2026-10-13",
+    "type": "HR访谈",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.816,
+    "follow_up": false,
+    "duration_min": 16
+   },
+   {
+    "date": "2026-10-14",
+    "type": "绩效面谈",
+    "topic": "职业发展路径清晰，主动性提升",
+    "sentiment": 0.827,
+    "follow_up": false,
+    "duration_min": 42
+   }
+  ],
+  "risk": {
+   "score": 0.7551,
+   "level": "极高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "高频出差",
+     "direction": "+",
+     "detail": "出差频繁与离职率正相关"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 8 次"
+    },
+    {
+     "factor": "敬业度偏低",
+     "direction": "+",
+     "detail": "敬业度得分 58.5"
+    },
+    {
+     "factor": "压力偏高",
+     "direction": "+",
+     "detail": "压力得分 78.5"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00023",
+  "name": "何俊杰",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "service",
+  "department_cn": "客服中心",
+  "desk_id": "F1-SER-06",
+  "desk_room": "service",
+  "desk": {
+   "x": 11.4,
+   "y": 8.625,
+   "rot": 3.1416
+  },
+  "profile": {
+   "Age": 35,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Frequently",
+   "DailyRate": 146,
+   "Department": "客服中心",
+   "DistanceFromHome": 2,
+   "Education": 4,
+   "EducationField": "Medical",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 23,
+   "EnvironmentSatisfaction": 1,
+   "Gender": "Male",
+   "HourlyRate": 79,
+   "JobInvolvement": 2,
+   "JobLevel": 1,
+   "JobRole": "客服专员",
+   "JobSatisfaction": 4,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 4930,
+   "MonthlyRate": 13970,
+   "NumCompaniesWorked": 0,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 14,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 6,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 4,
+   "YearsAtCompany": 5,
+   "YearsInCurrentRole": 4,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 4,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "同济大学",
+    "major": "市场营销",
+    "certificates": [
+     "中级经济师"
+    ],
+    "prev_employers": 0,
+    "hire_date": "2021-04-04",
+    "contract_type": "试用期",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 169****3194",
+    "bank_account": "**** **** 6934"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.94,
+   "avg_focus_hours": 3.75,
+   "late_days": 18,
+   "leave_days": 7,
+   "avg_meetings": 2.24,
+   "avg_messages": 26,
+   "avg_tasks_done": 2.87,
+   "focus_trend": -0.0071,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 10.11,
+     "focus": 2.53,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 10.13,
+     "focus": 3.25,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 10.67,
+     "focus": 3.68,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 11.18,
+     "focus": 2.23,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.6,
+     "focus": 2.73,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 10.02,
+     "focus": 2.86,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 10.39,
+     "focus": 4.14,
+     "late": true,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.642,
+    "rework_count": 3.79,
+    "defect_rate": 0.0598,
+    "efficiency_score": 69.2,
+    "quality_score": 58.1
+   }
+  },
+  "assessment": {
+   "competency_score": 57.7,
+   "engagement_score": 64.5,
+   "satisfaction_score": 59.5,
+   "stress_score": 56.8,
+   "overall_score": 48.5,
+   "survey_date": "2026-09-21",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-19",
+    "type": "绩效面谈",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.841,
+    "follow_up": false,
+    "duration_min": 53
+   },
+   {
+    "date": "2026-06-30",
+    "type": "一对一沟通",
+    "topic": "对当前薪酬涨幅有讨论",
+    "sentiment": -0.028,
+    "follow_up": false,
+    "duration_min": 46
+   },
+   {
+    "date": "2026-07-10",
+    "type": "一对一沟通",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.574,
+    "follow_up": true,
+    "duration_min": 22
+   },
+   {
+    "date": "2026-10-13",
+    "type": "一对一沟通",
+    "topic": "明确表达了离职意向，已沟通留任方案",
+    "sentiment": -0.936,
+    "follow_up": true,
+    "duration_min": 26
+   }
+  ],
+  "risk": {
+   "score": 0.8154,
+   "level": "极高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "高频出差",
+     "direction": "+",
+     "detail": "出差频繁与离职率正相关"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=1/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 18 次"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00024",
+  "name": "谢心怡",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "service",
+  "department_cn": "客服中心",
+  "desk_id": "F1-SER-07",
+  "desk_room": "service",
+  "desk": {
+   "x": 12.95,
+   "y": 8.625,
+   "rot": 3.1416
+  },
+  "profile": {
+   "Age": 55,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 282,
+   "Department": "客服中心",
+   "DistanceFromHome": 2,
+   "Education": 2,
+   "EducationField": "Medical",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 24,
+   "EnvironmentSatisfaction": 4,
+   "Gender": "Female",
+   "HourlyRate": 58,
+   "JobInvolvement": 1,
+   "JobLevel": 5,
+   "JobRole": "售后支持",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 19187,
+   "MonthlyRate": 6992,
+   "NumCompaniesWorked": 4,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 14,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 4,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 23,
+   "TrainingTimesLastYear": 5,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 19,
+   "YearsInCurrentRole": 9,
+   "YearsSinceLastPromotion": 9,
+   "YearsWithCurrManager": 11,
+   "background": {
+    "highest_degree": "大专",
+    "school": "中山大学",
+    "major": "市场营销",
+    "certificates": [],
+    "prev_employers": 4,
+    "hire_date": "2006-11-17",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 143****1336",
+    "bank_account": "**** **** 2271"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.9,
+   "avg_focus_hours": 4.58,
+   "late_days": 12,
+   "leave_days": 6,
+   "avg_meetings": 2.63,
+   "avg_messages": 35,
+   "avg_tasks_done": 3.64,
+   "focus_trend": -0.0007,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.03,
+     "focus": 4.4,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.35,
+     "focus": 3.52,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.05,
+     "focus": 4.41,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.03,
+     "focus": 5.14,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 8.43,
+     "focus": 4.21,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.8,
+     "focus": 4.09,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.26,
+     "focus": 2.61,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.7,
+    "rework_count": 3.21,
+    "defect_rate": 0.0592,
+    "efficiency_score": 73.3,
+    "quality_score": 64.9
+   }
+  },
+  "assessment": {
+   "competency_score": 90.1,
+   "engagement_score": 73.5,
+   "satisfaction_score": 63.7,
+   "stress_score": 69.5,
+   "overall_score": 62.1,
+   "survey_date": "2026-09-09",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-18",
+    "type": "团队例会发言",
+    "topic": "对当前薪酬涨幅有讨论",
+    "sentiment": 0.14,
+    "follow_up": true,
+    "duration_min": 33
+   },
+   {
+    "date": "2026-08-13",
+    "type": "HR访谈",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": 0.137,
+    "follow_up": false,
+    "duration_min": 43
+   },
+   {
+    "date": "2026-09-25",
+    "type": "团队例会发言",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": -0.233,
+    "follow_up": false,
+    "duration_min": 50
+   },
+   {
+    "date": "2026-10-12",
+    "type": "团队例会发言",
+    "topic": "职业发展路径清晰，主动性提升",
+    "sentiment": 0.407,
+    "follow_up": false,
+    "duration_min": 20
+   }
+  ],
+  "risk": {
+   "score": 0.1445,
+   "level": "低风险",
+   "top_factors": [
+    {
+     "factor": "晋升停滞",
+     "direction": "+",
+     "detail": "距上次晋升 9 年"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 12 次"
+    },
+    {
+     "factor": "职级较高",
+     "direction": "-",
+     "detail": "职级越高越倾向留任"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00025",
+  "name": "程婉婷",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "service",
+  "department_cn": "客服中心",
+  "desk_id": "F1-SER-08",
+  "desk_room": "service",
+  "desk": {
+   "x": 14.5,
+   "y": 8.625,
+   "rot": 3.1416
+  },
+  "profile": {
+   "Age": 35,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 1315,
+   "Department": "客服中心",
+   "DistanceFromHome": 22,
+   "Education": 3,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 25,
+   "EnvironmentSatisfaction": 2,
+   "Gender": "Female",
+   "HourlyRate": 71,
+   "JobInvolvement": 4,
+   "JobLevel": 3,
+   "JobRole": "客户关系专员",
+   "JobSatisfaction": 2,
+   "MaritalStatus": "Divorced",
+   "MonthlyIncome": 11996,
+   "MonthlyRate": 19100,
+   "NumCompaniesWorked": 7,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 18,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 10,
+   "TrainingTimesLastYear": 6,
+   "WorkLifeBalance": 2,
+   "YearsAtCompany": 7,
+   "YearsInCurrentRole": 7,
+   "YearsSinceLastPromotion": 6,
+   "YearsWithCurrManager": 2,
+   "background": {
+    "highest_degree": "本科",
+    "school": "华中科技大学",
+    "major": "自动化",
+    "certificates": [],
+    "prev_employers": 7,
+    "hire_date": "2019-04-01",
+    "contract_type": "劳务派遣",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 148****6712",
+    "bank_account": "**** **** 3617"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.71,
+   "avg_focus_hours": 4.51,
+   "late_days": 3,
+   "leave_days": 6,
+   "avg_meetings": 2.69,
+   "avg_messages": 35,
+   "avg_tasks_done": 3.53,
+   "focus_trend": -0.0055,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.38,
+     "focus": 3.98,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.19,
+     "focus": 4.17,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.18,
+     "focus": 4.81,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.1,
+     "focus": 3.93,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.02,
+     "focus": 4.74,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.97,
+     "focus": 5.21,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.23,
+     "focus": 5.12,
+     "late": false,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.725,
+    "rework_count": 3.32,
+    "defect_rate": 0.0576,
+    "efficiency_score": 71.3,
+    "quality_score": 65.2
+   }
+  },
+  "assessment": {
+   "competency_score": 90.0,
+   "engagement_score": 72.0,
+   "satisfaction_score": 56.4,
+   "stress_score": 54.4,
+   "overall_score": 65.2,
+   "survey_date": "2026-10-01",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-17",
+    "type": "团队例会发言",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": -0.22,
+    "follow_up": true,
+    "duration_min": 58
+   },
+   {
+    "date": "2026-07-22",
+    "type": "HR访谈",
+    "topic": "对当前薪酬涨幅有讨论",
+    "sentiment": -0.339,
+    "follow_up": false,
+    "duration_min": 30
+   },
+   {
+    "date": "2026-09-08",
+    "type": "绩效面谈",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": -0.097,
+    "follow_up": false,
+    "duration_min": 51
+   },
+   {
+    "date": "2026-09-21",
+    "type": "HR访谈",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.607,
+    "follow_up": false,
+    "duration_min": 46
+   },
+   {
+    "date": "2026-10-15",
+    "type": "一对一沟通",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.327,
+    "follow_up": true,
+    "duration_min": 32
+   }
+  ],
+  "risk": {
+   "score": 0.2923,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=2/4"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=2/4"
+    },
+    {
+     "factor": "晋升停滞",
+     "direction": "+",
+     "detail": "距上次晋升 6 年"
+    },
+    {
+     "factor": "职级较高",
+     "direction": "-",
+     "detail": "职级越高越倾向留任"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00026",
+  "name": "赵梓涵",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "service",
+  "department_cn": "客服中心",
+  "desk_id": "F1-SER-09",
+  "desk_room": "service",
+  "desk": {
+   "x": 16.05,
+   "y": 8.625,
+   "rot": 3.1416
+  },
+  "profile": {
+   "Age": 54,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 584,
+   "Department": "客服中心",
+   "DistanceFromHome": 22,
+   "Education": 5,
+   "EducationField": "Medical",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 26,
+   "EnvironmentSatisfaction": 2,
+   "Gender": "Female",
+   "HourlyRate": 91,
+   "JobInvolvement": 3,
+   "JobLevel": 4,
+   "JobRole": "客户关系专员",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 17426,
+   "MonthlyRate": 18685,
+   "NumCompaniesWorked": 3,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 25,
+   "PerformanceRating": 4,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 36,
+   "TrainingTimesLastYear": 6,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 10,
+   "YearsInCurrentRole": 8,
+   "YearsSinceLastPromotion": 4,
+   "YearsWithCurrManager": 7,
+   "background": {
+    "highest_degree": "博士",
+    "school": "东南大学",
+    "major": "人力资源管理学",
+    "certificates": [
+     "无"
+    ],
+    "prev_employers": 3,
+    "hire_date": "2015-11-27",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 132****9723",
+    "bank_account": "**** **** 9930"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.24,
+   "avg_focus_hours": 5.21,
+   "late_days": 1,
+   "leave_days": 3,
+   "avg_meetings": 3.09,
+   "avg_messages": 39,
+   "avg_tasks_done": 3.84,
+   "focus_trend": -0.0007,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 7.4,
+     "focus": 5.12,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.93,
+     "focus": 4.42,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.62,
+     "focus": 5.05,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 8.36,
+     "focus": 4.66,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 8.69,
+     "focus": 3.67,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.39,
+     "focus": 5.37,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 7.95,
+     "focus": 5.73,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.757,
+    "rework_count": 2.53,
+    "defect_rate": 0.0472,
+    "efficiency_score": 74.6,
+    "quality_score": 68.7
+   }
+  },
+  "assessment": {
+   "competency_score": 89.0,
+   "engagement_score": 68.4,
+   "satisfaction_score": 56.8,
+   "stress_score": 55.0,
+   "overall_score": 61.0,
+   "survey_date": "2026-07-07",
+   "potential": "待观察",
+   "performance_rating": 4
+  },
+  "talks": [
+   {
+    "date": "2026-06-18",
+    "type": "绩效面谈",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": -0.257,
+    "follow_up": true,
+    "duration_min": 18
+   },
+   {
+    "date": "2026-07-09",
+    "type": "离职面谈",
+    "topic": "抱怨长期加班且回报不匹配",
+    "sentiment": -0.746,
+    "follow_up": false,
+    "duration_min": 26
+   },
+   {
+    "date": "2026-08-06",
+    "type": "一对一沟通",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.738,
+    "follow_up": false,
+    "duration_min": 42
+   },
+   {
+    "date": "2026-10-06",
+    "type": "团队例会发言",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": -0.063,
+    "follow_up": false,
+    "duration_min": 18
+   },
+   {
+    "date": "2026-10-14",
+    "type": "一对一沟通",
+    "topic": "对直接上级的管理方式有较强不满",
+    "sentiment": -0.686,
+    "follow_up": true,
+    "duration_min": 18
+   }
+  ],
+  "risk": {
+   "score": 0.1293,
+   "level": "低风险",
+   "top_factors": [
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=2/4"
+    },
+    {
+     "factor": "晋升停滞",
+     "direction": "+",
+     "detail": "距上次晋升 4 年"
+    },
+    {
+     "factor": "职级较高",
+     "direction": "-",
+     "detail": "职级越高越倾向留任"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00027",
+  "name": "朱雅雯",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "ops",
+  "department_cn": "运营部",
+  "desk_id": "F1-OPS-01",
+  "desk_room": "ops",
+  "desk": {
+   "x": 22.35,
+   "y": 7.9,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 41,
+   "Attrition": "No",
+   "BusinessTravel": "Non-Travel",
+   "DailyRate": 509,
+   "Department": "运营部",
+   "DistanceFromHome": 2,
+   "Education": 4,
+   "EducationField": "Other",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 27,
+   "EnvironmentSatisfaction": 1,
+   "Gender": "Female",
+   "HourlyRate": 62,
+   "JobInvolvement": 2,
+   "JobLevel": 2,
+   "JobRole": "供应链专员",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 6811,
+   "MonthlyRate": 2112,
+   "NumCompaniesWorked": 2,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 17,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 1,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 10,
+   "TrainingTimesLastYear": 3,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 8,
+   "YearsInCurrentRole": 7,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 7,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "中山大学",
+    "major": "自动化",
+    "certificates": [],
+    "prev_employers": 2,
+    "hire_date": "2018-09-15",
+    "contract_type": "劳务派遣",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 157****3843",
+    "bank_account": "**** **** 1199"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.52,
+   "avg_focus_hours": 4.26,
+   "late_days": 7,
+   "leave_days": 8,
+   "avg_meetings": 2.5,
+   "avg_messages": 32,
+   "avg_tasks_done": 3.26,
+   "focus_trend": -0.0056,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.46,
+     "focus": 5.01,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.4,
+     "focus": 3.85,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 10.52,
+     "focus": 4.7,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 10.04,
+     "focus": 3.38,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.88,
+     "focus": 4.46,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 10.2,
+     "focus": 4.46,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 8.92,
+     "focus": 4.42,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.674,
+    "rework_count": 3.37,
+    "defect_rate": 0.054,
+    "efficiency_score": 70.9,
+    "quality_score": 63.2
+   }
+  },
+  "assessment": {
+   "competency_score": 54.5,
+   "engagement_score": 58.0,
+   "satisfaction_score": 71.8,
+   "stress_score": 67.6,
+   "overall_score": 52.5,
+   "survey_date": "2026-09-01",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-15",
+    "type": "一对一沟通",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": 0.063,
+    "follow_up": false,
+    "duration_min": 60
+   },
+   {
+    "date": "2026-07-09",
+    "type": "绩效面谈",
+    "topic": "职业发展路径清晰，主动性提升",
+    "sentiment": 0.663,
+    "follow_up": false,
+    "duration_min": 48
+   },
+   {
+    "date": "2026-08-03",
+    "type": "HR访谈",
+    "topic": "提到外部机会，处于观望状态",
+    "sentiment": -0.967,
+    "follow_up": true,
+    "duration_min": 21
+   },
+   {
+    "date": "2026-08-20",
+    "type": "一对一沟通",
+    "topic": "抱怨长期加班且回报不匹配",
+    "sentiment": -0.584,
+    "follow_up": false,
+    "duration_min": 56
+   },
+   {
+    "date": "2026-09-11",
+    "type": "一对一沟通",
+    "topic": "抱怨长期加班且回报不匹配",
+    "sentiment": -0.55,
+    "follow_up": true,
+    "duration_min": 20
+   }
+  ],
+  "risk": {
+   "score": 0.5215,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=1/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 7 次"
+    },
+    {
+     "factor": "敬业度偏低",
+     "direction": "+",
+     "detail": "敬业度得分 58.0"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00028",
+  "name": "宋思妍",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "ops",
+  "department_cn": "运营部",
+  "desk_id": "F1-OPS-02",
+  "desk_room": "ops",
+  "desk": {
+   "x": 23.9,
+   "y": 7.9,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 28,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 1172,
+   "Department": "运营部",
+   "DistanceFromHome": 3,
+   "Education": 3,
+   "EducationField": "Medical",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 28,
+   "EnvironmentSatisfaction": 2,
+   "Gender": "Female",
+   "HourlyRate": 78,
+   "JobInvolvement": 3,
+   "JobLevel": 1,
+   "JobRole": "数据分析师",
+   "JobSatisfaction": 2,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 2856,
+   "MonthlyRate": 3692,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 19,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 4,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 1,
+   "TrainingTimesLastYear": 3,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 1,
+   "YearsInCurrentRole": 0,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 0,
+   "background": {
+    "highest_degree": "本科",
+    "school": "西安电子科技大学",
+    "major": "市场营销",
+    "certificates": [
+     "人力资源管理师"
+    ],
+    "prev_employers": 1,
+    "hire_date": "2025-01-11",
+    "contract_type": "试用期",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 130****9430",
+    "bank_account": "**** **** 9528"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.07,
+   "avg_focus_hours": 4.02,
+   "late_days": 10,
+   "leave_days": 12,
+   "avg_meetings": 2.45,
+   "avg_messages": 31,
+   "avg_tasks_done": 3.22,
+   "focus_trend": -0.0064,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 10.49,
+     "focus": 3.05,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.44,
+     "focus": 3.89,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.7,
+     "focus": 4.4,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.44,
+     "focus": 4.33,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.32,
+     "focus": 4.17,
+     "late": true,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.65,
+     "focus": 4.43,
+     "late": true,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.62,
+     "focus": 3.11,
+     "late": true,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.685,
+    "rework_count": 3.42,
+    "defect_rate": 0.0573,
+    "efficiency_score": 68.0,
+    "quality_score": 61.6
+   }
+  },
+  "assessment": {
+   "competency_score": 55.6,
+   "engagement_score": 63.6,
+   "satisfaction_score": 63.5,
+   "stress_score": 84.7,
+   "overall_score": 40.8,
+   "survey_date": "2026-07-16",
+   "potential": "高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-08-19",
+    "type": "绩效面谈",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": -0.181,
+    "follow_up": true,
+    "duration_min": 48
+   },
+   {
+    "date": "2026-09-01",
+    "type": "一对一沟通",
+    "topic": "抱怨长期加班且回报不匹配",
+    "sentiment": -0.88,
+    "follow_up": true,
+    "duration_min": 52
+   },
+   {
+    "date": "2026-09-30",
+    "type": "一对一沟通",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.76,
+    "follow_up": false,
+    "duration_min": 52
+   }
+  ],
+  "risk": {
+   "score": 0.4788,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=2/4"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=2/4"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 10 次"
+    },
+    {
+     "factor": "压力偏高",
+     "direction": "+",
+     "detail": "压力得分 84.7"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00029",
+  "name": "董浩然",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "ops",
+  "department_cn": "运营部",
+  "desk_id": "F1-OPS-03",
+  "desk_room": "ops",
+  "desk": {
+   "x": 25.45,
+   "y": 7.9,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 36,
+   "Attrition": "Yes",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 1218,
+   "Department": "运营部",
+   "DistanceFromHome": 9,
+   "Education": 4,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 29,
+   "EnvironmentSatisfaction": 3,
+   "Gender": "Male",
+   "HourlyRate": 82,
+   "JobInvolvement": 2,
+   "JobLevel": 1,
+   "JobRole": "供应链专员",
+   "JobSatisfaction": 1,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 3407,
+   "MonthlyRate": 6986,
+   "NumCompaniesWorked": 7,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 23,
+   "PerformanceRating": 4,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 10,
+   "TrainingTimesLastYear": 4,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 5,
+   "YearsInCurrentRole": 3,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 3,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "上海交通大学",
+    "major": "自动化",
+    "certificates": [
+     "人力资源管理师"
+    ],
+    "prev_employers": 7,
+    "hire_date": "2021-07-22",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 172****8870",
+    "bank_account": "**** **** 1403"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.2,
+   "avg_focus_hours": 4.12,
+   "late_days": 8,
+   "leave_days": 8,
+   "avg_meetings": 2.33,
+   "avg_messages": 29,
+   "avg_tasks_done": 3.11,
+   "focus_trend": -0.0071,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.43,
+     "focus": 4.69,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.75,
+     "focus": 4.29,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.86,
+     "focus": 4.54,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.76,
+     "focus": 4.28,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 8.94,
+     "focus": 5.09,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.88,
+     "focus": 4.06,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.45,
+     "focus": 3.6,
+     "late": false,
+     "tasks": 5
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.681,
+    "rework_count": 3.68,
+    "defect_rate": 0.0563,
+    "efficiency_score": 70.4,
+    "quality_score": 61.3
+   }
+  },
+  "assessment": {
+   "competency_score": 70.5,
+   "engagement_score": 71.4,
+   "satisfaction_score": 72.2,
+   "stress_score": 81.5,
+   "overall_score": 54.6,
+   "survey_date": "2026-08-27",
+   "potential": "中高",
+   "performance_rating": 4
+  },
+  "talks": [
+   {
+    "date": "2026-07-31",
+    "type": "一对一沟通",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": -0.06,
+    "follow_up": false,
+    "duration_min": 31
+   },
+   {
+    "date": "2026-09-07",
+    "type": "一对一沟通",
+    "topic": "对直接上级的管理方式有较强不满",
+    "sentiment": -0.909,
+    "follow_up": false,
+    "duration_min": 24
+   },
+   {
+    "date": "2026-09-11",
+    "type": "HR访谈",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.343,
+    "follow_up": false,
+    "duration_min": 43
+   },
+   {
+    "date": "2026-09-16",
+    "type": "一对一沟通",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": -0.202,
+    "follow_up": true,
+    "duration_min": 17
+   },
+   {
+    "date": "2026-10-05",
+    "type": "一对一沟通",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": -0.148,
+    "follow_up": true,
+    "duration_min": 48
+   }
+  ],
+  "risk": {
+   "score": 0.6186,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=1/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 8 次"
+    },
+    {
+     "factor": "压力偏高",
+     "direction": "+",
+     "detail": "压力得分 81.5"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00030",
+  "name": "李思远",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "ops",
+  "department_cn": "运营部",
+  "desk_id": "F1-OPS-04",
+  "desk_room": "ops",
+  "desk": {
+   "x": 27.0,
+   "y": 7.9,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 29,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 665,
+   "Department": "运营部",
+   "DistanceFromHome": 15,
+   "Education": 3,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 30,
+   "EnvironmentSatisfaction": 3,
+   "Gender": "Male",
+   "HourlyRate": 60,
+   "JobInvolvement": 3,
+   "JobLevel": 1,
+   "JobRole": "供应链专员",
+   "JobSatisfaction": 4,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 2340,
+   "MonthlyRate": 22673,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 19,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 1,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 6,
+   "TrainingTimesLastYear": 1,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 6,
+   "YearsInCurrentRole": 5,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 5,
+   "background": {
+    "highest_degree": "本科",
+    "school": "厦门大学",
+    "major": "电子信息工程",
+    "certificates": [],
+    "prev_employers": 1,
+    "hire_date": "2020-08-07",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 159****9408",
+    "bank_account": "**** **** 1125"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.16,
+   "avg_focus_hours": 3.96,
+   "late_days": 4,
+   "leave_days": 17,
+   "avg_meetings": 2.42,
+   "avg_messages": 30,
+   "avg_tasks_done": 3.11,
+   "focus_trend": -0.0061,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 10.1,
+     "focus": 3.72,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.34,
+     "focus": 3.65,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.77,
+     "focus": 3.42,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 10.3,
+     "focus": 4.12,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 8.73,
+     "focus": 3.96,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 10.76,
+     "focus": 4.1,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.74,
+     "focus": 3.25,
+     "late": false,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.681,
+    "rework_count": 3.58,
+    "defect_rate": 0.059,
+    "efficiency_score": 70.6,
+    "quality_score": 62.3
+   }
+  },
+  "assessment": {
+   "competency_score": 59.5,
+   "engagement_score": 49.9,
+   "satisfaction_score": 55.8,
+   "stress_score": 50.2,
+   "overall_score": 41.4,
+   "survey_date": "2026-08-24",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-07-06",
+    "type": "绩效面谈",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": 0.088,
+    "follow_up": false,
+    "duration_min": 22
+   },
+   {
+    "date": "2026-10-08",
+    "type": "一对一沟通",
+    "topic": "对当前薪酬涨幅有讨论",
+    "sentiment": -0.092,
+    "follow_up": false,
+    "duration_min": 29
+   }
+  ],
+  "risk": {
+   "score": 0.251,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "敬业度偏低",
+     "direction": "+",
+     "detail": "敬业度得分 49.9"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00031",
+  "name": "孙明远",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "ops",
+  "department_cn": "运营部",
+  "desk_id": "F1-OPS-05",
+  "desk_room": "ops",
+  "desk": {
+   "x": 28.55,
+   "y": 7.9,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 38,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 1035,
+   "Department": "运营部",
+   "DistanceFromHome": 3,
+   "Education": 4,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 31,
+   "EnvironmentSatisfaction": 2,
+   "Gender": "Male",
+   "HourlyRate": 42,
+   "JobInvolvement": 3,
+   "JobLevel": 2,
+   "JobRole": "供应链专员",
+   "JobSatisfaction": 4,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 6861,
+   "MonthlyRate": 4981,
+   "NumCompaniesWorked": 8,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 12,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 19,
+   "TrainingTimesLastYear": 1,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 1,
+   "YearsInCurrentRole": 0,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 0,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "上海交通大学",
+    "major": "计算机科学与技术",
+    "certificates": [
+     "系统架构设计师"
+    ],
+    "prev_employers": 8,
+    "hire_date": "2025-07-07",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 159****7894",
+    "bank_account": "**** **** 6229"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.4,
+   "avg_focus_hours": 4.44,
+   "late_days": 9,
+   "leave_days": 11,
+   "avg_meetings": 2.51,
+   "avg_messages": 32,
+   "avg_tasks_done": 3.38,
+   "focus_trend": -0.0101,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.35,
+     "focus": 3.5,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.77,
+     "focus": 4.8,
+     "late": true,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.75,
+     "focus": 5.32,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.26,
+     "focus": 3.11,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.39,
+     "focus": 4.08,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.96,
+     "focus": 3.77,
+     "late": true,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.66,
+     "focus": 3.79,
+     "late": true,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.698,
+    "rework_count": 3.16,
+    "defect_rate": 0.0545,
+    "efficiency_score": 72.6,
+    "quality_score": 64.9
+   }
+  },
+  "assessment": {
+   "competency_score": 74.1,
+   "engagement_score": 79.9,
+   "satisfaction_score": 58.2,
+   "stress_score": 55.3,
+   "overall_score": 65.0,
+   "survey_date": "2026-08-17",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-08-26",
+    "type": "一对一沟通",
+    "topic": "明确表达了离职意向，已沟通留任方案",
+    "sentiment": -0.793,
+    "follow_up": true,
+    "duration_min": 40
+   },
+   {
+    "date": "2026-09-16",
+    "type": "HR访谈",
+    "topic": "对当前薪酬涨幅有讨论",
+    "sentiment": -0.299,
+    "follow_up": true,
+    "duration_min": 21
+   }
+  ],
+  "risk": {
+   "score": 0.5802,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=2/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 9 次"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00032",
+  "name": "罗子轩",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "ops",
+  "department_cn": "运营部",
+  "desk_id": "F1-OPS-06",
+  "desk_room": "ops",
+  "desk": {
+   "x": 30.1,
+   "y": 7.9,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 20,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 805,
+   "Department": "运营部",
+   "DistanceFromHome": 3,
+   "Education": 3,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 32,
+   "EnvironmentSatisfaction": 1,
+   "Gender": "Male",
+   "HourlyRate": 87,
+   "JobInvolvement": 2,
+   "JobLevel": 1,
+   "JobRole": "运营专员",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 3033,
+   "MonthlyRate": 12828,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 12,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 1,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 2,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 2,
+   "YearsAtCompany": 2,
+   "YearsInCurrentRole": 2,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 2,
+   "background": {
+    "highest_degree": "本科",
+    "school": "哈尔滨工业大学",
+    "major": "计算机科学与技术",
+    "certificates": [],
+    "prev_employers": 1,
+    "hire_date": "2023-12-09",
+    "contract_type": "试用期",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 155****2113",
+    "bank_account": "**** **** 6104"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.03,
+   "avg_focus_hours": 4.22,
+   "late_days": 5,
+   "leave_days": 5,
+   "avg_meetings": 2.56,
+   "avg_messages": 30,
+   "avg_tasks_done": 3.32,
+   "focus_trend": -0.0049,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.98,
+     "focus": 4.49,
+     "late": true,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.49,
+     "focus": 3.56,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.89,
+     "focus": 4.4,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 10.38,
+     "focus": 4.09,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 8.82,
+     "focus": 3.99,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.72,
+     "focus": 3.65,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.49,
+     "focus": 2.91,
+     "late": false,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.682,
+    "rework_count": 3.47,
+    "defect_rate": 0.0578,
+    "efficiency_score": 68.7,
+    "quality_score": 59.9
+   }
+  },
+  "assessment": {
+   "competency_score": 74.7,
+   "engagement_score": 62.4,
+   "satisfaction_score": 52.3,
+   "stress_score": 58.3,
+   "overall_score": 50.8,
+   "survey_date": "2026-10-08",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-07-01",
+    "type": "离职面谈",
+    "topic": "提到外部机会，处于观望状态",
+    "sentiment": -0.651,
+    "follow_up": false,
+    "duration_min": 28
+   },
+   {
+    "date": "2026-07-07",
+    "type": "HR访谈",
+    "topic": "对直接上级的管理方式有较强不满",
+    "sentiment": -0.359,
+    "follow_up": true,
+    "duration_min": 31
+   },
+   {
+    "date": "2026-10-06",
+    "type": "绩效面谈",
+    "topic": "对当前薪酬涨幅有讨论",
+    "sentiment": 0.15,
+    "follow_up": false,
+    "duration_min": 55
+   }
+  ],
+  "risk": {
+   "score": 0.5493,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=1/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00033",
+  "name": "冯景行",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "ops",
+  "department_cn": "运营部",
+  "desk_id": "F1-OPS-07",
+  "desk_room": "ops",
+  "desk": {
+   "x": 31.65,
+   "y": 7.9,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 24,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 691,
+   "Department": "运营部",
+   "DistanceFromHome": 23,
+   "Education": 3,
+   "EducationField": "Medical",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 33,
+   "EnvironmentSatisfaction": 2,
+   "Gender": "Male",
+   "HourlyRate": 89,
+   "JobInvolvement": 4,
+   "JobLevel": 1,
+   "JobRole": "运营经理",
+   "JobSatisfaction": 4,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 2725,
+   "MonthlyRate": 21630,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 11,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 2,
+   "TotalWorkingYears": 6,
+   "TrainingTimesLastYear": 3,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 6,
+   "YearsInCurrentRole": 5,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 4,
+   "background": {
+    "highest_degree": "本科",
+    "school": "厦门大学",
+    "major": "市场营销",
+    "certificates": [
+     "中级经济师"
+    ],
+    "prev_employers": 1,
+    "hire_date": "2019-11-18",
+    "contract_type": "试用期",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 160****3577",
+    "bank_account": "**** **** 9641"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 10.1,
+   "avg_focus_hours": 3.52,
+   "late_days": 8,
+   "leave_days": 9,
+   "avg_meetings": 2.21,
+   "avg_messages": 24,
+   "avg_tasks_done": 2.68,
+   "focus_trend": -0.0033,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 10.68,
+     "focus": 3.11,
+     "late": true,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 10.06,
+     "focus": 2.08,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 10.8,
+     "focus": 3.93,
+     "late": false,
+     "tasks": 1
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 10.34,
+     "focus": 3.0,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 10.86,
+     "focus": 2.7,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.49,
+     "focus": 2.75,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 10.5,
+     "focus": 3.71,
+     "late": false,
+     "tasks": 2
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.64,
+    "rework_count": 3.32,
+    "defect_rate": 0.0643,
+    "efficiency_score": 66.2,
+    "quality_score": 58.3
+   }
+  },
+  "assessment": {
+   "competency_score": 76.9,
+   "engagement_score": 58.6,
+   "satisfaction_score": 52.2,
+   "stress_score": 68.1,
+   "overall_score": 51.8,
+   "survey_date": "2026-08-06",
+   "potential": "高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-12",
+    "type": "HR访谈",
+    "topic": "明确表达了离职意向，已沟通留任方案",
+    "sentiment": -0.387,
+    "follow_up": true,
+    "duration_min": 42
+   },
+   {
+    "date": "2026-07-16",
+    "type": "一对一沟通",
+    "topic": "对当前薪酬涨幅有讨论",
+    "sentiment": 0.022,
+    "follow_up": false,
+    "duration_min": 38
+   }
+  ],
+  "risk": {
+   "score": 0.8242,
+   "level": "极高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=2/4"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 8 次"
+    },
+    {
+     "factor": "敬业度偏低",
+     "direction": "+",
+     "detail": "敬业度得分 58.6"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00034",
+  "name": "林博文",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "exec",
+  "department_cn": "高管办公区",
+  "desk_id": "F1-EXE-01",
+  "desk_room": "exec",
+  "desk": {
+   "x": 19.225,
+   "y": 2.9,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 23,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 507,
+   "Department": "高管办公区",
+   "DistanceFromHome": 20,
+   "Education": 1,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 34,
+   "EnvironmentSatisfaction": 1,
+   "Gender": "Male",
+   "HourlyRate": 97,
+   "JobInvolvement": 3,
+   "JobLevel": 2,
+   "JobRole": "技术总监",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 2272,
+   "MonthlyRate": 24812,
+   "NumCompaniesWorked": 0,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 14,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 5,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 4,
+   "YearsInCurrentRole": 3,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 2,
+   "background": {
+    "highest_degree": "高中及以下",
+    "school": "浙江大学",
+    "major": "会计学",
+    "certificates": [
+     "注册会计师"
+    ],
+    "prev_employers": 0,
+    "hire_date": "2021-11-18",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 174****4771",
+    "bank_account": "**** **** 1058"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.73,
+   "avg_focus_hours": 4.61,
+   "late_days": 5,
+   "leave_days": 5,
+   "avg_meetings": 2.67,
+   "avg_messages": 37,
+   "avg_tasks_done": 3.53,
+   "focus_trend": -0.0016,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.87,
+     "focus": 4.17,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.75,
+     "focus": 4.67,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.27,
+     "focus": 4.57,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 8.59,
+     "focus": 4.94,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 7.72,
+     "focus": 5.42,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.18,
+     "focus": 3.51,
+     "late": true,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 8.63,
+     "focus": 5.6,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.708,
+    "rework_count": 3.21,
+    "defect_rate": 0.0536,
+    "efficiency_score": 73.4,
+    "quality_score": 64.1
+   }
+  },
+  "assessment": {
+   "competency_score": 74.9,
+   "engagement_score": 66.2,
+   "satisfaction_score": 57.8,
+   "stress_score": 55.2,
+   "overall_score": 57.8,
+   "survey_date": "2026-07-09",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-08-14",
+    "type": "HR访谈",
+    "topic": "职业发展路径清晰，主动性提升",
+    "sentiment": 0.269,
+    "follow_up": false,
+    "duration_min": 55
+   },
+   {
+    "date": "2026-09-08",
+    "type": "绩效面谈",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.484,
+    "follow_up": false,
+    "duration_min": 54
+   },
+   {
+    "date": "2026-09-15",
+    "type": "绩效面谈",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.583,
+    "follow_up": false,
+    "duration_min": 43
+   }
+  ],
+  "risk": {
+   "score": 0.4132,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=1/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00035",
+  "name": "吴嘉言",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "exec",
+  "department_cn": "高管办公区",
+  "desk_id": "F1-EXE-02",
+  "desk_room": "exec",
+  "desk": {
+   "x": 20.775,
+   "y": 2.9,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 54,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 397,
+   "Department": "高管办公区",
+   "DistanceFromHome": 19,
+   "Education": 4,
+   "EducationField": "Medical",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 35,
+   "EnvironmentSatisfaction": 3,
+   "Gender": "Male",
+   "HourlyRate": 88,
+   "JobInvolvement": 3,
+   "JobLevel": 3,
+   "JobRole": "运营总监",
+   "JobSatisfaction": 2,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 10725,
+   "MonthlyRate": 6729,
+   "NumCompaniesWorked": 2,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 15,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 16,
+   "TrainingTimesLastYear": 1,
+   "WorkLifeBalance": 4,
+   "YearsAtCompany": 9,
+   "YearsInCurrentRole": 7,
+   "YearsSinceLastPromotion": 7,
+   "YearsWithCurrManager": 1,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "同济大学",
+    "major": "人力资源管理学",
+    "certificates": [],
+    "prev_employers": 2,
+    "hire_date": "2016-11-04",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 157****8621",
+    "bank_account": "**** **** 1160"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.62,
+   "avg_focus_hours": 4.58,
+   "late_days": 3,
+   "leave_days": 7,
+   "avg_meetings": 2.69,
+   "avg_messages": 34,
+   "avg_tasks_done": 3.6,
+   "focus_trend": -0.0001,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.67,
+     "focus": 5.39,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.55,
+     "focus": 4.04,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.45,
+     "focus": 3.97,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 8.79,
+     "focus": 4.33,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 8.3,
+     "focus": 3.79,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.2,
+     "focus": 4.96,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 7.87,
+     "focus": 6.03,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.703,
+    "rework_count": 3.11,
+    "defect_rate": 0.0595,
+    "efficiency_score": 72.7,
+    "quality_score": 64.3
+   }
+  },
+  "assessment": {
+   "competency_score": 74.3,
+   "engagement_score": 57.1,
+   "satisfaction_score": 59.5,
+   "stress_score": 68.4,
+   "overall_score": 48.9,
+   "survey_date": "2026-09-02",
+   "potential": "高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-24",
+    "type": "绩效面谈",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": 0.133,
+    "follow_up": true,
+    "duration_min": 54
+   },
+   {
+    "date": "2026-07-03",
+    "type": "一对一沟通",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.594,
+    "follow_up": false,
+    "duration_min": 33
+   },
+   {
+    "date": "2026-09-28",
+    "type": "一对一沟通",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": -0.126,
+    "follow_up": true,
+    "duration_min": 56
+   },
+   {
+    "date": "2026-10-13",
+    "type": "绩效面谈",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.666,
+    "follow_up": false,
+    "duration_min": 57
+   }
+  ],
+  "risk": {
+   "score": 0.1456,
+   "level": "低风险",
+   "top_factors": [
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=2/4"
+    },
+    {
+     "factor": "晋升停滞",
+     "direction": "+",
+     "detail": "距上次晋升 7 年"
+    },
+    {
+     "factor": "敬业度偏低",
+     "direction": "+",
+     "detail": "敬业度得分 57.1"
+    },
+    {
+     "factor": "职级较高",
+     "direction": "-",
+     "detail": "职级越高越倾向留任"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00036",
+  "name": "郭奕辰",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "hr",
+  "department_cn": "人力与行政",
+  "desk_id": "F1-HR-01",
+  "desk_room": "hr",
+  "desk": {
+   "x": 26.95,
+   "y": 2.9,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 52,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 1053,
+   "Department": "人力与行政",
+   "DistanceFromHome": 1,
+   "Education": 2,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 36,
+   "EnvironmentSatisfaction": 4,
+   "Gender": "Male",
+   "HourlyRate": 70,
+   "JobInvolvement": 3,
+   "JobLevel": 4,
+   "JobRole": "人力资源专员",
+   "JobSatisfaction": 4,
+   "MaritalStatus": "Married",
+   "MonthlyIncome": 17099,
+   "MonthlyRate": 13829,
+   "NumCompaniesWorked": 2,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 15,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 26,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 2,
+   "YearsAtCompany": 9,
+   "YearsInCurrentRole": 8,
+   "YearsSinceLastPromotion": 7,
+   "YearsWithCurrManager": 8,
+   "background": {
+    "highest_degree": "大专",
+    "school": "哈尔滨工业大学",
+    "major": "信息管理",
+    "certificates": [
+     "人力资源管理师"
+    ],
+    "prev_employers": 2,
+    "hire_date": "2017-07-06",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 161****9398",
+    "bank_account": "**** **** 8808"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.66,
+   "avg_focus_hours": 4.63,
+   "late_days": 8,
+   "leave_days": 5,
+   "avg_meetings": 2.66,
+   "avg_messages": 33,
+   "avg_tasks_done": 3.53,
+   "focus_trend": -0.0013,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.34,
+     "focus": 4.48,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.41,
+     "focus": 4.95,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.75,
+     "focus": 3.73,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 7.64,
+     "focus": 4.38,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 8.59,
+     "focus": 4.55,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.85,
+     "focus": 4.51,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 8.78,
+     "focus": 3.8,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.718,
+    "rework_count": 3.0,
+    "defect_rate": 0.056,
+    "efficiency_score": 73.1,
+    "quality_score": 65.8
+   }
+  },
+  "assessment": {
+   "competency_score": 62.2,
+   "engagement_score": 69.7,
+   "satisfaction_score": 61.9,
+   "stress_score": 71.3,
+   "overall_score": 44.2,
+   "survey_date": "2026-07-03",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-15",
+    "type": "团队例会发言",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.711,
+    "follow_up": false,
+    "duration_min": 19
+   },
+   {
+    "date": "2026-06-26",
+    "type": "HR访谈",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": -0.333,
+    "follow_up": true,
+    "duration_min": 48
+   },
+   {
+    "date": "2026-07-10",
+    "type": "一对一沟通",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": -0.04,
+    "follow_up": false,
+    "duration_min": 29
+   },
+   {
+    "date": "2026-10-02",
+    "type": "绩效面谈",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": 0.078,
+    "follow_up": false,
+    "duration_min": 35
+   }
+  ],
+  "risk": {
+   "score": 0.1823,
+   "level": "低风险",
+   "top_factors": [
+    {
+     "factor": "晋升停滞",
+     "direction": "+",
+     "detail": "距上次晋升 7 年"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 8 次"
+    },
+    {
+     "factor": "职级较高",
+     "direction": "-",
+     "detail": "职级越高越倾向留任"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00037",
+  "name": "韩嘉豪",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "hr",
+  "department_cn": "人力与行政",
+  "desk_id": "F1-HR-02",
+  "desk_room": "hr",
+  "desk": {
+   "x": 28.5,
+   "y": 2.9,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 55,
+   "Attrition": "Yes",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 267,
+   "Department": "人力与行政",
+   "DistanceFromHome": 13,
+   "Education": 4,
+   "EducationField": "Marketing",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 37,
+   "EnvironmentSatisfaction": 1,
+   "Gender": "Male",
+   "HourlyRate": 85,
+   "JobInvolvement": 4,
+   "JobLevel": 4,
+   "JobRole": "HRBP",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 13695,
+   "MonthlyRate": 9277,
+   "NumCompaniesWorked": 6,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 17,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 24,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 2,
+   "YearsAtCompany": 19,
+   "YearsInCurrentRole": 7,
+   "YearsSinceLastPromotion": 3,
+   "YearsWithCurrManager": 8,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "西安电子科技大学",
+    "major": "软件工程",
+    "certificates": [
+     "AWS Certified"
+    ],
+    "prev_employers": 6,
+    "hire_date": "2007-07-08",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 168****3466",
+    "bank_account": "**** **** 5084"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.65,
+   "avg_focus_hours": 4.24,
+   "late_days": 7,
+   "leave_days": 7,
+   "avg_meetings": 2.46,
+   "avg_messages": 30,
+   "avg_tasks_done": 3.28,
+   "focus_trend": -0.0007,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 11.35,
+     "focus": 3.63,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.82,
+     "focus": 3.35,
+     "late": false,
+     "tasks": 1
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.1,
+     "focus": 4.55,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 10.19,
+     "focus": 4.23,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.99,
+     "focus": 4.58,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.08,
+     "focus": 4.48,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.86,
+     "focus": 3.75,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.692,
+    "rework_count": 3.47,
+    "defect_rate": 0.0553,
+    "efficiency_score": 72.8,
+    "quality_score": 63.8
+   }
+  },
+  "assessment": {
+   "competency_score": 93.9,
+   "engagement_score": 74.2,
+   "satisfaction_score": 61.9,
+   "stress_score": 69.4,
+   "overall_score": 56.3,
+   "survey_date": "2026-09-18",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-29",
+    "type": "一对一沟通",
+    "topic": "工作投入度明显下降，已连续缺席团队活动",
+    "sentiment": -0.923,
+    "follow_up": false,
+    "duration_min": 26
+   },
+   {
+    "date": "2026-07-21",
+    "type": "绩效面谈",
+    "topic": "对团队氛围评价积极",
+    "sentiment": 0.609,
+    "follow_up": false,
+    "duration_min": 25
+   },
+   {
+    "date": "2026-07-21",
+    "type": "一对一沟通",
+    "topic": "工作投入度明显下降，已连续缺席团队活动",
+    "sentiment": -0.36,
+    "follow_up": false,
+    "duration_min": 57
+   }
+  ],
+  "risk": {
+   "score": 0.3536,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "环境满意度低",
+     "direction": "+",
+     "detail": "EnvironmentSatisfaction=1/4"
+    },
+    {
+     "factor": "晋升停滞",
+     "direction": "+",
+     "detail": "距上次晋升 3 年"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 7 次"
+    },
+    {
+     "factor": "职级较高",
+     "direction": "-",
+     "detail": "职级越高越倾向留任"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00038",
+  "name": "沈沐晴",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "hr",
+  "department_cn": "人力与行政",
+  "desk_id": "F1-HR-03",
+  "desk_room": "hr",
+  "desk": {
+   "x": 30.05,
+   "y": 2.9,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 51,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 313,
+   "Department": "人力与行政",
+   "DistanceFromHome": 3,
+   "Education": 3,
+   "EducationField": "Medical",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 38,
+   "EnvironmentSatisfaction": 4,
+   "Gender": "Female",
+   "HourlyRate": 98,
+   "JobInvolvement": 3,
+   "JobLevel": 4,
+   "JobRole": "HRBP",
+   "JobSatisfaction": 2,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 13734,
+   "MonthlyRate": 7192,
+   "NumCompaniesWorked": 3,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 18,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 21,
+   "TrainingTimesLastYear": 6,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 7,
+   "YearsInCurrentRole": 7,
+   "YearsSinceLastPromotion": 1,
+   "YearsWithCurrManager": 0,
+   "background": {
+    "highest_degree": "本科",
+    "school": "东南大学",
+    "major": "人力资源管理学",
+    "certificates": [],
+    "prev_employers": 3,
+    "hire_date": "2019-07-13",
+    "contract_type": "试用期",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 182****1598",
+    "bank_account": "**** **** 5278"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.36,
+   "avg_focus_hours": 4.97,
+   "late_days": 6,
+   "leave_days": 3,
+   "avg_meetings": 2.87,
+   "avg_messages": 40,
+   "avg_tasks_done": 3.81,
+   "focus_trend": 0.0033,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 8.15,
+     "focus": 5.26,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 8.31,
+     "focus": 5.16,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.69,
+     "focus": 5.89,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 8.27,
+     "focus": 5.97,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 7.76,
+     "focus": 4.12,
+     "late": false,
+     "tasks": 5
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.25,
+     "focus": 4.81,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 7.69,
+     "focus": 4.41,
+     "late": false,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.736,
+    "rework_count": 2.84,
+    "defect_rate": 0.0558,
+    "efficiency_score": 74.0,
+    "quality_score": 68.1
+   }
+  },
+  "assessment": {
+   "competency_score": 88.1,
+   "engagement_score": 86.6,
+   "satisfaction_score": 68.7,
+   "stress_score": 69.5,
+   "overall_score": 64.6,
+   "survey_date": "2026-09-23",
+   "potential": "高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-18",
+    "type": "离职面谈",
+    "topic": "抱怨长期加班且回报不匹配",
+    "sentiment": -0.375,
+    "follow_up": false,
+    "duration_min": 49
+   },
+   {
+    "date": "2026-09-16",
+    "type": "HR访谈",
+    "topic": "抱怨长期加班且回报不匹配",
+    "sentiment": -0.692,
+    "follow_up": true,
+    "duration_min": 58
+   },
+   {
+    "date": "2026-09-22",
+    "type": "绩效面谈",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.771,
+    "follow_up": false,
+    "duration_min": 58
+   }
+  ],
+  "risk": {
+   "score": 0.2111,
+   "level": "低风险",
+   "top_factors": [
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=2/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 6 次"
+    },
+    {
+     "factor": "职级较高",
+     "direction": "-",
+     "detail": "职级越高越倾向留任"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00039",
+  "name": "黄昊霖",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "finance",
+  "department_cn": "财务部",
+  "desk_id": "F1-FIN-01",
+  "desk_room": "finance",
+  "desk": {
+   "x": 35.475,
+   "y": 2.175,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 40,
+   "Attrition": "No",
+   "BusinessTravel": "Non-Travel",
+   "DailyRate": 458,
+   "Department": "财务部",
+   "DistanceFromHome": 16,
+   "Education": 2,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 39,
+   "EnvironmentSatisfaction": 3,
+   "Gender": "Male",
+   "HourlyRate": 74,
+   "JobInvolvement": 3,
+   "JobLevel": 1,
+   "JobRole": "财务分析师",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Divorced",
+   "MonthlyIncome": 3544,
+   "MonthlyRate": 8532,
+   "NumCompaniesWorked": 9,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 16,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 6,
+   "TrainingTimesLastYear": 0,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 4,
+   "YearsInCurrentRole": 2,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 0,
+   "background": {
+    "highest_degree": "大专",
+    "school": "同济大学",
+    "major": "自动化",
+    "certificates": [
+     "无"
+    ],
+    "prev_employers": 9,
+    "hire_date": "2022-03-17",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 165****2489",
+    "bank_account": "**** **** 2402"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.93,
+   "avg_focus_hours": 4.38,
+   "late_days": 10,
+   "leave_days": 10,
+   "avg_meetings": 2.64,
+   "avg_messages": 33,
+   "avg_tasks_done": 3.3,
+   "focus_trend": -0.008,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.52,
+     "focus": 4.76,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.29,
+     "focus": 3.22,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.96,
+     "focus": 4.79,
+     "late": true,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 10.22,
+     "focus": 3.05,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 9.79,
+     "focus": 5.04,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.64,
+     "focus": 4.79,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.26,
+     "focus": 3.39,
+     "late": false,
+     "tasks": 4
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.696,
+    "rework_count": 3.53,
+    "defect_rate": 0.0553,
+    "efficiency_score": 71.2,
+    "quality_score": 62.4
+   }
+  },
+  "assessment": {
+   "competency_score": 66.0,
+   "engagement_score": 63.8,
+   "satisfaction_score": 49.9,
+   "stress_score": 76.1,
+   "overall_score": 48.9,
+   "survey_date": "2026-06-30",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-07-01",
+    "type": "一对一沟通",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.393,
+    "follow_up": true,
+    "duration_min": 42
+   },
+   {
+    "date": "2026-07-07",
+    "type": "HR访谈",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.678,
+    "follow_up": false,
+    "duration_min": 56
+   },
+   {
+    "date": "2026-07-08",
+    "type": "HR访谈",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": 0.061,
+    "follow_up": false,
+    "duration_min": 38
+   },
+   {
+    "date": "2026-07-29",
+    "type": "一对一沟通",
+    "topic": "反馈会议占用过多专注时间",
+    "sentiment": 0.231,
+    "follow_up": true,
+    "duration_min": 16
+   },
+   {
+    "date": "2026-10-07",
+    "type": "团队例会发言",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.525,
+    "follow_up": false,
+    "duration_min": 43
+   }
+  ],
+  "risk": {
+   "score": 0.3634,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 10 次"
+    },
+    {
+     "factor": "压力偏高",
+     "direction": "+",
+     "detail": "压力得分 76.1"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00040",
+  "name": "高俊杰",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "finance",
+  "department_cn": "财务部",
+  "desk_id": "F1-FIN-02",
+  "desk_room": "finance",
+  "desk": {
+   "x": 37.025,
+   "y": 2.175,
+   "rot": 0.0
+  },
+  "profile": {
+   "Age": 41,
+   "Attrition": "No",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 263,
+   "Department": "财务部",
+   "DistanceFromHome": 6,
+   "Education": 3,
+   "EducationField": "Medical",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 40,
+   "EnvironmentSatisfaction": 4,
+   "Gender": "Male",
+   "HourlyRate": 59,
+   "JobInvolvement": 3,
+   "JobLevel": 1,
+   "JobRole": "审计专员",
+   "JobSatisfaction": 1,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 4721,
+   "MonthlyRate": 3119,
+   "NumCompaniesWorked": 2,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 13,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 20,
+   "TrainingTimesLastYear": 3,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 18,
+   "YearsInCurrentRole": 13,
+   "YearsSinceLastPromotion": 2,
+   "YearsWithCurrManager": 17,
+   "background": {
+    "highest_degree": "本科",
+    "school": "西安电子科技大学",
+    "major": "软件工程",
+    "certificates": [
+     "人力资源管理师"
+    ],
+    "prev_employers": 2,
+    "hire_date": "2008-07-09",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 179****1480",
+    "bank_account": "**** **** 4862"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.71,
+   "avg_focus_hours": 3.98,
+   "late_days": 12,
+   "leave_days": 12,
+   "avg_meetings": 2.35,
+   "avg_messages": 28,
+   "avg_tasks_done": 3.1,
+   "focus_trend": -0.0012,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.36,
+     "focus": 3.72,
+     "late": true,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.84,
+     "focus": 4.15,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.37,
+     "focus": 3.87,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.4,
+     "focus": 4.95,
+     "late": true,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 10.97,
+     "focus": 4.22,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.88,
+     "focus": 3.33,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.53,
+     "focus": 3.07,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.65,
+    "rework_count": 3.53,
+    "defect_rate": 0.061,
+    "efficiency_score": 71.8,
+    "quality_score": 60.5
+   }
+  },
+  "assessment": {
+   "competency_score": 65.4,
+   "engagement_score": 61.5,
+   "satisfaction_score": 64.6,
+   "stress_score": 77.8,
+   "overall_score": 49.8,
+   "survey_date": "2026-08-28",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-19",
+    "type": "HR访谈",
+    "topic": "明确表达了离职意向，已沟通留任方案",
+    "sentiment": -0.676,
+    "follow_up": true,
+    "duration_min": 46
+   },
+   {
+    "date": "2026-07-24",
+    "type": "HR访谈",
+    "topic": "希望调整工作内容，重复性任务偏多",
+    "sentiment": 0.094,
+    "follow_up": false,
+    "duration_min": 15
+   },
+   {
+    "date": "2026-09-09",
+    "type": "一对一沟通",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.858,
+    "follow_up": true,
+    "duration_min": 58
+   },
+   {
+    "date": "2026-10-02",
+    "type": "离职面谈",
+    "topic": "抱怨长期加班且回报不匹配",
+    "sentiment": -0.636,
+    "follow_up": true,
+    "duration_min": 56
+   }
+  ],
+  "risk": {
+   "score": 0.548,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "工作满意度低",
+     "direction": "+",
+     "detail": "JobSatisfaction=1/4"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    },
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 12 次"
+    },
+    {
+     "factor": "压力偏高",
+     "direction": "+",
+     "detail": "压力得分 77.8"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00041",
+  "name": "郑睿哲",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "finance",
+  "department_cn": "财务部",
+  "desk_id": "F1-FIN-03",
+  "desk_room": "finance",
+  "desk": {
+   "x": 35.475,
+   "y": 3.625,
+   "rot": 3.1416
+  },
+  "profile": {
+   "Age": 40,
+   "Attrition": "No",
+   "BusinessTravel": "Non-Travel",
+   "DailyRate": 458,
+   "Department": "财务部",
+   "DistanceFromHome": 16,
+   "Education": 2,
+   "EducationField": "Life Sciences",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 41,
+   "EnvironmentSatisfaction": 3,
+   "Gender": "Male",
+   "HourlyRate": 74,
+   "JobInvolvement": 3,
+   "JobLevel": 1,
+   "JobRole": "会计",
+   "JobSatisfaction": 3,
+   "MaritalStatus": "Divorced",
+   "MonthlyIncome": 3544,
+   "MonthlyRate": 8532,
+   "NumCompaniesWorked": 9,
+   "Over18": "Y",
+   "OverTime": "No",
+   "PercentSalaryHike": 16,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 2,
+   "StandardHours": 80,
+   "StockOptionLevel": 1,
+   "TotalWorkingYears": 6,
+   "TrainingTimesLastYear": 0,
+   "WorkLifeBalance": 3,
+   "YearsAtCompany": 4,
+   "YearsInCurrentRole": 2,
+   "YearsSinceLastPromotion": 0,
+   "YearsWithCurrManager": 0,
+   "background": {
+    "highest_degree": "大专",
+    "school": "哈尔滨工业大学",
+    "major": "市场营销",
+    "certificates": [
+     "无"
+    ],
+    "prev_employers": 9,
+    "hire_date": "2022-03-18",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 176****8659",
+    "bank_account": "**** **** 5828"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 8.91,
+   "avg_focus_hours": 4.24,
+   "late_days": 9,
+   "leave_days": 8,
+   "avg_meetings": 2.5,
+   "avg_messages": 32,
+   "avg_tasks_done": 3.16,
+   "focus_trend": -0.0073,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.68,
+     "focus": 3.62,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 9.82,
+     "focus": 3.68,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 8.66,
+     "focus": 3.97,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.01,
+     "focus": 5.09,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 8.79,
+     "focus": 3.74,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 8.7,
+     "focus": 4.16,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 8.01,
+     "focus": 4.28,
+     "late": false,
+     "tasks": 3
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.683,
+    "rework_count": 3.42,
+    "defect_rate": 0.0495,
+    "efficiency_score": 71.3,
+    "quality_score": 63.5
+   }
+  },
+  "assessment": {
+   "competency_score": 82.4,
+   "engagement_score": 67.2,
+   "satisfaction_score": 62.3,
+   "stress_score": 69.2,
+   "overall_score": 54.1,
+   "survey_date": "2026-08-18",
+   "potential": "中高",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-07-13",
+    "type": "绩效面谈",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": -0.139,
+    "follow_up": false,
+    "duration_min": 47
+   },
+   {
+    "date": "2026-07-22",
+    "type": "一对一沟通",
+    "topic": "承担了跨部门协作的关键角色",
+    "sentiment": 0.945,
+    "follow_up": false,
+    "duration_min": 47
+   },
+   {
+    "date": "2026-07-30",
+    "type": "绩效面谈",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": 0.04,
+    "follow_up": false,
+    "duration_min": 32
+   },
+   {
+    "date": "2026-08-18",
+    "type": "团队例会发言",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.303,
+    "follow_up": false,
+    "duration_min": 30
+   },
+   {
+    "date": "2026-09-23",
+    "type": "一对一沟通",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.819,
+    "follow_up": false,
+    "duration_min": 35
+   }
+  ],
+  "risk": {
+   "score": 0.3467,
+   "level": "中风险",
+   "top_factors": [
+    {
+     "factor": "迟到偏多",
+     "direction": "+",
+     "detail": "90 天迟到 9 次"
+    },
+    {
+     "factor": "持有期权",
+     "direction": "-",
+     "detail": "股权激励降低流失"
+    }
+   ]
+  }
+ },
+ {
+  "employee_id": "E00042",
+  "name": "萧天佑",
+  "floor": 1,
+  "floor_name": "1F",
+  "department_key": "finance",
+  "department_cn": "财务部",
+  "desk_id": "F1-FIN-04",
+  "desk_room": "finance",
+  "desk": {
+   "x": 37.025,
+   "y": 3.625,
+   "rot": 3.1416
+  },
+  "profile": {
+   "Age": 33,
+   "Attrition": "Yes",
+   "BusinessTravel": "Travel_Rarely",
+   "DailyRate": 527,
+   "Department": "财务部",
+   "DistanceFromHome": 1,
+   "Education": 4,
+   "EducationField": "Other",
+   "EmployeeCount": 1,
+   "EmployeeNumber": 42,
+   "EnvironmentSatisfaction": 4,
+   "Gender": "Male",
+   "HourlyRate": 63,
+   "JobInvolvement": 3,
+   "JobLevel": 1,
+   "JobRole": "审计专员",
+   "JobSatisfaction": 4,
+   "MaritalStatus": "Single",
+   "MonthlyIncome": 2686,
+   "MonthlyRate": 5207,
+   "NumCompaniesWorked": 1,
+   "Over18": "Y",
+   "OverTime": "Yes",
+   "PercentSalaryHike": 13,
+   "PerformanceRating": 3,
+   "RelationshipSatisfaction": 3,
+   "StandardHours": 80,
+   "StockOptionLevel": 0,
+   "TotalWorkingYears": 10,
+   "TrainingTimesLastYear": 2,
+   "WorkLifeBalance": 2,
+   "YearsAtCompany": 10,
+   "YearsInCurrentRole": 9,
+   "YearsSinceLastPromotion": 7,
+   "YearsWithCurrManager": 8,
+   "background": {
+    "highest_degree": "硕士",
+    "school": "天津大学",
+    "major": "信息管理",
+    "certificates": [
+     "系统架构设计师"
+    ],
+    "prev_employers": 1,
+    "hire_date": "2016-10-02",
+    "contract_type": "正式员工",
+    "id_verified": true,
+    "bg_check_passed": true,
+    "emergency_contact": "家属 146****1443",
+    "bank_account": "**** **** 1063"
+   }
+  },
+  "behavior": {
+   "window_days": 90,
+   "avg_work_hours": 9.89,
+   "avg_focus_hours": 4.03,
+   "late_days": 3,
+   "leave_days": 15,
+   "avg_meetings": 2.27,
+   "avg_messages": 27,
+   "avg_tasks_done": 2.98,
+   "focus_trend": -0.0058,
+   "recent_7d": [
+    {
+     "date": "2026-10-07",
+     "hours": 9.3,
+     "focus": 4.57,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-08",
+     "hours": 11.07,
+     "focus": 3.44,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-09",
+     "hours": 9.37,
+     "focus": 4.75,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-12",
+     "hours": 9.36,
+     "focus": 3.74,
+     "late": false,
+     "tasks": 2
+    },
+    {
+     "date": "2026-10-13",
+     "hours": 10.33,
+     "focus": 3.56,
+     "late": false,
+     "tasks": 4
+    },
+    {
+     "date": "2026-10-14",
+     "hours": 9.09,
+     "focus": 4.27,
+     "late": false,
+     "tasks": 3
+    },
+    {
+     "date": "2026-10-15",
+     "hours": 9.86,
+     "focus": 2.99,
+     "late": false,
+     "tasks": 2
+    }
+   ],
+   "quality": {
+    "delivery_rate": 0.694,
+    "rework_count": 3.37,
+    "defect_rate": 0.0589,
+    "efficiency_score": 69.4,
+    "quality_score": 62.6
+   }
+  },
+  "assessment": {
+   "competency_score": 49.7,
+   "engagement_score": 67.3,
+   "satisfaction_score": 64.3,
+   "stress_score": 58.9,
+   "overall_score": 48.9,
+   "survey_date": "2026-09-09",
+   "potential": "中",
+   "performance_rating": 3
+  },
+  "talks": [
+   {
+    "date": "2026-06-22",
+    "type": "HR访谈",
+    "topic": "对直接上级的管理方式有较强不满",
+    "sentiment": -0.811,
+    "follow_up": true,
+    "duration_min": 49
+   },
+   {
+    "date": "2026-06-30",
+    "type": "一对一沟通",
+    "topic": "期望更明确的晋升时间表",
+    "sentiment": -0.157,
+    "follow_up": true,
+    "duration_min": 23
+   },
+   {
+    "date": "2026-08-31",
+    "type": "绩效面谈",
+    "topic": "近周期交付质量稳定",
+    "sentiment": 0.52,
+    "follow_up": false,
+    "duration_min": 38
+   }
+  ],
+  "risk": {
+   "score": 0.6497,
+   "level": "高风险",
+   "top_factors": [
+    {
+     "factor": "长期加班",
+     "direction": "+",
+     "detail": "加班记录为 Yes，疲劳累积推高流失意愿"
+    },
+    {
+     "factor": "单身",
+     "direction": "+",
+     "detail": "无家庭牵绊，外部机会吸引力更大"
+    },
+    {
+     "factor": "晋升停滞",
+     "direction": "+",
+     "detail": "距上次晋升 7 年"
+    },
+    {
+     "factor": "无股票期权",
+     "direction": "+",
+     "detail": "缺少长期激励绑定"
+    }
+   ]
+  }
+ }
+]

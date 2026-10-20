@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>员工档案库 · 公司总部数字孪生</title>
+<style>
+  :root{
+    --bg:#05080f;--panel:rgba(13,19,36,.92);--panel2:rgba(18,28,52,.82);
+    --line:rgba(90,160,255,.23);--cyan:#3ddcff;--blue:#4c7dff;
+    --green:#28d17c;--amber:#ffb020;--orange:#ff6b35;--red:#ff2e63;
+    --text:#e8f0ff;--dim:#8095bd;--muted:#536784
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{min-height:100%;background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif}
+  body{background:
+    radial-gradient(1100px 600px at 12% 0%,rgba(76,125,255,.15),transparent 60%),
+    radial-gradient(900px 600px at 88% 100%,rgba(61,220,255,.10),transparent 62%),
+    linear-gradient(180deg,#05080f,#08101f 65%,#05080f);}
+  body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.3;
+    background-image:linear-gradient(rgba(90,160,255,.06) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(90,160,255,.06) 1px,transparent 1px);
+    background-size:44px 44px;mask-image:radial-gradient(ellipse at 50% 35%,#000 30%,transparent 78%)}
+  .app{position:relative;z-index:1;max-width:1680px;margin:0 auto;padding:18px 22px 28px}
+  .topbar{display:flex;align-items:center;gap:24px;padding:12px 18px;border:1px solid var(--line);
+    border-radius:14px;background:linear-gradient(90deg,rgba(13,19,36,.96),rgba(13,19,36,.66));
+    box-shadow:0 14px 44px rgba(0,0,0,.28);backdrop-filter:blur(12px)}
+  .brand{min-width:265px}.brand h1{font-size:19px;letter-spacing:1.2px;font-weight:750;
+    background:linear-gradient(90deg,#7fe7ff,#4c7dff 60%,#b98cff);-webkit-background-clip:text;
+    background-clip:text;color:transparent}.brand p{color:var(--dim);font-size:9px;letter-spacing:1.1px;margin-top:4px}
+  .nav{display:flex;align-items:center;gap:5px;flex:1}.nav a{min-height:34px;display:inline-flex;align-items:center;
+    padding:0 13px;border-radius:8px;border:1px solid transparent;text-decoration:none;color:var(--dim);
+    font-size:11px;transition:.18s}.nav a:hover{color:var(--text);border-color:var(--line);background:rgba(61,220,255,.08)}
+  .nav a.active{color:#04121f;font-weight:700;background:linear-gradient(135deg,var(--cyan),#5aa6ff)}
+  .header-meta{display:flex;gap:8px;align-items:center}.pill{padding:6px 11px;border:1px solid var(--line);
+    border-radius:999px;background:rgba(61,220,255,.08);color:var(--cyan);font-size:10px;font-weight:700;white-space:nowrap}
+  .page-title{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:24px 2px 14px}
+  .eyebrow{font-size:10px;color:var(--cyan);letter-spacing:1.4px;font-weight:700}.page-title h2{font-size:27px;letter-spacing:.8px;margin-top:6px}
+  .page-title p{font-size:12px;color:var(--dim);line-height:1.6;margin-top:6px}
+  .search-box{width:min(390px,100%)}.search-box label{display:block;color:var(--dim);font-size:10px;margin-bottom:6px}
+  .search-wrap{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:rgba(13,19,36,.88);padding:0 12px}
+  .search-wrap span{color:var(--cyan);font-size:16px}.search-wrap input{width:100%;height:42px;border:0;outline:0;background:transparent;color:var(--text);
+    padding:0 8px;font:inherit;font-size:13px}.search-wrap input::placeholder{color:var(--muted)}
+  .archive-grid{display:grid;grid-template-columns:270px minmax(380px,1fr) 430px;gap:12px;align-items:stretch}
+  .panel{border:1px solid var(--line);border-radius:13px;background:var(--panel);box-shadow:0 10px 32px rgba(0,0,0,.18);backdrop-filter:blur(10px)}
+  .archive-grid>.panel{height:calc(100vh - 220px);min-height:560px;overflow:hidden}
+  .panel-head{display:flex;justify-content:space-between;align-items:center;padding:15px 16px 12px;border-bottom:1px solid rgba(90,160,255,.13)}
+  .panel-head h3{font-size:12px;letter-spacing:.7px;color:#b6d0ff}.panel-head span{font-size:10px;color:var(--dim)}
+  .head-tools{display:flex;align-items:center;gap:8px}.head-tools select{height:30px;max-width:142px;padding:0 8px;border:1px solid var(--line);border-radius:7px;background:#101a31;color:var(--text);font:inherit;font-size:10px;outline:0}.head-tools select:focus{border-color:var(--cyan)}
+  .dept-panel{padding-bottom:10px;overflow:auto}.dept-card{width:calc(100% - 20px);margin:10px;display:block;text-align:left;color:var(--text);
+    border:1px solid rgba(90,160,255,.12);border-radius:10px;background:rgba(255,255,255,.025);padding:11px 12px;cursor:pointer;transition:.18s}
+  .dept-card:hover,.dept-card.active{border-color:var(--cyan);background:rgba(61,220,255,.09);transform:translateY(-1px)}
+  .dept-top{display:flex;justify-content:space-between;align-items:center;gap:8px}.dept-name{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700}
+  .dept-dot{width:9px;height:9px;border-radius:3px;display:inline-block;flex:none}.dept-count{font-size:17px;font-weight:800;color:var(--cyan);font-variant-numeric:tabular-nums}
+  .dept-sub{font-size:10px;color:var(--dim);line-height:1.55;margin-top:6px;white-space:normal}.dept-foot{font-size:9px;color:var(--muted);margin-top:7px}
+  .directory{min-width:0;display:flex;flex-direction:column}.list-meta{padding:11px 16px 0;color:var(--dim);font-size:10px}.employee-list{flex:1;padding:10px;display:grid;grid-template-columns:minmax(0,1fr);align-content:start;gap:8px;min-height:0;overflow:auto}
+  .employee-card{position:relative;display:flex;align-items:center;gap:10px;min-height:76px;padding:10px;border:1px solid rgba(90,160,255,.13);
+    border-radius:10px;background:rgba(255,255,255,.025);color:var(--text);text-align:left;cursor:pointer;transition:.18s}
+  .employee-card:hover,.employee-card.active{border-color:rgba(61,220,255,.65);background:rgba(61,220,255,.09);transform:translateY(-1px)}
+  .mini-avatar{width:40px;height:40px;display:grid;place-items:center;flex:none;border-radius:11px;color:#04121f;font-size:13px;font-weight:800}
+  .employee-info{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:0}.employee-name{display:block;font-size:14px;font-weight:700;line-height:1.35;color:#eef4ff}.employee-role{display:block;font-size:10.5px;color:#9eb2d5;margin-top:3px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .employee-meta{display:flex;gap:6px;align-items:center;margin-top:5px;font-size:9.5px;line-height:1.3;color:#7187ad}.risk-dot{width:6px;height:6px;border-radius:50%;display:inline-block;flex:none}
+  .empty{grid-column:1/-1;text-align:center;padding:50px 15px;color:var(--dim);font-size:12px;line-height:1.8}.empty strong{display:block;color:#a8c8ff;font-size:14px;margin-bottom:5px}
+  .detail{position:static;min-height:0;display:flex;flex-direction:column}.detail-body{flex:1;padding:16px;min-height:0;overflow:auto}
+  .detail-empty{display:grid;place-items:center;min-height:430px;color:var(--dim);text-align:center;font-size:12px;line-height:1.8}.detail-empty strong{display:block;color:#a8c8ff;font-size:15px;margin-bottom:6px}
+  .ask-panel{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:16px 18px}
+  .ask-bar{display:flex;gap:10px;align-items:center}
+  .ask-bar input{flex:1;min-width:0;padding:11px 14px;border-radius:10px;border:1px solid var(--line);
+    background:rgba(5,10,20,.75);color:var(--text);font-size:14px;font-family:inherit;outline:none}
+  .ask-bar input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(61,220,255,.12)}
+  .ask-bar button{padding:11px 22px;border-radius:10px;border:0;cursor:pointer;font-size:14px;
+    font-family:inherit;font-weight:700;color:#04101f;background:linear-gradient(90deg,#7fe7ff,#4c7dff);white-space:nowrap}
+  .ask-bar button:disabled{opacity:.55;cursor:progress}
+  .ask-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .ask-chip{font-size:12px;padding:5px 11px;border-radius:999px;cursor:pointer;
+    border:1px solid var(--line);background:var(--panel2);color:var(--dim);font-family:inherit}
+  .ask-chip:hover{color:var(--cyan);border-color:var(--cyan)}
+  .ask-mode{font-size:12px;padding:6px 12px;background:transparent;cursor:pointer;
+            border:1px solid var(--line);border-radius:6px;color:var(--dim);white-space:nowrap}
+  .ask-mode:hover{color:var(--cyan);border-color:var(--cyan)}
+  .ask-answer{margin-top:14px;padding:13px 15px;border-radius:10px;line-height:1.75;font-size:14px;
+    background:rgba(61,220,255,.07);border-left:3px solid var(--cyan);max-height:560px;overflow:auto}
+  .ask-answer .ask-h{font-size:14px;font-weight:750;color:#eaf7ff;margin:11px 0 3px}
+  .ask-tools{margin-top:10px;font-size:10.5px;color:var(--dim);line-height:1.7}
+  .ask-tools summary{cursor:pointer;color:#8fb7dd;padding:3px 0}
+  .ask-tools div{margin-top:4px;word-break:break-word}
+  .ask-answer .ask-h:first-child{margin-top:0}
+  .ask-answer .ask-li{margin:2px 0;padding-left:2px;color:#d8e8ff}
+  .ask-answer b{color:#f2fbff}
+  .ask-facts{margin-top:12px;font-size:12.5px;color:var(--dim)}
+  .ask-facts summary{cursor:pointer;color:#a8c8ff;padding:4px 0}
+  .ask-facts ul{margin:8px 0 0 18px;line-height:1.85;max-height:280px;overflow:auto}
+  .ask-hint{margin-top:12px;font-size:12.5px;color:var(--dim);line-height:1.7}
+  .profile-head{display:flex;align-items:center;gap:12px;padding-bottom:15px;border-bottom:1px solid rgba(90,160,255,.16)}
+  .profile-avatar{width:56px;height:56px;border-radius:15px;display:grid;place-items:center;color:#04121f;font-size:18px;font-weight:850}
+  .profile-name{font-size:18px;font-weight:800}.profile-sub{font-size:10px;color:var(--dim);margin-top:4px;line-height:1.5}.profile-tags{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+  .tag{font-size:9px;padding:3px 7px;border-radius:5px;border:1px solid var(--line);color:var(--dim)}
+  .tag.dept{color:#07111e;border:0;font-weight:800}.detail-section{margin-top:16px}.detail-section h4{font-size:11px;color:#a8c8ff;letter-spacing:.6px;margin-bottom:9px}
+  .kv{display:grid;grid-template-columns:92px 1fr;gap:7px 10px;font-size:11px}.kv dt{color:var(--dim)}.kv dd{color:var(--text);font-weight:600;text-align:right;word-break:break-word}
+  .factor{display:flex;gap:7px;font-size:10px;line-height:1.55;margin-bottom:7px}.factor b{font-size:11px}.factor small{display:block;color:var(--dim)}
+  .behavior-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.metric{padding:9px;border-radius:8px;background:rgba(255,255,255,.04)}.metric span{display:block;color:var(--dim);font-size:9px}.metric b{display:block;color:var(--cyan);font-size:15px;margin-top:4px}
+  .talk{padding:7px 9px;border-left:2px solid var(--line);background:rgba(255,255,255,.025);font-size:10px;line-height:1.5;margin-top:6px}.talk small{display:block;color:var(--dim);font-size:9px;margin-bottom:2px}
+  .footer-note{color:var(--muted);font-size:10px;margin-top:14px;text-align:center}
+  @media(max-width:1180px){.archive-grid{grid-template-columns:220px minmax(320px,1fr)}.archive-grid>.panel{height:auto;min-height:0}.detail{grid-column:1/-1;position:static}.detail-body{max-height:none}.employee-list{max-height:600px}}
+  @media(max-width:760px){.app{padding:10px}.topbar{align-items:flex-start;flex-wrap:wrap;gap:11px}.brand{min-width:0;flex:1}.nav{order:3;flex-basis:100%;overflow:auto}.header-meta{display:none}.page-title{display:block}.search-box{margin-top:15px}.archive-grid{display:block}.panel{margin-bottom:12px}.employee-list{grid-template-columns:1fr;max-height:520px}.detail{min-height:0}.head-tools select{max-width:115px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><h1>企业数字孪生 · 员工档案库</h1><p>EMPLOYEE DIRECTORY &amp; PEOPLE ANALYTICS</p></div>
+    <nav class="nav" aria-label="主菜单">
+      <a href="index.html">风险大屏</a>
+      <a class="active" href="employee_archive.html" aria-current="page">员工档案库</a>
+    </nav>
+    <div class="header-meta"><span class="pill" id="header-total">员工 28 人</span><span class="pill">模拟档案</span></div>
+  </header>
+
+  <section class="page-title">
+    <div><div class="eyebrow">PEOPLE DIRECTORY</div><h2>员工档案库</h2><p>按姓名、工号、部门或职位搜索；选择员工后查看完整人事、学历、入职、行为与风险信息。</p></div>
+    <div class="search-box"><label for="search">搜索员工</label><div class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" autocomplete="off" placeholder="输入姓名，例如：孙嘉言" aria-label="搜索员工姓名、工号、部门或职位"></div></div>
+  </section>
+
+  <main class="archive-grid">
+    <aside class="panel dept-panel"><div class="panel-head"><h3>部门分布</h3><span id="dept-total">—</span></div><div id="dept-cards"></div></aside>
+    <section class="panel directory"><div class="panel-head"><h3>人员名单</h3><div class="head-tools"><select id="dept-filter" aria-label="按部门筛选"><option value="">选择部门</option><option value="all">全部部门</option><option value="service">客服中心</option><option value="rnd">研发部</option><option value="marketing">市场部</option><option value="ops">运营部</option><option value="finance">财务部</option><option value="hr">人力与行政</option><option value="exec">高管办公区</option></select><span id="result-count">未筛选</span></div></div><div class="list-meta" id="filter-label">当前筛选：未选择部门</div><div class="employee-list" id="employee-list"><div class="empty">正在载入员工档案…</div></div></section>
+    <aside class="panel detail"><div class="panel-head"><h3>员工详情</h3><span id="detail-id">未选择</span></div><div class="detail-body" id="detail-body"><div class="detail-empty"><div><strong>选择一名员工</strong>点击左侧人员名单，查看他的完整档案、学历、入职日期、行为与离职风险。</div></div></div></aside>
+  </main>
+
+  <section class="ask-panel">
+    <div class="ask-bar">
+      <input id="ask-input" placeholder="问数据：如「谢心怡该怎么留人」「研发和市场哪个风险高」「谁最可能离职」" autocomplete="off">
+      <button id="ask-mode" class="ask-mode">模式：Agent</button>
+      <button id="ask-btn">查询</button>
+    </div>
+    <div class="ask-chips">
+      <button class="ask-chip" data-q="全部员工有多少人，风险怎么分布">风险分布</button>
+      <button class="ask-chip" data-q="查看离职率">离职率</button>
+      <button class="ask-chip" data-q="最高风险前 5 名">风险前 5 名</button>
+      <button class="ask-chip" data-q="各部门平均风险是多少">部门对比</button>
+      <button class="ask-chip" data-q="冯嘉豪">冯嘉豪</button>
+    </div>
+    <div id="ask-result"><div class="ask-hint">DeepSeek 云端模型 · 可调用 28 人档案、风险、行为、质量、测评、谈话、模型指标与工位数据。数字来自 <code>data/*.csv</code>，模型负责跨表分析和表达。</div></div>
+  </section>
+
+  <div class="footer-note">本地 28 人模拟档案库 · DeepSeek 云端分析 · 姓名为模拟姓名 · 可从顶部菜单返回风险大屏</div>
+</div>
+<script>
+const DEPT_COLORS={service:'#7C6BD6',rnd:'#4C7DFF',marketing:'#FF6B35',ops:'#28C76F',finance:'#FFB020',hr:'#E85D8A',exec:'#2B3A55'};
+const DEGREE={1:'高中及以下',2:'大专',3:'本科',4:'硕士',5:'博士'};
+const RISK_COLORS={'低风险':'#28d17c','中风险':'#ffb020','高风险':'#ff6b35','极高风险':'#ff2e63'};
+const DEPT_ORDER=['service','rnd','marketing','ops','finance','hr','exec'];
+const DEPT_NAMES={service:'客服中心',rnd:'研发部',marketing:'市场部',ops:'运营部',finance:'财务部',hr:'人力与行政',exec:'高管办公区'};
+const state={profiles:[],dept:'',query:'',selected:null};
+const $=s=>document.querySelector(s);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const initials=n=>esc(String(n||'').slice(-2));
+function deptColor(k){return DEPT_COLORS[k]||'#4c7dff'}
+function filtered(){
+  const q=state.query.trim().toLowerCase();
+  if(!state.dept&&!q)return [];
+  return state.profiles.filter(e=>{
+    const hit=!state.dept||state.dept==='all'||e.department_key===state.dept;
+    const text=[e.name,e.employee_id,e.department_cn,e.profile?.JobRole,e.floor_name].join(' ').toLowerCase();
+    return hit&&(!q||text.includes(q));
+  }).sort((a,b)=>a.floor-b.floor||a.name.localeCompare(b.name,'zh-CN'));
+}
+function renderDepartments(){
+  const groups={}; state.profiles.forEach(e=>(groups[e.department_key]??=[]).push(e));
+  $('#dept-total').textContent=`${state.profiles.length} 人`;
+  $('#dept-cards').innerHTML=`<button class="dept-card ${state.dept==='all'?'active':''}" data-dept="all"><div class="dept-top"><span class="dept-name"><i class="dept-dot" style="background:#3ddcff"></i>全部部门</span><b class="dept-count">${state.profiles.length}</b></div><div class="dept-sub">显示 28 人办公团队成员</div><div class="dept-foot">点击后应用筛选</div></button>`+
+    DEPT_ORDER.filter(k=>groups[k]).map(k=>{const members=groups[k];return `<button class="dept-card ${state.dept===k?'active':''}" data-dept="${k}"><div class="dept-top"><span class="dept-name"><i class="dept-dot" style="background:${deptColor(k)}"></i>${DEPT_NAMES[k]}</span><b class="dept-count">${members.length}</b></div><div class="dept-sub">共 ${members.length} 人 · 点击后显示名单</div><div class="dept-foot">按部门筛选</div></button>`}).join('');
+  document.querySelectorAll('[data-dept]').forEach(b=>b.onclick=()=>{state.dept=b.dataset.dept;state.selected=null;renderDepartments();renderList();clearDetail()});
+  const filter=$('#dept-filter');if(filter)filter.value=state.dept;
+}
+function renderList(){
+  const rows=filtered();
+  const hasFilter=Boolean(state.dept||state.query.trim());
+  $('#result-count').textContent=hasFilter?`${rows.length} 人`:'未筛选';
+  const deptLabel=state.dept?(state.dept==='all'?'全部部门':DEPT_NAMES[state.dept]):'未选择部门';
+  $('#filter-label').textContent=`当前筛选：${deptLabel}${state.query?` · 搜索“${state.query}”`:''}`;
+  if(!hasFilter){$('#employee-list').innerHTML='<div class="empty"><strong>先选择部门或搜索员工</strong><br>选择左侧部门卡片，或输入姓名、工号、职位后显示员工。</div>';return}
+  if(!rows.length){$('#employee-list').innerHTML='<div class="empty">没有匹配的员工。<br>可以换一个姓名、工号、部门或职位关键词。</div>';return}
+  $('#employee-list').innerHTML=rows.map(e=>{const c=deptColor(e.department_key),risk=RISK_COLORS[e.risk.level]||'#8095bd';return `<button class="employee-card ${state.selected===e.employee_id?'active':''}" data-id="${e.employee_id}"><span class="mini-avatar" style="background:${c}">${initials(e.name)}</span><span class="employee-info"><span class="employee-name">${esc(e.name)}</span><span class="employee-role">${esc(e.profile.JobRole)} · ${esc(e.department_cn)}</span><span class="employee-meta"><i class="risk-dot" style="background:${risk}"></i>${esc(e.risk.level)} · ${esc(e.floor_name)} · ${esc(e.employee_id)}</span></span></button>`}).join('');
+  document.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>selectEmployee(b.dataset.id));
+}
+function selectEmployee(id){state.selected=id;const e=state.profiles.find(x=>x.employee_id===id);if(!e)return;renderList();renderDetail(e);}
+function renderDetail(e){
+  const p=e.profile,b=e.behavior,a=e.assessment,r=e.risk,c=deptColor(e.department_key),rc=RISK_COLORS[r.level]||'#8095bd';
+  $('#detail-id').textContent=e.employee_id;
+  $('#detail-body').innerHTML=`<div class="profile-head"><div class="profile-avatar" style="background:${c}">${initials(e.name)}</div><div><div class="profile-name">${esc(e.name)}</div><div class="profile-sub">${esc(e.floor_name)} · ${esc(p.JobRole)} · ${esc(e.desk_id)}</div><div class="profile-tags"><span class="tag dept" style="background:${c}">${esc(e.department_cn)}</span><span class="tag" style="color:${rc};border-color:${rc}66">${esc(r.level)}</span></div></div></div>
+    <section class="detail-section"><h4>基本信息</h4><dl class="kv"><dt>性别 / 年龄</dt><dd>${p.Gender==='Male'?'男':'女'} · ${p.Age} 岁</dd><dt>学历</dt><dd>${DEGREE[p.Education]||'—'} · ${esc(p.background.school)}</dd><dt>专业</dt><dd>${esc(p.background.major)}</dd><dt>入职日期</dt><dd>${esc(p.background.hire_date)}</dd><dt>司龄 / 总工龄</dt><dd>${p.YearsAtCompany} / ${p.TotalWorkingYears} 年</dd><dt>合同类型</dt><dd>${esc(p.background.contract_type)}</dd><dt>月薪</dt><dd>¥${Number(p.MonthlyIncome||0).toLocaleString()}</dd></dl></section>
+    <section class="detail-section"><h4>离职风险</h4><div class="metric"><span>风险评分</span><b style="color:${rc}">${Math.round((r.score||0)*100)} / 100</b></div>${(r.top_factors||[]).map(f=>`<div class="factor"><b style="color:${f.direction==='+'?'#ff6b35':'#28d17c'}">${esc(f.direction)}</b><span>${esc(f.factor)}<small>${esc(f.detail)}</small></span></div>`).join('')}</section>
+    <section class="detail-section"><h4>近 90 天行为</h4><div class="behavior-grid"><div class="metric"><span>日均工时</span><b>${b.avg_work_hours}</b></div><div class="metric"><span>日均专注</span><b>${b.avg_focus_hours}</b></div><div class="metric"><span>迟到天数</span><b>${b.late_days}</b></div><div class="metric"><span>会议频率</span><b>${b.avg_meetings}</b></div></div></section>
+    <section class="detail-section"><h4>测评与谈话</h4><dl class="kv"><dt>敬业度</dt><dd>${a.engagement_score}</dd><dt>满意度</dt><dd>${a.satisfaction_score}</dd><dt>压力</dt><dd>${a.stress_score}</dd><dt>潜力</dt><dd>${esc(a.potential)}</dd></dl>${(e.talks||[]).slice(0,3).map(t=>`<div class="talk"><small>${esc(t.date)} · ${esc(t.type)} · ${t.duration_min}min</small>${esc(t.topic)}</div>`).join('')}</section>`;
+}
+function clearDetail(){$('#detail-id').textContent='未选择';$('#detail-body').innerHTML='<div class="detail-empty"><div><strong>选择一名员工</strong>点击人员名单，查看完整档案、学历、入职日期、行为与离职风险。</div></div>'}
+$('#search').addEventListener('input',e=>{state.query=e.target.value;if(state.selected&&!filtered().some(x=>x.employee_id===state.selected)){state.selected=null;clearDetail()}renderList()});
+$('#dept-filter').addEventListener('change',e=>{state.dept=e.target.value;state.selected=null;renderDepartments();renderList();clearDetail()});
+Promise.all([
+  fetch('profiles.json').then(r=>{if(!r.ok)throw new Error('profiles.json '+r.status);return r.json()}),
+  fetch('office_team.json').then(r=>r.ok?r.json():{ids:[]}).catch(()=>({ids:[]}))
+]).then(([p,team])=>{
+  const all=new Map(p.map(e=>[e.employee_id,e]));
+  let selected=(team.ids||[]).map(id=>all.get(id)).filter(Boolean);
+  if(selected.length!==28) selected=p.slice(0,28);
+  selected.forEach(e=>{e.floor_name='总部办公层'});
+  state.profiles=selected;
+  $('#header-total').textContent=`员工 ${selected.length} 人`;
+  renderDepartments();renderList();
+}).catch(err=>{$('#employee-list').innerHTML=`<div class="empty">档案库载入失败：${esc(err.message)}</div>`});
+
+// ---------- 数据查询面板 ----------
+// 数字一律来自后端 /api/ask 的 facts，模型只负责组织语言。
+(function(){
+  const box=$('#ask-result'),input=$('#ask-input'),btn=$('#ask-btn');
+  // Agent 模式：模型自己决定查什么，适合没预设过的问法；路由模式快且确定。
+  let mode='agent';
+  const toggle=$('#ask-mode');
+  if(toggle){toggle.textContent=mode==='agent'?'模式：Agent':'模式：快速';
+    toggle.onclick=()=>{mode=mode==='agent'?'route':'agent';
+      toggle.textContent=mode==='agent'?'模式：Agent':'模式：快速';};}
+  const fmtAnswer = (text) => {
+    let h = esc(text);
+    h = h.replace(/^#{1,4}\s*(.+)$/gm, '<div class="ask-h">$1</div>');
+    h = h.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+    h = h.replace(/^\s*[-*•]\s+(.+)$/gm, '<div class="ask-li">• $1</div>');
+    h = h.replace(/^\s*(\d+)[.、]\s+(.+)$/gm, '<div class="ask-li"><b>$1.</b> $2</div>');
+    h = h.replace(/\n{2,}/g, '\n');
+    h = h.replace(/(<div class="ask-(?:h|li)">[^\n]*<\/div>)\n/g, '$1');
+    h = h.replace(/\n/g, '<br>');
+    return h;
+  };
+  async function ask(){
+    const q=input.value.trim();
+    if(!q)return;
+    btn.disabled=true;btn.textContent='查询中…';
+    box.innerHTML='<div class="ask-hint">'+(mode==='agent'?'模型正在决定查询方式…':'正在查询数据库…')+'</div>';
+    try{
+      const r=await fetch('/api/ask?q='+encodeURIComponent(q)+'&mode='+mode);
+      const d=await r.json();
+      if(!d.ok)throw new Error(d.error||'查询失败');
+      const facts=(d.facts||[]).map(f=>`<li>${esc(f)}</li>`).join('');
+      const tools=(d.tools||[]).map(t=>`<code>${esc(t.name)}(${esc(JSON.stringify(t.args))})</code>`).join(' ');
+      box.innerHTML=`
+        ${d.answer?`<div class="ask-answer">${fmtAnswer(d.answer)}</div>`:''}
+        ${tools?`<details class="ask-tools"><summary>查看模型调用 · ${(d.tools||[]).length} 个数据接口</summary><div>${tools}</div></details>`:''}
+        ${facts?`<details class="ask-facts" ${d.answer?'':'open'}>
+          <summary>数据依据 · ${(d.facts||[]).length} 条${d.model_used?'（模型解读在上）':'（原始查询结果）'}</summary>
+          <ul>${facts}</ul>
+        </details>`:''}
+        ${d.model_error?`<div class="ask-hint">模型不可用，以下为直接查询结果：${esc(d.model_error)}</div>`:''}`;
+      if (box.scrollIntoView) box.scrollIntoView({behavior:'smooth', block:'start'});
+    }catch(err){
+      box.innerHTML=`<div class="ask-hint">查询失败：${esc(err.message)}。请确认已用 <code>python3 src/hr_server.py 8791</code> 启动服务。</div>`;
+      if (box.scrollIntoView) box.scrollIntoView({behavior:'smooth', block:'start'});
+    }finally{btn.disabled=false;btn.textContent='查询';}
+  }
+  btn.onclick=ask;
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
+  document.querySelectorAll('.ask-chip').forEach(c=>c.onclick=()=>{input.value=c.dataset.q;ask()});
+})();
+</script>
+</body>
+</html>

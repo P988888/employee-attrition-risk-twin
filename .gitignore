@@ -1,0 +1,31 @@
+# ---------- 密钥与本地配置 ----------
+.env
+.env.local
+*.key
+*.pem
+
+# ---------- 系统与编辑器 ----------
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.ipynb_checkpoints/
+.virtual_documents/
+
+# ---------- 工具与日志 ----------
+.zcode/
+*.log
+nohup.out
+
+# ---------- 运行产物（可按需保留） ----------
+output/llm_analysis/

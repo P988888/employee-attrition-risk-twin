@@ -1,0 +1,4025 @@
+{
+  "coordinate_system": {
+    "up_axis": "Z",
+    "unit": "meter",
+    "origin": "楼层西南角",
+    "x_dir": "楼层宽度方向",
+    "y_dir": "楼层进深方向"
+  },
+  "floor": {
+    "width": 64.0,
+    "depth": 44.0,
+    "ceiling_height": 3.2,
+    "slab_thickness": 0.3,
+    "wall_thickness": 0.2,
+    "column_span": 8.0,
+    "levels": 4,
+    "names": [
+      "A栋-3F",
+      "A栋-4F",
+      "A栋-5F",
+      "B栋-2F"
+    ]
+  },
+  "desk_module": {
+    "desk_width": 1.4,
+    "desk_depth": 0.7,
+    "pitch_x": 1.6,
+    "pitch_y": 1.8,
+    "aisle_every_col": 6,
+    "aisle_every_row": 4
+  },
+  "departments": [
+    {
+      "key": "marketing",
+      "cn": "市场部",
+      "en": "Marketing",
+      "color": "#FF6B35",
+      "capacity_per_floor": 90,
+      "headcount_per_floor": 73
+    },
+    {
+      "key": "rnd",
+      "cn": "研发部",
+      "en": "R&D",
+      "color": "#4C7DFF",
+      "capacity_per_floor": 117,
+      "headcount_per_floor": 117
+    },
+    {
+      "key": "finance",
+      "cn": "财务部",
+      "en": "Finance",
+      "color": "#28D17C",
+      "capacity_per_floor": 72,
+      "headcount_per_floor": 43
+    },
+    {
+      "key": "ops",
+      "cn": "运营部",
+      "en": "Operations",
+      "color": "#FFB020",
+      "capacity_per_floor": 72,
+      "headcount_per_floor": 58
+    }
+  ],
+  "headcount": {
+    "per_floor_total": 291,
+    "total": 1164,
+    "floors": 4,
+    "binding_scale": 292.5
+  },
+  "zones": [
+    {
+      "zone_id": "z_rnd",
+      "kind": "dept",
+      "label_cn": "研发部",
+      "label_en": "R&D",
+      "x": 24,
+      "y": 23,
+      "w": 26,
+      "d": 21,
+      "color": "#4C7DFF",
+      "dept_key": "rnd",
+      "capacity": 117
+    },
+    {
+      "zone_id": "z_marketing",
+      "kind": "dept",
+      "label_cn": "市场部",
+      "label_en": "Marketing",
+      "x": 2,
+      "y": 23,
+      "w": 21.5,
+      "d": 21,
+      "color": "#FF6B35",
+      "dept_key": "marketing",
+      "capacity": 90
+    },
+    {
+      "zone_id": "z_ops",
+      "kind": "dept",
+      "label_cn": "运营部",
+      "label_en": "Operations",
+      "x": 26,
+      "y": 6,
+      "w": 24,
+      "d": 16,
+      "color": "#FFB020",
+      "dept_key": "ops",
+      "capacity": 72
+    },
+    {
+      "zone_id": "z_finance",
+      "kind": "dept",
+      "label_cn": "财务部",
+      "label_en": "Finance",
+      "x": 2,
+      "y": 6,
+      "w": 23.5,
+      "d": 16,
+      "color": "#28D17C",
+      "dept_key": "finance",
+      "capacity": 72
+    },
+    {
+      "zone_id": "f_break",
+      "kind": "facility",
+      "label_cn": "休息区 · 茶水间",
+      "label_en": "Break Area",
+      "x": 50,
+      "y": 36.5,
+      "w": 14,
+      "d": 7,
+      "color": "#FFD9A0",
+      "dept_key": null,
+      "capacity": 0
+    },
+    {
+      "zone_id": "f_meeting_l",
+      "kind": "facility",
+      "label_cn": "大会议室 (16人)",
+      "label_en": "Meeting L",
+      "x": 50,
+      "y": 29,
+      "w": 14,
+      "d": 7,
+      "color": "#8FA8D8",
+      "dept_key": null,
+      "capacity": 0
+    },
+    {
+      "zone_id": "f_meeting_m1",
+      "kind": "facility",
+      "label_cn": "中会议室 (10人)",
+      "label_en": "Meeting M1",
+      "x": 50,
+      "y": 21.5,
+      "w": 6.6,
+      "d": 7,
+      "color": "#8FA8D8",
+      "dept_key": null,
+      "capacity": 0
+    },
+    {
+      "zone_id": "f_meeting_m2",
+      "kind": "facility",
+      "label_cn": "中会议室 (10人)",
+      "label_en": "Meeting M2",
+      "x": 57,
+      "y": 21.5,
+      "w": 7,
+      "d": 7,
+      "color": "#8FA8D8",
+      "dept_key": null,
+      "capacity": 0
+    },
+    {
+      "zone_id": "f_meeting_s1",
+      "kind": "facility",
+      "label_cn": "小会议室 (6人)",
+      "label_en": "Meeting S1",
+      "x": 50,
+      "y": 14,
+      "w": 6.6,
+      "d": 7,
+      "color": "#8FA8D8",
+      "dept_key": null,
+      "capacity": 0
+    },
+    {
+      "zone_id": "f_meeting_s2",
+      "kind": "facility",
+      "label_cn": "小会议室 (6人)",
+      "label_en": "Meeting S2",
+      "x": 57,
+      "y": 14,
+      "w": 7,
+      "d": 7,
+      "color": "#8FA8D8",
+      "dept_key": null,
+      "capacity": 0
+    },
+    {
+      "zone_id": "f_phone",
+      "kind": "facility",
+      "label_cn": "电话间",
+      "label_en": "Phone Booths",
+      "x": 50,
+      "y": 8,
+      "w": 14,
+      "d": 5.5,
+      "color": "#A8D8C8",
+      "dept_key": null,
+      "capacity": 0
+    },
+    {
+      "zone_id": "f_print",
+      "kind": "facility",
+      "label_cn": "打印区",
+      "label_en": "Print Zone",
+      "x": 50,
+      "y": 1,
+      "w": 14,
+      "d": 6.5,
+      "color": "#C8C8D8",
+      "dept_key": null,
+      "capacity": 0
+    },
+    {
+      "zone_id": "f_reception",
+      "kind": "facility",
+      "label_cn": "前台接待",
+      "label_en": "Reception",
+      "x": 25,
+      "y": 1,
+      "w": 14,
+      "d": 4.5,
+      "color": "#B98CFF",
+      "dept_key": null,
+      "capacity": 0
+    },
+    {
+      "zone_id": "f_storage",
+      "kind": "facility",
+      "label_cn": "储物间",
+      "label_en": "Storage",
+      "x": 1.5,
+      "y": 1,
+      "w": 7,
+      "d": 4.5,
+      "color": "#B0B0B0",
+      "dept_key": null,
+      "capacity": 0
+    },
+    {
+      "zone_id": "f_restroom",
+      "kind": "facility",
+      "label_cn": "卫生间",
+      "label_en": "Restroom",
+      "x": 9.5,
+      "y": 1,
+      "w": 8,
+      "d": 4.5,
+      "color": "#B0B0B0",
+      "dept_key": null,
+      "capacity": 0
+    }
+  ],
+  "columns": [
+    {
+      "x": 4.0,
+      "y": 6.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 4.0,
+      "y": 14.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 4.0,
+      "y": 22.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 4.0,
+      "y": 30.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 4.0,
+      "y": 38.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 12.0,
+      "y": 6.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 12.0,
+      "y": 14.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 12.0,
+      "y": 22.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 12.0,
+      "y": 30.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 12.0,
+      "y": 38.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 20.0,
+      "y": 6.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 20.0,
+      "y": 14.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 20.0,
+      "y": 22.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 20.0,
+      "y": 30.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 20.0,
+      "y": 38.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 28.0,
+      "y": 6.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 28.0,
+      "y": 14.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 28.0,
+      "y": 22.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 28.0,
+      "y": 30.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 28.0,
+      "y": 38.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 36.0,
+      "y": 6.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 36.0,
+      "y": 14.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 36.0,
+      "y": 22.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 36.0,
+      "y": 30.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 36.0,
+      "y": 38.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 44.0,
+      "y": 6.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 44.0,
+      "y": 14.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 44.0,
+      "y": 22.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 44.0,
+      "y": 30.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 44.0,
+      "y": 38.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 52.0,
+      "y": 6.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 52.0,
+      "y": 14.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 52.0,
+      "y": 22.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 52.0,
+      "y": 30.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 52.0,
+      "y": 38.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 60.0,
+      "y": 6.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 60.0,
+      "y": 14.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 60.0,
+      "y": 22.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 60.0,
+      "y": 30.0,
+      "size": 0.6,
+      "height": 3.2
+    },
+    {
+      "x": 60.0,
+      "y": 38.0,
+      "size": 0.6,
+      "height": 3.2
+    }
+  ],
+  "desks": [
+    {
+      "desk_id": "RND-001",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 26.6,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 0
+    },
+    {
+      "desk_id": "RND-002",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 28.2,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 1
+    },
+    {
+      "desk_id": "RND-003",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 29.8,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 2
+    },
+    {
+      "desk_id": "RND-004",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 31.4,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 3
+    },
+    {
+      "desk_id": "RND-005",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 33.0,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 4
+    },
+    {
+      "desk_id": "RND-006",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 34.6,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 5
+    },
+    {
+      "desk_id": "RND-007",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 36.2,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 6
+    },
+    {
+      "desk_id": "RND-008",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 39.4,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 8
+    },
+    {
+      "desk_id": "RND-009",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 41.0,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 9
+    },
+    {
+      "desk_id": "RND-010",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 42.6,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 10
+    },
+    {
+      "desk_id": "RND-011",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 44.2,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 11
+    },
+    {
+      "desk_id": "RND-012",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 45.8,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 12
+    },
+    {
+      "desk_id": "RND-013",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 47.4,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 13
+    },
+    {
+      "desk_id": "RND-014",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 26.6,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 0
+    },
+    {
+      "desk_id": "RND-015",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 28.2,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 1
+    },
+    {
+      "desk_id": "RND-016",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 29.8,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 2
+    },
+    {
+      "desk_id": "RND-017",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 31.4,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 3
+    },
+    {
+      "desk_id": "RND-018",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 33.0,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 4
+    },
+    {
+      "desk_id": "RND-019",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 34.6,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 5
+    },
+    {
+      "desk_id": "RND-020",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 36.2,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 6
+    },
+    {
+      "desk_id": "RND-021",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 39.4,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 8
+    },
+    {
+      "desk_id": "RND-022",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 41.0,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 9
+    },
+    {
+      "desk_id": "RND-023",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 42.6,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 10
+    },
+    {
+      "desk_id": "RND-024",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 44.2,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 11
+    },
+    {
+      "desk_id": "RND-025",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 45.8,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 12
+    },
+    {
+      "desk_id": "RND-026",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 47.4,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 13
+    },
+    {
+      "desk_id": "RND-027",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 26.6,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 0
+    },
+    {
+      "desk_id": "RND-028",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 28.2,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 1
+    },
+    {
+      "desk_id": "RND-029",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 29.8,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 2
+    },
+    {
+      "desk_id": "RND-030",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 31.4,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 3
+    },
+    {
+      "desk_id": "RND-031",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 33.0,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 4
+    },
+    {
+      "desk_id": "RND-032",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 34.6,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 5
+    },
+    {
+      "desk_id": "RND-033",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 36.2,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 6
+    },
+    {
+      "desk_id": "RND-034",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 39.4,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 8
+    },
+    {
+      "desk_id": "RND-035",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 41.0,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 9
+    },
+    {
+      "desk_id": "RND-036",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 42.6,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 10
+    },
+    {
+      "desk_id": "RND-037",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 44.2,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 11
+    },
+    {
+      "desk_id": "RND-038",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 45.8,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 12
+    },
+    {
+      "desk_id": "RND-039",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 47.4,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 13
+    },
+    {
+      "desk_id": "RND-040",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 26.6,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 0
+    },
+    {
+      "desk_id": "RND-041",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 28.2,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 1
+    },
+    {
+      "desk_id": "RND-042",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 29.8,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 2
+    },
+    {
+      "desk_id": "RND-043",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 31.4,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 3
+    },
+    {
+      "desk_id": "RND-044",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 33.0,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 4
+    },
+    {
+      "desk_id": "RND-045",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 34.6,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 5
+    },
+    {
+      "desk_id": "RND-046",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 36.2,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 6
+    },
+    {
+      "desk_id": "RND-047",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 39.4,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 8
+    },
+    {
+      "desk_id": "RND-048",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 41.0,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 9
+    },
+    {
+      "desk_id": "RND-049",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 42.6,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 10
+    },
+    {
+      "desk_id": "RND-050",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 44.2,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 11
+    },
+    {
+      "desk_id": "RND-051",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 45.8,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 12
+    },
+    {
+      "desk_id": "RND-052",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 47.4,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 13
+    },
+    {
+      "desk_id": "RND-053",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 26.6,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 0
+    },
+    {
+      "desk_id": "RND-054",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 28.2,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 1
+    },
+    {
+      "desk_id": "RND-055",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 29.8,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 2
+    },
+    {
+      "desk_id": "RND-056",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 31.4,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 3
+    },
+    {
+      "desk_id": "RND-057",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 33.0,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 4
+    },
+    {
+      "desk_id": "RND-058",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 34.6,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 5
+    },
+    {
+      "desk_id": "RND-059",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 36.2,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 6
+    },
+    {
+      "desk_id": "RND-060",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 39.4,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 8
+    },
+    {
+      "desk_id": "RND-061",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 41.0,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 9
+    },
+    {
+      "desk_id": "RND-062",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 42.6,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 10
+    },
+    {
+      "desk_id": "RND-063",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 44.2,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 11
+    },
+    {
+      "desk_id": "RND-064",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 45.8,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 12
+    },
+    {
+      "desk_id": "RND-065",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 47.4,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 13
+    },
+    {
+      "desk_id": "RND-066",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 26.6,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 0
+    },
+    {
+      "desk_id": "RND-067",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 28.2,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 1
+    },
+    {
+      "desk_id": "RND-068",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 29.8,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 2
+    },
+    {
+      "desk_id": "RND-069",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 31.4,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 3
+    },
+    {
+      "desk_id": "RND-070",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 33.0,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 4
+    },
+    {
+      "desk_id": "RND-071",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 34.6,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 5
+    },
+    {
+      "desk_id": "RND-072",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 36.2,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 6
+    },
+    {
+      "desk_id": "RND-073",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 39.4,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 8
+    },
+    {
+      "desk_id": "RND-074",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 41.0,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 9
+    },
+    {
+      "desk_id": "RND-075",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 42.6,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 10
+    },
+    {
+      "desk_id": "RND-076",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 44.2,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 11
+    },
+    {
+      "desk_id": "RND-077",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 45.8,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 12
+    },
+    {
+      "desk_id": "RND-078",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 47.4,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 13
+    },
+    {
+      "desk_id": "RND-079",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 26.6,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 0
+    },
+    {
+      "desk_id": "RND-080",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 28.2,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 1
+    },
+    {
+      "desk_id": "RND-081",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 29.8,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 2
+    },
+    {
+      "desk_id": "RND-082",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 31.4,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 3
+    },
+    {
+      "desk_id": "RND-083",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 33.0,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 4
+    },
+    {
+      "desk_id": "RND-084",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 34.6,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 5
+    },
+    {
+      "desk_id": "RND-085",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 36.2,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 6
+    },
+    {
+      "desk_id": "RND-086",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 39.4,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 8
+    },
+    {
+      "desk_id": "RND-087",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 41.0,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 9
+    },
+    {
+      "desk_id": "RND-088",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 42.6,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 10
+    },
+    {
+      "desk_id": "RND-089",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 44.2,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 11
+    },
+    {
+      "desk_id": "RND-090",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 45.8,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 12
+    },
+    {
+      "desk_id": "RND-091",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 47.4,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 13
+    },
+    {
+      "desk_id": "RND-092",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 26.6,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 0
+    },
+    {
+      "desk_id": "RND-093",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 28.2,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 1
+    },
+    {
+      "desk_id": "RND-094",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 29.8,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 2
+    },
+    {
+      "desk_id": "RND-095",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 31.4,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 3
+    },
+    {
+      "desk_id": "RND-096",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 33.0,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 4
+    },
+    {
+      "desk_id": "RND-097",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 34.6,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 5
+    },
+    {
+      "desk_id": "RND-098",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 36.2,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 6
+    },
+    {
+      "desk_id": "RND-099",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 39.4,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 8
+    },
+    {
+      "desk_id": "RND-100",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 41.0,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 9
+    },
+    {
+      "desk_id": "RND-101",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 42.6,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 10
+    },
+    {
+      "desk_id": "RND-102",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 44.2,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 11
+    },
+    {
+      "desk_id": "RND-103",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 45.8,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 12
+    },
+    {
+      "desk_id": "RND-104",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 47.4,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 13
+    },
+    {
+      "desk_id": "RND-105",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 26.6,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 0
+    },
+    {
+      "desk_id": "RND-106",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 28.2,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 1
+    },
+    {
+      "desk_id": "RND-107",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 29.8,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 2
+    },
+    {
+      "desk_id": "RND-108",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 31.4,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 3
+    },
+    {
+      "desk_id": "RND-109",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 33.0,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 4
+    },
+    {
+      "desk_id": "RND-110",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 34.6,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 5
+    },
+    {
+      "desk_id": "RND-111",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 36.2,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 6
+    },
+    {
+      "desk_id": "RND-112",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 39.4,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 8
+    },
+    {
+      "desk_id": "RND-113",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 41.0,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 9
+    },
+    {
+      "desk_id": "RND-114",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 42.6,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 10
+    },
+    {
+      "desk_id": "RND-115",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 44.2,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 11
+    },
+    {
+      "desk_id": "RND-116",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 45.8,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 12
+    },
+    {
+      "desk_id": "RND-117",
+      "zone_id": "z_rnd",
+      "dept_key": "rnd",
+      "x": 47.4,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 13
+    },
+    {
+      "desk_id": "MAR-001",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 4.75,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 0
+    },
+    {
+      "desk_id": "MAR-002",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 6.35,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 1
+    },
+    {
+      "desk_id": "MAR-003",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 7.95,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 2
+    },
+    {
+      "desk_id": "MAR-004",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 9.55,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 3
+    },
+    {
+      "desk_id": "MAR-005",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 11.15,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 4
+    },
+    {
+      "desk_id": "MAR-006",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 12.75,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 5
+    },
+    {
+      "desk_id": "MAR-007",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 14.35,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 6
+    },
+    {
+      "desk_id": "MAR-008",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 17.55,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 8
+    },
+    {
+      "desk_id": "MAR-009",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 19.15,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 9
+    },
+    {
+      "desk_id": "MAR-010",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 20.75,
+      "y": 25.4,
+      "rot": 0.0,
+      "row": 0,
+      "col": 10
+    },
+    {
+      "desk_id": "MAR-011",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 4.75,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 0
+    },
+    {
+      "desk_id": "MAR-012",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 6.35,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 1
+    },
+    {
+      "desk_id": "MAR-013",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 7.95,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 2
+    },
+    {
+      "desk_id": "MAR-014",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 9.55,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 3
+    },
+    {
+      "desk_id": "MAR-015",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 11.15,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 4
+    },
+    {
+      "desk_id": "MAR-016",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 12.75,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 5
+    },
+    {
+      "desk_id": "MAR-017",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 14.35,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 6
+    },
+    {
+      "desk_id": "MAR-018",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 17.55,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 8
+    },
+    {
+      "desk_id": "MAR-019",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 19.15,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 9
+    },
+    {
+      "desk_id": "MAR-020",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 20.75,
+      "y": 27.2,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 10
+    },
+    {
+      "desk_id": "MAR-021",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 4.75,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 0
+    },
+    {
+      "desk_id": "MAR-022",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 6.35,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 1
+    },
+    {
+      "desk_id": "MAR-023",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 7.95,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 2
+    },
+    {
+      "desk_id": "MAR-024",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 9.55,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 3
+    },
+    {
+      "desk_id": "MAR-025",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 11.15,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 4
+    },
+    {
+      "desk_id": "MAR-026",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 12.75,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 5
+    },
+    {
+      "desk_id": "MAR-027",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 14.35,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 6
+    },
+    {
+      "desk_id": "MAR-028",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 17.55,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 8
+    },
+    {
+      "desk_id": "MAR-029",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 19.15,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 9
+    },
+    {
+      "desk_id": "MAR-030",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 20.75,
+      "y": 29.0,
+      "rot": 0.0,
+      "row": 2,
+      "col": 10
+    },
+    {
+      "desk_id": "MAR-031",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 4.75,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 0
+    },
+    {
+      "desk_id": "MAR-032",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 6.35,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 1
+    },
+    {
+      "desk_id": "MAR-033",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 7.95,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 2
+    },
+    {
+      "desk_id": "MAR-034",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 9.55,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 3
+    },
+    {
+      "desk_id": "MAR-035",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 11.15,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 4
+    },
+    {
+      "desk_id": "MAR-036",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 12.75,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 5
+    },
+    {
+      "desk_id": "MAR-037",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 14.35,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 6
+    },
+    {
+      "desk_id": "MAR-038",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 17.55,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 8
+    },
+    {
+      "desk_id": "MAR-039",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 19.15,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 9
+    },
+    {
+      "desk_id": "MAR-040",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 20.75,
+      "y": 30.8,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 10
+    },
+    {
+      "desk_id": "MAR-041",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 4.75,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 0
+    },
+    {
+      "desk_id": "MAR-042",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 6.35,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 1
+    },
+    {
+      "desk_id": "MAR-043",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 7.95,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 2
+    },
+    {
+      "desk_id": "MAR-044",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 9.55,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 3
+    },
+    {
+      "desk_id": "MAR-045",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 11.15,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 4
+    },
+    {
+      "desk_id": "MAR-046",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 12.75,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 5
+    },
+    {
+      "desk_id": "MAR-047",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 14.35,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 6
+    },
+    {
+      "desk_id": "MAR-048",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 17.55,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 8
+    },
+    {
+      "desk_id": "MAR-049",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 19.15,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 9
+    },
+    {
+      "desk_id": "MAR-050",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 20.75,
+      "y": 32.6,
+      "rot": 0.0,
+      "row": 4,
+      "col": 10
+    },
+    {
+      "desk_id": "MAR-051",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 4.75,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 0
+    },
+    {
+      "desk_id": "MAR-052",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 6.35,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 1
+    },
+    {
+      "desk_id": "MAR-053",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 7.95,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 2
+    },
+    {
+      "desk_id": "MAR-054",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 9.55,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 3
+    },
+    {
+      "desk_id": "MAR-055",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 11.15,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 4
+    },
+    {
+      "desk_id": "MAR-056",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 12.75,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 5
+    },
+    {
+      "desk_id": "MAR-057",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 14.35,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 6
+    },
+    {
+      "desk_id": "MAR-058",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 17.55,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 8
+    },
+    {
+      "desk_id": "MAR-059",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 19.15,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 9
+    },
+    {
+      "desk_id": "MAR-060",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 20.75,
+      "y": 36.2,
+      "rot": 0.0,
+      "row": 6,
+      "col": 10
+    },
+    {
+      "desk_id": "MAR-061",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 4.75,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 0
+    },
+    {
+      "desk_id": "MAR-062",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 6.35,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 1
+    },
+    {
+      "desk_id": "MAR-063",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 7.95,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 2
+    },
+    {
+      "desk_id": "MAR-064",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 9.55,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 3
+    },
+    {
+      "desk_id": "MAR-065",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 11.15,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 4
+    },
+    {
+      "desk_id": "MAR-066",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 12.75,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 5
+    },
+    {
+      "desk_id": "MAR-067",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 14.35,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 6
+    },
+    {
+      "desk_id": "MAR-068",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 17.55,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 8
+    },
+    {
+      "desk_id": "MAR-069",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 19.15,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 9
+    },
+    {
+      "desk_id": "MAR-070",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 20.75,
+      "y": 38.0,
+      "rot": 3.1416,
+      "row": 7,
+      "col": 10
+    },
+    {
+      "desk_id": "MAR-071",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 4.75,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 0
+    },
+    {
+      "desk_id": "MAR-072",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 6.35,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 1
+    },
+    {
+      "desk_id": "MAR-073",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 7.95,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 2
+    },
+    {
+      "desk_id": "MAR-074",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 9.55,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 3
+    },
+    {
+      "desk_id": "MAR-075",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 11.15,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 4
+    },
+    {
+      "desk_id": "MAR-076",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 12.75,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 5
+    },
+    {
+      "desk_id": "MAR-077",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 14.35,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 6
+    },
+    {
+      "desk_id": "MAR-078",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 17.55,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 8
+    },
+    {
+      "desk_id": "MAR-079",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 19.15,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 9
+    },
+    {
+      "desk_id": "MAR-080",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 20.75,
+      "y": 39.8,
+      "rot": 0.0,
+      "row": 8,
+      "col": 10
+    },
+    {
+      "desk_id": "MAR-081",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 4.75,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 0
+    },
+    {
+      "desk_id": "MAR-082",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 6.35,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 1
+    },
+    {
+      "desk_id": "MAR-083",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 7.95,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 2
+    },
+    {
+      "desk_id": "MAR-084",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 9.55,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 3
+    },
+    {
+      "desk_id": "MAR-085",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 11.15,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 4
+    },
+    {
+      "desk_id": "MAR-086",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 12.75,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 5
+    },
+    {
+      "desk_id": "MAR-087",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 14.35,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 6
+    },
+    {
+      "desk_id": "MAR-088",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 17.55,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 8
+    },
+    {
+      "desk_id": "MAR-089",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 19.15,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 9
+    },
+    {
+      "desk_id": "MAR-090",
+      "zone_id": "z_marketing",
+      "dept_key": "marketing",
+      "x": 20.75,
+      "y": 41.6,
+      "rot": 3.1416,
+      "row": 9,
+      "col": 10
+    },
+    {
+      "desk_id": "OPS-001",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 28.4,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 0
+    },
+    {
+      "desk_id": "OPS-002",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 30.0,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 1
+    },
+    {
+      "desk_id": "OPS-003",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 31.6,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 2
+    },
+    {
+      "desk_id": "OPS-004",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 33.2,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 3
+    },
+    {
+      "desk_id": "OPS-005",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 34.8,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 4
+    },
+    {
+      "desk_id": "OPS-006",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 36.4,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 5
+    },
+    {
+      "desk_id": "OPS-007",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 38.0,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 6
+    },
+    {
+      "desk_id": "OPS-008",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 41.2,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 8
+    },
+    {
+      "desk_id": "OPS-009",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 42.8,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 9
+    },
+    {
+      "desk_id": "OPS-010",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 44.4,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 10
+    },
+    {
+      "desk_id": "OPS-011",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 46.0,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 11
+    },
+    {
+      "desk_id": "OPS-012",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 47.6,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 12
+    },
+    {
+      "desk_id": "OPS-013",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 28.4,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 0
+    },
+    {
+      "desk_id": "OPS-014",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 30.0,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 1
+    },
+    {
+      "desk_id": "OPS-015",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 31.6,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 2
+    },
+    {
+      "desk_id": "OPS-016",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 33.2,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 3
+    },
+    {
+      "desk_id": "OPS-017",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 34.8,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 4
+    },
+    {
+      "desk_id": "OPS-018",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 36.4,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 5
+    },
+    {
+      "desk_id": "OPS-019",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 38.0,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 6
+    },
+    {
+      "desk_id": "OPS-020",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 41.2,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 8
+    },
+    {
+      "desk_id": "OPS-021",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 42.8,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 9
+    },
+    {
+      "desk_id": "OPS-022",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 44.4,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 10
+    },
+    {
+      "desk_id": "OPS-023",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 46.0,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 11
+    },
+    {
+      "desk_id": "OPS-024",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 47.6,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 12
+    },
+    {
+      "desk_id": "OPS-025",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 28.4,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 0
+    },
+    {
+      "desk_id": "OPS-026",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 30.0,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 1
+    },
+    {
+      "desk_id": "OPS-027",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 31.6,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 2
+    },
+    {
+      "desk_id": "OPS-028",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 33.2,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 3
+    },
+    {
+      "desk_id": "OPS-029",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 34.8,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 4
+    },
+    {
+      "desk_id": "OPS-030",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 36.4,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 5
+    },
+    {
+      "desk_id": "OPS-031",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 38.0,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 6
+    },
+    {
+      "desk_id": "OPS-032",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 41.2,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 8
+    },
+    {
+      "desk_id": "OPS-033",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 42.8,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 9
+    },
+    {
+      "desk_id": "OPS-034",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 44.4,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 10
+    },
+    {
+      "desk_id": "OPS-035",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 46.0,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 11
+    },
+    {
+      "desk_id": "OPS-036",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 47.6,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 12
+    },
+    {
+      "desk_id": "OPS-037",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 28.4,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 0
+    },
+    {
+      "desk_id": "OPS-038",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 30.0,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 1
+    },
+    {
+      "desk_id": "OPS-039",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 31.6,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 2
+    },
+    {
+      "desk_id": "OPS-040",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 33.2,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 3
+    },
+    {
+      "desk_id": "OPS-041",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 34.8,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 4
+    },
+    {
+      "desk_id": "OPS-042",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 36.4,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 5
+    },
+    {
+      "desk_id": "OPS-043",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 38.0,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 6
+    },
+    {
+      "desk_id": "OPS-044",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 41.2,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 8
+    },
+    {
+      "desk_id": "OPS-045",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 42.8,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 9
+    },
+    {
+      "desk_id": "OPS-046",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 44.4,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 10
+    },
+    {
+      "desk_id": "OPS-047",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 46.0,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 11
+    },
+    {
+      "desk_id": "OPS-048",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 47.6,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 12
+    },
+    {
+      "desk_id": "OPS-049",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 28.4,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 0
+    },
+    {
+      "desk_id": "OPS-050",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 30.0,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 1
+    },
+    {
+      "desk_id": "OPS-051",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 31.6,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 2
+    },
+    {
+      "desk_id": "OPS-052",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 33.2,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 3
+    },
+    {
+      "desk_id": "OPS-053",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 34.8,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 4
+    },
+    {
+      "desk_id": "OPS-054",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 36.4,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 5
+    },
+    {
+      "desk_id": "OPS-055",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 38.0,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 6
+    },
+    {
+      "desk_id": "OPS-056",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 41.2,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 8
+    },
+    {
+      "desk_id": "OPS-057",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 42.8,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 9
+    },
+    {
+      "desk_id": "OPS-058",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 44.4,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 10
+    },
+    {
+      "desk_id": "OPS-059",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 46.0,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 11
+    },
+    {
+      "desk_id": "OPS-060",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 47.6,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 12
+    },
+    {
+      "desk_id": "OPS-061",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 28.4,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 0
+    },
+    {
+      "desk_id": "OPS-062",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 30.0,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 1
+    },
+    {
+      "desk_id": "OPS-063",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 31.6,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 2
+    },
+    {
+      "desk_id": "OPS-064",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 33.2,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 3
+    },
+    {
+      "desk_id": "OPS-065",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 34.8,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 4
+    },
+    {
+      "desk_id": "OPS-066",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 36.4,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 5
+    },
+    {
+      "desk_id": "OPS-067",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 38.0,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 6
+    },
+    {
+      "desk_id": "OPS-068",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 41.2,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 8
+    },
+    {
+      "desk_id": "OPS-069",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 42.8,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 9
+    },
+    {
+      "desk_id": "OPS-070",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 44.4,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 10
+    },
+    {
+      "desk_id": "OPS-071",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 46.0,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 11
+    },
+    {
+      "desk_id": "OPS-072",
+      "zone_id": "z_ops",
+      "dept_key": "ops",
+      "x": 47.6,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 12
+    },
+    {
+      "desk_id": "FIN-001",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 4.15,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 0
+    },
+    {
+      "desk_id": "FIN-002",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 5.75,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 1
+    },
+    {
+      "desk_id": "FIN-003",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 7.35,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 2
+    },
+    {
+      "desk_id": "FIN-004",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 8.95,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 3
+    },
+    {
+      "desk_id": "FIN-005",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 10.55,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 4
+    },
+    {
+      "desk_id": "FIN-006",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 12.15,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 5
+    },
+    {
+      "desk_id": "FIN-007",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 13.75,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 6
+    },
+    {
+      "desk_id": "FIN-008",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 16.95,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 8
+    },
+    {
+      "desk_id": "FIN-009",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 18.55,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 9
+    },
+    {
+      "desk_id": "FIN-010",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 20.15,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 10
+    },
+    {
+      "desk_id": "FIN-011",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 21.75,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 11
+    },
+    {
+      "desk_id": "FIN-012",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 23.35,
+      "y": 8.6,
+      "rot": 0.0,
+      "row": 0,
+      "col": 12
+    },
+    {
+      "desk_id": "FIN-013",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 4.15,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 0
+    },
+    {
+      "desk_id": "FIN-014",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 5.75,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 1
+    },
+    {
+      "desk_id": "FIN-015",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 7.35,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 2
+    },
+    {
+      "desk_id": "FIN-016",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 8.95,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 3
+    },
+    {
+      "desk_id": "FIN-017",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 10.55,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 4
+    },
+    {
+      "desk_id": "FIN-018",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 12.15,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 5
+    },
+    {
+      "desk_id": "FIN-019",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 13.75,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 6
+    },
+    {
+      "desk_id": "FIN-020",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 16.95,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 8
+    },
+    {
+      "desk_id": "FIN-021",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 18.55,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 9
+    },
+    {
+      "desk_id": "FIN-022",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 20.15,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 10
+    },
+    {
+      "desk_id": "FIN-023",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 21.75,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 11
+    },
+    {
+      "desk_id": "FIN-024",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 23.35,
+      "y": 10.4,
+      "rot": 3.1416,
+      "row": 1,
+      "col": 12
+    },
+    {
+      "desk_id": "FIN-025",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 4.15,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 0
+    },
+    {
+      "desk_id": "FIN-026",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 5.75,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 1
+    },
+    {
+      "desk_id": "FIN-027",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 7.35,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 2
+    },
+    {
+      "desk_id": "FIN-028",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 8.95,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 3
+    },
+    {
+      "desk_id": "FIN-029",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 10.55,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 4
+    },
+    {
+      "desk_id": "FIN-030",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 12.15,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 5
+    },
+    {
+      "desk_id": "FIN-031",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 13.75,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 6
+    },
+    {
+      "desk_id": "FIN-032",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 16.95,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 8
+    },
+    {
+      "desk_id": "FIN-033",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 18.55,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 9
+    },
+    {
+      "desk_id": "FIN-034",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 20.15,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 10
+    },
+    {
+      "desk_id": "FIN-035",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 21.75,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 11
+    },
+    {
+      "desk_id": "FIN-036",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 23.35,
+      "y": 12.2,
+      "rot": 0.0,
+      "row": 2,
+      "col": 12
+    },
+    {
+      "desk_id": "FIN-037",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 4.15,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 0
+    },
+    {
+      "desk_id": "FIN-038",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 5.75,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 1
+    },
+    {
+      "desk_id": "FIN-039",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 7.35,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 2
+    },
+    {
+      "desk_id": "FIN-040",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 8.95,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 3
+    },
+    {
+      "desk_id": "FIN-041",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 10.55,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 4
+    },
+    {
+      "desk_id": "FIN-042",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 12.15,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 5
+    },
+    {
+      "desk_id": "FIN-043",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 13.75,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 6
+    },
+    {
+      "desk_id": "FIN-044",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 16.95,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 8
+    },
+    {
+      "desk_id": "FIN-045",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 18.55,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 9
+    },
+    {
+      "desk_id": "FIN-046",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 20.15,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 10
+    },
+    {
+      "desk_id": "FIN-047",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 21.75,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 11
+    },
+    {
+      "desk_id": "FIN-048",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 23.35,
+      "y": 14.0,
+      "rot": 3.1416,
+      "row": 3,
+      "col": 12
+    },
+    {
+      "desk_id": "FIN-049",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 4.15,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 0
+    },
+    {
+      "desk_id": "FIN-050",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 5.75,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 1
+    },
+    {
+      "desk_id": "FIN-051",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 7.35,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 2
+    },
+    {
+      "desk_id": "FIN-052",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 8.95,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 3
+    },
+    {
+      "desk_id": "FIN-053",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 10.55,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 4
+    },
+    {
+      "desk_id": "FIN-054",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 12.15,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 5
+    },
+    {
+      "desk_id": "FIN-055",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 13.75,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 6
+    },
+    {
+      "desk_id": "FIN-056",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 16.95,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 8
+    },
+    {
+      "desk_id": "FIN-057",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 18.55,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 9
+    },
+    {
+      "desk_id": "FIN-058",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 20.15,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 10
+    },
+    {
+      "desk_id": "FIN-059",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 21.75,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 11
+    },
+    {
+      "desk_id": "FIN-060",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 23.35,
+      "y": 15.8,
+      "rot": 0.0,
+      "row": 4,
+      "col": 12
+    },
+    {
+      "desk_id": "FIN-061",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 4.15,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 0
+    },
+    {
+      "desk_id": "FIN-062",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 5.75,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 1
+    },
+    {
+      "desk_id": "FIN-063",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 7.35,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 2
+    },
+    {
+      "desk_id": "FIN-064",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 8.95,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 3
+    },
+    {
+      "desk_id": "FIN-065",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 10.55,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 4
+    },
+    {
+      "desk_id": "FIN-066",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 12.15,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 5
+    },
+    {
+      "desk_id": "FIN-067",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 13.75,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 6
+    },
+    {
+      "desk_id": "FIN-068",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 16.95,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 8
+    },
+    {
+      "desk_id": "FIN-069",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 18.55,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 9
+    },
+    {
+      "desk_id": "FIN-070",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 20.15,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 10
+    },
+    {
+      "desk_id": "FIN-071",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 21.75,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 11
+    },
+    {
+      "desk_id": "FIN-072",
+      "zone_id": "z_finance",
+      "dept_key": "finance",
+      "x": 23.35,
+      "y": 19.4,
+      "rot": 0.0,
+      "row": 6,
+      "col": 12
+    }
+  ],
+  "desk_count_per_floor": 351,
+  "assigned_total": 1164
+}

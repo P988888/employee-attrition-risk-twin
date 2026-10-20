@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>员工离职风险预测及行为检查系统 · 3D 可视化大屏</title>
+<!--
+  three r160 起官方已移除 examples/js 的全局构建，必须走 ES module。
+  这里把 three.module.js 与 OrbitControls.js 一并放在 vendor/ 本地引用，
+  既避免 CDN 版本漂移导致 THREE.OrbitControls 未定义，也能完全离线运行。
+-->
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three.module.js",
+    "three/addons/controls/OrbitControls.js": "./vendor/OrbitControls.js",
+    "three/addons/loaders/GLTFLoader.js": "./vendor/loaders/GLTFLoader.js"
+  }
+}
+</script>
+<style>
+  :root{
+    --bg:#070b18; --panel:rgba(10,18,40,.84); --line:rgba(90,160,255,.22);
+    --cyan:#3ddcff; --blue:#4c7dff; --green:#28d17c; --amber:#ffb020;
+    --orange:#ff6b35; --red:#ff2e63; --text:#e8f0ff; --dim:#7d90b8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif}
+  canvas{display:block}
+
+  /* ---------- 科技背景：深空 / 极光 / 网格 / 粒子 ---------- */
+  #bgfx{position:fixed;inset:0;z-index:0;overflow:hidden;
+    background:
+      radial-gradient(1150px 720px at 16% -4%, rgba(47,156,255,.19), transparent 64%),
+      radial-gradient(950px 650px at 92% 10%, rgba(126,91,255,.13), transparent 62%),
+      radial-gradient(1100px 760px at 52% 112%, rgba(48,116,255,.18), transparent 68%),
+      linear-gradient(180deg,#040914,#071127 48%,#050b18 100%);
+  }
+  /* 细点阵 */
+  #bgfx::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.42;
+    background-image:radial-gradient(circle,rgba(118,204,255,.55) 1px,transparent 1.5px);
+    background-size:30px 30px;
+    mask-image:linear-gradient(180deg,transparent 0%,#000 20%,#000 78%,transparent 100%);
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 20%,#000 78%,transparent 100%)}
+  /* 四角 HUD */
+  #bghud{position:fixed;inset:7px;z-index:1;pointer-events:none;opacity:.82;
+    background:
+      repeating-linear-gradient(180deg,rgba(92,216,255,.28) 0 1px,transparent 1px 16px) left 3px top 20%/1px 60% no-repeat,
+      repeating-linear-gradient(180deg,rgba(92,216,255,.20) 0 1px,transparent 1px 16px) right 3px bottom 20%/1px 60% no-repeat,
+      linear-gradient(#77e9ff,#77e9ff) left top/28px 1px no-repeat,
+      linear-gradient(#77e9ff,#77e9ff) left top/1px 28px no-repeat,
+      linear-gradient(#77e9ff,#77e9ff) right top/28px 1px no-repeat,
+      linear-gradient(#77e9ff,#77e9ff) right top/1px 28px no-repeat,
+      linear-gradient(#77e9ff,#77e9ff) left bottom/28px 1px no-repeat,
+      linear-gradient(#77e9ff,#77e9ff) left bottom/1px 28px no-repeat,
+      linear-gradient(#9a8bff,#9a8bff) right bottom/28px 1px no-repeat,
+      linear-gradient(#9a8bff,#9a8bff) right bottom/1px 28px no-repeat}
+  #bghud::before{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(74,207,255,.34),rgba(74,207,255,0));opacity:.7}
+  #bghud::after{content:"";position:absolute;left:18%;right:18%;bottom:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(145,121,255,.3),transparent);opacity:.7}
+  @media(prefers-reduced-motion:reduce){
+    .stage-hud::before,.stage-hud::after{animation:none!important}
+  }
+
+  .layer{position:fixed;inset:0;z-index:2;pointer-events:none;display:grid;
+    grid-template-rows:auto auto minmax(0,1fr) auto;padding:12px 18px;gap:10px;min-height:0}
+  .layer>*{pointer-events:auto}
+
+  /* ---------- 顶栏 ---------- */
+  header{display:grid;grid-template-columns:minmax(250px,1fr) auto minmax(250px,1fr);
+    align-items:center;gap:16px;padding:10px 20px;min-height:68px;border:1px solid var(--line);
+    border-radius:14px;background:linear-gradient(90deg,rgba(11,19,38,.94),rgba(11,19,38,.80));
+    box-shadow:0 8px 40px rgba(0,0,0,.5)}
+  h1{grid-column:2;text-align:center;font-size:21px;font-weight:700;letter-spacing:1.3px;
+    line-height:1.2;background:linear-gradient(90deg,#7fe7ff,#4c7dff 60%,#b98cff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+  h1 small{display:block;font-size:11px;letter-spacing:1px;color:var(--dim);
+    font-weight:400;-webkit-text-fill-color:var(--dim);margin-top:3px}
+  .hdr-right{grid-column:3;display:flex;align-items:center;justify-content:flex-end;gap:16px;font-size:12px;color:var(--dim);min-width:0}
+  .top-nav{grid-column:1;grid-row:1;display:flex;align-items:center;gap:5px;margin-left:0}
+  .top-nav a{display:inline-flex;align-items:center;min-height:32px;padding:0 11px;border:1px solid transparent;
+    border-radius:8px;color:var(--dim);text-decoration:none;font-size:11px;transition:.18s;white-space:nowrap}
+  .top-nav a:hover{color:var(--text);border-color:var(--line);background:rgba(61,220,255,.08)}
+  .top-nav a.active{color:#04121f;background:linear-gradient(135deg,var(--cyan),#5aa6ff);font-weight:700}
+  .pill{padding:6px 14px;border:1px solid var(--line);border-radius:999px;
+    background:rgba(61,220,255,.07);color:var(--cyan);font-weight:600;letter-spacing:.5px}
+  .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);
+    margin-right:7px;box-shadow:0 0 10px var(--green);animation:blink 2s infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+  /* ---------- KPI ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;min-height:0}
+  .kpi{padding:14px 18px;border:1px solid var(--line);border-radius:13px;
+    background:var(--panel);position:relative;overflow:hidden;
+    transition:transform .25s,border-color .25s}
+  .kpi:hover{transform:translateY(-3px);border-color:rgba(61,220,255,.5)}
+  .kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(180deg,var(--cyan),var(--blue))}
+  .kpi .lb{font-size:11.5px;color:var(--dim);letter-spacing:.6px}
+  .kpi .vl{font-size:27px;font-weight:700;margin-top:6px;letter-spacing:.5px;
+    font-variant-numeric:tabular-nums}
+  .kpi .sub{font-size:11px;color:var(--dim);margin-top:3px}
+
+  /* ---------- 主区 ---------- */
+  main{display:grid;grid-template-columns:258px minmax(0,1fr) 318px;gap:12px;min-height:0;height:100%;align-items:stretch;overflow:hidden}
+  main>.side{min-width:0}
+  main>.stage{min-width:0}
+  .side{display:flex;flex-direction:column;gap:12px;min-height:0;overflow-y:auto;
+    scrollbar-width:thin;scrollbar-color:rgba(90,160,255,.4) transparent}
+  .side::-webkit-scrollbar{width:5px}
+  .side::-webkit-scrollbar-thumb{background:rgba(90,160,255,.35);border-radius:9px}
+  .card{border:1px solid var(--line);border-radius:13px;background:var(--panel);
+    backdrop-filter:blur(12px);padding:13px 15px;flex-shrink:0;
+    box-shadow:inset 0 1px 0 rgba(150,205,255,.045)}
+  .card h3{font-size:12.5px;font-weight:600;letter-spacing:1px;color:#a8c8ff;
+    margin-bottom:11px;display:flex;align-items:center;gap:7px}
+  .card h3::before{content:"";width:3px;height:13px;border-radius:2px;
+    background:linear-gradient(180deg,var(--cyan),var(--blue))}
+
+  /* 视图舞台 */
+  .stage{position:relative;border:1px solid rgba(85,190,255,.28);border-radius:15px;
+    overflow:hidden;min-height:0;
+    box-shadow:0 0 0 1px rgba(61,220,255,.10),0 0 52px rgba(61,220,255,.10);
+    background:linear-gradient(170deg,#0b1830 0%,#10294b 52%,#08152b 100%)}
+  #gl{position:absolute;inset:0}
+  .office-frame{position:absolute;inset:0;width:100%;height:100%;border:0;
+    display:block;background:#141412;z-index:2}
+  .office-frame.hidden{display:none}
+  .stage-hud{position:absolute;inset:7px;z-index:4;pointer-events:none;border:1px solid rgba(95,210,255,.17);
+    border-radius:10px;box-shadow:inset 0 0 54px rgba(38,118,255,.055);
+    background:
+      repeating-linear-gradient(180deg,rgba(90,214,255,.32) 0 1px,transparent 1px 17px) left 4px top 18%/1px 64% no-repeat,
+      repeating-linear-gradient(180deg,rgba(90,214,255,.24) 0 1px,transparent 1px 17px) right 4px bottom 18%/1px 64% no-repeat}
+  .stage-hud::before,.stage-hud::after{content:"";position:absolute;height:1px;top:-1px;left:9%;right:22%;
+    background:linear-gradient(90deg,transparent,rgba(87,224,255,.85),rgba(87,224,255,.06));
+    background-size:220% 100%;animation:hudBeam 9s linear infinite;box-shadow:0 0 10px rgba(61,220,255,.25)}
+  .stage-hud::after{top:auto;bottom:-1px;left:22%;right:9%;animation-direction:reverse;
+    background:linear-gradient(90deg,rgba(127,108,255,.06),rgba(127,108,255,.68),transparent);box-shadow:0 0 10px rgba(127,108,255,.2)}
+  @keyframes hudBeam{to{background-position:220% 0}}
+  .stage-top{position:absolute;top:12px;left:14px;right:14px;display:flex;
+    justify-content:space-between;align-items:flex-start;gap:10px;z-index:5;pointer-events:none}
+  .tabs{display:flex;gap:7px;pointer-events:auto}
+  .tab{padding:7px 15px;font-size:11.5px;font-weight:600;letter-spacing:.5px;cursor:pointer;
+    border:1px solid var(--line);border-radius:9px;color:var(--dim);
+    background:rgba(13,21,42,.94);transition:.2s;white-space:nowrap}
+  .tab:hover{color:var(--text);border-color:rgba(61,220,255,.45)}
+  .tab.on{color:#04121f;background:linear-gradient(135deg,var(--cyan),#5aa6ff);
+    border-color:transparent;box-shadow:0 4px 18px rgba(61,220,255,.4)}
+  .hint{font-size:10.5px;color:var(--dim);background:rgba(16,24,48,.7);
+    padding:7px 12px;border-radius:9px;border:1px solid var(--line);
+    line-height:1.6;text-align:right;max-width:210px}
+  .legend3d{position:absolute;left:12px;bottom:12px;z-index:5;max-width:220px;
+    background:rgba(16,24,48,.88);border:1px solid var(--line);border-radius:10px;
+    padding:9px 12px;font-size:10px;color:var(--dim)}
+  .bar{height:8px;border-radius:5px;margin:6px 0 3px;width:100%;
+    background:linear-gradient(90deg,#28d17c,#ffb020 45%,#ff6b35 72%,#ff2e63)}
+  .barlb{display:flex;justify-content:space-between;width:100%}
+  .chips{display:flex;gap:8px;margin-top:7px;flex-wrap:wrap}
+  .chip{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--dim)}
+  .chip i{width:9px;height:9px;border-radius:2px;display:inline-block}
+
+  /* 迷你图表 */
+  .mrow{display:flex;align-items:center;gap:9px;margin-bottom:9px;font-size:11px}
+  .mrow .nm{width:66px;color:var(--dim);flex-shrink:0;font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .role-row .nm{width:82px}
+  .role-row{gap:7px}
+  .mrow .track{flex:1;height:15px;background:rgba(255,255,255,.05);border-radius:5px;
+    overflow:hidden;position:relative}
+  .mrow .fill{height:100%;border-radius:5px;transition:width .9s cubic-bezier(.22,1,.36,1);
+    display:flex;align-items:center;justify-content:flex-end;padding-right:6px;
+    font-size:10px;font-weight:700;color:#04121f}
+  .mrow .vv{width:48px;text-align:right;font-variant-numeric:tabular-nums;
+    font-weight:700;font-size:11px;color:var(--text);flex-shrink:0}
+
+  .roc{width:100%;height:132px;display:block}
+  .stat2{display:grid;grid-template-columns:1fr 1fr;gap:9px;font-size:11px}
+  .stat2 div{background:rgba(255,255,255,.04);border-radius:8px;padding:9px 11px}
+  .stat2 b{display:block;font-size:18px;color:var(--cyan);margin-top:3px;
+    font-variant-numeric:tabular-nums}
+  .note{font-size:10px;color:#5d6f96;margin-top:9px;line-height:1.6}
+  .employee-side{gap:12px;overflow-y:auto;overflow-x:hidden;padding-right:4px}
+  .employee-card-panel{overflow:visible}
+  .employee-side .card{min-height:0;flex:0 0 auto}
+  .employee-side #employee-summary-card{flex:0 0 auto}
+  .employee-side .employee-card-panel:not(#employee-summary-card){flex:0 0 auto}
+  .panel-live{margin-left:auto;font-size:9px;font-weight:500;color:var(--cyan);letter-spacing:0;text-transform:none}
+  .employee-empty{display:grid;place-items:center;min-height:158px;padding:18px;text-align:center;color:#6f82aa;font-size:11px;line-height:1.7;border:1px dashed rgba(90,160,255,.2);border-radius:9px;background:rgba(255,255,255,.025)}
+  .employee-empty.compact{min-height:78px}
+  .employee-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .employee-avatar{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#06111f;font-size:14px;font-weight:800;flex-shrink:0}
+  .employee-name{font-size:15px;font-weight:700;color:var(--text)}
+  .employee-sub{font-size:10px;color:#7d90b8;line-height:1.6;margin-top:2px}
+  .employee-risk{margin-left:auto;padding:3px 7px;border-radius:6px;font-size:10px;font-weight:700;white-space:nowrap}
+  .employee-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}
+  .employee-grid .kv{padding:7px 8px;border-radius:7px;background:rgba(255,255,255,.04);min-width:0}
+  .employee-grid .kv span{display:block;color:#7185ad;font-size:9px;margin-bottom:2px}
+  .employee-grid .kv b{display:block;color:#e8f0ff;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .employee-grid .kv b.live-state-val{display:inline-flex;align-items:center;gap:5px;color:#a8f0cf}
+  .live-state-val i{display:inline-block;width:5px;height:5px;border-radius:50%;background:#28d17c;box-shadow:0 0 8px #28d17c;animation:livePulse 2s ease-in-out infinite;flex-shrink:0}
+  @keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
+  .emp-bar{display:grid;grid-template-columns:47px 1fr 34px;gap:6px;align-items:center;margin:7px 0;font-size:10px;color:#7d90b8}
+  .emp-bar .track{height:8px;border-radius:5px;background:rgba(255,255,255,.07);overflow:hidden}
+  .emp-bar .fill{display:block;height:100%;border-radius:5px}
+  .emp-bar b{text-align:right;color:#e8f0ff;font-size:10px}
+  .employee-section-label{font-size:10px;color:#a8c8ff;margin:8px 0 5px;font-weight:600}
+  .employee-factor{display:flex;gap:6px;padding:5px 0;border-bottom:1px solid rgba(90,160,255,.1);font-size:10px;line-height:1.4}
+  .employee-factor:last-child{border-bottom:0}
+  .employee-factor strong{font-size:12px;width:11px}
+  .employee-factor small{display:block;color:#6f82aa;font-size:9px;margin-top:1px}
+  .employee-talk{padding:5px 7px;margin-top:5px;border-radius:6px;background:rgba(255,255,255,.04);font-size:9.5px;color:#c8d6ef;line-height:1.45}
+  .employee-talk small{display:block;color:#7185ad;margin-bottom:2px}
+
+  /* ---------- 底栏：数据源 + 实时高风险 TOP5 ---------- */
+  footer{display:flex;align-items:center;gap:18px;min-height:54px;overflow:hidden;
+    padding:9px 18px;border:1px solid var(--line);border-radius:13px;
+    background:linear-gradient(90deg,rgba(9,16,33,.95),rgba(16,28,54,.86));
+    box-shadow:inset 0 1px 0 rgba(130,190,255,.07),0 8px 30px rgba(0,0,0,.22);
+    font-size:11px;color:var(--dim)}
+  .data-meta{display:flex;align-items:center;gap:9px;min-width:0;flex-shrink:0}
+  .data-live{display:inline-flex;align-items:center;gap:5px;height:21px;padding:0 8px;border-radius:5px;
+    color:#84f0c0;background:rgba(40,209,124,.08);border:1px solid rgba(40,209,124,.22);
+    font-size:8px;font-weight:700;letter-spacing:1.1px;white-space:nowrap}
+  .data-live i{width:5px;height:5px;border-radius:50%;background:#28d17c;box-shadow:0 0 7px #28d17c;animation:blink 2s infinite}
+  .data-file{display:flex;align-items:center;gap:5px;min-width:0;color:#8ca2c6;white-space:nowrap}
+  .data-file b{color:#c8d8f2;font-weight:600;font-variant-numeric:tabular-nums}
+  .data-sep{width:1px;height:18px;background:rgba(120,160,230,.18);flex-shrink:0}
+  .data-team{color:#6f84a7;white-space:nowrap;font-size:10px}
+  .data-team b{color:#bfe8ff;font-weight:700}
+  .data-archive{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 8px;border-radius:6px;
+    border:1px solid rgba(61,220,255,.17);background:rgba(61,220,255,.05);color:#88c8e8;
+    font-size:9px;text-decoration:none;white-space:nowrap;transition:.18s}
+  .data-archive b{color:#bdefff;font-weight:700}
+  .data-archive i{font-style:normal;color:#5f9bb8;font-size:10px}
+  .data-archive:hover{color:#d8f8ff;border-color:rgba(61,220,255,.45);background:rgba(61,220,255,.11)}
+  .risk-strip{display:flex;align-items:center;gap:9px;flex:1;justify-content:flex-end;min-width:0;overflow:hidden}
+  .risk-strip-label{display:flex;align-items:center;gap:6px;flex-shrink:0;color:#7c8fb4;font-size:9.5px;white-space:nowrap}
+  .risk-strip-label .mini{display:inline-flex;align-items:center;height:17px;padding:0 5px;border-radius:4px;
+    color:#ff9aae;background:rgba(255,46,99,.09);border:1px solid rgba(255,46,99,.2);
+    font-size:7.5px;font-weight:800;letter-spacing:1px}
+  .top5{display:flex;align-items:center;gap:6px;min-width:0;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;
+    padding:2px 1px;scrollbar-width:none}
+  .top5::-webkit-scrollbar{display:none}
+  .t5{display:flex;align-items:center;gap:7px;min-height:32px;padding:4px 9px 4px 7px;border-radius:7px;
+    background:linear-gradient(180deg,rgba(255,64,104,.10),rgba(255,46,99,.05));
+    border:1px solid rgba(255,46,99,.23);white-space:nowrap;flex-shrink:0;
+    font-variant-numeric:tabular-nums;transition:.18s}
+  .t5:hover{background:rgba(255,46,99,.13);border-color:rgba(255,112,143,.42);transform:translateY(-1px)}
+  .t5 .rk{font-size:8px;font-weight:700;color:#d97890;letter-spacing:.3px;min-width:11px}
+  .t5 .who{display:flex;flex-direction:column;gap:1px;min-width:0}
+  .t5 .who b{color:#f5dfe6;font-size:10.5px;font-weight:600;line-height:1.15}
+  .t5 .who small{color:#a37f8d;font-size:8.5px;line-height:1.1;max-width:86px;overflow:hidden;text-overflow:ellipsis}
+  .t5 .score{color:#ff9aae;font-size:10.5px;font-weight:700;margin-left:3px;letter-spacing:.2px}
+  @media(max-width:1500px){
+    footer{gap:12px;padding:8px 15px}
+    .data-archive{display:none}
+    .t5{padding-right:8px;gap:6px}
+    .t5 .who small{max-width:74px}
+  }
+  @media(max-width:1260px){
+    .risk-strip-label .txt{display:none}
+    footer{gap:10px;padding:8px 12px}
+    .t5 .rk{display:none}
+    .t5 .who small{display:none}
+    .t5{min-height:30px;padding:4px 8px}
+  }
+  @media(max-width:600px){
+    .data-team{display:none}
+    .data-archive{display:none}
+  }
+  @media(max-width:900px){
+    footer{flex-wrap:wrap;gap:7px;padding:9px 11px}
+    .data-meta{width:100%}
+    .risk-strip{width:100%;justify-content:flex-start}
+    .risk-strip-label{flex-shrink:0}
+    .top5{width:100%;padding-right:0}
+  }
+
+
+  #loading{position:fixed;inset:0;z-index:99;display:grid;place-items:center;
+    background:var(--bg);color:var(--cyan);font-size:14px;letter-spacing:2px}
+  #loading.hide{opacity:0;pointer-events:none;transition:opacity .5s}
+  @media(max-width:1500px){main{grid-template-columns:235px minmax(0,1fr) 300px}
+    .kpi .vl{font-size:22px}}
+  @media(max-width:1100px){main{grid-template-columns:1fr 300px}.side:first-child{display:none}}
+  @media(max-width:760px){main{grid-template-columns:1fr}.employee-side{display:none}}
+</style>
+</head>
+<body>
+<div id="bgfx"></div>
+<div id="bghud"></div>
+
+<div id="loading">正在载入模型数据…</div>
+
+<div class="layer">
+  <header>
+    <h1>员工离职风险预测及行为检查系统
+      <small>3D EMPLOYEE ATTRITION &amp; BEHAVIOR ANALYTICS</small></h1>
+    <nav class="top-nav" aria-label="主菜单">
+      <a class="active" href="index.html" aria-current="page">风险大屏</a>
+      <a href="building.html">3D楼层</a>
+      <a href="employee_archive.html">员工档案库</a>
+    </nav>
+    <div class="hdr-right">
+      <span class="pill" id="p-best">模型 —</span>
+      <span class="pill" id="p-auc">AUC —</span>
+      <span><span class="dot"></span><span id="p-time">—</span></span>
+    </div>
+  </header>
+
+  <main>
+    <!-- 左栏：全部统计均来自当前 28 人员工档案。 -->
+    <div class="side">
+      <div class="card">
+        <h3>风险等级分布</h3>
+        <div id="risk-levels"></div>
+        <div class="note" id="risk-note">当前档案口径</div>
+      </div>
+      <div class="card">
+        <h3>部门风险画像</h3>
+        <div id="dept-list"></div>
+      </div>
+      <div class="card">
+        <h3>高离职风险岗位</h3>
+        <div id="role-list"></div>
+      </div>
+    </div>
+
+    <!-- 中央 3D 舞台：NEXUS 28 人办公层（iframe）+ 三个风险分析视图（WebGL）。 -->
+    <div class="stage">
+      <div id="gl"></div>
+      <iframe class="office-frame" id="office-frame" src="office-embed.html?embed=1&v=10"
+        title="28 人 3D 办公层 · 点击人物查看档案"></iframe>
+      <div class="stage-hud" aria-hidden="true"></div>
+      <div class="stage-top">
+        <div class="tabs">
+          <div class="tab on" data-view="office">3D楼层</div>
+          <div class="tab" data-view="cloud">风险点云</div>
+          <div class="tab" data-view="bars">部门风险柱阵</div>
+          <div class="tab" data-view="surface">压力地形</div>
+        </div>
+        <div class="hint" id="view-hint">拖拽旋转 · 滚轮缩放 · 右键平移</div>
+      </div>
+      <div class="legend3d" id="legend3d">
+        <div style="color:#a8c8ff;font-weight:600;letter-spacing:.5px">离职风险概率</div>
+        <div class="bar"></div>
+        <div class="barlb"><span>低 0%</span><span>50%</span><span>100%</span></div>
+        <div class="chips"><span class="chip"><i style="background:#28d17c"></i>低</span><span class="chip"><i style="background:#ffb020"></i>中</span><span class="chip"><i style="background:#ff6b35"></i>高</span><span class="chip"><i style="background:#ff2e63"></i>极高</span><span class="chip"><i style="background:#fff;border-radius:50%"></i>已标记离职</span></div>
+        <div class="chips" id="office-chips"></div>
+      </div>
+    </div>
+
+    <!-- 右栏：点击楼层人物后显示 profiles.json 当前档案。 -->
+    <div class="side employee-side" id="employee-side">
+      <div class="card employee-card-panel" id="employee-summary-card">
+        <h3>员工档案 <span class="panel-live">3D 实时联动</span></h3>
+        <div id="employee-summary" class="employee-empty">点击楼层中的员工头像，查看最新档案数据</div>
+      </div>
+      <div class="card employee-card-panel">
+        <h3>员工指标</h3>
+        <div id="employee-metrics" class="employee-empty compact">尚未选择员工</div>
+      </div>
+      <div class="card employee-card-panel">
+        <h3>风险因子与跟进</h3>
+        <div id="employee-risks" class="employee-empty compact">选择员工后显示风险因子、行为质量和谈话记录</div>
+      </div>
+    </div>
+  </main>
+
+  <footer aria-label="数据来源与高风险员工">
+    <div class="data-meta">
+      <span class="data-live"><i></i>LIVE</span>
+      <span class="data-file">数据源 <b id="data-source">profiles.json</b></span>
+      <span class="data-sep"></span>
+      <span class="data-team"><b id="data-count">28</b> 人展示团队</span>
+      <a class="data-archive" href="employee_archive.html" title="进入员工档案库">档案库 <b id="archive-count">28</b> 人 <i>↗</i></a>
+    </div>
+    <div class="risk-strip">
+      <div class="risk-strip-label"><span class="mini">TOP 5</span><span class="txt">当前档案最高风险</span></div>
+      <div class="top5" id="top5"></div>
+    </div>
+  </footer>
+</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { Sim, WORK_START, WORK_END } from './sim.js';
+
+const $ = s => document.querySelector(s);
+const fmtPct = v => (Number(v || 0) * 100).toFixed(1) + '%';
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ============ 载入当前员工档案 ============ */
+let D = null, BUILDING_DATA = null;
+Promise.all([
+  fetch('building.json').then(r => { if (!r.ok) throw new Error('building.json HTTP ' + r.status); return r.json(); }),
+  fetch('profiles.json').then(r => { if (!r.ok) throw new Error('profiles.json HTTP ' + r.status); return r.json(); }),
+  fetch('office_team.json').then(r => r.ok ? r.json() : { ids:[] }).catch(() => ({ ids:[] }))
+]).then(([building, profiles, team]) => {
+  BUILDING_DATA = building;
+  const all = new Map(profiles.map(e => [e.employee_id, e]));
+  let selected = (team.ids || []).map(id => all.get(id)).filter(Boolean);
+  if (selected.length !== 28) selected = profiles.slice(0, 28);
+  selected.forEach(e => { e.floor_name = '总部办公层'; });
+  D = { profiles: selected };
+  boot();
+}).catch(e => {
+  console.error('[dashboard] 启动失败', e);
+  const el = $('#loading');
+  if (el) el.textContent = '启动失败：' + e.message;
+});
+
+function boot(){
+  renderKpis();
+  renderRiskLevels();
+  renderDeptRoles();
+  renderTop5();
+  $('#p-best').textContent = '档案数据';
+  $('#p-auc').textContent  = `${D.profiles.length} 人`;
+  $('#p-time').textContent = '3D 实时';
+  $('#data-source').textContent = 'profiles.json';
+  $('#data-count').textContent = D.profiles.length;
+  $('#archive-count').textContent = D.profiles.length;
+  // 用于员工档案卡里的「当前状态」，不驱动 3D 场景。
+  sim = new Sim(BUILDING_DATA, D.profiles);
+  sim.initSnapshotBuffer();
+  sim.seek(WORK_START + 60);
+  init3D();
+  $('#loading').classList.add('hide');
+  setTimeout(() => $('#loading').remove(), 600);
+}
+
+/* ============ KPI ============ */
+function profileStats(){
+  const p = D.profiles;
+  const levels = Object.fromEntries(['低风险','中风险','高风险','极高风险'].map(l => [l, 0]));
+  const depts = new Map(), roles = new Map();
+  p.forEach(e => {
+    const score = Number(e.risk?.score) || 0;
+    const dept = e.department_cn || e.department_key || '未分组';
+    const role = e.profile?.JobRole || '未标注岗位';
+    if (levels[e.risk?.level] !== undefined) levels[e.risk.level]++;
+    const d = depts.get(dept) || {dept,n:0,score:0,left:0,high:0};
+    d.n++; d.score += score; if (e.profile?.Attrition === 'Yes') d.left++; if (score >= .5) d.high++; depts.set(dept,d);
+    const r = roles.get(role) || {role,n:0,score:0,high:0};
+    r.n++; r.score += score; if (score >= .5) r.high++; roles.set(role,r);
+  });
+  return {p,levels,depts:[...depts.values()].map(d=>({...d,avg:d.score/d.n})).sort((a,b)=>b.avg-a.avg),roles:[...roles.values()].map(r=>({...r,avg:r.score/r.n})).sort((a,b)=>b.avg-a.avg)};
+}
+function renderKpis(){
+  const s = profileStats(), p = s.p, n = p.length || 1;
+  const high = p.filter(e => ['高风险','极高风险'].includes(e.risk?.level)).length;
+  const left = p.filter(e => e.profile?.Attrition === 'Yes').length;
+  const ot = p.filter(e => e.profile?.OverTime === 'Yes').length;
+  const avg = p.reduce((sum,e) => sum + (Number(e.risk?.score)||0), 0) / n;
+  const kpis = [
+    {lb:'员工档案',vl:n.toLocaleString(),sub:'profiles.json 当前样本',c:'var(--cyan)'},
+    {lb:'平均风险',vl:fmtPct(avg),sub:`${high} 人高风险及以上`,c:'var(--orange)'},
+    {lb:'已标记离职',vl:left.toLocaleString(),sub:`占比 ${fmtPct(left/n)}`,c:'var(--red)'},
+    {lb:'加班员工',vl:ot.toLocaleString(),sub:`占比 ${fmtPct(ot/n)}`,c:'var(--amber)'},
+    {lb:'覆盖部门',vl:new Set(p.map(e=>e.department_key)).size,sub:'当前楼层档案',c:'var(--green)'}
+  ];
+  $('.kpis').innerHTML = kpis.map(k=>`<div class="kpi" style="--cyan:${k.c}"><div class="lb">${k.lb}</div><div class="vl" style="color:${k.c}">${k.vl}</div><div class="sub">${k.sub}</div></div>`).join('');
+}
+function renderRiskLevels(){
+  const s=profileStats(), total=s.p.length||1, colors={'低风险':'#28d17c','中风险':'#ffb020','高风险':'#ff6b35','极高风险':'#ff2e63'};
+  $('#risk-levels').innerHTML=Object.entries(s.levels).map(([lv,n])=>`<div class="mrow"><span class="nm">${lv}</span><span class="track"><span class="fill" style="width:${Math.max(2,n/total*100)}%;background:linear-gradient(90deg,${colors[lv]}88,${colors[lv]})"></span></span><span class="vv" style="color:${colors[lv]}">${n}</span></div>`).join('');
+  $('#risk-note').textContent=`${total} 名档案 · 风险评分来自 profiles.json`;
+}
+function renderDeptRoles(){
+  const s=profileStats(), maxD=Math.max(...s.depts.map(d=>d.avg),.01);
+  $('#dept-list').innerHTML=s.depts.map(d=>`<div class="mrow"><span class="nm" title="${esc(d.dept)}">${esc(d.dept)}</span><span class="track"><span class="fill" style="width:${d.avg/maxD*100}%;background:linear-gradient(90deg,#4c7dff88,#3ddcff)"></span></span><span class="vv">${fmtPct(d.avg)}</span></div><div style="font-size:9.5px;color:#5d6f96;margin:-5px 0 9px 75px">n=${d.n} · 高风险 ${d.high} · 离职 ${fmtPct(d.left/d.n)}</div>`).join('');
+  const maxR=Math.max(...s.roles.map(r=>r.avg),.01);
+  $('#role-list').innerHTML=s.roles.slice(0,6).map(r=>{const c=r.avg>=.65?'#ff2e63':r.avg>=.5?'#ff6b35':'#28d17c';return `<div class="mrow role-row"><span class="nm" title="${esc(r.role)}">${esc(r.role)}</span><span class="track"><span class="fill" style="width:${r.avg/maxR*100}%;background:linear-gradient(90deg,${c}88,${c})"></span></span><span class="vv" style="color:${c}">${fmtPct(r.avg)}</span></div>`;}).join('');
+  }
+// 注入 KPI 容器
+document.querySelector('main').insertAdjacentHTML('beforebegin', '<div class="kpis"></div>');
+
+function renderTop5(){
+  const top = D.profiles.slice().sort((a,b) => (b.risk?.score||0) - (a.risk?.score||0)).slice(0,5);
+  $('#top5').innerHTML = top.map((t,i) => {
+    const role = esc(t.profile?.JobRole || '');
+    return `<span class="t5" title="${esc(t.name)} · ${role} · 离职风险 ${fmtPct(t.risk?.score)}">
+      <span class="rk">0${i+1}</span>
+      <span class="who"><b>${esc(t.name)}</b><small>${role}</small></span>
+      <span class="score">${fmtPct(t.risk?.score)}</span>
+    </span>`;
+  }).join('');
+}
+
+/* ============ 3D ============ */
+let scene, camera, renderer, controls, group, view = 'office';
+let officeFrame = null, liveStates = {};
+let cloudG, barsG, surfaceG;
+// 楼层视图的独立对象与状态
+let officeG = null, sceneryG = null, officeReady = false, sim = null, PROF = null, BUILDING = null;
+let blenderOfficeEnv = null, blenderOfficeMixer = null, blenderOfficeLoaded = false;
+const blenderOfficePeople = new Map();
+const blenderOfficePickables = [];
+const blenderOfficeHitProxies = new Map();
+let snapBuf = null, playing = true, picked = null, officeHoverId = null;
+const PINST = {}, PGEO = {}, PNAMES = ['torso','neck','collar','head','eyeL','eyeR',
+  'armU','armL','handL','handR','thigh','shin','foot'];
+let PCOUNT = 0, PC = new Float32Array(0);
+const _mA = new THREE.Matrix4(), _mB = new THREE.Matrix4(), _mC = new THREE.Matrix4();
+const _mH = new THREE.Matrix4(), _mS = new THREE.Matrix4(), _tp = new THREE.Vector3();
+const _qy = new THREE.Quaternion(), _Y = new THREE.Vector3(0,1,0), _X = new THREE.Vector3(1,0,0);
+const _q0 = new THREE.Quaternion(), _qx = new THREE.Quaternion();
+const _one = new THREE.Vector3(1,1,1), _s0 = new THREE.Vector3();
+const _rota = new THREE.Matrix4(), _col = new THREE.Color();
+const STATE_HEX = { work:0x4c7dff, walk:0x3ddcff, meeting:0xb98cff, pantry:0xffb020,
+  lounge:0x28d17c, print:0x9aa7b8, away:0x39414f, lunch:0xff6b35,
+  discuss:0x38c7d6, stroll:0x6ee7ff };
+const STATE_CN = { work:'工位工作', walk:'走动中', meeting:'开会', pantry:'茶水间',
+  lounge:'休息区', print:'打印区', lunch:'午休', discuss:'走动讨论',
+  stroll:'巡场走动', away:'不在楼内' };
+const STATE_ORDER = ['work','walk','discuss','stroll','meeting','pantry','lounge','lunch','print','away'];
+const RISK_HEX = { '低风险':0x28d17c, '中风险':0xffb020, '高风险':0xff6b35, '极高风险':0xff2e63 };
+
+function init3D(){
+  const host = $('#gl');
+  const W = () => host.clientWidth, H = () => host.clientHeight;
+
+  scene = new THREE.Scene();
+  // 楼层视图采用参考图的冷灰雾化背景，避免透明玻璃与深色大屏混成一片。
+  scene.background = null;
+  // 分析视图使用宽范围坐标，雾效会把点云和地形洗成空白；办公层本身已有材质和灯光，不需要全局雾。
+  scene.fog = null;
+  camera = new THREE.PerspectiveCamera(40, W()/H(), 0.1, 4000);
+  camera.position.set(430, 300, 470);
+
+  renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true, powerPreference:'high-performance' });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+  renderer.setSize(W(), H());
+  host.appendChild(renderer.domElement);
+
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; controls.dampingFactor = .07;
+  controls.maxDistance = 320; controls.minDistance = 16;
+  controls.autoRotate = true; controls.autoRotateSpeed = 0.45;
+  controls.target.set(20, .6, 13);
+
+  // 参考图的浅色场景配光：天光偏蓝、主光暖白、前方柔光补细节。
+  scene.add(new THREE.HemisphereLight(0xeaf1ff, 0xb9c6da, 1.15));
+  const d1 = new THREE.DirectionalLight(0xfff6e8, 1.9); d1.position.set(30, 78, 9); scene.add(d1);
+  const d2 = new THREE.DirectionalLight(0xbcd2f5, .5); d2.position.set(-36, 40, -18); scene.add(d2);
+  const d3 = new THREE.DirectionalLight(0xffffff, .35); d3.position.set(12, 30, 36); scene.add(d3);
+
+  group = new THREE.Group(); scene.add(group);
+  cloudG = new THREE.Group(); barsG = new THREE.Group(); surfaceG = new THREE.Group();
+  group.add(cloudG, barsG, surfaceG);
+  initProfileViews();
+  document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('on'));
+    t.classList.add('on');
+    setView(t.dataset.view);
+  });
+  // 3D 楼层视图改为加载 NEXUS 28 人办公区 iframe；其余三个分析视图仍由本渲染器绘制。
+  setupOfficeEmbed();
+  setView('office');
+
+  addEventListener('resize', () => {
+    camera.aspect = W()/H(); camera.updateProjectionMatrix();
+    renderer.setSize(W(), H());
+  });
+
+  let lastT = performance.now();
+  (function loop(){
+    requestAnimationFrame(loop);
+    const now = performance.now();
+    const dt = Math.min(0.06, (now - lastT) / 1000); lastT = now;
+    // 办公层由 iframe 内的独立渲染器负责，外层 WebGL 只在分析视图时渲染。
+    if (view === 'office') return;
+    controls.update();
+    if (view === 'cloud' && cloudG) cloudG.rotation.y += 0.0012;
+    renderer.render(scene, camera);
+  })();
+  window.__view = setView;
+
+}
+
+/* ================================================================
+   视图 0：3D 办公楼层（数字孪生）
+   复用 building.json + profiles.json + sim.js，在同一个 3D 场景里渲染，
+   深色大屏配色，与其它视图共用相机与渲染循环。
+   ================================================================ */
+const OFFICE_MATS = {};
+function omMats(){
+  const mk = (k, color, o = {}) => (OFFICE_MATS[k] = new THREE.MeshStandardMaterial({
+    color, roughness: o.rough ?? .78, metalness: o.metal ?? 0,
+    transparent: !!o.alpha, opacity: o.alpha ?? 1,
+    side: o.dbl ? THREE.DoubleSide : THREE.FrontSide,
+    emissive: o.emissive ?? 0x000000, emissiveIntensity: o.ei ?? 0,
+  }));
+  // 与参考楼层页统一：明亮地面、暖木家具、蓝白玻璃和冷暖混合灯光。
+  mk('slab', 0xdfe4ec, { rough:.8 });
+  mk('floor', 0x8e97a8, { rough:.95 });
+  mk('wall', 0xe6ecf5, { rough:.92, alpha:.38, dbl:true });
+  mk('glass', 0x9fd2f0, { rough:.06, metal:.2, alpha:.30, dbl:true });
+  mk('mull', 0x9aa6b6, { rough:.35, metal:.85 });
+  mk('ceil', 0xf2f5fa, { rough:.95 });
+  mk('desk', 0xc9a06a, { rough:.6 });
+  mk('leg', 0x707a88, { rough:.4, metal:.7 });
+  mk('chair', 0x39414f, { rough:.72 });
+  mk('scr', 0x111820, { rough:.2, emissive:0x1d4a6e, ei:.55 });
+  mk('pot', 0x9a6b4f, { rough:.85 });
+  mk('leaf', 0x2e7d4f, { rough:.8 });
+  mk('soft', 0x3a5570, { rough:.85 });
+  mk('wood', 0x7a5230, { rough:.45 });
+  mk('metal', 0xb9c0c9, { rough:.28, metal:.8 });
+  mk('lamp', 0xffffff, { rough:.5, emissive:0xfff0d8, ei:1.6 });
+  mk('heat', 0xffffff, { transparent:true, opacity:.30, depthWrite:false });
+}
+
+/* ---------- 批处理：静态家具按（材质,几何）合并 ---------- */
+const UNIT = new THREE.BoxGeometry(1,1,1);
+const CYLG = new THREE.CylinderGeometry(1,1,1,12);
+const SPHG = new THREE.SphereGeometry(1,12,8);
+const GEOK = { box:UNIT, cyl:CYLG, sph:SPHG };
+let oBatch = new Map();
+function opush(mat, x, y, z, sx, sy, sz, ry = 0, geo = 'box'){
+  const key = mat.uuid + '|' + geo;
+  if (!oBatch.has(key)) oBatch.set(key, { mat, geo, list: [] });
+  const m = new THREE.Matrix4();
+  _q0.setFromAxisAngle(_Y, ry);
+  m.compose(_tp.set(x,y,z), _q0, _s0.set(sx,sy,sz));
+  oBatch.get(key).list.push(m);
+}
+function ofinalize(g){
+  for (const { mat, geo, list } of oBatch.values()){
+    const im = new THREE.InstancedMesh(GEOK[geo], mat, list.length);
+    for (let i = 0; i < list.length; i++) im.setMatrixAt(i, list[i]);
+    im.instanceMatrix.needsUpdate = true;
+    im.frustumCulled = false;
+    im.userData.scenery = true;      // 程序化静态布景，载入 GLB 后整体隐藏
+    g.add(im);
+  }
+  oBatch.clear();
+}
+
+/* ---------- 建筑体量 ---------- */
+function buildOfficeShell(g){
+  const W = BUILDING.building.footprint.w, D = BUILDING.building.footprint.d;
+  const FH = BUILDING.building.floor_height;
+  const F = OFFICE_MATS;
+  opush(F.slab, W/2, -0.26, D/2, W + 1.6, .5, D + 1.6);
+  opush(F.floor, W/2, .02, D/2, W, .05, D);
+  // 幕墙一圈
+  const bayX = 3.2, bayZ = 3.4;
+  for (const spec of [['z',W,-.03],['z',W,D+.03],['x',D,-.03],['x',D,W+.03]]){
+    const axis = spec[0], len = spec[1], fixed = spec[2];
+    const step = axis === 'z' ? bayX : bayZ;
+    for (let q = 0; q < len; q += step){
+      const w = Math.min(step, len - q);
+      const cx = axis === 'z' ? q + w/2 : fixed;
+      const cz = axis === 'z' ? fixed : q + w/2;
+      if (axis === 'z'){
+        opush(F.glass, cx, 1.95, cz, w - .18, 2.6, .08);
+        opush(F.mull, q, FH/2, cz, .12, FH, .18);
+      } else {
+        opush(F.glass, cx, 1.95, cz, .08, 2.6, w - .18);
+        opush(F.mull, cx, FH/2, q, .18, FH, .12);
+      }
+    }
+  }
+  opush(F.mull, W/2, FH - .1, -.05, W + .4, .16, .2);
+  opush(F.mull, W/2, FH - .1, D + .05, W + .4, .16, .2);
+  opush(F.mull, -.05, FH - .1, D/2, .2, .16, D + .4);
+  opush(F.mull, W + .05, FH - .1, D/2, .2, .16, D + .4);
+  // 嵌入式楼层视图保持敞顶，避免屋顶平面从俯视角遮住人物。
+  ofinalize(g);
+}
+
+/* ---------- 房间隔墙 + 地面色块 ---------- */
+function buildOfficeRooms(g){
+  const F = OFFICE_MATS;
+  const FH = BUILDING.building.floor_height, WH = FH - .3;
+  const DW = BUILDING.building.door_width;
+  BUILDING.floors[0].rooms.forEach(r => {
+    // 参考楼层使用明亮的半透明部门地面色块。
+    const c = new THREE.Color(r.color || '#9aaecb');
+    c.multiplyScalar(0.72).offsetHSL(0, -0.03, 0.08);
+    const fm = new THREE.MeshStandardMaterial({ color: c, roughness:.94 });
+    opush(fm, r.x + r.w/2, .055, r.y + r.d/2, r.w - .12, .03, r.d - .12);
+    const wall = (cx, cz, w, d) => opush(F.wall, cx, WH/2, cz, w, WH, d);
+    const dr = r.door || 's';
+    const side = (s, cx, cz, w, d) => {
+      if (s !== dr){ wall(cx, cz, w, d); return; }
+      if (w > d){ const seg = (w - DW)/2;
+        wall(cx - (DW + seg)/2, cz, seg, d); wall(cx + (DW + seg)/2, cz, seg, d);
+        const band = WH - (FH - .5);
+        if (band > .01) opush(F.wall, cx, FH - .5 + band/2, cz, DW, band, d);
+      } else { const seg = (d - DW)/2;
+        wall(cx, cz - (DW + seg)/2, w, seg); wall(cx, cz + (DW + seg)/2, w, seg);
+        const band = WH - (FH - .5);
+        if (band > .01) opush(F.wall, cx, FH - .5 + band/2, cz, w, band, DW);
+      }
+    };
+    side('s', r.x + r.w/2, r.y, r.w, .14);
+    side('n', r.x + r.w/2, r.y + r.d, r.w, .14);
+    side('w', r.x, r.y + r.d/2, .14, r.d);
+    side('e', r.x + r.w, r.y + r.d/2, .14, r.d);
+  });
+  ofinalize(g);
+}
+
+/* ---------- 家具（工位 + 公共设施） ---------- */
+function buildOfficeFurniture(g){
+  const F = OFFICE_MATS;
+  const f0 = BUILDING.floors[0];
+  // 工位：桌面 / 桌腿 / 显示器 / 键盘 / 椅子
+  f0.desks.forEach(d => {
+    const rot = -d.rot, c = Math.cos(rot), s2 = Math.sin(rot);
+    const R = (dx, dz) => [d.x + dx*c - dz*s2, d.y + dx*s2 + dz*c];
+    opush(F.desk, d.x, .73, d.y, 1.5, .05, .75, rot);
+    let a = R(-.68, 0); opush(F.leg, a[0], .36, a[1], .05, .72, .70, rot);
+    a = R(.68, 0);      opush(F.leg, a[0], .36, a[1], .05, .72, .70, rot);
+    a = R(0, -.22);     opush(F.scr, a[0], 1.02, a[1], .58, .36, .03, rot);
+    a = R(0, -.20);     opush(F.metal, a[0], .85, a[1], .05, .06, .28, rot);
+    a = R(0, .04);      opush(F.leg, a[0], .76, a[1], .40, .015, .14, rot);
+    a = R(.72, 0);      opush(F.metal, a[0], .30, a[1], .38, .52, .5, rot);
+    // 椅子
+    a = R(0, .62); const bx = a[0], bz = a[1], cr = rot;
+    opush(F.chair, bx, .45, bz, .48, .07, .48, cr);
+    opush(F.chair, bx - Math.sin(cr)*.22, .70, bz - Math.cos(cr)*.22, .44, .44, .06, cr);
+    opush(F.metal, bx, .28, bz, .05, .26, .05, cr);
+    opush(F.metal, bx, .12, bz, .30, .03, .30, cr);
+  });
+  // 其它家具按类型简化成体块，保留识别度
+  f0.furniture.forEach(o => {
+    const t = o.ftype;
+    if (['desk','chair','monitor','keyboard','cabinet','elevator','stairs'].includes(t)) return;
+    const w = o.w || .5, d = o.d || .5;
+    const hh = Math.max(.28, Math.min(o.h || .8, 2.2));
+    const rot = -(o.rot || 0);
+    const P = (dx, dz, y, sx, sy, sz, mat, geo='box') =>
+      opush(mat, o.x + dx*Math.cos(rot) - dz*Math.sin(rot), y,
+            o.y + dx*Math.sin(rot) + dz*Math.cos(rot), sx, sy, sz, rot, geo);
+    switch (t){
+      case 'plant':
+        P(0,0,.20,.40,.40,.40,F.pot,'cyl');
+        P(0,0,.72,.06,.62,.06,F.metal,'cyl');
+        P(0,0,1.04,.62,.56,.62,F.leaf,'sph');
+        P(.20,.12,.92,.38,.34,.38,F.leaf,'sph');
+        P(-.18,-.14,.96,.34,.32,.34,F.leaf,'sph');
+        return;
+      case 'sofa': case 'armchair':
+        P(0,0,.24,w,.24,d,F.soft);
+        P(0,-d/2+.12,.58,w,.44,.22,F.soft);
+        P(-w/2+.10,0,.46,.20,.26,d,F.soft);
+        P(w/2-.10,0,.46,.20,.26,d,F.soft);
+        return;
+      case 'table_oval': case 'table_rect': case 'table_round': case 'coffee_table':
+        if (t === 'table_round'){ P(0,0,hh,w,.05,w,F.wood,'cyl'); P(0,0,hh/2,.10,hh,.10,F.leg,'cyl'); }
+        else { P(0,0,hh,w,.05,d,F.wood); P(0,0,hh/2,.12,hh,d*.7,F.leg); }
+        return;
+      case 'meeting_chair': case 'guest_chair':
+        P(0,0,.45,.46,.07,.46,F.chair);
+        P(0,-.20,.68,.44,.34,.06,F.chair);
+        for (const [lx,lz] of [[-.18,-.18],[.18,-.18],[-.18,.18],[.18,.18]])
+          P(lx,lz,.21,.04,.42,.04,F.leg);
+        return;
+      case 'bookshelf': case 'shelf':
+        P(0,0,hh/2,w,d,hh,F.wood);
+        for (const y of [hh*.3, hh*.62]) P(0,0,y,w,d,.03,F.metal);
+        return;
+      case 'counter':
+        P(0,0,.44,w,d,.88,F.metal);
+        P(0,0,.91,w,d+.03,.06,F.metal);
+        return;
+      case 'fridge': P(0,0,hh/2,w,d,hh,F.metal); return;
+      case 'whiteboard': P(0,0,1.45,w,.05,.95,OFFICE_MATS.lamp); return;
+      case 'screen': case 'tv':
+        P(0,0,hh,w,.06,t==='tv'?.75:1.45,F.scr);
+        return;
+      case 'reception_desk':
+        P(0,-.1,.55,w,.55,.72,F.wood);
+        P(0,0,.95,w+.2,d,.07,F.wood);
+        return;
+      case 'water_cooler': case 'coffee_machine': case 'printer': case 'shredder':
+        P(0,0,hh/2,w,hh,d,t==='water_cooler'?F.metal:F.metal); return;
+      case 'phone_booth': P(0,0,hh/2,w,d,hh,F.glass,0); return;
+      case 'locker_bank': P(0,0,hh/2,w,d,hh,F.metal); return;
+      case 'sink': P(0,0,.06,w,d,.12,F.metal); return;
+      default:
+        P(0,0,hh/2,w,hh,d,F.metal);
+    }
+  });
+  ofinalize(g);
+}
+
+/* ---------- 吊顶 + 灯带 ---------- */
+function buildOfficeCeil(g){
+  const W = BUILDING.building.footprint.w, D = BUILDING.building.footprint.d;
+  const FH = BUILDING.building.floor_height;
+  // 只保留灯带，不生成整层吊顶平面；俯视相机需要直接看到人物。
+  for (let x = 4; x < W; x += 6)
+    for (let z = 4; z < D; z += 6)
+      opush(OFFICE_MATS.lamp, x, FH - .16, z, 1.9, .05, .30);
+  ofinalize(g);
+}
+
+/* ---------- 人物（多部件 InstancedMesh） ---------- */
+function initOfficePeople(g){
+  const cyl = (a,b,h,s) => new THREE.CylinderGeometry(a,b,h,s);
+  PGEO.torso = cyl(.18,.145,.58,10);
+  PGEO.neck  = cyl(.07,.07,.10,8);
+  PGEO.collar= cyl(.13,.11,.08,10);
+  PGEO.head  = new THREE.SphereGeometry(.14,14,10);
+  PGEO.eyeL = PGEO.eyeR = new THREE.SphereGeometry(.022,8,6);
+  PGEO.armU  = cyl(.060,.052,.30,8);
+  PGEO.armL  = cyl(.052,.045,.27,8);
+  PGEO.handL = PGEO.handR = new THREE.SphereGeometry(.055,8,6);
+  PGEO.thigh = cyl(.085,.070,.42,8);
+  PGEO.shin  = cyl(.068,.055,.42,8);
+  PGEO.foot  = new THREE.BoxGeometry(.12,.07,.24);
+  PGEO.hair  = new THREE.SphereGeometry(.148,14,9,0,Math.PI*2,0,Math.PI*0.58);
+
+  const mkMat = o => new THREE.MeshStandardMaterial({ roughness:.8, ...o });
+  const mShirt = mkMat({ color:0xffffff });
+  const mSkin  = mkMat({ color:0xe8bd97, roughness:.72 });
+  const mEye   = mkMat({ color:0x111722, roughness:.45 });
+  const mCollar= mkMat({ color:0x152238, roughness:.7 });
+  const mPants = mkMat({ color:0x232a36 });
+  const mShoe  = mkMat({ color:0x161a20, roughness:.6 });
+  const mHair  = mkMat({ color:0x1e1814, roughness:.85 });
+  const PM = { torso:mShirt, neck:mSkin, collar:mCollar, head:mSkin,
+    eyeL:mEye, eyeR:mEye, armU:mShirt, armL:mSkin, handL:mSkin, handR:mSkin,
+    thigh:mPants, shin:mPants, foot:mShoe, hair:mHair };
+
+  PCOUNT = PROF.length;
+  // InstancedMesh.raycast 先用「几何体自身的包围球」在世界空间做早退判断，
+  // 而实例是散落在整层的，几何体却还在原点 —— 按实体尺寸算出的球会挡掉所有拾取。
+  // 这里把每块几何体的包围球/盒撑到覆盖整层，早退不再误杀。
+  const BW = BUILDING.building.footprint.w, BD = BUILDING.building.footprint.d;
+  const RAD = Math.hypot(BW, BD) / 2 + 8;
+  for (const n of PNAMES){
+    const gm = PGEO[n];
+    if (!gm.boundingSphere) gm.computeBoundingSphere();
+    gm.boundingSphere.center.set(BW/2, 2, BD/2);
+    gm.boundingSphere.radius = RAD;
+    gm.boundingBox = new THREE.Box3(
+      new THREE.Vector3(-2, -2, -2),
+      new THREE.Vector3(BW + 2, 6, BD + 2));
+  }
+  for (const n of [...PNAMES, 'hair']){
+    const im = new THREE.InstancedMesh(PGEO[n], PM[n], PCOUNT);
+    im.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+    if (n === 'torso' || n === 'armU')
+      im.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(PCOUNT*3), 3);
+    im.frustumCulled = false;
+    im.userData.part = n;
+    g.add(im); PINST[n] = im;
+  }
+  const sg = new THREE.CircleGeometry(.30, 12);
+  sg.rotateX(-Math.PI/2);
+  const sm = new THREE.MeshBasicMaterial({ color:0x000000, transparent:true,
+    opacity:.34, depthWrite:false });
+  const imS = new THREE.InstancedMesh(sg, sm, PCOUNT);
+  imS.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+  imS.frustumCulled = false; imS.userData.part = 'shadow';
+  g.add(imS); PINST.shadow = imS;
+}
+
+function setQ(q, ax, rad){ return q.setFromAxisAngle(ax, rad); }
+function putInst(name, i, parent, ox, oy, oz, isShirt){
+  _mB.multiplyMatrices(parent, _mS.makeTranslation(ox, oy, oz));
+  PINST[name].setMatrixAt(i, _mB);
+  if (isShirt && PINST[name].instanceColor)
+    PINST[name].instanceColor.setXYZ(i, PC[i*3], PC[i*3+1], PC[i*3+2]);
+}
+
+function updateOfficePeople(buf, now){
+  const wallPh = now / 1000;
+  const hide = i => {
+    const z = _mB.makeScale(1e-4,1e-4,1e-4);
+    for (const n of PNAMES) PINST[n].setMatrixAt(i, z);
+    PINST.hair.setMatrixAt(i, z); PINST.shadow.setMatrixAt(i, z);
+  };
+  for (let i = 0; i < buf.length; i++){
+    const s = buf[i];
+    if (s.state === 'away'){ hide(i); continue; }
+    const ph = s.phase !== undefined ? s.phase : wallPh;
+    const sit = (s.state === 'work' || s.state === 'meeting' || s.state === 'lounge');
+    const walking = !!s.moving;
+    _mA.compose(_tp.set(s.x, 0, s.y), setQ(_qy, _Y, -(s.facing || 0)), _one);
+    const hipsY = sit ? 0.46 : (walking ? 0.90 + Math.abs(Math.sin(ph))*0.028 : 0.90);
+    _mH.multiplyMatrices(_mA, _mS.makeTranslation(0, hipsY, 0));
+    const sway = walking ? Math.sin(ph)*0.05 : 0;
+    _mB.multiplyMatrices(_mH, _mS.makeTranslation(0, 0.10, 0));
+    _mC.multiplyMatrices(_mB, _rota.makeRotationFromQuaternion(setQ(_qy, _Y, sway)));
+    putInst('torso', i, _mC, 0, .25, 0, true);
+    putInst('collar', i, _mC, 0, .52, 0);
+    putInst('neck',  i, _mC, 0, .59, 0);
+    putInst('head',  i, _mC, 0, .73, 0);
+    putInst('hair',  i, _mC, 0, .78, 0);
+    putInst('eyeL', i, _mC, -.052, .74, .128);
+    putInst('eyeR', i, _mC,  .052, .74, .128);
+    for (const [k, sx] of [['L',1],['R',-1]]){
+      let sh, el;
+      if (sit){ sh = -0.95; el = -0.55; }
+      else if (walking){ sh = (k==='L'?-1:1)*Math.sin(ph)*0.52; el = -0.30; }
+      else { sh = Math.sin(wallPh*1.5+1)*0.05*sx; el = -0.15; }
+      if (s.state === 'work'){ const tap = Math.sin(wallPh*7+i)*0.06;
+        el = -0.55 + (k==='L'?tap:-tap); }
+      _mB.multiplyMatrices(_mC, _mS.makeTranslation(sx*0.22, 0.46, 0));
+      _mC.multiplyMatrices(_mB, _rota.makeRotationFromQuaternion(setQ(_qx, _X, sh)));
+      putInst('armU', i, _mC, 0, -.14, 0, true);
+      _mB.multiplyMatrices(_mC, _mS.makeTranslation(0, -.28, 0));
+      _mC.multiplyMatrices(_mB, _rota.makeRotationFromQuaternion(setQ(_qx, _X, el)));
+      putInst('armL', i, _mC, 0, -.13, 0);
+      putInst(k==='L'?'handL':'handR', i, _mC, 0, -.29, 0);
+    }
+    for (const [k, sx] of [['L',1],['R',-1]]){
+      let th, kn;
+      if (sit){ th = -1.35; kn = 1.30; }
+      else if (walking){ const w = ph + (k==='L'?0:Math.PI);
+        th = Math.sin(w)*0.62; kn = -Math.max(0, Math.sin(w-0.7))*0.90; }
+      else { th = 0; kn = 0; }
+      _mB.multiplyMatrices(_mH, _mS.makeTranslation(sx*0.09, -0.09, 0));
+      _mC.multiplyMatrices(_mB, _rota.makeRotationFromQuaternion(setQ(_qx, _X, th)));
+      putInst('thigh', i, _mC, 0, -.20, 0);
+      _mB.multiplyMatrices(_mC, _mS.makeTranslation(0, -.40, 0));
+      _mC.multiplyMatrices(_mB, _rota.makeRotationFromQuaternion(setQ(_qx, _X, kn)));
+      putInst('shin', i, _mC, 0, -.20, 0);
+      putInst('foot', i, _mC, 0, -.40, .06);
+    }
+    _mB.compose(_tp.set(s.x, .028, s.y), setQ(_qy, _Y, 0), _one);
+    PINST.shadow.setMatrixAt(i, _mB);
+  }
+  for (const n of [...PNAMES, 'hair', 'shadow']) PINST[n].instanceMatrix.needsUpdate = true;
+  if (PINST.torso.instanceColor) PINST.torso.instanceColor.needsUpdate = true;
+  if (PINST.armU.instanceColor)  PINST.armU.instanceColor.needsUpdate = true;
+}
+
+function computeOfficeColors(mode){
+  const DEPT = {};
+  (BUILDING.departments || []).forEach(d =>
+    DEPT[d.key] = parseInt(String(d.color).replace('#',''), 16));
+  PC = new Float32Array(PCOUNT*3);
+  PROF.forEach((e, i) => {
+    let hex;
+    if (mode === 'risk') hex = RISK_HEX[e.risk.level] || 0x8aa0c0;
+    else if (mode === 'state'){ const a = sim.agents[i];
+      hex = STATE_HEX[a ? a.state : 'work'] || 0x8aa0c0; }
+    else hex = DEPT[e.department_key] || 0x8aa0c0;
+    _col.setHex(hex);
+    PC[i*3] = _col.r; PC[i*3+1] = _col.g; PC[i*3+2] = _col.b;
+  });
+}
+
+/* ---------- 场景光照（深色大屏版） ---------- */
+function officeLights(g){
+  const W = BUILDING.building.footprint.w, D = BUILDING.building.footprint.d;
+  g.add(new THREE.HemisphereLight(0xeaf1ff, 0xb9c6da, 1.15));
+  const sun = new THREE.DirectionalLight(0xfff6e8, 1.9);
+  sun.position.set(W*.75, 78, D*.35); g.add(sun);
+  const fill = new THREE.DirectionalLight(0xbcd2f5, .5);
+  fill.position.set(-W*.9, 40, -D*.7); g.add(fill);
+  const front = new THREE.DirectionalLight(0xffffff, .35);
+  front.position.set(W*.3, 30, D*1.4); g.add(front);
+}
+
+/* ---------- 相机：俯瞰单层 ---------- */
+function officeCamera(){
+  const W = BUILDING.building.footprint.w, D = BUILDING.building.footprint.d;
+  // 与参考图一致的近距离等轴俯视构图，整层铺满舞台并保持人物可辨识。
+  camera.fov = 40;
+  camera.updateProjectionMatrix();
+  camera.position.set(W * .62, Math.max(W, D) * 1.05, D * 1.62);
+  controls.target.set(W/2, 0.6, D/2);
+  controls.minDistance = 16; controls.maxDistance = 320;
+  controls.maxPolarAngle = Math.PI * .49;
+  controls.autoRotate = false;
+  controls.update();
+}
+
+/* ---------- 装载 ---------- */
+const OFFICE_DEPT_LIST = [];
+function initOffice(){
+  if (officeReady) return Promise.resolve();
+  return Promise.all([
+    fetch('building.json').then(r => r.json()),
+    fetch('profiles.json').then(r => r.json()),
+  ]).then(([b, p]) => {
+    BUILDING = b; PROF = p;
+    sim = new Sim(b, p);
+    sim.initSnapshotBuffer();
+    sim.seek(WORK_START + 60);          // 10:00，人已到岗
+    omMats();
+    officeG = new THREE.Group();
+    officeG.name = 'office-floor';
+    scene.add(officeG);
+    officeLights(officeG);
+    // 静态布景放进独立子组：GLB 载入后只需整体隐藏它，人物不受影响
+    sceneryG = new THREE.Group();
+    sceneryG.name = 'office-scenery';
+    officeG.add(sceneryG);
+    buildOfficeShell(sceneryG);
+    buildOfficeRooms(sceneryG);
+    buildOfficeFurniture(sceneryG);
+    buildOfficeCeil(sceneryG);
+    initOfficePeople(officeG);   // Blender 资产成功后隐藏，保留作加载失败回退
+    computeOfficeColors('dept');
+    bindOfficePicking();
+    bindOfficeUI();
+    officeReady = true;
+    officeCamera();
+    return loadOfficeGLB();
+  }).catch(e => {
+    console.error('[office] 楼层视图装载失败', e);
+    const el = $('#employee-summary');
+    if (el) el.textContent = '楼层视图装载失败：' + e.message;
+  });
+}
+
+/** Blender 生成的当前 1F 场景：建筑、家具、42 个带 employee_id 的角色和动画。 */
+function loadOfficeGLB(){
+  return new Promise((resolve, reject) => {
+    const loader = new GLTFLoader();
+    loader.load('./assets/office/floor_1_blender_people.glb', gltf => {
+      const env = gltf.scene;
+      env.name = 'blender-office-floor';
+      // Blender 的 Y 是平面深度，Three.js 的 Z 是平面深度；保持与现有业务坐标一致。
+      env.scale.z = -1;
+      env.traverse(o => {
+        if (String(o.name || '').toLowerCase().includes('ceiling')) o.visible = false;
+        if (!o.isMesh && !o.isSkinnedMesh) return;
+        o.frustumCulled = false;
+        o.userData.blenderAsset = true;
+        const mats = Array.isArray(o.material) ? o.material : (o.material ? [o.material] : []);
+        for (const m of mats) { m.side = THREE.DoubleSide; m.needsUpdate = true; }
+      });
+      officeG.add(env);
+      blenderOfficeEnv = env;
+      blenderOfficePeople.clear();
+      blenderOfficePickables.length = 0;
+      for (const proxy of blenderOfficeHitProxies.values()) proxy.removeFromParent();
+      blenderOfficeHitProxies.clear();
+      const idRe = /^char_(E\d{5})(?:_body)?$/;
+      env.traverse(o => {
+        let eid = o.userData?.employee_id || o.userData?.employeeId || null;
+        if (!eid) {
+          const m = String(o.name || '').match(idRe);
+          if (m) eid = m[1];
+        }
+        if (!eid || !PROF.some(p => p.employee_id === eid)) return;
+        const root = o.name.endsWith('_body') ? o.parent : o;
+        if (!root) return;
+        root.userData.employee_id = eid;
+        if (!blenderOfficePeople.has(eid)) {
+          blenderOfficePeople.set(eid, root);
+          const proxy = new THREE.Mesh(
+            new THREE.BoxGeometry(.82, 1.95, .82),
+            new THREE.MeshBasicMaterial({ transparent:true, opacity:0, depthWrite:false })
+          );
+          proxy.name = `employee-hit-${eid}`;
+          proxy.userData.employee_id = eid;
+          proxy.userData.hitProxy = true;
+          proxy.position.y = .92;
+          root.add(proxy);
+          blenderOfficeHitProxies.set(eid, proxy);
+          blenderOfficePickables.push(proxy);
+        }
+        // glTF 会把 Armature 和 SkinnedMesh 拆成不同节点；从员工根节点递归
+        // 收集网格，才能让射线命中身体后回溯到同一个 employee_id。
+        root.traverse(child => {
+          if ((child.isMesh || child.isSkinnedMesh) && !blenderOfficePickables.includes(child)) {
+            child.userData.employee_id = eid;
+            blenderOfficePickables.push(child);
+          }
+        });
+      });
+      if (gltf.animations?.length) {
+        blenderOfficeMixer = new THREE.AnimationMixer(env);
+        for (const clip of gltf.animations) {
+          // Blender 导出的巡游动作包含完整根节点路径，走完后必须停在终点，不能回到起点循环。
+          const action = blenderOfficeMixer.clipAction(clip);
+          action.setLoop(THREE.LoopOnce, 1);
+          action.clampWhenFinished = true;
+          action.play();
+        }
+      }
+      blenderOfficeLoaded = blenderOfficePeople.size > 0;
+      if (blenderOfficeLoaded) {
+        for (const n of [...PNAMES, 'hair', 'shadow']) if (PINST[n]) PINST[n].visible = false;
+        if (sceneryG) sceneryG.visible = false;
+        console.info('[office] Blender 人物资产已接入', {
+          employees: blenderOfficePeople.size, animations: gltf.animations?.length || 0 });
+      }
+      resolve(blenderOfficeLoaded);
+    }, undefined, err => {
+      console.warn('[office] Blender 人物资产加载失败，回退程序化人物', err);
+      blenderOfficeLoaded = false;
+      if (sceneryG) sceneryG.visible = true;
+      resolve(false);
+    });
+  });
+}
+
+function employeeIdFromBlenderObject(obj){
+  let cur = obj;
+  while (cur) {
+    if (cur.userData?.employee_id) return cur.userData.employee_id;
+    const m = String(cur.name || '').match(/^char_(E\d{5})(?:_body)?$/);
+    if (m) return m[1];
+    cur = cur.parent;
+  }
+  return null;
+}
+
+window.__officePickAt = (x, y) => {
+  const hit = officePointerHit({ clientX: x, clientY: y });
+  return hit ? { eid: hit.eid, object: hit.object?.name || null } : null;
+};
+window.__officeBlenderDebug = () => {
+  const pts = [];
+  for (const [eid, root] of blenderOfficePeople.entries()) {
+    const world = new THREE.Vector3();
+    root.getWorldPosition(world);
+    const screen = world.clone().project(camera);
+    const proxy = blenderOfficeHitProxies.get(eid);
+    const proxyWorld = proxy ? new THREE.Vector3() : null;
+    if (proxy) proxy.getWorldPosition(proxyWorld);
+    const proxyScreen = proxyWorld ? proxyWorld.project(camera) : screen;
+    const rect = renderer.domElement.getBoundingClientRect();
+    pts.push({ eid, x: Math.round((screen.x + 1) * .5 * rect.width + rect.left),
+      y: Math.round((1 - screen.y) * .5 * rect.height + rect.top),
+      px: Math.round((proxyScreen.x + 1) * .5 * rect.width + rect.left),
+      py: Math.round((1 - proxyScreen.y) * .5 * rect.height + rect.top), visible: root.visible });
+  }
+  return { loaded: blenderOfficeLoaded, people: pts,
+    pickables: blenderOfficePickables.length, animations: !!blenderOfficeMixer };
+};
+
+/* ---------- 交互：点击人物 → 用大屏右栏展示档案 ---------- */
+const oRay = new THREE.Raycaster(), oNdc = new THREE.Vector2();
+function officePointerHit(ev){
+  const r = renderer.domElement.getBoundingClientRect();
+  oNdc.x = ((ev.clientX - r.left) / r.width) * 2 - 1;
+  oNdc.y = -((ev.clientY - r.top) / r.height) * 2 + 1;
+  oRay.setFromCamera(oNdc, camera);
+  if (blenderOfficeLoaded && blenderOfficePickables.length){
+    const hits = oRay.intersectObjects(blenderOfficePickables, true);
+    if (hits.length){
+      const eid = employeeIdFromBlenderObject(hits[0].object);
+      if (eid) return { eid, object: hits[0].object };
+    }
+  }
+  let hitId = null, bestD = Infinity;
+  for (const p of ['torso','head']){
+    if (!PINST[p]?.visible) continue;
+    const hits = oRay.intersectObject(PINST[p], false);
+    if (hits.length && hits[0].instanceId !== undefined && hits[0].distance < bestD){
+      bestD = hits[0].distance; hitId = hits[0].instanceId;
+    }
+  }
+  return hitId === null ? null : { eid: PROF[hitId]?.employee_id || null };
+}
+function bindOfficePicking(){
+  renderer.domElement.addEventListener('pointerdown', ev => {
+    if (view !== 'office' || !officeReady) return;
+    const hit = officePointerHit(ev);
+    window.__officeLastPointer = { type:'down', x:ev.clientX, y:ev.clientY, hit:hit?.eid || null };
+    showOfficeProfile(hit?.eid ? PROF.find(p => p.employee_id === hit.eid) : null);
+  });
+  renderer.domElement.addEventListener('pointermove', ev => {
+    if (view !== 'office' || !officeReady) return;
+    const hit = officePointerHit(ev);
+    officeHoverId = hit?.eid || null;
+    renderer.domElement.style.cursor = hit ? 'pointer' : 'default';
+    playing = !officeHoverId;
+  });
+  renderer.domElement.addEventListener('pointerleave', () => {
+    officeHoverId = null;
+    renderer.domElement.style.cursor = 'default';
+    playing = true;
+  });
+}
+
+function showOfficeProfile(e){
+  const summary = $('#employee-summary');
+  const metrics = $('#employee-metrics');
+  const risks = $('#employee-risks');
+  if (!summary || !metrics || !risks) return;
+  if (!e){
+    picked = null;
+    summary.innerHTML = '点击楼层中的员工头像，查看最新档案数据';
+    summary.className = 'employee-empty';
+    metrics.innerHTML = '尚未选择员工';
+    metrics.className = 'employee-empty compact';
+    risks.innerHTML = '选择员工后显示风险因子、行为质量和谈话记录';
+    risks.className = 'employee-empty compact';
+    return;
+  }
+  picked = e.employee_id;
+  const rc = { '低风险':'#28d17c','中风险':'#ffb020','高风险':'#ff6b35','极高风险':'#ff2e63' }[e.risk.level] || '#7d90b8';
+  const p = e.profile || {}, bh = e.behavior || {}, as = e.assessment || {}, risk = e.risk || {};
+  const bg = p.background || {}, quality = bh.quality || {};
+  const val = (v, fallback='—') => v === undefined || v === null || v === '' ? fallback : v;
+  const num = (v, digits=1) => Number.isFinite(Number(v)) ? Number(v).toFixed(digits) : '—';
+  const safeName = val(e.name);
+  const initials = safeName.slice(-2);
+  const bar = (lb, v, mx, c) => {
+    const n = Math.max(0, Math.min(mx, Number(v) || 0));
+    return `<div class="emp-bar"><span>${lb}</span><span class="track"><span class="fill" style="width:${n/mx*100}%;background:${c}"></span></span><b>${num(n, n % 1 ? 1 : 0)}</b></div>`;
+  };
+  summary.className = '';
+  summary.innerHTML = `
+    <div class="employee-head">
+      <div class="employee-avatar" style="background:${rc}">${initials}</div>
+      <div style="min-width:0;flex:1">
+        <div class="employee-name">${safeName}</div>
+        <div class="employee-sub">${val(e.employee_id)} · ${val(e.department_cn)}<br>${val(p.JobRole)} · ${val(e.desk_id)}</div>
+      </div>
+      <span class="employee-risk" style="background:${rc}22;color:${rc};border:1px solid ${rc}66">${val(risk.level)}</span>
+    </div>
+    <div class="employee-grid">
+      <div class="kv"><span>当前状态</span><b class="live-state-val" id="live-employee-state"><i></i><span>${liveStatusFor(e)}</span></b></div>
+      <div class="kv"><span>风险评分</span><b style="color:${rc}">${Math.round((Number(risk.score)||0)*100)} / 100</b></div>
+      <div class="kv"><span>楼层 / 工位</span><b>${val(e.floor_name)} · ${val(e.desk_id)}</b></div>
+      <div class="kv"><span>月薪 / 司龄</span><b>¥${Number(p.MonthlyIncome||0).toLocaleString()} · ${val(p.YearsAtCompany)}年</b></div>
+    </div>`;
+  metrics.className = '';
+  metrics.innerHTML = `
+    ${bar('能力', as.competency_score, 100, '#4c7dff')}
+    ${bar('敬业度', as.engagement_score, 100, '#28d17c')}
+    ${bar('满意度', as.satisfaction_score, 100, '#3ddcff')}
+    ${bar('压力', as.stress_score, 100, '#ff6b35')}
+    <div class="employee-grid">
+      <div class="kv"><span>潜力</span><b>${val(as.potential)}</b></div>
+      <div class="kv"><span>绩效评级</span><b>${val(as.performance_rating)} / 4</b></div>
+      <div class="kv"><span>日均工时</span><b>${num(bh.avg_work_hours,2)} h</b></div>
+      <div class="kv"><span>日均专注</span><b>${num(bh.avg_focus_hours,2)} h</b></div>
+      <div class="kv"><span>迟到天数</span><b>${val(bh.late_days)} 天</b></div>
+      <div class="kv"><span>会议频率</span><b>${num(bh.avg_meetings,1)} 次/天</b></div>
+    </div>`;
+  const factors = (risk.top_factors || []).slice(0, 4).map(f =>
+    `<div class="employee-factor"><strong style="color:${f.direction==='+'?'#ff9a6b':'#28d17c'}">${val(f.direction)}</strong><span>${val(f.factor)}<small>${val(f.detail)}</small></span></div>`).join('');
+  const talks = (e.talks || []).slice(0, 3).map(t =>
+    `<div class="employee-talk"><small>${val(t.date)} · ${val(t.type)} · ${val(t.duration_min)} min</small>${val(t.topic)}</div>`).join('');
+  risks.className = '';
+  risks.innerHTML = `
+    <div class="employee-section-label">主要风险因子</div>
+    ${factors || '<div class="note">暂无风险因子</div>'}
+    <div class="employee-section-label">近 90 天质量</div>
+    <div class="employee-grid">
+      <div class="kv"><span>质量分</span><b>${val(quality.quality_score)}</b></div>
+      <div class="kv"><span>交付达成率</span><b>${val(quality.delivery_rate)}%</b></div>
+      <div class="kv"><span>请假天数</span><b>${val(bh.leave_days)} 天</b></div>
+      <div class="kv"><span>谈话记录</span><b>${(e.talks || []).length} 条</b></div>
+    </div>
+    <div class="employee-section-label">最近谈话</div>
+    ${talks || '<div class="note">暂无谈话记录</div>'}`;
+}
+
+function bindOfficeUI(){
+  // 时间轴和快进控件已从楼层视图移除，员工按模拟状态自动行动。
+}
+
+function stepOffice(dtSec){
+  if (!officeReady) return;
+  const now = performance.now();
+  if (playing){
+    // Sim 内部以“模拟分钟”计时，1 模拟分钟会积分 60 秒步行距离；
+    // 这里按接近真实钟表的速度推进，人物步速保持在 1.05~1.47 m/s。
+    const t = Math.min(WORK_END, sim.t + dtSec * 0.018);
+    sim.seek(t);
+    if (t >= WORK_END) playing = false;
+  }
+  snapBuf = sim.fillSnapshot();
+  // Blender 角色的骨骼与路径动画是人物的唯一视觉驱动；网页 sim 仅继续维护档案状态。
+  if (blenderOfficeMixer && playing) blenderOfficeMixer.update(dtSec);
+  if (!blenderOfficeLoaded) updateOfficePeople(snapBuf, now);
+}
+
+/* ================================================================
+   3D 楼层 view → NEXUS 28 人办公区（iframe）
+   - 外层保留风险大屏的三栏 UI 与员工档案卡
+   - iframe 内是完整 3D 办公区；点击人物通过 postMessage 回传 employee_id
+   ================================================================ */
+function officeTeamPayload(){
+  if (!D || !D.profiles) return [];
+  return D.profiles.map(e => ({
+    employeeId: e.employee_id,
+    name: e.name,
+    role: (e.profile && e.profile.JobRole) || '',
+    dept: e.department_cn,
+    riskLevel: (e.risk && e.risk.level) || '',
+  }));
+}
+function sendOfficeTeam(){
+  if (!officeFrame || !officeFrame.contentWindow || !D) return;
+  officeFrame.contentWindow.postMessage({ type:'nexus:team', employees: officeTeamPayload() }, '*');
+}
+function liveStatusFor(e){
+  return (e && liveStates[e.employee_id]) || '同步中…';
+}
+function updateLiveEmployeeStatus(){
+  if (!picked) return;
+  const el = document.querySelector('#live-employee-state span');
+  if (!el) return;
+  const status = liveStates[picked];
+  if (status) el.textContent = status;
+}
+
+function setupOfficeEmbed(){
+  officeFrame = $('#office-frame');
+  if (!officeFrame) return;
+  addEventListener('message', ev => {
+    if (!officeFrame || ev.source !== officeFrame.contentWindow) return;
+    const d = ev.data || {};
+    if (d.type === 'nexus:ready') sendOfficeTeam();
+    else if (d.type === 'nexus:team-ack') { /* 人物映射已完成 */ }
+    else if (d.type === 'nexus:status' && d.statuses){
+      liveStates = d.statuses;
+      updateLiveEmployeeStatus();
+    }
+    else if (d.type === 'nexus:select' && d.employeeId){
+      const e = D.profiles.find(p => p.employee_id === d.employeeId);
+      if (e) showOfficeProfile(e);
+    }
+  });
+  officeFrame.addEventListener('load', () => setTimeout(sendOfficeTeam, 300));
+  setTimeout(sendOfficeTeam, 700);
+  setTimeout(sendOfficeTeam, 1700);
+}
+
+function setView(v){
+  view = v;
+  if (officeG) officeG.visible = v === 'office';
+  if (cloudG) cloudG.visible = v === 'cloud';
+  if (barsG) barsG.visible = v === 'bars';
+  if (surfaceG) surfaceG.visible = v === 'surface';
+  controls.autoRotate = v === 'cloud';
+  const office = v === 'office';
+  const info = $('#office-info'), legend = $('#legend3d'), hint = $('#view-hint');
+  if (officeFrame) officeFrame.classList.toggle('hidden', !office);
+  if (info) info.style.display = office ? '' : 'none';
+  // 现有的风险色图例只属于点云 / 柱阵 / 地形；办公层由 iframe 内的图例和控件接管。
+  if (legend) legend.style.display = office ? 'none' : '';
+  if (hint) hint.textContent = office ? '拖拽旋转 · 滚轮缩放 · 点击人物查看档案' : '拖拽旋转 · 滚轮缩放';
+  if (office) return;
+  const cam = {
+    cloud:{p:[500,300,560],t:[0,205,0],d:1400},
+    bars:{p:[420,300,620],t:[0,105,0],d:1600},
+    surface:{p:[0,470,650],t:[0,75,0],d:1800}
+  }[v];
+  camera.position.set(...cam.p);
+  controls.target.set(...cam.t);
+  controls.minDistance = 120;
+  controls.maxDistance = cam.d;
+  controls.maxPolarAngle = Math.PI;
+  controls.update();
+}
+
+function viewColor(score){
+  const c = new THREE.Color();
+  c.setHSL(Math.max(0, .38 - Math.min(1, score) * .42), .82, .52);
+  return c;
+}
+function labelSprite(text, color='#a8c8ff', scale=1){
+  const cvs=document.createElement('canvas'), ctx=cvs.getContext('2d'); cvs.width=512; cvs.height=96;
+  ctx.font='bold 34px "PingFang SC","Microsoft YaHei",sans-serif'; ctx.fillStyle=color; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(text,256,48);
+  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cvs),transparent:true,depthTest:false,toneMapped:false})); sp.scale.set(150*scale,28*scale,1); return sp;
+}
+function pointTexture(){
+  const cvs=document.createElement('canvas'); cvs.width=cvs.height=64;
+  const ctx=cvs.getContext('2d');
+  const g=ctx.createRadialGradient(32,32,2,32,32,30);
+  g.addColorStop(0,'rgba(255,255,255,1)');
+  g.addColorStop(.35,'rgba(255,255,255,.98)');
+  g.addColorStop(1,'rgba(255,255,255,0)');
+  ctx.fillStyle=g; ctx.fillRect(0,0,64,64);
+  return new THREE.CanvasTexture(cvs);
+}
+function analysisBase(g, size=700, divisions=14){
+  const plane = new THREE.Mesh(
+    new THREE.PlaneGeometry(size, size),
+    new THREE.MeshBasicMaterial({color:0x0b1830,transparent:true,opacity:.72,side:THREE.DoubleSide,depthWrite:false})
+  );
+  plane.rotation.x = -Math.PI / 2;
+  plane.position.y = -3;
+  g.add(plane);
+  const grid = new THREE.GridHelper(size, divisions, 0x3ddcff, 0x21456d);
+  grid.position.y = -1.5;
+  grid.material.transparent = true;
+  grid.material.opacity = .42;
+  g.add(grid);
+  const axes = new THREE.AxesHelper(size * .28);
+  axes.position.y = -1.2;
+  g.add(axes);
+}
+
+function initProfileViews(){
+  const p=D.profiles, byDept=new Map((BUILDING_DATA.departments||[]).map(d=>[d.key,d]));
+  analysisBase(cloudG, 760, 16);
+  analysisBase(barsG, 760, 16);
+  analysisBase(surfaceG, 680, 14);
+  // 风险点云：平面位置表达风险区域，高度表达风险分数，颜色表达离散风险等级。
+  const pos=[], cols=[], stems=[], riskPts=[];
+  const levelColors={
+    '低风险':0x28d17c,
+    '中风险':0xffc247,
+    '高风险':0xff7a35,
+    '极高风险':0xff335f
+  };
+  const levelNames=['低风险','中风险','高风险','极高风险'];
+  const colorForLevel=(level,score)=>{
+    const fallback=score>=.75?'极高风险':score>=.5?'高风险':score>=.25?'中风险':'低风险';
+    return new THREE.Color(levelColors[level] ?? levelColors[fallback]);
+  };
+  const riskScore=e=>Math.max(0,Math.min(1,Number(e.risk?.score)||0));
+  const floorY=2, maxHeight=360, outerR=310, innerR=82;
+  p.forEach((e,i)=>{
+    const score=riskScore(e), level=e.risk?.level || (score>=.75?'极高风险':score>=.5?'高风险':score>=.25?'中风险':'低风险');
+    // 稳定角度来自员工序号，半径随风险下降：高风险集中于中心，低风险铺向外围。
+    const angle=i*2.3999632297 + (Number(e.profile?.Age)||30)*.011;
+    const spread=(1-score)*outerR + score*innerR;
+    const jitter=((i*37)%11-5)*2.2;
+    const x=Math.cos(angle)*(spread+jitter), z=Math.sin(angle)*(spread+jitter);
+    const y=floorY+score*maxHeight;
+    pos.push(x,y,z);
+    const c=colorForLevel(level,score); cols.push(c.r,c.g,c.b);
+    stems.push(x,floorY+.5,z,x,y-3,z);
+    riskPts.push({x,z,score,level,e});
+  });
+  // 半透明承载面：点的投影落在同一张风险平面上，不再悬浮在空场景中。
+  const cloudFloor=new THREE.Mesh(
+    new THREE.PlaneGeometry(700,700),
+    new THREE.MeshBasicMaterial({color:0x08192d,transparent:true,opacity:.9,side:THREE.DoubleSide,depthWrite:false})
+  );
+  cloudFloor.rotation.x=-Math.PI/2; cloudFloor.position.y=floorY; cloudG.add(cloudFloor);
+  const cloudGrid=new THREE.GridHelper(700,14,0x2b83a8,0x163653);
+  cloudGrid.position.y=floorY+.8; cloudGrid.material.transparent=true; cloudGrid.material.opacity=.45; cloudG.add(cloudGrid);
+  // 高风险核心区和外围区的边界，让“集中/外围”成为可读的空间语义。
+  const zone=(radius,color,opacity)=>{
+    const m=new THREE.Mesh(new THREE.RingGeometry(radius-2,radius,64),new THREE.MeshBasicMaterial({color,transparent:true,opacity,side:THREE.DoubleSide,depthWrite:false}));
+    m.rotation.x=-Math.PI/2; m.position.y=floorY+1.3; cloudG.add(m);
+  };
+  zone(innerR,0xff335f,.72); zone((innerR+outerR)/2,0xffa43a,.28); zone(outerR,0x28d17c,.42);
+  const stemGeo=new THREE.BufferGeometry(); stemGeo.setAttribute('position',new THREE.Float32BufferAttribute(stems,3));
+  cloudG.add(new THREE.LineSegments(stemGeo,new THREE.LineBasicMaterial({color:0x8fcfff,transparent:true,opacity:.24,depthWrite:false})));
+  const pg=new THREE.BufferGeometry(); pg.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); pg.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));
+  const pm=new THREE.PointsMaterial({map:pointTexture(),vertexColors:true,size:25,sizeAttenuation:false,transparent:true,opacity:1,depthWrite:false,alphaTest:.01,blending:THREE.AdditiveBlending,toneMapped:false});
+  cloudG.add(new THREE.Points(pg,pm));
+  const legendX=-310, legendZ=350;
+  levelNames.forEach((lv,i)=>{
+    const sw=new THREE.Mesh(new THREE.PlaneGeometry(18,18),new THREE.MeshBasicMaterial({color:levelColors[lv],side:THREE.DoubleSide,depthTest:false}));
+    sw.rotation.x=-Math.PI/2; sw.position.set(legendX+i*150,floorY+4,legendZ); cloudG.add(sw);
+    const lb=labelSprite(lv,'#d9efff',.55); lb.position.set(legendX+22+i*150,floorY+18,legendZ); cloudG.add(lb);
+  });
+  { const lb=labelSprite('风险点云 · 高度=风险分数 · 颜色=风险等级','#7fe7ff',1.18); lb.position.set(0,500,0); cloudG.add(lb); }
+  { const lb=labelSprite('中心：高风险聚集  /  外围：低风险分布','#9fc8e8',.72); lb.position.set(0,32,0); cloudG.add(lb); }
+  // 部门风险柱阵：部门 × 风险等级人数。
+  const levels=['低风险','中风险','高风险','极高风险'], counts={}; p.forEach(e=>{const k=e.department_key+'|'+e.risk?.level; counts[k]=(counts[k]||0)+1;});
+  const depts=[...new Set(p.map(e=>e.department_key))]; const maxN=Math.max(...Object.values(counts),1);
+  depts.forEach((dp,di)=>levels.forEach((lv,li)=>{const n=counts[dp+'|'+lv]||0,h=Math.max(6,n/maxN*260),c=viewColor((li+.6)/4),m=new THREE.Mesh(new THREE.BoxGeometry(44,h,44),new THREE.MeshStandardMaterial({color:c,emissive:c,emissiveIntensity:.65,roughness:.32,metalness:.12}));m.position.set((di-(depts.length-1)/2)*76,h/2,(li-1.5)*62);barsG.add(m);}));
+  depts.forEach((dp,di)=>{const s=byDept.get(dp); const lb=labelSprite(s?.cn||dp,'#a8c8ff',.8);lb.position.set((di-(depts.length-1)/2)*76,-18,125);barsG.add(lb);});
+  { const lb=labelSprite(`部门 × 风险等级 · 当前 ${D.profiles.length} 人档案`); lb.position.set(0,330,0); barsG.add(lb); }
+  // 压力地形：年龄 × 司龄分箱，平均风险高度，颜色叠加压力值。
+  const NX=14,NZ=12,S=560, bins=Array.from({length:NX},()=>Array.from({length:NZ},()=>({risk:0,stress:0,n:0})));
+  p.forEach(e=>{const ix=Math.min(NX-1,Math.floor((Number(e.profile?.Age)||30)/60*NX)), iz=Math.min(NZ-1,Math.floor((Number(e.profile?.YearsAtCompany)||0)/20*NZ)),b=bins[ix][iz];b.risk+=Number(e.risk?.score)||0;b.stress+=Number(e.assessment?.stress_score)||0;b.n++;});
+  const geo=new THREE.PlaneGeometry(S,S,NX-1,NZ-1);geo.rotateX(-Math.PI/2);const at=geo.attributes.position, colors=[];
+  for(let i=0;i<at.count;i++){const ix=Math.min(NX-1,Math.max(0,Math.round((at.getX(i)/S+.5)*(NX-1)))),iz=Math.min(NZ-1,Math.max(0,Math.round((at.getZ(i)/S+.5)*(NZ-1)))),b=bins[ix][iz],r=b.n?b.risk/b.n:0,s=b.n?b.stress/b.n:0;at.setY(i,r*300+4);const c=viewColor(r);colors.push(c.r,c.g,c.b);}
+  geo.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));geo.computeVertexNormals();
+  const terrainMat=new THREE.MeshBasicMaterial({vertexColors:true,side:THREE.DoubleSide,transparent:true,opacity:.94});
+  surfaceG.add(new THREE.Mesh(geo,terrainMat));
+  surfaceG.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo),new THREE.LineBasicMaterial({color:0x7fe7ff,transparent:true,opacity:.28})));
+  { const lb=labelSprite('年龄 × 司龄 · 风险 / 压力地形','#7fe7ff',1.2); lb.position.set(0,330,0); surfaceG.add(lb); }
+  cloudG.visible=barsG.visible=surfaceG.visible=false;
+}
+
+</script>
+
+</body>
+</html>

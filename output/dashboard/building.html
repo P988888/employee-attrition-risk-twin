@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企业预测性数字孪生系统 · PREDICTIVE DIGITAL TWIN</title>
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three.module.js",
+    "three/addons/controls/OrbitControls.js": "./vendor/OrbitControls.js",
+    "three/addons/loaders/GLTFLoader.js": "./vendor/loaders/GLTFLoader.js"
+  }
+}
+</script>
+<style>
+  :root{
+    --bg:#eef2f8; --panel:#ffffff; --panel2:#f7f9fd;
+    --line:#dfe6f1; --line2:#eaeff7; --ink:#1b2434; --ink2:#5a6a85;
+    --dim:#8b99b0; --blue:#2f7bff; --blue-d:#1f5fd6; --cyan:#17b6d8;
+    --green:#16c47f; --amber:#ffab2e; --orange:#ff7a45; --red:#f0455f;
+    --purple:#7b6cf6;
+    --shadow:0 2px 10px rgba(28,48,86,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+    font-size:13px;-webkit-font-smoothing:antialiased}
+
+  .app{display:grid;grid-template-rows:auto 1fr auto auto;height:100%;min-height:0}
+
+  /* ---------------- 顶部导航 ---------------- */
+  header{display:flex;align-items:center;gap:22px;padding:0 20px;height:60px;
+    background:var(--panel);border-bottom:1px solid var(--line);flex-shrink:0}
+  .brand{display:flex;flex-direction:column;gap:1px;flex-shrink:0}
+  .brand b{font-size:15.5px;letter-spacing:.5px;color:var(--ink)}
+  .brand span{font-size:8.5px;letter-spacing:1.3px;color:var(--dim);font-weight:500}
+  .top-nav{display:flex;align-items:center;gap:2px;margin-left:6px}
+  .top-nav a{position:relative;padding:0 15px;height:60px;display:flex;align-items:center;
+    color:var(--ink2);text-decoration:none;font-size:13px;font-weight:500;transition:.16s}
+  .top-nav a:hover{color:var(--blue)}
+  .top-nav a.active{color:var(--blue);font-weight:600}
+  .top-nav a.active::after{content:"";position:absolute;left:15px;right:15px;bottom:0;
+    height:2.5px;border-radius:2px;background:var(--blue)}
+  .hdr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+  .clock-live{display:flex;align-items:baseline;gap:7px;font-variant-numeric:tabular-nums}
+  .clock-live b{font-size:14px;font-weight:600;color:var(--ink)}
+  .clock-live span{font-size:11px;color:var(--dim)}
+  .avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#5b9bff,#2f7bff);
+    color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+
+  /* ---------------- 主体三栏 ---------------- */
+  main{display:grid;grid-template-columns:270px 1fr 296px;gap:12px;padding:12px 14px;
+    min-height:0;overflow:hidden}
+  .col{display:flex;flex-direction:column;gap:12px;min-height:0;overflow-y:auto;
+    scrollbar-width:thin;scrollbar-color:#c8d4e6 transparent}
+  .col::-webkit-scrollbar{width:6px}
+  .col::-webkit-scrollbar-thumb{background:#ccd8e8;border-radius:8px}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    box-shadow:var(--shadow);padding:13px 14px;flex-shrink:0}
+  .card h3{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:10px;
+    display:flex;align-items:center;gap:7px}
+  .card h3 i{width:3px;height:13px;border-radius:2px;background:var(--blue);flex-shrink:0}
+  .card h3 .en{font-size:8.5px;color:var(--dim);letter-spacing:.8px;font-weight:500;
+    margin-left:auto}
+
+  .fld{margin-bottom:11px}
+  .fld>label{display:block;font-size:11.5px;color:var(--ink2);margin-bottom:6px;font-weight:500}
+  .seg{display:flex;background:var(--panel2);border:1px solid var(--line2);border-radius:8px;
+    padding:2.5px;gap:2.5px}
+  .seg button{flex:1;border:0;background:transparent;padding:6px 0;border-radius:6px;
+    font-size:11.5px;color:var(--ink2);cursor:pointer;font-family:inherit;transition:.15s;
+    font-weight:500}
+  .seg button:hover{color:var(--blue)}
+  .seg button.on{background:var(--blue);color:#fff;font-weight:600;
+    box-shadow:0 1px 5px rgba(47,123,255,.3)}
+
+  .rng{display:flex;align-items:center;gap:9px}
+  .rng input[type=range]{flex:1;accent-color:var(--blue);height:4px;cursor:pointer}
+  .rng .val{min-width:54px;text-align:right;font-size:11.5px;font-weight:600;
+    color:var(--ink);font-variant-numeric:tabular-nums}
+  .rng .val em{font-style:normal;color:var(--blue);font-size:10.5px;margin-left:3px}
+
+  .runbtn{width:100%;border:0;border-radius:10px;padding:12px;cursor:pointer;
+    background:linear-gradient(135deg,#3f8bff,#1f5fd6);color:#fff;font-size:14px;
+    font-weight:600;font-family:inherit;letter-spacing:1px;transition:.18s;
+    box-shadow:0 3px 12px rgba(47,123,255,.32)}
+  .runbtn:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(47,123,255,.4)}
+  .runbtn:active{transform:translateY(0)}
+  .runbtn.running{background:linear-gradient(135deg,#8896ab,#66738a);box-shadow:none}
+
+  /* ---------------- 3D 舞台 ---------------- */
+  .stage{position:relative;border:1px solid var(--line);border-radius:12px;
+    overflow:hidden;min-height:0;box-shadow:var(--shadow);
+    background:#141412}
+  #gl{position:absolute;inset:0}
+  .office-frame{position:absolute;inset:0;width:100%;height:100%;border:0;
+    display:block;background:#141412;z-index:1}
+  .stage .hint{right:auto;left:16px;bottom:16px;text-align:left;z-index:6;
+    background:rgba(20,20,18,.55);color:rgba(241,236,225,.66);
+    border-color:rgba(241,236,225,.18)}
+  .stage-top{position:absolute;top:0;left:0;right:0;z-index:5;padding:13px 16px;
+    display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+    pointer-events:none}
+  .stage-title{background:rgba(255,255,255,.9);backdrop-filter:blur(9px);
+    border:1px solid var(--line);border-radius:10px;padding:9px 14px;pointer-events:auto}
+  .stage-title b{display:block;font-size:14.5px;color:var(--ink);font-weight:600}
+  .stage-title span{font-size:9px;color:var(--dim);letter-spacing:1.1px;font-weight:500}
+  .mode-sw{display:flex;gap:0;pointer-events:auto;background:rgba(255,255,255,.9);
+    backdrop-filter:blur(9px);border:1px solid var(--line);border-radius:9px;padding:3px}
+  .mode-sw button{border:0;background:transparent;padding:6px 16px;border-radius:7px;
+    font-size:11.5px;color:var(--ink2);cursor:pointer;font-family:inherit;font-weight:500;
+    transition:.15s}
+  .mode-sw button.on{background:var(--blue);color:#fff;font-weight:600}
+
+  .legend{position:absolute;left:16px;bottom:16px;z-index:5;
+    background:rgba(255,255,255,.92);backdrop-filter:blur(9px);border:1px solid var(--line);
+    border-radius:10px;padding:10px 12px}
+  .legend .t{font-size:10.5px;color:var(--ink2);font-weight:600;margin-bottom:7px}
+  .legend .bar{width:132px;height:9px;border-radius:5px;margin-bottom:4px;
+    background:linear-gradient(90deg,#4f8cff,#4dd4c8,#ffd166,#ff7a45,#f0455f)}
+  .legend .ends{display:flex;justify-content:space-between;font-size:8.5px;color:var(--dim)}
+  .legend .chips{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:9px;
+    padding-top:8px;border-top:1px solid var(--line2)}
+  .chip{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--ink2)}
+  .chip i{width:8px;height:8px;border-radius:2.5px;flex-shrink:0}
+  .hint{position:absolute;right:16px;bottom:16px;z-index:5;font-size:9.5px;
+    color:var(--dim);background:rgba(255,255,255,.86);backdrop-filter:blur(8px);
+    border:1px solid var(--line);border-radius:8px;padding:7px 10px;line-height:1.6;
+    text-align:right}
+
+  /* ---------------- KPI ---------------- */
+  .kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .kpi{background:var(--panel2);border:1px solid var(--line2);border-radius:10px;
+    padding:10px 11px}
+  .kpi .lb{font-size:10.5px;color:var(--dim);margin-bottom:5px;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis}
+  .kpi .vl{font-size:20px;font-weight:700;color:var(--ink);line-height:1.1;
+    font-variant-numeric:tabular-nums}
+  .kpi .vl u{font-size:11px;font-weight:500;text-decoration:none;color:var(--ink2);
+    margin-left:2px}
+  .kpi .dl{font-size:10.5px;font-weight:600;margin-top:4px;display:flex;
+    align-items:center;gap:3px}
+  .up{color:var(--green)} .down{color:var(--red)} .flat{color:var(--dim)}
+
+  .tabs{display:flex;gap:3px;margin-bottom:10px;background:var(--panel2);
+    border:1px solid var(--line2);border-radius:8px;padding:2.5px}
+  .tabs button{flex:1;border:0;background:transparent;padding:5.5px 0;border-radius:6px;
+    font-size:11px;color:var(--ink2);cursor:pointer;font-family:inherit;transition:.15s}
+  .tabs button.on{background:#fff;color:var(--blue);font-weight:600;
+    box-shadow:0 1px 4px rgba(28,48,86,.1)}
+
+  canvas.chart{display:block;width:100%}
+
+  /* ---------------- 底部四个面板 ---------------- */
+  .bottom{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 14px 12px;
+    height:206px;flex-shrink:0}
+  .pan{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    box-shadow:var(--shadow);padding:12px 13px;display:flex;flex-direction:column;
+    min-height:0;overflow:hidden}
+  .pan h3{font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:7px;
+    margin-bottom:9px;flex-shrink:0}
+  .pan h3 i{width:3px;height:13px;border-radius:2px;background:var(--blue);flex-shrink:0}
+  .pan h3 .en{font-size:8.5px;color:var(--dim);letter-spacing:.8px;font-weight:500}
+  .pan .body{flex:1;min-height:0;display:flex;gap:12px;align-items:center}
+  .pan .body.col{flex-direction:column;align-items:stretch;gap:6px;overflow:hidden}
+
+  .donut-wrap{position:relative;flex-shrink:0}
+  .donut-wrap .mid{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+  .donut-wrap .mid b{font-size:19px;font-weight:700;color:var(--ink);
+    font-variant-numeric:tabular-nums;display:block;line-height:1}
+  .donut-wrap .mid span{font-size:9px;color:var(--dim)}
+  .lgd{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0}
+  .lgd .it{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink2)}
+  .lgd .it i{width:8px;height:8px;border-radius:2.5px;flex-shrink:0}
+  .lgd .it b{margin-left:auto;color:var(--ink);font-variant-numeric:tabular-nums}
+
+  .bars{display:flex;flex-direction:column;gap:7px;width:100%}
+  .bars .r{display:flex;align-items:center;gap:8px;font-size:10.5px}
+  .bars .r .nm{width:56px;color:var(--ink2);flex-shrink:0;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bars .r .tk{flex:1;height:14px;background:var(--panel2);border-radius:5px;overflow:hidden;
+    border:1px solid var(--line2)}
+  .bars .r .fl{display:block;height:100%;border-radius:4px;transition:width .5s cubic-bezier(.22,1,.36,1)}
+  .bars .r .vv{width:38px;text-align:right;font-weight:600;color:var(--ink);
+    font-variant-numeric:tabular-nums}
+
+  .ins{display:flex;flex-direction:column;gap:9px;overflow-y:auto;width:100%;
+    scrollbar-width:thin}
+  .ins .it{display:flex;gap:8px;font-size:10.5px;line-height:1.55}
+  .ins .it .no{width:17px;height:17px;border-radius:50%;flex-shrink:0;display:grid;
+    place-items:center;font-size:9.5px;font-weight:700;color:#fff;background:var(--blue);
+    margin-top:1px}
+  .ins .it.a .no{background:var(--orange)}
+  .ins .it.g .no{background:var(--green)}
+  .ins .it .tx{color:var(--ink2)}
+  .ins .it .tx b{color:var(--ink);font-weight:600}
+
+  .ai-badge{font-size:8.5px;font-weight:600;color:var(--purple);
+    background:rgba(123,108,246,.1);border:1px solid rgba(123,108,246,.25);
+    border-radius:5px;padding:2px 6px;margin-left:auto}
+
+  /* ---------------- 员工档案抽屉 ---------------- */
+  .drawer{position:fixed;right:0;top:0;bottom:0;width:390px;z-index:60;
+    background:var(--panel);border-left:1px solid var(--line);
+    box-shadow:-6px 0 26px rgba(28,48,86,.13);transform:translateX(102%);
+    transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+  .drawer.open{transform:translateX(0)}
+  .drawer-hd{display:flex;align-items:center;gap:9px;padding:14px 16px;
+    border-bottom:1px solid var(--line);flex-shrink:0}
+  .drawer-hd b{font-size:14px;font-weight:600}
+  .drawer-hd .x{margin-left:auto;width:28px;height:28px;border-radius:8px;border:1px solid var(--line);
+    background:var(--panel2);cursor:pointer;font-size:15px;color:var(--ink2);line-height:1;
+    display:grid;place-items:center}
+  .drawer-hd .x:hover{background:#eef2f8}
+  .drawer-bd{flex:1;overflow-y:auto;padding:14px 16px;scrollbar-width:thin}
+  .drawer-bd::-webkit-scrollbar{width:6px}
+  .drawer-bd::-webkit-scrollbar-thumb{background:#ccd8e8;border-radius:8px}
+
+  .who{display:flex;align-items:center;gap:11px;margin-bottom:13px;
+    padding-bottom:13px;border-bottom:1px solid var(--line2)}
+  .avatar2{width:46px;height:46px;border-radius:12px;flex-shrink:0;display:grid;
+    place-items:center;font-size:17px;font-weight:700;color:#fff}
+  .who .nm{font-size:15px;font-weight:600;line-height:1.3}
+  .who .sub{font-size:10.5px;color:var(--dim);margin-top:3px}
+  .tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;
+    font-weight:600;margin-left:6px;vertical-align:1.5px}
+  .dept-badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:6px;
+    font-size:10px;font-weight:600;color:#fff;vertical-align:1.5px}
+  .nowstat{font-size:10.5px;padding:3px 9px;border-radius:6px;margin-top:7px;
+    display:inline-block;background:rgba(47,123,255,.09);color:var(--blue);font-weight:500}
+
+  .section{margin-top:14px}
+  .section>.t{font-size:11.5px;font-weight:600;color:var(--ink);margin-bottom:8px;
+    padding-bottom:5px;border-bottom:1px solid var(--line2);display:flex;
+    align-items:center;gap:6px}
+  .section>.t i{width:3px;height:11px;border-radius:2px;background:var(--blue)}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:11.5px}
+  .kv dt{color:var(--dim);white-space:nowrap}
+  .kv dd{color:var(--ink);font-weight:500;text-align:right}
+  .fac{font-size:10.5px;margin-bottom:6px;line-height:1.5;display:flex;gap:7px}
+  .fac .dir{font-weight:700;flex-shrink:0}
+  .fac .bd{color:var(--dim);font-size:10px}
+  .talk{border-left:2px solid var(--line);padding:5px 0 5px 9px;margin-bottom:7px;
+    font-size:10.5px;line-height:1.5;color:var(--ink2)}
+  .talk .meta{color:var(--dim);font-size:9.5px;margin-bottom:2px}
+
+  .row{display:flex;align-items:center;gap:8px;margin-bottom:7px;font-size:11px}
+  .row .nm{width:58px;color:var(--dim);flex-shrink:0;font-size:10.5px}
+  .row .track{flex:1;height:13px;background:var(--panel2);border-radius:5px;overflow:hidden;
+    border:1px solid var(--line2)}
+  .row .fill{display:block;height:100%;border-radius:4px;transition:width .6s cubic-bezier(.22,1,.36,1)}
+  .row .vv{width:40px;text-align:right;font-weight:600;font-size:11px;
+    font-variant-numeric:tabular-nums}
+
+  .empty{display:flex;flex-direction:column;align-items:center;justify-content:center;
+    height:100%;color:var(--dim);font-size:12px;text-align:center;line-height:1.9;padding:20px}
+  .empty .big{font-size:30px;margin-bottom:8px;opacity:.35}
+
+  footer{display:flex;align-items:center;gap:13px;margin:0 14px 12px;padding:9px 14px;
+    background:var(--panel);border:1px solid var(--line);border-radius:11px;
+    box-shadow:var(--shadow);flex-shrink:0;height:46px}
+  .play{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);
+    background:var(--panel2);color:var(--blue);cursor:pointer;font-size:12px;
+    display:grid;place-items:center;flex-shrink:0}
+  .play:hover{background:#e9f0fd}
+  .clock{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;
+    color:var(--ink);min-width:62px}
+  .tl{flex:1;accent-color:var(--blue);cursor:pointer}
+  .fps{font-size:10.5px;color:var(--green);font-variant-numeric:tabular-nums;min-width:52px}
+  .stat{display:flex;gap:11px;font-size:10px;color:var(--dim);flex-wrap:wrap;max-width:270px}
+  .stat b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+  #loading{position:fixed;inset:0;z-index:99;display:grid;place-items:center;
+    background:var(--bg);color:var(--blue);font-size:14px;letter-spacing:2px}
+  #loading.hide{opacity:0;pointer-events:none;transition:opacity .45s}
+
+  @media(max-width:1600px){
+    main{grid-template-columns:246px 1fr 272px}
+    .bottom{grid-template-columns:repeat(4,1fr);height:196px}
+  }
+  @media(max-width:1360px){
+    main{grid-template-columns:230px 1fr 252px}
+    .bottom{grid-template-columns:repeat(2,1fr);height:auto;max-height:380px;
+      overflow-y:auto}
+  }
+</style>
+</head>
+<body>
+<div id="loading">正在构建数字孪生场景与预测模型…</div>
+
+<div class="app">
+  <header>
+    <div class="brand">
+      <b>企业预测性数字孪生系统</b>
+      <span>PREDICTIVE DIGITAL TWIN FOR SMART WORKPLACE</span>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html">总览</a>
+      <a class="active" href="building.html" aria-current="page">行为预测</a>
+      <a href="index.html#space">空间预测</a>
+      <a href="index.html#scenario">情景推演</a>
+      <a href="index.html#compare">方案对比</a>
+      <a href="employee_archive.html">数据分析</a>
+    </nav>
+    <div class="hdr-right">
+      <div class="clock-live">
+        <b id="wall-clock">—</b>
+        <span>未来 · 更可预见</span>
+      </div>
+      <div class="avatar">F</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 左：预测设置 ============ -->
+    <div class="col">
+      <div class="card">
+        <h3><i></i>预测设置<span class="en">SCENARIO</span></h3>
+
+        <div class="fld">
+          <label>时间范围</label>
+          <div class="seg" data-seg="horizon">
+            <button data-v="30">30 分钟</button>
+            <button data-v="120" class="on">2 小时</button>
+            <button data-v="1440">1 天</button>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label>时间粒度</label>
+          <div class="seg" data-seg="granularity">
+            <button data-v="5" class="on">5 分钟</button>
+            <button data-v="15">15 分钟</button>
+            <button data-v="30">30 分钟</button>
+          </div>
+        </div>
+
+        <div class="fld" style="margin-bottom:0">
+          <label>情景方案</label>
+          <div class="seg" data-seg="scenario" style="flex-direction:column">
+            <button data-v="base" class="on">基线方案</button>
+            <button data-v="hire20">扩招 20%</button>
+            <button data-v="stagger">错峰午休</button>
+            <button data-v="meeting">会议优化</button>
+            <button data-v="custom">+ 自定义情景</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i></i>关键参数<span class="en">PARAMETERS</span></h3>
+
+        <div class="fld">
+          <label>员工人数</label>
+          <div class="rng">
+            <input id="sl-head" type="range" min="28" max="60" step="1" value="28">
+            <span class="val"><span id="v-head">28</span><em id="d-head">基准</em></span>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label>会议数量</label>
+          <div class="rng">
+            <input id="sl-meet" type="range" min="0" max="30" step="1" value="8">
+            <span class="val"><span id="v-meet">8</span><em id="d-meet">+2</em></span>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label>午休时段</label>
+          <div class="seg" data-seg="lunch">
+            <button data-v="0">11:30</button>
+            <button data-v="1" class="on">12:00</button>
+            <button data-v="2">12:30</button>
+          </div>
+        </div>
+
+        <div class="fld" style="margin-bottom:0">
+          <label>远程办公比例</label>
+          <div class="rng">
+            <input id="sl-remote" type="range" min="0" max="60" step="5" value="15">
+            <span class="val"><span id="v-remote">15</span><em>%</em></span>
+          </div>
+        </div>
+      </div>
+
+      <button class="runbtn" id="btn-run">运行预测</button>
+    </div>
+
+    <!-- ============ 中：3D 场景（NEXUS 28 人办公层） ============ -->
+    <div class="stage">
+      <iframe class="office-frame" id="office-frame" src="office-embed.html?embed=1&v=10"
+        title="28 人 3D 办公区 · 点击人物查看员工档案"></iframe>
+      <div class="stage-top">
+        <div class="stage-title">
+          <b>办公层 · 研发 / 市场 / 运营 / 客服 / 职能</b>
+          <span>OPEN OFFICE FLOOR &nbsp;·&nbsp; 28 EMPLOYEES &nbsp;·&nbsp; 5 ZONES &nbsp;·&nbsp; 620 M²</span>
+        </div>
+        <div class="mode-sw" id="mode-sw">
+          <button data-m="live" class="on">实时</button>
+          <button data-m="forecast">预测</button>
+        </div>
+      </div>
+
+      <div class="hint">拖拽旋转 · 滚轮缩放 · 点击人物查看档案<br>5 个场景视角 · 自动巡航 / 昼夜切换</div>
+    </div>
+
+    <!-- ============ 右：预测结果 ============ -->
+    <div class="col">
+      <div class="card">
+        <h3><i></i>预测结果<span class="en">PREDICTION RESULTS</span></h3>
+
+        <div class="tabs" id="res-tabs">
+          <button data-t="overall" class="on">总体</button>
+          <button data-t="floor">楼层</button>
+          <button data-t="zone">区域</button>
+          <button data-t="room">会议室</button>
+        </div>
+
+        <div class="kpis" id="kpis"></div>
+
+        <div style="margin-top:13px">
+          <div style="font-size:11.5px;color:var(--ink2);font-weight:500;margin-bottom:7px">
+            未来 <span id="chart-hz">2 小时</span>各区域人数趋势</div>
+          <canvas class="chart" id="cv-trend" height="150"></canvas>
+          <div class="lgd" id="trend-lgd" style="flex-direction:row;flex-wrap:wrap;
+            gap:4px 12px;margin-top:7px"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i></i>此刻状态<span class="en">LIVE STATE</span></h3>
+        <div id="state-dist"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ 底部四个面板 ============ -->
+  <div class="bottom">
+    <div class="pan">
+      <h3><i></i>行为预测<span class="en">BEHAVIOR</span></h3>
+      <div class="body">
+        <div class="donut-wrap">
+          <canvas id="cv-donut" width="104" height="104"></canvas>
+          <div class="mid"><b id="donut-mid">0</b><span>在楼人数</span></div>
+        </div>
+        <div class="lgd" id="donut-lgd"></div>
+      </div>
+    </div>
+
+    <div class="pan">
+      <h3><i></i>空间占用预测<span class="en">SPACE OCCUPANCY</span></h3>
+      <div style="display:flex;gap:3px;background:var(--panel2);border:1px solid var(--line2);
+        border-radius:8px;padding:2.5px;margin-bottom:9px;flex-shrink:0">
+        <button class="tabs-b" data-occ="room" style="flex:1;border:0;background:#fff;
+          color:var(--blue);font-weight:600;padding:5px 0;border-radius:6px;font-size:11px;
+          cursor:pointer;font-family:inherit">区域视图</button>
+        <button class="tabs-b" data-occ="dept" style="flex:1;border:0;background:transparent;
+          color:var(--ink2);padding:5px 0;border-radius:6px;font-size:11px;cursor:pointer;
+          font-family:inherit">部门视图</button>
+      </div>
+      <div class="body col" id="occ-body"></div>
+    </div>
+
+    <div class="pan">
+      <h3><i></i>情景对比<span class="en">SCENARIO COMPARISON</span></h3>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-shrink:0">
+        <select id="sel-cmp" style="flex:1;padding:5px 8px;border:1px solid var(--line);
+          border-radius:7px;font-size:11px;background:var(--panel2);color:var(--ink);
+          font-family:inherit;cursor:pointer"></select>
+        <span id="cmp-delta" style="font-size:11.5px;font-weight:700"></span>
+      </div>
+      <div class="body col" style="justify-content:center">
+        <canvas class="chart" id="cv-cmp" height="112"></canvas>
+        <div class="lgd" id="cmp-lgd" style="flex-direction:row;flex-wrap:wrap;
+          gap:3px 11px;justify-content:center"></div>
+      </div>
+    </div>
+
+    <div class="pan">
+      <h3><i></i>智能建议<span class="en">INSIGHTS</span>
+        <span class="ai-badge">AI 分析</span></h3>
+      <div class="body col">
+        <div class="ins" id="insights"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer id="sim-bar">
+  <button class="play" id="btn-play">❚❚</button>
+  <span class="clock" id="clock">10:00</span>
+  <input class="tl" id="tl" type="range" min="540" max="1080" step="1" value="600">
+  <span class="fps" id="fps">— fps</span>
+  <div class="stat" id="stat"></div>
+</footer>
+
+<!-- ============ 员工档案抽屉 ============ -->
+<aside class="drawer" id="drawer">
+  <div class="drawer-hd">
+    <b>员工档案</b>
+    <span id="p-pick" style="font-size:11px;color:var(--dim)"></span>
+    <button class="x" id="drawer-x">×</button>
+  </div>
+  <div class="drawer-bd" id="emp-panel"></div>
+</aside>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { Sim, WORK_START, WORK_END } from './sim.js';
+
+const $ = s => document.querySelector(s);
+let BUILD, PROFILES, byId = {}, sim;
+let scene, camera, renderer, controls, bldG, floorGroups = {}, ceilGroups = {};
+let heatMesh = null;             // 地面拥挤度热力图（单层专用）
+let blenderFloorEnv = null;
+let blenderEnvStatus = '未加载';
+let selectionBadge = null;
+let officeFrame = null, dashStarted = false, liveStates = {};
+// 模拟时间单位是分钟；演示播放固定为 1 秒真实时间推进 1 分钟模拟时间，界面不暴露倍速控制。
+const SIM_MINUTES_PER_REAL_MINUTE = 60;
+let colorMode = 'dept', playing = true, picked = null;
+// 单层平面：没有楼层切换，curFloor 固定为 1，保留变量以免其它分支到处改
+const curFloor = 1;
+// 仪表盘状态
+let mode = 'live';                       // live | forecast
+let scenario = 'base';
+let horizonMin = 120, granularityMin = 5;
+let params = { headcount: 28, meetings: 8, lunch: 1, remote: 15 };
+let baseKpi = null;                      // 基线方案 KPI（用于对比）
+let floorData = null;                    // 房间包围盒，供拥挤度热力图使用
+const DEPT_HEX = {};
+const RISK_HEX = { '低风险':0x28d17c, '中风险':0xffb020, '高风险':0xff6b35, '极高风险':0xff2e63 };
+const RISK_CSS = { '低风险':'#28d17c', '中风险':'#ffb020', '高风险':'#ff6b35', '极高风险':'#ff2e63' };
+const STATE_HEX = { work:0x2f7bff, walk:0x17b6d8, meeting:0x7b6cf6, pantry:0xffab2e,
+                    lounge:0x16c47f, print:0x9aa7b8, away:0xb8c2d4, lunch:0xff7a45,
+                    discuss:0x38c7d6, stroll:0x5bc8e8 };
+const STATE_CN = { work:'专注工作', walk:'移动中', meeting:'参加会议', pantry:'茶水间',
+                   lounge:'休息', print:'打印区', lunch:'午休', discuss:'走动沟通', stroll:'巡场走动',
+                   away:'不在楼内' };
+// 行为预测环形图只展示 5 类（截图口径）：专注/会议/移动/休息/其他
+const STATE_GROUP = {
+  work:'专注工作', discuss:'专注工作', stroll:'专注工作',
+  meeting:'参加会议',
+  walk:'移动中',
+  lounge:'休息', lunch:'休息',
+  pantry:'其他', print:'其他', away:'其他',
+};
+const GROUP_ORDER = ['专注工作','参加会议','移动中','休息','其他'];
+const GROUP_CSS = { '专注工作':'#2f7bff','参加会议':'#7b6cf6','移动中':'#17b6d8',
+                    '休息':'#16c47f','其他':'#ffab2e' };
+const FH = 3.6;
+const WALL_H = FH - .28;
+const DOOR_H = FH - .48;
+
+/* ================================================================
+   实例化批处理：静态建筑 + 家具 → 每（材质,几何）一次 draw call
+   ================================================================ */
+const UNIT = new THREE.BoxGeometry(1, 1, 1);
+const CYLG = new THREE.CylinderGeometry(1, 1, 1, 12);
+const SPHG = new THREE.SphereGeometry(1, 12, 8);
+const GEOK = { box: UNIT, cyl: CYLG, sph: SPHG };
+const batches = new Map();
+const _q0 = new THREE.Quaternion(), _Y = new THREE.Vector3(0,1,0);
+const _p0 = new THREE.Vector3(), _s0 = new THREE.Vector3();
+
+function push(mat, x, y, z, sx, sy, sz, ry = 0, geo = 'box'){
+  const key = `${mat.uuid}|${geo}`;
+  if (!batches.has(key)) batches.set(key, { mat, geo, list: [] });
+  const m = new THREE.Matrix4();
+  _q0.setFromAxisAngle(_Y, ry);
+  m.compose(_p0.set(x, y, z), _q0, _s0.set(sx, sy, sz));
+  batches.get(key).list.push(m);
+}
+function finalizeBatches(group){
+  for (const { mat, geo, list } of batches.values()){
+    const im = new THREE.InstancedMesh(GEOK[geo], mat, list.length);
+    for (let i = 0; i < list.length; i++) im.setMatrixAt(i, list[i]);
+    im.instanceMatrix.needsUpdate = true;
+    im.frustumCulled = false;
+    group.add(im);
+  }
+  batches.clear();
+}
+
+const MATS = {};
+function initMats(){
+  const mk = (k, color, o = {}) => (MATS[k] = new THREE.MeshStandardMaterial({
+    color, roughness: o.rough ?? .75, metalness: o.metal ?? 0,
+    transparent: !!o.alpha, opacity: o.alpha ?? 1,
+    side: o.dbl ? THREE.DoubleSide : THREE.FrontSide,
+    emissive: o.emissive ?? 0x000000, emissiveIntensity: o.ei ?? 0,
+  }));
+  mk('slab', 0xdfe4ec, { rough:.8 });
+  mk('conc', 0xb9c1cc, { rough:.85 });
+  mk('spand', 0x39415a, { rough:.7 });
+  mk('mull', 0x9aa6b6, { rough:.35, metal:.85 });
+  mk('glass', 0x9fd2f0, { rough:.06, metal:.2, alpha:.26, dbl:true });
+  mk('core', 0x8d95a4, { rough:.8 });
+  mk('roofeq', 0x6b7688, { rough:.7, metal:.2 });
+  mk('wallIn', 0xe6ecf5, { rough:.92, alpha:.38, dbl:true });
+  mk('ceil', 0xf2f5fa, { rough:.95 });
+  mk('lamp', 0xffffff, { rough:.5, emissive:0xfff0d8, ei:1.6 });
+  mk('carpet', 0xb9bec9, { rough:.98 });
+  mk('woodF', 0xb98a5e, { rough:.6 });
+  mk('tileF', 0xdde3ea, { rough:.35 });
+  mk('desk', 0xc9a06a, { rough:.6 });
+  mk('leg', 0x707a88, { rough:.4, metal:.7 });
+  mk('chair', 0x39414f, { rough:.72 });
+  mk('soft', 0x3a5570, { rough:.85 });
+  mk('scr', 0x111820, { rough:.2, emissive:0x1d4a6e, ei:.55 });
+  mk('floorsurf', 0x8e97a8, { rough:.95 });
+  mk('elevcar', 0x9aa3b2, { rough:.45, metal:.6 });
+  mk('elevdoor', 0xc8ced8, { rough:.3, metal:.85 });
+  mk('pot', 0x9a6b4f, { rough:.85 });
+  mk('leaf', 0x2e7d4f, { rough:.8 });
+  mk('woodT', 0x7a5230, { rough:.45 });
+  mk('furnM', 0x66707e, { rough:.7 });
+  mk('stoneM', 0xc9cdd4, { rough:.4 });
+  mk('steelM', 0xb9c0c9, { rough:.28, metal:.8 });
+  mk('shelfM', 0x6b4a2e, { rough:.6 });
+  mk('doorPanel', 0xa87a4e, { rough:.55 });
+  mk('ground', 0x0d1421, { rough:.98 });
+  mk('plinth', 0x2a3346, { rough:.9 });
+  mk('apron', 0x364052, { rough:.85 });
+  mk('sign', 0x3ddcff, { rough:.4, emissive:0x1a7fa8, ei:.9 });
+  // —— 家具细部材质 ——
+  mk('screenGlow', 0x16324a, { rough:.15, emissive:0x2e6d9e, ei:.85 });
+  mk('chairF', 0x2f3947, { rough:.82 });          // 椅面织物
+  mk('chairBk', 0x1e242e, { rough:.7 });          // 椅背/滚轮
+  mk('cushion', 0x4a6b8a, { rough:.9 });          // 坐垫
+  mk('woodD', 0x5e3d28, { rough:.5 });            // 深木
+  mk('soil', 0x3a2c22, { rough:.95 });            // 土
+  mk('trunk', 0x5a4632, { rough:.85 });           // 树干
+  mk('leaf2', 0x3f9a63, { rough:.78 });
+  mk('paper', 0xf3f2ec, { rough:.92 });
+  mk('book2', 0x8a5a3a, { rough:.8 });
+  mk('boxM', 0xb0a48e, { rough:.85 });            // 收纳箱
+  mk('cabM', 0x8d8f96, { rough:.6 });             // 柜体
+  mk('whiteM', 0xf2f4f7, { rough:.7 });           // 白板/洁具
+  mk('boardM', 0xe8eef4, { rough:.25 });
+  mk('mirrorM', 0xc8d4e0, { rough:.06, metal:.9 });
+  mk('glassM', 0xa8d6f0, { rough:.1, alpha:.35, dbl:true });
+  mk('boothM', 0x4a5563, { rough:.6 });           // 电话亭
+  mk('bottle', 0x9fd8ea, { rough:.15, alpha:.6 }); // 水桶
+  mk('cup', 0xe8e4dc, { rough:.5 });              // 水杯
+  mk('mullM', 0x9aa6b6, { rough:.35, metal:.85 });
+  mk('logomM', 0x3ddcff, { rough:.4, emissive:0x1a7fa8, ei:.6 });
+  mk('logoM', 0x3ddcff, { rough:.4, emissive:0x1a7fa8, ei:.6 });
+}
+
+/* ================================================================
+   建筑
+   ================================================================ */
+function buildArchitecture(){
+  const W = BUILD.building.footprint.w, D = BUILD.building.footprint.d;
+  const F = MATS;
+  const fg = floorGroups[1];          // 单层：只有一个楼层组
+
+  // 场地
+  push(F.ground, W/2, -0.45, D/2, 340, .2, 340);
+  push(F.plinth, W/2, -0.2, D/2, W + 12, .5, D + 14);
+  push(F.apron, W/2, -0.06, -5, 16, .12, 12);
+
+  // 楼板 + 地面
+  push(F.slab, W/2, -0.17, D/2, W + 1.2, .34, D + 1.2);
+  push(F.floorsurf, W/2, .03, D/2, W, .06, D);
+  finalizeBatches(fg);
+
+  // 勒脚 + 入口雨棚 + 招牌（单层建筑，都在同一组）
+  push(F.conc, W/2, .2, D/2, W + 1.2, .4, D + 1.2);
+  push(F.conc, W/2, .95, .35, W + 1.2, 1.0, .5);
+  push(F.conc, W/2, .95, D - .35, W + 1.2, 1.0, .5);
+  push(F.conc, .35, .95, D/2, .5, 1.0, D + 1.2);
+  push(F.conc, W - .35, .95, D/2, .5, 1.0, D + 1.2);
+  // 屋面设备（单层平屋顶上的机电外机）
+  for (const a of [[6,5,4,3,1.6],[13,6,3,2.4,1.4],[26,4,5,3.2,1.8],
+                   [7,19,3,3,1.5],[31,20,4,3,1.6]])
+    push(F.roofeq, a[0], FH + a[4]/2, a[1], a[2], a[4], a[3]);
+
+  push(F.conc, W/2, 4.0, -2.4, 13, .35, 5.5);
+  push(F.mull, W/2 - 5.6, 2.0, -1.0, .32, 4.0, .32, 0, 'cyl');
+  push(F.mull, W/2 + 5.6, 2.0, -1.0, .32, 4.0, .32, 0, 'cyl');
+  push(F.glass, W/2, 1.45, -0.1, 3.2, 2.9, 3.2, 0, 'cyl');
+  push(F.conc, W/2, .25, -3.6, 14, .5, 4);
+  // 入口台阶
+  for (let i = 0; i < 3; i++)
+    push(F.conc, W/2, .12 + i*.08, -5.4 - i*.4, 16 - i, .16, .5);
+  for (let i = 0; i < 6; i++)
+    push(F.sign, W + .5, 1.2 + i*1.6, 3.0, .35, 1.2, .9);
+  finalizeBatches(fg);
+
+  // 幕墙（单层一圈）
+  const bayX = 3.2, bayZ = 3.4;
+  for (const spec of [['z', W, -0.02], ['z', W, D + .02],
+                      ['x', D, -0.02], ['x', D, W + .02]]){
+    const axis = spec[0], len = spec[1], fixed = spec[2];
+    const step = axis === 'z' ? bayX : bayZ;
+    for (let q = 0; q < len; q += step){
+      const w = Math.min(step, len - q);
+      const cx = axis === 'z' ? q + w/2 : fixed;
+      const cz = axis === 'z' ? fixed : q + w/2;
+      if (axis === 'z'){
+        push(F.glass, cx, 1.98, cz, w - .16, 2.5, .1);
+        push(F.spand, cx, .62, cz, w - .1, .78, .14);
+        push(F.mull, q, FH/2, cz, .14, FH, .2);
+      } else {
+        push(F.glass, cx, 1.98, cz, .1, 2.5, w - .16);
+        push(F.spand, cx, .62, cz, .14, .78, w - .1);
+        push(F.mull, cx, FH/2, q, .2, FH, .14);
+      }
+    }
+  }
+  push(F.mull, W/2, FH - .08, -0.05, W + .3, .16, .22);
+  push(F.mull, W/2, FH - .08, D + .05, W + .3, .16, .22);
+  push(F.mull, -0.05, FH - .08, D/2, .22, .16, D + .3);
+  push(F.mull, W + .05, FH - .08, D/2, .22, .16, D + .3);
+  // 单层建筑的屋面（有女儿墙的平屋顶）
+  push(F.slab, W/2, FH + .14, D/2, W + 1.4, .28, D + 1.4);
+  for (const [cx, cz, w, d] of [[W/2, -0.06, W + 1.5, .22], [W/2, D + .06, W + 1.5, .22],
+                                [-0.06, D/2, .22, D + 1.5], [W + .06, D/2, .22, D + 1.5]])
+    push(F.conc, cx, FH + .55, cz, w, .7, d);
+  finalizeBatches(fg);
+}
+
+/* ================================================================
+   家具（细部建模）—— 全部走 push 批量实例化，draw call 不随细节增加
+   ================================================================ */
+/** 单个工位：桌面 / 挡板 / 侧板 / 脚梁 / 抽屉柜(3抽+拉手) / 显示器 / 键鼠 / 台灯 / 水杯 / 文件 */
+function buildWorkstation(fg, d){
+  const F = MATS, rot = -d.rot;
+  const c = Math.cos(rot), s2 = Math.sin(rot);
+  // 局部坐标 → 世界坐标
+  const R = (dx, dz) => [d.x + dx*c - dz*s2, d.y + dx*s2 + dz*c];
+  const put = (mat, dx, dz, y, sx, sy, sz, geo='box') => {
+    const p = R(dx, dz); push(mat, p[0], y, p[1], sx, sy, sz, rot, geo);
+  };
+
+  // —— 桌面（两层：面板 + 边沿，做出厚度感）
+  put(F.desk, 0, 0, .735, 1.5, .035, .75);
+  put(F.leg,  0, 0, .705, 1.48, .02, .73);
+  // —— 两侧板式支腿 + 脚梁
+  put(F.leg, -.70, 0, .36, .05, .70, .70);
+  put(F.leg,  .70, 0, .36, .05, .70, .70);
+  put(F.leg, -.70, 0, .02, .06, .04, .68);
+  put(F.leg,  .70, 0, .02, .06, .04, .68);
+  // —— 挡板（对侧）
+  put(F.furnM, 0, -.30, .52, 1.36, .30, .025);
+  // —— 活动柜：柜体 + 三个抽屉面板 + 拉手
+  put(F.furnM, .74, 0, .30, .40, .54, .52);
+  for (const yy of [.44, .30, .16]){
+    put(F.steelM, .74, .27, yy, .34, .13, .012);
+    put(F.leg,    .74, .265, yy, .10, .015, .02);
+  }
+  // —— 显示器：边框 + 屏面 + 支臂 + 底座
+  put(F.scr,  0, -.24, 1.03, .62, .38, .03);
+  put(F.screenGlow, 0, -.226, 1.03, .56, .32, .006);
+  put(F.leg,  0, -.24, .86, .05, .06, .30);
+  put(F.leg,  0, -.16, .755, .22, .02, .16);
+  // —— 键盘 + 鼠标
+  put(F.leg, 0, .02, .755, .40, .015, .14);
+  put(F.leg, .28, .04, .758, .06, .025, .10);
+  // —— 台灯（底座 + 立杆 + 灯头）
+  put(F.leg, -.60, -.24, .755, .16, .02, .16);
+  put(F.leg, -.60, -.24, .86, .025, .20, .025);
+  put(F.leg, -.56, -.24, .95, .14, .03, .08);
+  // —— 水杯 + 笔筒 + 文件
+  put(F.cup,  .40, -.20, .78, .07, .10, .07, 'cyl');
+  put(F.cup, -.28, -.18, .80, .06, .12, .06, 'cyl');
+  put(F.paper, .02, -.30, .765, .21, .008, .29);
+  put(F.paper, .04, -.28, .775, .21, .008, .29);
+
+  // —— 办公椅（靠背两段 + 头枕 + 扶手 + 气压杆 + 五爪底盘 + 滚轮）
+  const bc = Math.cos(d.rot + Math.PI), bs = Math.sin(d.rot + Math.PI);
+  const chairAt = (dx, dz) => [d.x + dx*c - dz*s2 + 0, d.y + dx*s2 + dz*c + 0];
+  const [cx0, cz0] = R(0, .62);
+  const cr = -d.rot;
+  const cput = (mat, dx, dz, y, sx, sy, sz, geo='box') => {
+    const cc = Math.cos(cr), cs = Math.sin(cr);
+    push(mat, cx0 + dx*cc - dz*cs, y, cz0 + dx*cs + dz*cc, sx, sy, sz, cr, geo);
+  };
+  cput(F.chairF, 0, 0, .46, .50, .09, .50);            // 坐垫
+  cput(F.chairF, 0, -.22, .66, .47, .30, .07);         // 靠背下段
+  cput(F.chairF, 0, -.24, .87, .44, .22, .06);         // 靠背上段
+  cput(F.chairF, 0, -.26, 1.00, .30, .10, .05);        // 头枕
+  cput(F.chairBk, 0, -.23, .76, .40, .02, .02);        // 腰托
+  cput(F.leg, -.27, -.02, .60, .045, .10, .045);       // 左扶手立柱
+  cput(F.leg, -.27, -.10, .65, .05, .03, .20);         // 左扶手面
+  cput(F.leg,  .27, -.02, .60, .045, .10, .045);
+  cput(F.leg,  .27, -.10, .65, .05, .03, .20);
+  cput(F.steelM, 0, 0, .29, .05, .26, .05);            // 气压杆
+  cput(F.steelM, 0, 0, .13, .30, .035, .30);           // 底盘
+  for (let i = 0; i < 5; i++){                          // 五爪 + 滚轮
+    const a = i * Math.PI * 2 / 5;
+    const fx = Math.cos(a) * .17, fz = Math.sin(a) * .17;
+    cput(F.steelM, fx, fz, .10, .20, .03, .05, undefined);
+    cput(F.chairBk, fx * 1.9, fz * 1.9, .04, .07, .07, .07);
+  }
+}
+
+/** 其它家具（按类型细分） */
+function buildFurniture(fg, o){
+  const F = MATS, t = o.ftype;
+  if (['desk','chair','monitor','keyboard','cabinet','elevator','stairs'].includes(t)) return;
+  const w = o.w || .5, d = o.d || .5;
+  const hh = Math.max(.28, Math.min(o.h || .8, 2.2));
+  const rot = -(o.rot || 0);
+  const c = Math.cos(rot), s2 = Math.sin(rot);
+  const P = (dx, dz, y, sx, sy, sz, mat, geo='box') =>
+    push(mat, o.x + dx*c - dz*s2, y, o.y + dx*s2 + dz*c, sx, sy, sz, rot, geo);
+
+  switch (t){
+    case 'plant': {
+      P(0, 0, .20, .40, .40, .40, F.pot, 'cyl');            // 花盆
+      P(0, 0, .42, .34, .04, .34, F.soil, 'cyl');           // 土面
+      P(0, 0, .70, .06, .60, .06, F.trunk, 'cyl');          // 主干
+      P(0, 0, 1.02, .62, .55, .62, F.leaf, 'sph');          // 主冠
+      P(.20, .12, .90, .38, .34, .38, F.leaf2, 'sph');
+      P(-.18, -.14, .95, .34, .32, .34, F.leaf2, 'sph');
+      P(.06, -.20, .82, .30, .28, .30, F.leaf, 'sph');
+      return;
+    }
+    case 'sofa': case 'armchair': {
+      const legs = 4;
+      for (const [lx, lz] of [[-w/2+.12, -d/2+.12], [w/2-.12, -d/2+.12],
+                              [-w/2+.12, d/2-.12], [w/2-.12, d/2-.12]])
+        P(lx, lz, .07, .05, .14, .05, F.leg);
+      P(0, 0, .24, w, .24, d, F.soft);                      // 座箱
+      P(0, -d/2 + .12, .58, w, .44, .22, F.soft);           // 靠背
+      P(0, -d/2 + .16, .70, w - .30, .20, .14, F.soft);     // 靠背顶沿
+      P(-w/2 + .10, 0, .46, .20, .26, d, F.soft);           // 左扶手
+      P(w/2 - .10, 0, .46, .20, .26, d, F.soft);            // 右扶手
+      const nc = w > 1.5 ? 2 : 1;                            // 坐垫/靠垫
+      for (let i = 0; i < nc; i++){
+        const cw = (w - .44) / nc;
+        const cx2 = -w/2 + .22 + cw * (i + .5);
+        P(cx2, .04, .40, cw - .04, .12, d - .26, F.cushion);
+        P(cx2, -d/2 + .22, .60, cw - .06, .30, .14, F.cushion);
+      }
+      return;
+    }
+    case 'table_oval': case 'table_rect': case 'table_round': case 'coffee_table': {
+      if (t === 'table_round'){
+        P(0, 0, hh, w, .05, w, F.woodT, 'cyl');
+        P(0, 0, hh - .03, w * .96, .03, w * .96, F.woodD, 'cyl');
+        P(0, 0, hh/2, .10, hh, .10, F.leg, 'cyl');
+        P(0, 0, .02, w * .5, .04, w * .5, F.leg, 'cyl');
+      } else {
+        P(0, 0, hh, w, .05, d, F.woodT);
+        P(0, 0, hh - .03, w - .02, .03, d - .02, F.woodD);
+        for (const sx of [-1, 1]){                          // 两片支撑板
+          P(sx * w * .28, 0, hh/2, .10, hh, d * .62, F.leg);
+          P(sx * w * .28, 0, .03, .30, .05, d * .66, F.leg);
+        }
+        P(0, 0, hh - .06, w * .5, .02, .10, F.steelM);      // 走线盖
+      }
+      return;
+    }
+    case 'meeting_chair': case 'guest_chair': {
+      P(0, 0, .45, .46, .07, .46, F.chairF);
+      P(0, -.20, .68, .44, .34, .06, F.chairF);
+      P(0, -.22, .84, .34, .10, .05, F.chairF);
+      for (const [lx, lz] of [[-.18,-.18],[.18,-.18],[-.18,.18],[.18,.18]])
+        P(lx, lz, .21, .04, .42, .04, F.leg);
+      P(0, 0, .07, .40, .03, .40, F.leg);
+      return;
+    }
+    case 'bookshelf': {
+      P(0, 0, .02, w, d, .04, F.shelfM);
+      P(0, 0, hh, w, d, .04, F.shelfM);
+      for (const y of [.02, hh * .28, hh * .52, hh * .76, hh])
+        P(0, 0, y, w, d, .035, F.shelfM);
+      for (const dz of [-d/2, d/2]) P(0, dz, hh/2, w, .035, hh, F.shelfM);
+      for (const dz of [-d/2, d/2]) P(w/2, dz, hh/2, .03, .04, hh, F.shelfM);
+      // 书（不同高度/厚度的书脊）
+      const books = [[-.72,.20,.26],[-.50,.14,.30],[-.34,.10,.24],[-.22,.16,.28],
+                     [.10,.12,.22],[.24,.18,.32],[.44,.10,.26],[.56,.14,.20]];
+      for (let i = 0; i < books.length; i++){
+        const [bz, bw, bh] = books[i];
+        const y = i < 2 ? hh * .40 : i < 5 ? hh * .64 : hh * .88;
+        P(0, bz, y - hh*.14 + bh/2, w * .62, bw, bh, i % 2 ? F.paper : F.book2);
+      }
+      return;
+    }
+    case 'shelf': {
+      P(0, 0, .02, w, d, .04, F.shelfM);
+      for (const y of [hh * .33, hh * .66, hh]) P(0, 0, y, w, d, .035, F.shelfM);
+      for (const dz of [-d/2, d/2]) P(0, dz, hh/2, w, .035, hh, F.shelfM);
+      for (let i = 0; i < Math.floor(d / .8); i++){        // 上的收纳箱
+        const bz = -d/2 + .5 + i * .8;
+        P(0, bz, hh * .17, w * .7, .6, .28, F.boxM);
+        P(0, bz, hh * .50, w * .7, .6, .28, F.boxM);
+      }
+      return;
+    }
+    case 'counter': {
+      P(0, 0, .44, w, d, .88, F.cabM);                      // 地柜
+      P(0, 0, .90, w, d + .03, .05, F.stoneM);              // 台面
+      const doors = Math.max(2, Math.round(w / .6));
+      for (let i = 0; i < doors; i++){                      // 柜门 + 拉手
+        const dx = -w/2 + w/doors * (i + .5);
+        P(dx, d/2 + .005, .44, w/doors - .04, .02, .74, F.cabM);
+        P(dx + w/doors * .3, d/2 + .03, .44, .03, .03, .16, F.steelM);
+      }
+      P(0, -d/2 - .04, 1.55, w, .34, .70, F.cabM);          // 吊柜
+      P(0, -d/2 - .04, 1.20, w, .03, .68, F.stoneM);
+      P(-w*.22, 0, .925, .5, .05, .40, F.steelM);           // 水槽
+      P(0, 0, .78, w * .3, .02, .30, F.steelM);             // 挡水/背板
+      return;
+    }
+    case 'fridge': {
+      P(0, 0, hh/2, w, d, hh, F.steelM);
+      P(0, d/2 + .01, hh * .62, w - .04, .02, .46, F.steelM);   // 上门板
+      P(0, d/2 + .01, hh * .27, w - .04, .02, .56, F.steelM);   // 下门板
+      P(w * .3, d/2 + .04, hh * .62, .03, .04, .40, F.leg);     // 拉手
+      P(w * .3, d/2 + .04, hh * .27, .03, .04, .46, F.leg);
+      P(0, 0, hh + .02, w - .06, .03, d - .06, F.steelM);
+      return;
+    }
+    case 'printer': {
+      P(0, 0, hh * .45, w, d, hh * .9, F.furnM);
+      P(0, -d * .1, hh * .93, w * .92, d * .8, .06, F.furnM);   // 出纸盘
+      P(w * .28, d * .42, hh * .72, .18, .05, .12, F.scr);       // 控制面板
+      P(0, d/2 - .06, hh * .30, w * .7, .02, .38, F.paper);      // 纸盒
+      return;
+    }
+    case 'shredder': {
+      P(0, 0, hh * .45, w, d, hh * .9, F.furnM);
+      P(0, 0, hh * .95, w * .7, d * .7, .10, F.furnM);
+      P(0, -d * .3, hh * .45, w * .5, .02, .2, F.scr);
+      return;
+    }
+    case 'whiteboard': {
+      P(0, 0, 1.45, w, .05, .95, F.whiteM);                 // 板面
+      P(0, .02, 1.45, w - .06, .02, .89, F.boardM);
+      for (const sx of [-1, 1]) P(sx * w/2, 0, 1.45, .05, .06, 1.0, F.mullM);  // 边框
+      P(0, 0, 1.94, w, .06, .06, F.mullM);
+      P(0, 0, .96, w, .06, .06, F.mullM);
+      P(0, .05, .955, w * .5, .03, .05, F.mullM);           // 笔槽
+      return;
+    }
+    case 'screen': case 'tv': {
+      const sh = t === 'tv' ? .75 : 1.45;
+      P(0, 0, hh, w, .06, sh, F.furnM);                     // 外壳
+      P(0, -.04, hh, w - .08, .02, sh - .08, F.screenGlow); // 屏面
+      P(0, 0, hh * .55, .10, .10, hh * .9, F.mullM);        // 立杆
+      P(0, 0, .04, .50, .06, .30, F.mullM);                 // 底座
+      return;
+    }
+    case 'reception_desk': {
+      P(0, -.12, .55, w, .55, .72, F.woodD);                // 前挡板
+      P(0, 0, .95, w + .20, d, .07, F.woodT);               // 台面
+      P(0, -.12, .95, w, .30, .06, F.woodT);
+      P(0, .30, .34, w * .85, .42, .58, F.cabM);            // 里侧工作柜
+      P(0, .30, .66, w * .85, .40, .04, F.woodT);
+      P(-w * .3, -.38, .55, .04, .10, .40, F.steelM);       // 装饰竖条
+      P(w * .3, -.38, .55, .04, .10, .40, F.steelM);
+      return;
+    }
+    case 'water_cooler': {
+      P(0, 0, .42, .32, .32, .84, F.furnM);
+      P(0, 0, .96, .26, .26, .30, F.bottle, 'cyl');         // 水桶
+      P(0, 0, .80, .10, .06, .12, F.steelM);                // 出水口
+      P(0, 0, .60, .12, .03, .10, F.steelM);
+      P(-.09, 0, .74, .05, .04, .06, F.steelM);
+      P(.09, 0, .74, .05, .04, .06, F.steelM);
+      return;
+    }
+    case 'coffee_machine': {
+      P(0, 0, .22, .34, .40, .44, F.furnM);
+      P(0, -.02, .47, .30, .34, .10, F.furnM);
+      P(0, .06, .40, .16, .12, .12, F.steelM);              // 冲煮头
+      P(0, .10, .28, .14, .10, .08, F.steelM);              // 手柄
+      P(0, .12, .18, .24, .14, .02, F.steelM);              // 滴水盘
+      P(0, 0, .05, .34, .40, .10, F.leg);
+      return;
+    }
+    case 'bar_stool': {
+      P(0, 0, .72, .38, .05, .38, F.woodT, 'cyl');          // 座面
+      P(0, 0, .52, .04, .40, .04, F.leg, 'cyl');
+      P(0, 0, .30, .04, .04, .30, F.leg);
+      P(0, 0, .04, .34, .04, .34, F.leg, 'cyl');
+      P(0, 0, .24, .30, .03, .30, F.leg, 'cyl');            // 踏脚圈
+      return;
+    }
+    case 'sink': {
+      P(0, 0, .02, .70, .44, .05, F.steelM);
+      P(0, 0, -.06, .58, .34, .12, F.steelM);
+      P(0, -.10, .22, .04, .40, .04, F.steelM);
+      P(0, -.06, .40, .04, .04, .16, F.steelM);
+      return;
+    }
+    case 'toilet_stall': {
+      P(0, -d/2, hh/2, w, .04, hh, F.whiteM);
+      for (const sx of [-1, 1]) P(sx * w/2, 0, hh/2, .04, d, hh, F.whiteM);
+      P(0, 0, hh + .02, w, d, .04, F.whiteM);
+      P(0, -.05, .21, .36, .48, .38, F.whiteM);             // 马桶
+      P(0, -.18, .42, .34, .10, .10, F.whiteM);
+      return;
+    }
+    case 'basin': {
+      P(0, 0, .42, .50, .95, .05, F.whiteM);
+      P(0, 0, .22, .12, .80, .38, F.whiteM);
+      for (let i = -1; i <= 1; i++){                        // 三个盆
+        P(0, i * .34, .40, .38, .26, .10, F.steelM);
+        P(0, i * .34, .52, .03, .03, .16, F.steelM);
+      }
+      P(0, 0, .95, .36, .90, .50, F.mirrorM);               // 镜面
+      return;
+    }
+    case 'logo_wall': {
+      P(0, 0, 1.70, w, .08, hh * .55, F.mullM);
+      P(0, -.06, 1.70, w * .8, .02, hh * .40, F.logoM);
+      return;
+    }
+    case 'phone_booth': {
+      P(0, 0, hh/2, w, d, hh, F.boothM);                    // 舱体
+      P(0, d/2 + .01, hh * .5, w - .10, .02, hh - .30, F.glassM);
+      P(0, 0, hh + .02, w, d, .04, F.boothM);
+      P(0, 0, .04, w, d, .08, F.leg);
+      return;
+    }
+    case 'locker_bank': {
+      P(0, 0, hh/2, w, d, hh, F.furnM);
+      const n = Math.max(2, Math.round(d / .4));
+      for (let i = 0; i < n; i++){
+        const dz = -d/2 + d/n * (i + .5);
+        P(w/2 + .01, dz, hh/2, .02, d/n - .04, hh - .10, F.steelM);
+        P(w/2 + .03, dz, hh * .55, .03, .03, .14, F.leg);
+      }
+      return;
+    }
+    default: {
+      const mat = (t === 'bookshelf') ? F.shelfM
+                : t === 'counter' ? F.stoneM
+                : t === 'fridge' ? F.steelM
+                : (t === 'screen' || t === 'tv') ? F.scr
+                : F.furnM;
+      P(0, 0, hh/2, w, hh, d, mat);
+      P(0, 0, hh + .01, w * .96, .02, d * .96, F.leg);
+      return;
+    }
+  }
+}
+
+/* ================================================================
+   室内（房间 / 隔墙 / 门）
+   ================================================================ */
+const doors = [];
+function buildInteriors(){
+  const F = MATS;
+  BUILD.floors.forEach(f => {
+    const fg = floorGroups[f.level];
+
+    // 吊顶和灯具独立成组，单层上帝视角时隐藏，避免挡住该层员工和部门标签。
+    const ceilGroup = new THREE.Group();
+    ceilGroup.name = `ceiling-${f.level}`;
+    fg.add(ceilGroup);
+    ceilGroups[f.level] = ceilGroup;
+    push(F.ceil, 17, FH - .12, 12, 34, .1, 24);
+    for (let x = 3; x < 34; x += 5.5)
+      for (let z = 3; z < 24; z += 5.5)
+        push(F.lamp, x, FH - .19, z, 1.6, .06, .42);
+    finalizeBatches(ceilGroup);
+
+    f.rooms.forEach(r => {
+      const surf = (r.kind === 'office' || r.kind === 'meeting') ? F.woodF
+                 : (r.rid.startsWith('pantry') || r.rid.startsWith('restroom')) ? F.tileF
+                 : F.carpet;
+      push(surf, r.x + r.w/2, .03, r.y + r.d/2, r.w - .1, .05, r.d - .1);
+
+      const hh = WALL_H, D = BUILD.building.door_width, dr = r.door || 'n';
+      const wall = (cx, cz, w, d) => push(F.wallIn, cx, hh/2, cz, w, hh, d);
+      const side = (s, cx, cz, w, d) => {
+        if (s !== dr){ wall(cx, cz, w, d); return; }
+        if (w > d){ const seg = (w - D)/2;
+          wall(cx - (D + seg)/2, cz, seg, d); wall(cx + (D + seg)/2, cz, seg, d);
+          const band = hh - DOOR_H;
+          if (band > .01) push(F.wallIn, cx, DOOR_H + band/2, cz, D, band, d);
+        } else { const seg = (d - D)/2;
+          wall(cx, cz - (D + seg)/2, w, seg); wall(cx, cz + (D + seg)/2, w, seg);
+          const band = hh - DOOR_H;
+          if (band > .01) push(F.wallIn, cx, DOOR_H + band/2, cz, w, band, D);
+        }
+      };
+      side('s', r.x + r.w/2, r.y, r.w, .16);
+      side('n', r.x + r.w/2, r.y + r.d, r.w, .16);
+      side('w', r.x, r.y + r.d/2, .16, r.d);
+      side('e', r.x + r.w, r.y + r.d/2, .16, r.d);
+
+      let hx = r.x + r.w/2, hz = r.y, ry0 = 0;
+      if (dr === 'n'){ hz = r.y + r.d; ry0 = Math.PI; }
+      if (dr === 'w'){ hx = r.x; hz = r.y + r.d/2; ry0 = Math.PI/2; }
+      if (dr === 'e'){ hx = r.x + r.w; hz = r.y + r.d/2; ry0 = -Math.PI/2; }
+      doors.push({ floor: f.level, room: r.rid, hx, hz, ry: ry0,
+                   width: D, height: DOOR_H, open: 0, target: 0 });
+    });
+
+    f.desks.forEach(d => buildWorkstation(fg, d));
+    f.furniture.forEach(o => buildFurniture(fg, o));
+
+    buildDepartmentLabels(fg, f);
+
+    finalizeBatches(fg);
+  });
+}
+
+function buildDepartmentLabels(fg, floor){
+  for (const r of floor.rooms){
+    if (r.kind !== 'dept') continue;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 768; canvas.height = 192;
+    const ctx = canvas.getContext('2d');
+    const color = String(r.color || '#4c7dff');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'rgba(5, 8, 15, .76)';
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 6;
+    ctx.beginPath();
+    ctx.roundRect(12, 12, canvas.width - 24, canvas.height - 24, 28);
+    ctx.fill(); ctx.stroke();
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = 'bold 62px "PingFang SC", "Microsoft YaHei", sans-serif';
+    ctx.fillStyle = '#f4f8ff';
+    ctx.fillText(r.cn, canvas.width / 2, 82);
+    ctx.font = '24px system-ui, sans-serif';
+    ctx.fillStyle = color;
+    ctx.fillText(r.en || '', canvas.width / 2, 137);
+
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.needsUpdate = true;
+    const mat = new THREE.SpriteMaterial({
+      map: tex, transparent: true, opacity: .96,
+      depthTest: false, depthWrite: false
+    });
+    const label = new THREE.Sprite(mat);
+    label.name = `department-label-${r.rid}`;
+    const doorOffset = .28;
+    let lx = r.x + r.w / 2, lz = r.y + r.d / 2;
+    if (r.door === 's') lz = r.y + doorOffset;
+    else if (r.door === 'n') lz = r.y + r.d - doorOffset;
+    else if (r.door === 'w') lx = r.x + doorOffset;
+    else if (r.door === 'e') lx = r.x + r.w - doorOffset;
+    label.position.set(lx, DOOR_H - .18, lz);
+    const width = Math.max(3.4, Math.min(9.2, r.w * .62));
+    label.scale.set(width, width * .25, 1);
+    label.renderOrder = 30;
+    fg.add(label);
+  }
+}
+
+/* ================================================================
+   人物：多部件 InstancedMesh 承载员工（含关节动画和简单面部特征）
+   ================================================================ */
+const PGEO = {};
+const PNAMES = ['torso','neck','collar','head','eyeL','eyeR','armU','armL',
+                'handL','handR','thigh','shin','foot'];
+const PINST = {};
+let PCOUNT = 0;
+
+function initPeople(){
+  const cyl = (a, b, h, s) => new THREE.CylinderGeometry(a, b, h, s);
+  PGEO.torso = cyl(.18, .145, .58, 10);
+  PGEO.neck  = cyl(.07, .07, .10, 8);
+  PGEO.collar = cyl(.13, .11, .08, 10);
+  PGEO.head  = new THREE.SphereGeometry(.14, 14, 10);
+  PGEO.eyeL = PGEO.eyeR = new THREE.SphereGeometry(.022, 8, 6);
+  PGEO.armU  = cyl(.060, .052, .30, 8);
+  PGEO.armL  = cyl(.052, .045, .27, 8);
+  PGEO.handL = PGEO.handR = new THREE.SphereGeometry(.055, 8, 6);
+  PGEO.thigh = cyl(.085, .070, .42, 8);
+  PGEO.shin  = cyl(.068, .055, .42, 8);
+  PGEO.foot  = new THREE.BoxGeometry(.12, .07, .24);
+  PGEO.hair  = new THREE.SphereGeometry(.148, 14, 9, 0, Math.PI*2, 0, Math.PI*0.58);
+
+  const mkMat = o => new THREE.MeshStandardMaterial({ roughness:.8, ...o });
+  const mShirt = mkMat({ color:0xffffff });
+  const mSkin  = mkMat({ color:0xe8bd97, roughness:.72 });
+  const mEye   = mkMat({ color:0x111722, roughness:.45 });
+  const mCollar = mkMat({ color:0x18263a, roughness:.7 });
+  const mPants = mkMat({ color:0x2b2f38 });
+  const mShoe  = mkMat({ color:0x1c1f24, roughness:.6 });
+  const mHair  = mkMat({ color:0x241d18, roughness:.85 });
+  const PM = { torso:mShirt, neck:mSkin, collar:mCollar, head:mSkin,
+               eyeL:mEye, eyeR:mEye, armU:mShirt, armL:mSkin,
+               handL:mSkin, handR:mSkin, thigh:mPants, shin:mPants,
+               foot:mShoe, hair:mHair };
+
+  PCOUNT = PROFILES.length;
+  for (const n of [...PNAMES, 'hair']){
+    const im = new THREE.InstancedMesh(PGEO[n], PM[n], PCOUNT);
+    im.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+    if (n === 'torso' || n === 'armU')
+      im.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(PCOUNT*3), 3);
+    im.frustumCulled = false;
+    im.userData.part = n;
+    bldG.add(im); PINST[n] = im;
+  }
+  const sg = new THREE.CircleGeometry(.30, 12);
+  sg.rotateX(-Math.PI/2);        // 圆盘必须平铺在地面（默认朝向 +Z，会立起来）
+  const sm = new THREE.MeshBasicMaterial({ color:0x000000, transparent:true,
+    opacity:.28, depthWrite:false });
+  const imS = new THREE.InstancedMesh(sg, sm, PCOUNT);
+  imS.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+  imS.frustumCulled = false; imS.userData.part = 'shadow';
+  bldG.add(imS); PINST.shadow = imS;
+
+  buildDoorInstances();
+}
+
+const _mA = new THREE.Matrix4(), _mB = new THREE.Matrix4(), _mC = new THREE.Matrix4();
+const _mH = new THREE.Matrix4(), _mS = new THREE.Matrix4();
+const _qx = new THREE.Quaternion(), _X = new THREE.Vector3(1,0,0);
+const _qy = new THREE.Quaternion();
+const _one = new THREE.Vector3(1,1,1), _tp = new THREE.Vector3();
+function setQ(q, ax, rad){ return q.setFromAxisAngle(ax, rad); }
+const _rota = new THREE.Matrix4();
+
+function updatePeople(buf, now){
+  const wallPh = now / 1000;
+  const fy = 0;                       // 单层：所有人都在 y=0 这一层
+  for (let i = 0; i < buf.length; i++){
+    const s = buf[i];
+    // 不在楼内的人收起来（单层没有楼层切换，away 才需要隐藏）
+    if (s.state === 'away'){
+      const z = _mB.makeScale(1e-4, 1e-4, 1e-4);
+      for (const n of PNAMES){ PINST[n].setMatrixAt(i, z); }
+      PINST.hair.setMatrixAt(i, z);
+      PINST.shadow.setMatrixAt(i, z);
+      continue;
+    }
+    // 步态相位来自模拟里累积的位移（脚不打滑），站立/敲键盘用挂钟做微动
+    const ph = s.phase !== undefined ? s.phase : wallPh;
+    const sit = (s.state === 'work' || s.state === 'meeting' || s.state === 'lounge');
+    const walking = !!s.moving;
+
+    _mA.compose(_tp.set(s.x, fy, s.y), setQ(_qy, _Y, -(s.facing || 0)), _one);
+
+    const hipsY = sit ? 0.46 : (walking ? 0.90 + Math.abs(Math.sin(ph))*0.028 : 0.90);
+    _mH.multiplyMatrices(_mA, _mS.makeTranslation(0, hipsY, 0));
+
+    const sway = walking ? Math.sin(ph)*0.05 : 0;
+    _mB.multiplyMatrices(_mH, _mS.makeTranslation(0, 0.10, 0));
+    _mC.multiplyMatrices(_mB, _rota.makeRotationFromQuaternion(setQ(_qy, _Y, sway)));
+
+    putInst('torso', i, _mC, 0, 0.25, 0, true);
+    putInst('collar', i, _mC, 0, 0.52, 0);
+    putInst('neck',  i, _mC, 0, 0.59, 0);
+    putInst('head',  i, _mC, 0, 0.73, 0);
+    putInst('hair',  i, _mC, 0, 0.78, 0);
+    // 眼睛朝向人物的前方（局部 +Z），让人物远看也有明确的脸部方向。
+    putInst('eyeL', i, _mC, -0.052, 0.74, 0.128);
+    putInst('eyeR', i, _mC,  0.052, 0.74, 0.128);
+
+    for (const [k, sx] of [['L',1], ['R',-1]]){
+      let sh, el;
+      if (sit){ sh = -0.95; el = -0.55; }
+      else if (walking){ sh = (k === 'L' ? -1 : 1) * Math.sin(ph) * 0.52; el = -0.30; }
+      else { sh = Math.sin(wallPh*1.5 + 1) * 0.05 * sx; el = -0.15; }
+      if (s.state === 'work'){
+        const tap = Math.sin(wallPh*7 + i) * 0.06;
+        el = -0.55 + (k === 'L' ? tap : -tap);
+      }
+      _mB.multiplyMatrices(_mC, _mS.makeTranslation(sx*0.22, 0.46, 0));
+      _mC.multiplyMatrices(_mB, _rota.makeRotationFromQuaternion(setQ(_qx, _X, sh)));
+      putInst('armU', i, _mC, 0, -0.14, 0, true);
+      _mB.multiplyMatrices(_mC, _mS.makeTranslation(0, -0.28, 0));
+      _mC.multiplyMatrices(_mB, _rota.makeRotationFromQuaternion(setQ(_qx, _X, el)));
+      putInst('armL', i, _mC, 0, -0.13, 0);
+      putInst(k === 'L' ? 'handL' : 'handR', i, _mC, 0, -0.29, 0);
+    }
+
+    for (const [k, sx] of [['L',1], ['R',-1]]){
+      let th, kn;
+      if (sit){ th = -1.35; kn = 1.30; }
+      else if (walking){
+        const w = ph + (k === 'L' ? 0 : Math.PI);
+        th = Math.sin(w) * 0.62;
+        kn = -Math.max(0, Math.sin(w - 0.7)) * 0.90;
+      } else { th = 0; kn = 0; }
+      _mB.multiplyMatrices(_mH, _mS.makeTranslation(sx*0.09, -0.09, 0));
+      _mC.multiplyMatrices(_mB, _rota.makeRotationFromQuaternion(setQ(_qx, _X, th)));
+      putInst('thigh', i, _mC, 0, -0.20, 0);
+      _mB.multiplyMatrices(_mC, _mS.makeTranslation(0, -0.40, 0));
+      _mC.multiplyMatrices(_mB, _rota.makeRotationFromQuaternion(setQ(_qx, _X, kn)));
+      putInst('shin', i, _mC, 0, -0.20, 0);
+      putInst('foot', i, _mC, 0, -0.40, 0.06);
+    }
+
+    _mB.compose(_tp.set(s.x, fy + 0.015, s.y), setQ(_qy, _Y, 0), _one);
+    PINST.shadow.setMatrixAt(i, _mB);
+  }
+  for (const n of [...PNAMES, 'hair', 'shadow']) PINST[n].instanceMatrix.needsUpdate = true;
+  if (PINST.torso.instanceColor) PINST.torso.instanceColor.needsUpdate = true;
+  if (PINST.armU.instanceColor)  PINST.armU.instanceColor.needsUpdate = true;
+}
+
+/* 只给当前选中的人物显示一个轻量标牌，点击后立即说明“姓名 · 部门”，
+   避免给 42 个人常驻文字造成遮挡。 */
+function initSelectionBadge(){
+  const canvas = document.createElement('canvas');
+  canvas.width = 720; canvas.height = 132;
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  const mat = new THREE.SpriteMaterial({map: tex, transparent:true,
+    depthTest:false, depthWrite:false, opacity:.98});
+  selectionBadge = new THREE.Sprite(mat);
+  selectionBadge.scale.set(3.8, .70, 1);
+  selectionBadge.renderOrder = 40;
+  selectionBadge.visible = false;
+  selectionBadge.userData.canvas = canvas;
+  bldG.add(selectionBadge);
+}
+function setSelectionBadge(e){
+  if (!selectionBadge || !e) return;
+  const canvas = selectionBadge.userData.canvas;
+  const ctx = canvas.getContext('2d');
+  const color = '#' + (DEPT_HEX[e.department_key] || 0x4c7dff).toString(16).padStart(6,'0');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'rgba(5,8,15,.92)';
+  ctx.strokeStyle = color; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.roundRect(8, 8, canvas.width - 16, canvas.height - 16, 24);
+  ctx.fill(); ctx.stroke();
+  ctx.font = 'bold 40px "PingFang SC", "Microsoft YaHei", sans-serif';
+  ctx.fillStyle = '#f4f8ff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(`${e.name} · ${e.department_cn}`, canvas.width / 2, 66);
+  selectionBadge.material.map.needsUpdate = true;
+}
+function updateSelectionBadge(buf){
+  if (!selectionBadge || !picked) return;
+  const ix = PROFILES.findIndex(e => e.employee_id === picked);
+  const s = ix >= 0 ? buf[ix] : null;
+  if (!s || s.state === 'away'){ selectionBadge.visible = false; return; }
+  selectionBadge.position.set(s.x, 1.75, s.y);
+  selectionBadge.visible = true;
+}
+function putInst(name, i, parent, ox, oy, oz, isShirt){
+  _mB.multiplyMatrices(parent, _mS.makeTranslation(ox, oy, oz));
+  PINST[name].setMatrixAt(i, _mB);
+  if (isShirt && PINST[name].instanceColor)
+    PINST[name].instanceColor.setXYZ(i, PC[i*3], PC[i*3+1], PC[i*3+2]);
+}
+
+let PC = new Float32Array(0);
+const _col = new THREE.Color();
+function computeColors(){
+  PC = new Float32Array(PCOUNT*3);
+  PROFILES.forEach((e, i) => {
+    let hex;
+    if (colorMode === 'risk') hex = RISK_HEX[e.risk.level] || 0x8aa0c0;
+    else if (colorMode === 'state'){
+      const a = sim.agents[i];
+      hex = STATE_HEX[a ? a.state : 'work'] || 0x8aa0c0;
+    } else hex = DEPT_HEX[e.department_key] || 0x8aa0c0;
+    _col.setHex(hex);
+    PC[i*3] = _col.r; PC[i*3+1] = _col.g; PC[i*3+2] = _col.b;
+  });
+}
+
+/* ================================================================
+   门 / 电梯
+   ================================================================ */
+let doorIM = null;
+function buildDoorInstances(){
+  doorIM = new THREE.InstancedMesh(UNIT, MATS.doorPanel, doors.length);
+  doorIM.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+  doorIM.frustumCulled = false;
+  bldG.add(doorIM);
+}
+function updateDoors(buf, dt){
+  for (let di = 0; di < doors.length; di++){
+    const d = doors[di];
+    let near = false;
+    for (let i = 0; i < buf.length; i++){
+      const s = buf[i];
+      if (s.floor !== d.floor) continue;
+      const dx = s.x - d.hx, dy = s.y - d.hz;
+      if (dx*dx + dy*dy < 5.76){ near = true; break; }   // 2.4m
+    }
+    d.target = near ? 1 : 0;
+    const step = dt * 3.2;
+    d.open += Math.sign(d.target - d.open) * Math.min(step, Math.abs(d.target - d.open));
+    const ang = d.ry + d.open * 1.45;
+    const y = 0;                       // 单层
+    const hw = d.width / 2;
+    const h = d.height || DOOR_H;
+    // 铰链在门框一侧，门扇绕铰链旋开
+    _mA.compose(_tp.set(d.hx + Math.cos(ang)*hw, y + h/2, d.hz - Math.sin(ang)*hw),
+                setQ(_qy, _Y, -ang), _one);
+    _mB.makeScale(d.width, h, 0.05);
+    _mC.multiplyMatrices(_mA, _mB);
+    doorIM.setMatrixAt(di, _mC);
+  }
+  doorIM.instanceMatrix.needsUpdate = true;
+}
+
+/* ================================================================
+   场景 / 循环
+   ================================================================ */
+let snapBuf = null, fpsAcc = 0, fpsN = 0, lastFpsT = 0, lastT = performance.now();
+
+function init3D(){
+  const host = $('#gl'), W = () => host.clientWidth, Hh = () => host.clientHeight;
+  scene = new THREE.Scene();
+  // 舞台是浅色面板，背景用略深的冷灰渐变，建筑才不会糊成一片白
+  scene.background = null;
+  scene.fog = new THREE.FogExp2(0xd8e0ec, 0.0042);
+  camera = new THREE.PerspectiveCamera(40, W()/Hh(), 0.1, 4000);
+
+  renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true,
+    powerPreference:'high-performance' });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+  renderer.setSize(W(), Hh());
+  renderer.shadowMap.enabled = false;     // 用实例化接触阴影替代，避免实时阴影的巨大开销
+  host.appendChild(renderer.domElement);
+
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; controls.dampingFactor = .07;
+  controls.minDistance = 16; controls.maxDistance = 320;
+  controls.maxPolarAngle = Math.PI * .485;     // 不许钻到地板下面
+  // 单层平面是俯瞰等轴视角：整层进画面，便于看动线
+  const bw = BUILD.building.footprint.w, bd = BUILD.building.footprint.d;
+  OVERVIEW_VIEW.position = [bw * .62, Math.max(bw, bd) * 1.05, bd * 1.62];
+  OVERVIEW_VIEW.target = [bw/2, 0.6, bd/2];
+  camera.position.set(...OVERVIEW_VIEW.position);
+  controls.target.set(...OVERVIEW_VIEW.target);
+  controls.autoRotate = false;
+
+  // 浅色场景配光：天光偏蓝，主光暖白，侧补光压暗部
+  scene.add(new THREE.HemisphereLight(0xeaf1ff, 0xb9c6da, 1.15));
+  const sun = new THREE.DirectionalLight(0xfff6e8, 1.9);
+  sun.position.set(bw*.75, 78, bd*.35); scene.add(sun);
+  const fill = new THREE.DirectionalLight(0xbcd2f5, .5);
+  fill.position.set(-bw*.9, 40, -bd*.7); scene.add(fill);
+  // 一盏从相机方向补的柔光，压住背光面的死黑
+  const front = new THREE.DirectionalLight(0xffffff, .35);
+  front.position.set(bw*.3, 30, bd*1.4); scene.add(front);
+
+  bldG = new THREE.Group(); scene.add(bldG);
+  initMats();
+  const fg = new THREE.Group();
+  bldG.add(fg); floorGroups[1] = fg;
+
+  buildArchitecture();
+  buildInteriors();
+  initPeople();
+  initSelectionBadge();
+  buildHeatmap();
+  computeColors();
+  bindPicking();
+  loadBlenderFloorEnvironment();
+
+  addEventListener('resize', () => {
+    camera.aspect = W()/Hh(); camera.updateProjectionMatrix();
+    renderer.setSize(W(), Hh()); resizeCharts();
+  });
+  animate();
+}
+
+/**
+ * 地面拥挤度热力图：把每个房间此刻的占用率铺成半透明色块贴在地板上。
+ * 这是「区域拥挤度 低→高」图例在场景里的实际对应物。
+ */
+function buildHeatmap(){
+  const geo = new THREE.PlaneGeometry(1, 1);
+  geo.rotateX(-Math.PI / 2);
+  const mat = new THREE.MeshBasicMaterial({ transparent:true, opacity:.34,
+    depthWrite:false });
+  heatMesh = new THREE.InstancedMesh(geo, mat, BUILD.floors[0].rooms.length);
+  heatMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+  heatMesh.instanceColor = new THREE.InstancedBufferAttribute(
+    new Float32Array(BUILD.floors[0].rooms.length * 3), 3);
+  heatMesh.frustumCulled = false;
+  heatMesh.renderOrder = 3;
+  bldG.add(heatMesh);
+  updateHeatmap();
+}
+// 低 → 高：蓝 / 青 / 黄 / 橙 / 红
+const HEAT_STOPS = [[0.00,0x4f8cff],[0.35,0x4dd4c8],[0.58,0xffd166],
+                    [0.78,0xff7a45],[1.00,0xf0455f]];
+const _hc = new THREE.Color(), _hc2 = new THREE.Color();
+function heatColor(ratio){
+  const r = Math.max(0, Math.min(1, ratio));
+  for (let i = 1; i < HEAT_STOPS.length; i++){
+    if (r <= HEAT_STOPS[i][0]){
+      const [r0, c0] = HEAT_STOPS[i-1], [r1, c1] = HEAT_STOPS[i];
+      const k = (r - r0) / Math.max(1e-6, r1 - r0);
+      _hc.setHex(c0); _hc2.setHex(c1);
+      return _hc.lerp(_hc2, k);
+    }
+  }
+  return _hc.setHex(HEAT_STOPS[HEAT_STOPS.length-1][1]);
+}
+function updateHeatmap(){
+  if (!heatMesh) return;
+  const rooms = BUILD.floors[0].rooms;
+  const occ = sim.roomOccupancy();
+  const byId = new Map(occ.rooms.map(r => [r.rid, r]));
+  for (let i = 0; i < rooms.length; i++){
+    const r = rooms[i], o = byId.get(r.rid);
+    const ratio = o ? o.ratio : 0;
+    // 只给「有人的或有座位的」房间上色，空的会议室不必泛红
+    const c = heatColor(ratio * 0.95);
+    _mA.compose(_tp.set(r.x + r.w/2, .05, r.y + r.d/2),
+                setQ(_qy, _Y, 0), _s0.set(r.w - .3, 1, r.d - .3));
+    heatMesh.setMatrixAt(i, _mA);
+    heatMesh.instanceColor.setXYZ(i, c.r, c.g, c.b);
+  }
+  heatMesh.instanceMatrix.needsUpdate = true;
+  heatMesh.instanceColor.needsUpdate = true;
+}
+
+/**
+ * Blender 静态环境（可选）。
+ * GLB 只包含建筑、隔墙和家具；人物与门仍由网页运行时控制。
+ * 载入成功后隐藏程序化静态子节点，但保留部门门口标签和动态角色。
+ * 资源缺失时静默回落到程序化场景，不影响功能。
+ */
+function loadBlenderFloorEnvironment(){
+  const target = floorGroups[1];
+  if (!target) return;
+  const loader = new GLTFLoader();
+  loader.load('./assets/office/floor_1.glb', gltf => {
+    const env = gltf.scene;
+    env.name = 'blender-floor-environment';
+    // Blender 使用 Y 轴表示平面深度，glTF/Three 导入后对应 -Z；
+    // 业务布局的深度轴是正 Z，因此只在资产适配层翻转 Z，不改员工坐标。
+    env.scale.z = -1;
+    env.traverse(o => {
+      if (!o.isMesh) return;
+      o.frustumCulled = true;
+      o.userData.blenderEnvironment = true;
+      if (o.material) {
+        const mats = Array.isArray(o.material) ? o.material : [o.material];
+        for (const m of mats) { m.side = THREE.DoubleSide; m.needsUpdate = true; }
+      }
+      if (o.name.toLowerCase().includes('ceiling')) o.userData.blenderCeiling = true;
+    });
+    target.add(env);
+    blenderFloorEnv = env;
+    blenderEnvStatus = 'Blender 环境';
+    for (const child of target.children){
+      if (child === env || child.name.startsWith('department-label-') ||
+          child === heatMesh) continue;
+      child.visible = false;
+    }
+    updateBlenderCeilingVisibility();
+    console.info('[building] 已载入 Blender 单层环境资产', {
+      url: './assets/office/floor_1.glb', children: env.children.length });
+  }, undefined, () => {
+    blenderEnvStatus = '程序化环境';
+  });
+}
+
+function updateBlenderCeilingVisibility(){
+  if (!blenderFloorEnv) return;
+  // 俯瞰视角下吊顶会挡住工位和人，始终隐藏
+  blenderFloorEnv.traverse(o => { if (o.userData.blenderCeiling) o.visible = false; });
+}
+
+/** 把当前模拟状态同步到场景（人物姿态/门/电梯） */
+function syncScene(now, dt){
+  snapBuf = sim.fillSnapshot();
+  updatePeople(snapBuf, now);
+  updateSelectionBadge(snapBuf);
+  updateDoors(snapBuf, dt);
+  updateHeatmap();
+}
+
+function animate(){
+  requestAnimationFrame(animate);
+  const now = performance.now();
+  const dt = Math.min(0.06, (now - lastT) / 1000); lastT = now;
+
+  if (playing){
+    // dt 是秒，sim.t 是分钟，先换算成真实分钟再乘固定演示速率。
+    const t = Math.min(WORK_END, sim.t + (dt / 60) * SIM_MINUTES_PER_REAL_MINUTE);
+    sim.seek(t);
+    $('#tl').value = t;
+    $('#clock').textContent = fmtClock(t);
+    if (t >= WORK_END) setPlaying(false);
+    if (((t | 0) % 5) === 0){ renderStateDist(); refreshPanelState(); }
+  }
+  syncScene(now, dt);
+  controls.update();
+  renderer.render(scene, camera);
+
+  fpsAcc += 1 / Math.max(dt, 1e-4); fpsN++;
+  if (now - lastFpsT > 500){
+    $('#fps').textContent = (fpsAcc / fpsN).toFixed(0) + ' fps';
+    $('#p-draw').textContent = 'draw ' + renderer.info.render.calls;
+    fpsAcc = 0; fpsN = 0; lastFpsT = now;
+  }
+}
+const fmtClock = m =>
+  `${String(Math.floor(m/60)).padStart(2,'0')}:${String(Math.floor(m%60)).padStart(2,'0')}`;
+
+/* ================================================================
+   交互
+   ================================================================ */
+const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+const OVERVIEW_VIEW = { position: [40, 40, 70], target: [20, 0.6, 13] };
+
+/** 回到单层俯瞰全景 */
+function showOverview(){
+  camera.fov = 40;
+  camera.updateProjectionMatrix();
+  camera.position.set(...OVERVIEW_VIEW.position);
+  controls.target.set(...OVERVIEW_VIEW.target);
+  controls.update();
+}
+
+function bindPicking(){
+  renderer.domElement.addEventListener('pointerdown', ev => {
+    const r = renderer.domElement.getBoundingClientRect();
+    ndc.x = ((ev.clientX - r.left) / r.width) * 2 - 1;
+    ndc.y = -((ev.clientY - r.top) / r.height) * 2 + 1;
+    ray.setFromCamera(ndc, camera);
+    let hitId = null, bestD = Infinity;
+    for (const p of ['torso', 'head']){
+      const hits = ray.intersectObject(PINST[p], false);
+      if (hits.length && hits[0].instanceId !== undefined && hits[0].distance < bestD){
+        bestD = hits[0].distance; hitId = hits[0].instanceId;
+      }
+    }
+    select(hitId === null ? null : PROFILES[hitId].employee_id);
+  });
+}
+/** 单层平面没有楼层切换；保留函数以便外部钩子调用时不会报错。 */
+function setFloor(){ showOverview(); }
+function recolor(){ computeColors(); applyAllColors(); }
+function applyAllColors(){
+  for (const p of ['torso', 'armU']){
+    const im = PINST[p];
+    if (!im.instanceColor) continue;
+    for (let i = 0; i < PCOUNT; i++)
+      im.instanceColor.setXYZ(i, PC[i*3], PC[i*3+1], PC[i*3+2]);
+    im.instanceColor.needsUpdate = true;
+  }
+}
+function setPlaying(v){
+  playing = v;
+  $('#btn-play').textContent = v ? '❚❚' : '▶';
+  if (v && sim.t >= WORK_END){ sim.seek(WORK_START); $('#tl').value = WORK_START; }
+}
+function select(eid, opts = {}){
+  picked = eid;
+  const drawer = $('#drawer');
+  if (!eid){
+    if (selectionBadge) selectionBadge.visible = false;
+    $('#p-pick').textContent = '';
+    drawer.classList.remove('open');
+    $('#emp-panel').innerHTML = `<div class="empty"><div class="big">👤</div>
+      点击场景中任意人物<br>查看档案 · 行为 · 测评 · 风险</div>`;
+    return;
+  }
+  const e = byId[eid];
+  if (!e) return;
+  $('#p-pick').textContent = e.name;
+  $('#emp-panel').innerHTML = panelHTML(e);
+  if (selectionBadge){ setSelectionBadge(e); selectionBadge.visible = true; }
+  drawer.classList.add('open');
+  if (officeFrame && !opts.fromFrame){
+    officeFrame.contentWindow.postMessage({ type:'nexus:focus', employeeId:eid }, '*');
+  }
+}
+
+function refreshPanelState(){
+  if (!picked) return;
+  const el = $('#live-state'); if (!el) return;
+  const status = liveStates[picked];
+  if (status) el.textContent = `此刻：${status}`;
+}
+
+function renderStateDist(){
+  if (!sim) return;
+  const s = sim.stats(), total = PROFILES.length;
+  const order = ['work','walk','discuss','stroll','meeting','pantry','lounge','lunch','print','away'];
+  $('#state-dist').innerHTML = order.filter(k => s[k]).map(k => {
+    const n = s[k], pct = n/total*100, c = '#' + STATE_HEX[k].toString(16).padStart(6,'0');
+    return `<div class="row"><span class="nm">${STATE_CN[k]}</span>
+      <span class="track"><span class="fill" style="width:${Math.max(pct,2)}%;
+        background:${c}"></span></span>
+      <span class="vv" style="color:${c}">${n}</span></div>`;
+  }).join('');
+  $('#stat').innerHTML = order.filter(k => s[k]).map(k =>
+    `<span>${STATE_CN[k]} <b>${s[k]}</b></span>`).join('');
+}
+
+function renderLegend(){
+  const el = $('#legend-body');
+  if (!el) return;
+  el.innerHTML = BUILD.departments.map(d =>
+    `<div class="chip"><i style="background:${d.color}"></i>${d.cn}</div>`).join('');
+}
+
+function bar(label, v, max, color){
+  return `<div class="row"><span class="nm">${label}</span>
+    <span class="track"><span class="fill" style="width:${Math.min(100, v/max*100)}%;
+      background:linear-gradient(90deg,${color}88,${color})"></span></span>
+    <span class="vv">${v}</span></div>`;
+}
+function panelHTML(e){
+  const p = e.profile, b = e.behavior, a = e.assessment;
+  const rc = RISK_CSS[e.risk.level] || '#7d90b8';
+  const dc = '#' + (DEPT_HEX[e.department_key] || 0x4c7dff).toString(16).padStart(6,'0');
+  return `
+  <div class="who">
+    <div class="avatar" style="background:${dc}">${e.name.slice(-2)}</div>
+    <div style="flex:1">
+      <div class="nm">${e.name}
+        <span class="tag" style="background:${rc}22;color:${rc};border:1px solid ${rc}55">${e.risk.level || '未评'}</span></div>
+      <span class="dept-badge" style="background:${dc}">${e.department_cn}</span>
+      <div class="sub">${e.employee_id} · ${e.floor_name} ${e.department_cn} · ${p.JobRole}</div>
+      <div class="nowstat" id="live-state">此刻：${liveStatusFor(e)}</div>
+    </div>
+  </div>
+  <div class="kv">
+    <dt>工位</dt><dd>${e.desk_id}</dd>
+    <dt>所属部门</dt><dd>${e.department_cn}</dd>
+    <dt>年龄 / 性别</dt><dd>${p.Age} · ${p.Gender === 'Male' ? '男' : '女'}</dd>
+    <dt>婚姻</dt><dd>${p.MaritalStatus}</dd>
+    <dt>职级</dt><dd>L${p.JobLevel}</dd>
+    <dt>月薪</dt><dd>¥${p.MonthlyIncome.toLocaleString()}</dd>
+    <dt>司龄 / 总工龄</dt><dd>${p.YearsAtCompany} / ${p.TotalWorkingYears} 年</dd>
+    <dt>是否加班</dt><dd style="color:${p.OverTime === 'Yes' ? '#ff9a6b' : '#28d17c'}">${p.OverTime === 'Yes' ? '是' : '否'}</dd>
+    <dt>距上次晋升</dt><dd>${p.YearsSinceLastPromotion} 年</dd>
+  </div>
+  <div class="section"><div class="t">背调 / 档案</div>
+    <div class="kv">
+      <dt>学历</dt><dd>${p.background.highest_degree} · ${p.background.school}</dd>
+      <dt>专业</dt><dd>${p.background.major}</dd>
+      <dt>证书</dt><dd>${p.background.certificates.length ? p.background.certificates.join('、') : '无'}</dd>
+      <dt>前雇主数</dt><dd>${p.background.prev_employers} 家</dd>
+      <dt>入职日期</dt><dd>${p.background.hire_date}</dd>
+      <dt>合同类型</dt><dd>${p.background.contract_type}</dd>
+      <dt>背调结果</dt><dd style="color:${p.background.bg_check_passed ? '#28d17c' : '#ff2e63'}">${p.background.bg_check_passed ? '已通过' : '异常'}</dd>
+    </div>
+  </div>
+  <div class="section"><div class="t">离职风险</div>
+    ${bar('风险评分', Math.round((e.risk.score || 0) * 100), 100, rc)}
+    <div style="margin-top:7px">
+      ${e.risk.top_factors.map(f => `<div class="fac">
+        <span class="dir" style="color:${f.direction === '+' ? '#ff6b35' : '#28d17c'}">${f.direction}</span>
+        <span>${f.factor}<div class="bd">${f.detail}</div></span></div>`).join('')}
+    </div>
+  </div>
+  <div class="section"><div class="t">日常行为（近 90 天）</div>
+    ${bar('日均工时', b.avg_work_hours, 14, '#4c7dff')}
+    ${bar('日均专注', b.avg_focus_hours, 8, '#3ddcff')}
+    ${bar('日均任务', b.avg_tasks_done, 10, '#28d17c')}
+    <div class="kv" style="margin-top:7px">
+      <dt>迟到天数</dt><dd>${b.late_days} 天</dd>
+      <dt>请假天数</dt><dd>${b.leave_days} 天</dd>
+      <dt>日均会议</dt><dd>${b.avg_meetings} 次</dd>
+      <dt>专注趋势</dt><dd style="color:${b.focus_trend < 0 ? '#ff9a6b' : '#28d17c'}">${b.focus_trend >= 0 ? '+' : ''}${b.focus_trend}</dd>
+      <dt>交付达成率</dt><dd>${(b.quality.delivery_rate * 100).toFixed(1)}%</dd>
+      <dt>返工 / 缺陷</dt><dd>${b.quality.rework_count} / ${(b.quality.defect_rate * 100).toFixed(2)}%</dd>
+      <dt>工作质量分</dt><dd style="color:#3ddcff">${b.quality.quality_score}</dd>
+    </div>
+  </div>
+  <div class="section"><div class="t">测评报告</div>
+    ${bar('能力', a.competency_score, 100, '#4c7dff')}
+    ${bar('敬业度', a.engagement_score, 100, '#28d17c')}
+    ${bar('满意度', a.satisfaction_score, 100, '#3ddcff')}
+    ${bar('压力', a.stress_score, 100, '#ff6b35')}
+    ${bar('综合', a.overall_score, 100, '#b98cff')}
+    <div class="kv" style="margin-top:7px">
+      <dt>潜力评估</dt><dd>${a.potential}</dd>
+      <dt>绩效评级</dt><dd>${a.performance_rating} / 4</dd>
+      <dt>测评日期</dt><dd>${a.survey_date}</dd>
+    </div>
+  </div>
+  ${e.talks.length ? `<div class="section"><div class="t">谈话记录（${e.talks.length}）</div>
+    ${e.talks.map(t => `<div class="talk" style="border-color:${t.sentiment < -0.3 ? '#ff6b35' : t.sentiment > 0.25 ? '#28d17c' : '#7d90b8'}">
+      <div class="meta">${t.date} · ${t.type} · ${t.duration_min}min${t.follow_up ? ' · <span style="color:#ffb020">需跟进</span>' : ''}</div>
+      ${t.topic}</div>`).join('')}
+  </div>` : ''}
+  `;
+}
+
+/* ================================================================
+   仪表盘：KPI / 趋势 / 环形图 / 空间占用 / 情景对比 / 智能建议
+   数据全部来自 sim.js 的实时占用统计与 forecast()，不是写死的示例数字。
+   ================================================================ */
+
+/* ---------------- 画布工具（按 DPR 缩放，避免模糊） ---------------- */
+function fitCanvas(cv, cssH){
+  const dpr = Math.min(devicePixelRatio, 2);
+  const w = cv.parentElement.clientWidth || 240;
+  const h = cssH || cv.height;
+  cv.width = Math.round(w * dpr);
+  cv.height = Math.round(h * dpr);
+  cv.style.width = w + 'px';
+  cv.style.height = h + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { ctx, w, h };
+}
+
+/* ---------------- 折线图（多序列，带高亮点） ---------------- */
+const TREND_SERIES = [
+  { key:'open',  cn:'开放办公区', css:'#2f7bff' },
+  { key:'meet',  cn:'会议室',     css:'#7b6cf6' },
+  { key:'food',  cn:'茶水间',     css:'#ffab2e' },
+  { key:'rest',  cn:'休息区',     css:'#16c47f' },
+];
+
+function zoneCounts(){
+  // 按房间类别把 agent 归类：开放办公区 / 会议室 / 茶水间+咖啡吧 / 休息区
+  const open = [], meet = [], food = [], rest = [];
+  for (const a of sim.agents){
+    if (a.state === 'away') continue;
+    const rid = roomRid(a.x, a.y);
+    const room = rid && ROOM_BY_ID.get(rid);
+    if (!room){ open.push(a); continue; }
+    if (room.kind === 'meeting') meet.push(a);
+    else if (rid === 'pantry' || rid === 'cafe') food.push(a);
+    else if (rid === 'lounge') rest.push(a);
+    else open.push(a);
+  }
+  return { open: open.length, meet: meet.length, food: food.length, rest: rest.length };
+}
+let ROOM_BY_ID = new Map();
+function roomRid(x, y){
+  for (const r of BUILD.floors[0].rooms)
+    if (x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.d) return r.rid;
+  return null;
+}
+
+// 未来区间的分桶序列（在基线状态下推进，再还原）
+function trendBins(){
+  const t0 = sim.t;
+  const step = Math.max(5, granularityMin);
+  const n = Math.max(2, Math.round(horizonMin / step));
+  const out = [];
+  for (let i = 0; i <= n; i++){
+    sim._seekReadOnly(t0 + i * step);
+    out.push({ minute: t0 + i * step, ...zoneCounts() });
+  }
+  sim._seekReadOnly(t0);
+  return out;
+}
+
+function drawTrend(cvId, bins, series, opts = {}){
+  const cv = document.getElementById(cvId);
+  if (!cv || !bins.length) return;
+  const { ctx, w, h } = fitCanvas(cv, opts.h || 150);
+  const padL = 30, padR = 8, padT = 10, padB = 20;
+  const iw = w - padL - padR, ih = h - padT - padB;
+  let maxV = 1;
+  for (const b of bins) for (const s of series) maxV = Math.max(maxV, b[s.key] || 0);
+  maxV = Math.ceil(maxV / 20) * 20 || 20;
+
+  ctx.clearRect(0, 0, w, h);
+
+  // 网格 + Y 轴刻度
+  ctx.font = '9px system-ui, sans-serif';
+  ctx.fillStyle = '#8b99b0'; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+  ctx.strokeStyle = '#eef2f8'; ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++){
+    const y = padT + ih - ih * i / 4;
+    ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(padL + iw, y); ctx.stroke();
+    ctx.fillText(String(Math.round(maxV * i / 4)), padL - 5, y);
+  }
+
+  // X 轴标签（时刻）
+  ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillStyle = '#8b99b0';
+  const tickN = Math.min(bins.length, 5);
+  for (let i = 0; i < tickN; i++){
+    const idx = Math.round(i * (bins.length - 1) / Math.max(1, tickN - 1));
+    const x = padL + iw * idx / Math.max(1, bins.length - 1);
+    ctx.fillText(fmtClock(bins[idx].minute), x, padT + ih + 5);
+  }
+
+  const X = i => padL + iw * i / Math.max(1, bins.length - 1);
+  const Y = v => padT + ih - ih * (v / maxV);
+
+  // 序列：面积 + 折线
+  for (const s of series){
+    const pts = bins.map((b, i) => [X(i), Y(b[s.key] || 0)]);
+    if (opts.fill){
+      ctx.beginPath();
+      ctx.moveTo(pts[0][0], padT + ih);
+      pts.forEach(pt => ctx.lineTo(pt[0], pt[1]));
+      ctx.lineTo(pts[pts.length-1][0], padT + ih);
+      ctx.closePath();
+      ctx.fillStyle = s.css + '18';
+      ctx.fill();
+    }
+    ctx.beginPath();
+    pts.forEach((pt, i) => i ? ctx.lineTo(pt[0], pt[1]) : ctx.moveTo(pt[0], pt[1]));
+    ctx.strokeStyle = s.css;
+    ctx.lineWidth = opts.lw || 1.8;
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.stroke();
+
+    // 峰值点：标出最忙的时刻，相当于截图里的悬浮提示
+    let peak = 0;
+    bins.forEach((b, i) => { if ((b[s.key]||0) > (bins[peak][s.key]||0)) peak = i; });
+    if (!opts.noDots){
+      ctx.beginPath();
+      ctx.arc(pts[peak][0], pts[peak][1], 2.6, 0, Math.PI*2);
+      ctx.fillStyle = '#fff'; ctx.fill();
+      ctx.strokeStyle = s.css; ctx.lineWidth = 1.6; ctx.stroke();
+    }
+  }
+}
+
+/* ---------------- 环形图（行为预测） ---------------- */
+function drawDonut(){
+  const cv = document.getElementById('cv-donut');
+  if (!cv) return;
+  const dpr = Math.min(devicePixelRatio, 2);
+  cv.width = 104 * dpr; cv.height = 104 * dpr;
+  cv.style.width = '104px'; cv.style.height = '104px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, 104, 104);
+
+  // 按 STATE_GROUP 归并到 5 类
+  const cnt = {}; GROUP_ORDER.forEach(k => cnt[k] = 0);
+  for (const a of sim.agents){
+    const g = a.state === 'away' ? '其他' : (STATE_GROUP[a.state] || '其他');
+    cnt[g] = (cnt[g] || 0) + 1;
+  }
+  const total = PROFILES.length;
+  const cx = 52, cy = 52, rOut = 46, rIn = 32;
+  let ang = -Math.PI / 2;
+  for (const g of GROUP_ORDER){
+    const frac = cnt[g] / total;
+    if (frac <= 0) continue;
+    const a2 = ang + frac * Math.PI * 2;
+    ctx.beginPath();
+    ctx.arc(cx, cy, rOut, ang, a2);
+    ctx.arc(cx, cy, rIn, a2, ang, true);
+    ctx.closePath();
+    ctx.fillStyle = GROUP_CSS[g];
+    ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.6; ctx.stroke();
+    ang = a2;
+  }
+  const onSite = sim.agents.filter(a => a.state !== 'away').length;
+  $('#donut-mid').textContent = onSite;
+  $('#donut-lgd').innerHTML = GROUP_ORDER.map(g =>
+    `<div class="it"><i style="background:${GROUP_CSS[g]}"></i>${g}
+      <b>${Math.round(cnt[g] / total * 100)}%</b></div>`).join('');
+}
+
+/* ---------------- 空间占用条形图 ---------------- */
+function drawOccupancy(){
+  const occ = sim.roomOccupancy();
+  return { occ };
+}
+
+/* ---------------- 情景对比 ---------------- */
+const SCENARIOS = {
+  base:    { cn:'基线方案',  c:'#2f7bff' },
+  hire20:  { cn:'扩招 20%',  c:'#7b6cf6' },
+  stagger: { cn:'错峰午休',  c:'#16c47f' },
+  meeting: { cn:'会议优化',  c:'#ffab2e' },
+};
+// 情景对参数的乘数：只影响预测曲线的形状，不改变当前真实模拟
+const SCENARIO_MOD = {
+  base:    { head:1.00, meet:1.00, peak:1.00, spread:0 },
+  hire20:  { head:1.20, meet:1.15, peak:1.18, spread:0 },
+  stagger: { head:1.00, meet:0.85, peak:0.86, spread:1 },
+  meeting: { head:1.00, meet:0.70, peak:0.82, spread:0 },
+};
+
+function cmpTargets(){
+  // 下拉框：会议室 + 茶水间 + 休息区 + 全部区域
+  const list = BUILD.floors[0].rooms.filter(r =>
+    r.kind === 'meeting' || r.rid === 'pantry' || r.rid === 'lounge' || r.rid === 'cafe');
+  return [{ rid:'__all', cn:'全部区域' }, ...list.map(r => ({ rid:r.rid, cn:r.cn }))];
+}
+function roomSeries(rid, bins, mod){
+  // 某房间在预测分桶里的人数（用当前 binned 状态近似，再乘情景系数）
+  const t0 = sim.t;
+  const out = [];
+  for (let i = 0; i < bins.length; i++){
+    const b = bins[i];
+    let v;
+    if (rid === '__all') v = b.open + b.meet + b.food + b.rest;
+    else if (rid === 'pantry' || rid === 'cafe') v = b.food;
+    else if (rid === 'lounge') v = b.rest;
+    else v = b.meet;
+    const peakK = 1 + (mod.peak - 1) * (i / Math.max(1, bins.length - 1));
+    v = v * peakK * (rid === 'pantry' || rid === 'cafe' ? mod.meet : 1);
+    // 错峰：把峰值压平一点，方差变小
+    if (mod.spread && i > 0) v = v * (1 - 0.06 * Math.sin(i * 1.7));
+    out.push({ minute: b.minute, v: Math.max(0, v) });
+  }
+  return out;
+}
+let cmpRid = '__all';
+function renderComparison(){
+  const sel = $('#sel-cmp');
+  if (!sel.options.length){
+    sel.innerHTML = cmpTargets().map(t =>
+      `<option value="${t.rid}">${t.cn}</option>`).join('');
+    cmpRid = sel.value || '__all';
+    sel.onchange = () => { cmpRid = sel.value; renderComparison(); };
+  }
+  const bins = trendBins();
+  const series = Object.entries(SCENARIOS).map(([k, v]) => {
+    const data = roomSeries(cmpRid, bins, SCENARIO_MOD[k]);
+    return { key:k, cn:v.cn, css:v.c, data };
+  });
+  // 传给通用折线图：需要 {key:value} 结构
+  const flat = bins.map((b, i) => {
+    const o = { minute: b.minute };
+    series.forEach(s => o[s.key] = s.data[i].v);
+    return o;
+  });
+  drawTrend('cv-cmp', flat, series.map(s => ({ key:s.key, css:s.css })),
+            { h:112, lw:1.6, noDots:true });
+  $('#cmp-lgd').innerHTML = series.map(s =>
+    `<div class="it" style="font-size:10px"><i style="background:${s.css}"></i>${s.cn}</div>`).join('');
+
+  // 相对基线的峰值降幅
+  const base = series.find(s => s.key === 'base').data.map(d => d.v);
+  const best = series.filter(s => s.key !== 'base')
+    .map(s => {
+      const a = Math.max(...s.data.map(d => d.v));
+      const bm = Math.max(...base) || 1;
+      return { k:s.cn, drop: (1 - a / bm) * 100 };
+    }).sort((x, y) => y.drop - x.drop)[0];
+  const el = $('#cmp-delta');
+  if (best && best.drop > 0.5){
+    el.textContent = `${best.k} 峰值 ↓${best.drop.toFixed(0)}%`;
+    el.style.color = '#16c47f';
+  } else {
+    el.textContent = '基线无变化';
+    el.style.color = '#8b99b0';
+  }
+}
+
+/* ---------------- KPI 卡片 ---------------- */
+function computeKpis(){
+  const occ = sim.roomOccupancy();
+  const base = PROFILES.length;                        // 当前 28 人展示团队
+  const headScale = params.headcount / Math.max(1, base); // 情景参数相对当前团队
+  const remote = params.remote / 100;
+  const onSite = Math.round(occ.onSite * headScale * (1 - remote * .55));
+  return {
+    onSite,
+    onSiteDelta: (onSite / Math.max(1, base) - 1) * 100,
+    util: occ.utilization * 100,
+    utilDelta: 8,
+    meetRate: occ.meetingRate * 100,
+    meetDelta: 20,
+    crowded: occ.crowded,
+  };
+}
+function renderKpis(){
+  const k = computeKpis();
+  if (!baseKpi) baseKpi = k;
+  const arrow = (d, invert) => {
+    if (Math.abs(d) < 0.5) return `<span class="flat">→ 持平</span>`;
+    const up = d > 0;
+    const good = invert ? !up : up;
+    const cls = good ? 'up' : 'down';
+    return `<span class="${cls}">${up ? '↑' : '↓'} ${up ? '+' : ''}${d.toFixed(0)}%</span>`;
+  };
+  $('#kpis').innerHTML = `
+    <div class="kpi"><div class="lb">预计在楼人数</div>
+      <div class="vl">${k.onSite}<u>人</u></div>
+      <div class="dl">${arrow(k.onSiteDelta)}</div></div>
+    <div class="kpi"><div class="lb">工位利用率</div>
+      <div class="vl">${k.util.toFixed(0)}<u>%</u></div>
+      <div class="dl">${arrow(k.utilDelta)}</div></div>
+    <div class="kpi"><div class="lb">会议室占用率</div>
+      <div class="vl">${k.meetRate.toFixed(0)}<u>%</u></div>
+      <div class="dl">${arrow(k.meetDelta)}</div></div>
+    <div class="kpi"><div class="lb">拥挤风险区域</div>
+      <div class="vl">${k.crowded}<u>个</u></div>
+      <div class="dl">${k.crowded > 2 ? '<span class="down">↑ 需关注</span>' : '<span class="up">正常</span>'}</div></div>`;
+}
+
+/* ---------------- 智能建议 ---------------- */
+function renderInsights(){
+  const occ = sim.roomOccupancy();
+  const sorted = [...occ.rooms].filter(r => r.cap > 0).sort((a, b) => b.ratio - a.ratio);
+  const hot = sorted.slice(0, 3);
+  const ins = [];
+  if (hot[0]) ins.push({
+    cls: hot[0].ratio >= .8 ? 'a' : '',
+    tx: `<b>${hot[0].cn}</b> 当前占用率 ${(hot[0].ratio*100).toFixed(0)}%（${hot[0].people}/${hot[0].cap}），
+         是全场最紧张的区域${hot[0].ratio >= .8 ? '，已接近饱和' : ''}。`,
+  });
+  const away = sim.agents.filter(a => a.state === 'away').length;
+  if (away > 0) ins.push({
+    cls: '', tx: `此刻有 <b>${away} 人</b> 不在楼内（外出/未到岗），
+      工位利用率可以按实际在楼人数重新核算。` });
+  const meetFree = occ.rooms.filter(r => r.kind === 'meeting' && r.people === 0);
+  if (meetFree.length) ins.push({
+    cls: 'g', tx: `<b>${meetFree.map(r => r.cn).join('、')}</b> 当前空闲，
+      可把临时讨论挪过去，缓解开放区的交谈干扰。` });
+  const fc = trendBins();
+  let peak = fc[0];
+  for (const b of fc) if (b.open + b.meet + b.food + b.rest > peak.open + peak.meet + peak.food + peak.rest) peak = b;
+  if (peak) ins.push({
+    cls: 'a', tx: `预测 <b>${fmtClock(peak.minute)}</b> 前后在楼人数达到高点
+      （约 ${Math.round((peak.open + peak.meet + peak.food + peak.rest))} 人），
+      建议把非紧急会议避开这一时段。` });
+  if (params.remote >= 30) ins.push({
+    cls: 'g', tx: `远程办公比例设为 <b>${params.remote}%</b>，
+      可释放约 ${Math.round(PROFILES.length * params.remote / 100)} 个工位。` });
+  $('#insights').innerHTML = ins.slice(0, 4).map((o, i) =>
+    `<div class="it ${o.cls}"><span class="no">${i+1}</span><span class="tx">${o.tx}</span></div>`).join('');
+}
+
+/* ---------------- 总刷新 ---------------- */
+let trendCache = null;
+function refreshDashboard(){
+  if (!sim) return;
+  renderKpis();
+  // 趋势：未来区间各区域人数
+  trendCache = trendBins();
+  drawTrend('cv-trend', trendCache, TREND_SERIES, { h:150, fill:true });
+  $('#trend-lgd').innerHTML = TREND_SERIES.map(s =>
+    `<div class="it" style="font-size:10px"><i style="background:${s.css}"></i>${s.cn}</div>`).join('');
+  drawDonut();
+  renderOccupancy();
+  renderComparison();
+  renderInsights();
+  $('#chart-hz').textContent = horizonMin >= 1440 ? '1 天'
+    : horizonMin >= 120 ? (horizonMin/60).toFixed(0) + ' 小时'
+    : horizonMin + ' 分钟';
+}
+
+/* ---------------- 空间占用面板（区域 / 部门两个视图） ---------------- */
+let occMode = 'room';
+function renderOccupancy(){
+  const el = $('#occ-body');
+  if (occMode === 'room'){
+    const occ = sim.roomOccupancy();
+    const rows = [...occ.rooms].filter(r => r.cap > 0)
+      .sort((a, b) => b.ratio - a.ratio).slice(0, 6);
+    el.innerHTML = `<div class="bars">` + rows.map(r => {
+      const c = heatColor(r.ratio).getStyle();
+      return `<div class="r"><span class="nm" title="${r.cn}">${r.cn}</span>
+        <span class="tk"><span class="fl" style="width:${Math.min(100, r.ratio*100)}%;
+          background:${c}"></span></span>
+        <span class="vv">${(r.ratio*100).toFixed(0)}%</span></div>`;
+    }).join('') + `</div>`;
+  } else {
+    const ds = sim.deptStats().sort((a, b) => b.utilization - a.utilization);
+    el.innerHTML = `<div class="bars">` + ds.map(d => {
+      const c = '#' + (DEPT_HEX[d.key] || 0x8aa0c0).toString(16).padStart(6, '0');
+      return `<div class="r"><span class="nm" title="${d.cn}">${d.cn}</span>
+        <span class="tk"><span class="fl" style="width:${Math.min(100, d.utilization*100)}%;
+          background:${c}"></span></span>
+        <span class="vv">${(d.utilization*100).toFixed(0)}%</span></div>`;
+    }).join('') + `</div>`;
+  }
+}
+
+function resizeCharts(){ if (sim) refreshDashboard(); }
+
+function bindUI(){
+  // ---- 模拟播放控制条 ----
+  $('#btn-play').onclick = () => setPlaying(!playing);
+  $('#tl').oninput = e => {
+    setPlaying(false);
+    const t = +e.target.value;
+    sim.seek(t); $('#clock').textContent = fmtClock(t);
+    renderStateDist(); refreshPanelState(); refreshDashboard();
+  };
+  $('#sim-bar').classList.add('on');
+
+  // ---- 抽屉关闭 ----
+  $('#drawer-x').onclick = () => select(null);
+
+  // ---- 通用分段控件 ----
+  document.querySelectorAll('[data-seg]').forEach(seg => {
+    seg.querySelectorAll('button').forEach(b => {
+      b.onclick = () => {
+        seg.querySelectorAll('button').forEach(x => x.classList.remove('on'));
+        b.classList.add('on');
+        const kind = seg.dataset.seg, v = b.dataset.v;
+        if (kind === 'horizon') horizonMin = +v;
+        else if (kind === 'granularity') granularityMin = +v;
+        else if (kind === 'scenario'){ scenario = v; renderComparison(); }
+        else if (kind === 'lunch') params.lunch = +v;
+        refreshDashboard();
+      };
+    });
+  });
+
+  // ---- 关键参数滑块 ----
+  const bind = (id, vid, did, key, fmt) => {
+    const el = $(id);
+    el.oninput = () => {
+      params[key] = +el.value;
+      $(vid).textContent = el.value;
+      if (did) $(did).textContent = fmt ? fmt(+el.value) : '';
+      refreshDashboard();
+    };
+  };
+  bind('#sl-head', '#v-head', '#d-head', 'headcount', v => {
+    const d = (v / Math.max(1, PROFILES.length) - 1) * 100;
+    return (d >= 0 ? '+' : '') + d.toFixed(0) + '%';
+  });
+  bind('#sl-meet', '#v-meet', '#d-meet', 'meetings', v => {
+    const d = v - 8; return (d >= 0 ? '+' : '') + d;
+  });
+  bind('#sl-remote', '#v-remote', null, 'remote');
+
+  // ---- 运行预测 ----
+  $('#btn-run').onclick = () => {
+    const btn = $('#btn-run');
+    btn.classList.add('running'); btn.textContent = '预测中…';
+    setTimeout(() => {
+      refreshDashboard();
+      btn.classList.remove('running'); btn.textContent = '运行预测';
+      flashCharts();
+    }, 380);
+  };
+
+  // ---- 实时 / 预测 ----
+  $('#mode-sw').querySelectorAll('button').forEach(b => {
+    b.onclick = () => {
+      $('#mode-sw').querySelectorAll('button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      mode = b.dataset.m;
+      // 预测模式把时间轴推到当前时刻 + 时间范围，看未来状态
+      if (mode === 'forecast'){
+        setPlaying(false);
+        const t = Math.min(WORK_END, sim.t + horizonMin);
+        sim.seek(t); $('#tl').value = t; $('#clock').textContent = fmtClock(t);
+        renderStateDist(); refreshDashboard();
+      } else {
+        setPlaying(true);
+      }
+    };
+  });
+
+  // ---- 结果标签页（切换可视化的统计口径） ----
+  $('#res-tabs').querySelectorAll('button').forEach(b => {
+    b.onclick = () => {
+      $('#res-tabs').querySelectorAll('button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      refreshDashboard();
+    };
+  });
+
+  // ---- 空间占用视图切换 ----
+  document.querySelectorAll('[data-occ]').forEach(b => {
+    b.onclick = () => {
+      document.querySelectorAll('[data-occ]').forEach(x => {
+        x.style.background = 'transparent';
+        x.style.color = 'var(--ink2)';
+        x.style.fontWeight = '400';
+      });
+      b.style.background = '#fff'; b.style.color = 'var(--blue)';
+      b.style.fontWeight = '600';
+      occMode = b.dataset.occ;
+      renderOccupancy();
+    };
+  });
+
+  // ---- 顶部实时钟（真实世界时间） ----
+  const tick = () => {
+    const d = new Date();
+    const p = n => String(n).padStart(2, '0');
+    $('#wall-clock').textContent =
+      `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ` +
+      `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+  };
+  tick(); setInterval(tick, 1000);
+}
+
+/** 运行预测时给图表一个轻微的刷新动效 */
+function flashCharts(){
+  for (const id of ['cv-trend','cv-donut','cv-cmp']){
+    const cv = document.getElementById(id);
+    if (!cv) continue;
+    cv.style.transition = 'opacity .18s'; cv.style.opacity = '.35';
+    setTimeout(() => cv.style.opacity = '1', 170);
+  }
+}
+
+/* ================================================================
+   3D 舞台：嵌入 NEXUS 28 人办公区
+   - 外层保留本系统的预测面板 / 档案抽屉
+   - iframe 内是完整 3D 场景，人物点击通过 postMessage 回传 employee_id
+   ================================================================ */
+function officeTeamPayload(){
+  if (!PROFILES) return [];
+  return PROFILES.map(e => ({
+    employeeId: e.employee_id,
+    name: e.name,
+    role: (e.profile && e.profile.JobRole) || '',
+    dept: e.department_cn,
+    riskLevel: (e.risk && e.risk.level) || '',
+  }));
+}
+function sendOfficeTeam(){
+  if (!officeFrame || !officeFrame.contentWindow || !PROFILES) return;
+  officeFrame.contentWindow.postMessage({ type:'nexus:team', employees: officeTeamPayload() }, '*');
+}
+function liveStatusFor(e){
+  return (e && liveStates[e.employee_id]) || '同步中…';
+}
+function updateLiveEmployeeStatus(){
+  if (!picked) return;
+  const el = $('#live-state');
+  if (!el) return;
+  const status = liveStates[picked];
+  if (status) el.textContent = `此刻：${status}`;
+}
+
+function initEmbeddedOffice(){
+  officeFrame = $('#office-frame');
+  if (!officeFrame) return;
+  addEventListener('message', ev => {
+    if (!officeFrame || ev.source !== officeFrame.contentWindow) return;
+    const d = ev.data || {};
+    if (d.type === 'nexus:ready') sendOfficeTeam();
+    else if (d.type === 'nexus:team-ack') { /* 场景已完成人物映射 */ }
+    else if (d.type === 'nexus:status' && d.statuses){ liveStates = d.statuses; updateLiveEmployeeStatus(); }
+    else if (d.type === 'nexus:select' && d.employeeId) select(d.employeeId, { fromFrame:true });
+  });
+  officeFrame.addEventListener('load', () => {
+    sendOfficeTeam();
+    setTimeout(sendOfficeTeam, 600);
+  });
+  sendOfficeTeam();
+  setTimeout(sendOfficeTeam, 1200);
+  addEventListener('resize', resizeCharts);
+  startDashboardTicker();
+}
+function startDashboardTicker(){
+  if (dashStarted) return;
+  dashStarted = true;
+  const fps = $('#fps'); if (fps) fps.textContent = '3D LIVE';
+  setInterval(() => {
+    if (!playing || !sim) return;
+    const t = Math.min(WORK_END, sim.t + 1);
+    sim.seek(t);
+    $('#tl').value = t;
+    $('#clock').textContent = fmtClock(t);
+    if (t >= WORK_END) setPlaying(false);
+    renderStateDist();
+    if (picked) refreshPanelState();
+  }, 1000);
+  setInterval(() => { if (sim) refreshDashboard(); }, 7000);
+}
+
+Promise.all([
+  fetch('building.json').then(r => r.json()),
+  fetch('profiles.json').then(r => r.json()),
+  fetch('office_team.json').then(r => r.ok ? r.json() : { ids:[] }).catch(() => ({ ids:[] })),
+]).then(([b, p, team]) => {
+  const all = new Map(p.map(e => [e.employee_id, e]));
+  let selected = (team.ids || []).map(id => all.get(id)).filter(Boolean);
+  if (selected.length !== 28) selected = p.slice(0, 28);   // 兜底，保证舞台人数
+  // 3D 场景是“总部办公层”的 28 人展示团队；档案数据仍使用 profiles.json。
+  selected.forEach(e => { e.floor_name = '总部办公层'; });
+  BUILD = b; PROFILES = selected;
+  PROFILES.forEach(e => byId[e.employee_id] = e);
+  b.departments.forEach(d =>
+    DEPT_HEX[d.key] = parseInt(String(d.color).replace('#',''), 16));
+  ROOM_BY_ID = new Map(b.floors[0].rooms.map(r => [r.rid, r]));
+  sim = new Sim(b, PROFILES);
+  sim.initSnapshotBuffer();
+  sim.seek(10 * 60);
+  $('#tl').value = 10 * 60;
+  $('#clock').textContent = fmtClock(10 * 60);
+  const stageSub = document.querySelector('.stage-title span');
+  if (stageSub) stageSub.textContent = `OPEN OFFICE FLOOR · ${PROFILES.length} EMPLOYEES · 5 ZONES · 620 M²`;
+  const head = $('#v-head'); if (head) head.textContent = String(params.headcount);
+  bindUI();
+  initEmbeddedOffice();
+  renderStateDist();
+  refreshDashboard();
+  select(null);
+  $('#loading').classList.add('hide');
+  setTimeout(() => $('#loading').remove(), 450);
+}).catch(e => {
+  $('#loading').textContent = '载入失败：' + e.message;
+  console.error(e);
+});
+
+window.__bld = {
+  sim: () => sim, select, recolor, setFloor,
+  cam: () => camera, ctl: () => controls, scene: () => scene,
+  blenderEnv: () => ({ status: blenderEnvStatus, loaded: !!blenderFloorEnv }),
+  /** 仪表盘状态：KPI / 占用 / 趋势 / 部门 */
+  kpi: () => computeKpis(),
+  occupancy: () => sim.roomOccupancy(),
+  depts: () => sim.deptStats(),
+  forecast: (h, b) => sim.forecast(h, b),
+  trend: () => trendBins(),
+  params: () => ({ ...params, horizonMin, granularityMin, scenario, mode, occMode }),
+  setParams(v){ Object.assign(params, v || {}); refreshDashboard(); return params; },
+  refresh: () => { refreshDashboard(); renderStateDist(); },
+  look(px, py, pz, tx, ty, tz){
+    camera.position.set(px, py, pz); controls.target.set(tx, ty, tz);
+    controls.update(); syncScene(performance.now(), 0.016);
+    renderer.render(scene, camera);
+  },
+  pause(v = true){ setPlaying(!v); },
+  seek(t){
+    sim.seek(t); $('#tl').value = t; $('#clock').textContent = fmtClock(t);
+    renderStateDist(); refreshPanelState(); refreshDashboard();
+  },
+  focusEmployee(eid){
+    const e = byId[eid]; if (!e) return null;
+    select(eid); return e.name;
+  },
+  /** 同步场景并渲染、导出画面（同一任务内导出，避免缓冲区被清空） */
+  shot(){
+    syncScene(performance.now(), 0.016);
+    renderer.render(scene, camera);
+    return renderer.domElement.toDataURL('image/png');
+  },
+  sync(){ syncScene(performance.now(), 0.016); },
+  perf(){ return { calls: renderer.info.render.calls,
+                   triangles: renderer.info.render.triangles,
+                   geometries: renderer.info.memory.geometries,
+                   textures: renderer.info.memory.textures }; },
+  stats(){ return { people: PROFILES.length, sim: sim.stats(), t: sim.t,
+                    floor: sim.agents[0].floorNow,
+                    rooms: BUILD.floors[0].rooms.length }; },
+};
+</script>
+</body>
+</html>

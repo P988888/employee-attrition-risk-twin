@@ -1,0 +1,16 @@
+﻿zone_id,kind,label_cn,label_en,x,y,w,d,color,dept_key,capacity
+z_rnd,dept,研发部,R&D,24.0,23.0,26.0,21.0,#4C7DFF,rnd,117
+z_marketing,dept,市场部,Marketing,2.0,23.0,21.5,21.0,#FF6B35,marketing,90
+z_ops,dept,运营部,Operations,26.0,6.0,24.0,16.0,#FFB020,ops,72
+z_finance,dept,财务部,Finance,2.0,6.0,23.5,16.0,#28D17C,finance,72
+f_break,facility,休息区 · 茶水间,Break Area,50.0,36.5,14.0,7.0,#FFD9A0,,0
+f_meeting_l,facility,大会议室 (16人),Meeting L,50.0,29.0,14.0,7.0,#8FA8D8,,0
+f_meeting_m1,facility,中会议室 (10人),Meeting M1,50.0,21.5,6.6,7.0,#8FA8D8,,0
+f_meeting_m2,facility,中会议室 (10人),Meeting M2,57.0,21.5,7.0,7.0,#8FA8D8,,0
+f_meeting_s1,facility,小会议室 (6人),Meeting S1,50.0,14.0,6.6,7.0,#8FA8D8,,0
+f_meeting_s2,facility,小会议室 (6人),Meeting S2,57.0,14.0,7.0,7.0,#8FA8D8,,0
+f_phone,facility,电话间,Phone Booths,50.0,8.0,14.0,5.5,#A8D8C8,,0
+f_print,facility,打印区,Print Zone,50.0,1.0,14.0,6.5,#C8C8D8,,0
+f_reception,facility,前台接待,Reception,25.0,1.0,14.0,4.5,#B98CFF,,0
+f_storage,facility,储物间,Storage,1.5,1.0,7.0,4.5,#B0B0B0,,0
+f_restroom,facility,卫生间,Restroom,9.5,1.0,8.0,4.5,#B0B0B0,,0
